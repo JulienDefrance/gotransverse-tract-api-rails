@@ -98,15 +98,17 @@ module GoTransverseTractApi
   end
 
   #
-  # self.get_response_from
+  # self.get_response_for
   #
-  # @param {String} api_url
+  # @param {Class} klass
   # @param {Hash} api_params
   #
-  def self.get_response_from(api_url, api_params)
+  def self.get_response_for(klass, api_params)
+
+    api_url = GoTransverseTractApi.get_api_url_for(klass)
 
     if GoTransverseTractApi.configuration.cache_enabled
-      return self.get_cached_response_from(api_url, api_params)
+      return self.get_cached_response_from(klass, api_params)
     end
 
     # Unless cached
@@ -114,22 +116,24 @@ module GoTransverseTractApi
   end
 
   #
-  # self.post_request_to
+  # self.post_request_for
   #
-  # @param {String} api_url
+  # @param {Class} klass
   # @param {Hash} api_params
   #
-  def self.post_request_to(api_url, api_params)
+  def self.post_request_for(klass, api_params)
+    api_url = GoTransverseTractApi.get_api_url_for(klass)
     self.call(api_url, api_params, :post)
   end
 
   #
-  # self.put_request_to
+  # self.put_request_for
   #
-  # @param {String} api_url
+  # @param {Class} klass
   # @param {Hash} api_params
   #
-  def self.put_request_to(api_url, api_params)
+  def self.put_request_for(klass, api_params)
+    api_url = GoTransverseTractApi.get_api_url_for(klass)
     self.call(api_url, api_params, :put)
   end
 
@@ -143,19 +147,19 @@ module GoTransverseTractApi
   end
 
   #
-  # self.get_cached_response_from
+  # self.get_cached_response_for
   #
-  # @param {String} api_url
+  # @param {Class} klass
   # @param {Hash} api_params
   #
-  def self.get_cached_response_from(api_url, api_params)
-    key = "#{api_url}.#{api_params.sort}"
+  def self.get_cached_response_for(klass, api_params)
+    key = "#{klass.classname}.#{api_params.sort}"
 
     return Rails.cache.fetch(key, expires_in: 10.minutes) do
-      self.get_response_from(api_url, api_params)
+      self.get_response_from(klass, api_params)
     end
 
-    return self.get_response_from(api_url, api_params)
+    return self.get_response_from(klass, api_params)
   end
 
   #
