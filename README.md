@@ -59,10 +59,10 @@ Visit https://rubygems.org/gems/gotransverse-tract-api
 
 ## Roadmap
 
-Nov 2015: Initial Release, basic REST/XML API Support
-Dec 2015: PCI-Compliant Hosted Payment Page URL Support
-Q1 2016: Automated Test Coverage
-Q2 2016: REST/JSON API Support
+* Nov 2015: Initial Release, basic REST/XML API Support
+* Dec 2015: PCI-Compliant Hosted Payment Page URL Support
+* Q1 2016: Automated Test Coverage
+* Q2 2016: REST/JSON API Support
 
 
 ## Contributing
