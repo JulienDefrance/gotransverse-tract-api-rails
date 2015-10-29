@@ -11,7 +11,7 @@ class Configuration
   # initialize
   #
   def initialize
-    @tract_api_url = "https://my.tractbilling.com/t/s/r/#{Version::TARGET_API_VERSION}/"
+    @tract_api_url = "https://my.tractbilling.com/t/s/r/#{GoTransverseTractApi::TARGET_API_VERSION}/"
     set_basic_credentials
   end
 
