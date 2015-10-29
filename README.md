@@ -53,6 +53,9 @@ http://devdoc.gotransverse.com.php53-14.ord1-1.websitetestlink.com/Developer-Gui
 ```
 #!ruby
 GoTransverseTractApi::BillingAccount::Invoice.find_by_eid(<eid>)
+
+GoTransverseTractApi::Product::Product.find_all
+GoTransverseTractApi::Product::Product.find_by_eid(<eid>)
 ```
 
 ## Version History & Changelog
