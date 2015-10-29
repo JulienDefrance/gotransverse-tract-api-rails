@@ -102,16 +102,15 @@ module GoTransverseTractApi
   #
   # @param {String} api_url
   # @param {Hash} api_params
-  # @param {Hash} headers (optional)
   #
-  def self.get_response_from(api_url, api_params, headers={})
+  def self.get_response_from(api_url, api_params)
 
     if GoTransverseTractApi.configuration.cache_enabled
-      return self.get_cached_response_from(api_url, api_params, headers)
+      return self.get_cached_response_from(api_url, api_params)
     end
 
     # Unless cached
-    self.call(api_url, api_params, headers, :get)
+    self.call(api_url, api_params, :get)
   end
 
   #
@@ -119,10 +118,9 @@ module GoTransverseTractApi
   #
   # @param {String} api_url
   # @param {Hash} api_params
-  # @param {Hash} headers (optional)
   #
-  def self.post_request_to(api_url, api_params, headers={})
-    self.call(api_url, api_params, headers, :post)
+  def self.post_request_to(api_url, api_params)
+    self.call(api_url, api_params, :post)
   end
 
   #
@@ -130,29 +128,34 @@ module GoTransverseTractApi
   #
   # @param {String} api_url
   # @param {Hash} api_params
-  # @param {Hash} headers (optional)
   #
-  def self.put_request_to(api_url, api_params, headers={})
-    self.call(api_url, api_params, headers, :put)
+  def self.put_request_to(api_url, api_params)
+    self.call(api_url, api_params, :put)
   end
 
   private
+
+  #
+  # self.get_authentication_headers
+  #
+  def self.get_authentication_headers
+    {"basic-credentials" => GoTransverseTractApi.configuration.basic_credentials}
+  end
 
   #
   # self.get_cached_response_from
   #
   # @param {String} api_url
   # @param {Hash} api_params
-  # @param {Hash} headers (optional)
   #
-  def self.get_cached_response_from(api_url, api_params, headers={})
+  def self.get_cached_response_from(api_url, api_params)
     key = "#{api_url}.#{api_params.sort}"
 
     return Rails.cache.fetch(key, expires_in: 10.minutes) do
-      self.get_response_from(api_url, api_params, headers)
+      self.get_response_from(api_url, api_params)
     end
 
-    return self.get_response_from(api_url, api_params, headers)
+    return self.get_response_from(api_url, api_params)
   end
 
   #
@@ -160,10 +163,11 @@ module GoTransverseTractApi
   #
   # @param {String} api_url
   # @param {Hash} api_params
-  # @param {Hash} headers (optional)
   # @param {String} method (optional)
   #
-  def self.call(api_url, api_params, headers={}, method=:get)
+  def self.call(api_url, api_params, method=:get)
+
+    headers = self.get_authentication_headers
 
     http_client = HTTPClient.new
     case method

@@ -34,7 +34,7 @@ Or install it yourself as:
 
 ## Configuration
 
-From the application utilizing the gem, create a gotransverse-tract-api.rb file to your config/initializers folder, with content:
+From the application utilizing the gem, create a gotransverse_tract_api.rb file to your config/initializers folder, with content:
 
 ```
 #!ruby
@@ -43,6 +43,9 @@ GoTransverseTractApi.configure do |config|
   config.password = <gotransverse_tract_password>
 end
 ```
+
+Your credentials will automatically be encoded in Base64 following TRACT API's Web Service Login recommendations available at:
+http://devdoc.gotransverse.com.php53-14.ord1-1.websitetestlink.com/Developer-Guides/API-Reference/API-Security-and-Login
 
 
 ## Usage
