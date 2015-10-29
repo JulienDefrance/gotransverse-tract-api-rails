@@ -88,6 +88,7 @@ Please keep version number increments under control :)
 ## Donations
 
 Love this project? Use it for your business?
+
 Reward our developers and help us keep this project active.
 
 [![Click here to donate][2]][1]
