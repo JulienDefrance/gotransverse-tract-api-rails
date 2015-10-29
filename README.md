@@ -83,3 +83,24 @@ Please keep version number increments under control :)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create a new Pull Request
+
+
+## Donations
+
+Love this project? Use it for your business?
+Reward our developers and help us keep this project active.
+
+[![Click here to donate][2]][1]
+
+  [1]: https://www.bountysource.com/cart?amount=5&currency=USD&team_id=gotransverse-tract-api-rails
+  [2]: //img.shields.io/badge/donate-$5-brightgreen.svg (Click here to donate)
+
+[![Click here to donate][2]][1]
+
+  [1]: https://www.bountysource.com/cart?amount=20&currency=USD&team_id=gotransverse-tract-api-rails
+  [2]: //img.shields.io/badge/donate-$20-brightgreen.svg (Click here to donate)
+
+[![Click here to donate][2]][1]
+
+  [1]: https://www.bountysource.com/cart?amount=100&currency=USD&team_id=gotransverse-tract-api-rails
+  [2]: //img.shields.io/badge/donate-$100-brightgreen.svg (Click here to donate)
