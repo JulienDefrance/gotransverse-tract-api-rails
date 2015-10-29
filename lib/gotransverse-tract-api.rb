@@ -64,7 +64,7 @@ require "gotransverse-tract-api/usage/usage_rule"
 require "httpclient"
 require "nokogiri"
 
-module GotransverseTractApi
+module GoTransverseTractApi
 
   class << self
     attr_accessor :configuration
@@ -78,7 +78,7 @@ module GotransverseTractApi
   #
   # Examples:
   #
-  #  GotransverseTractApi.configure do |config|
+  #  GoTransverseTractApi.configure do |config|
   #    config.user_id = <gotransverse_tract_user_id>
   #    config.password = <gotransverse_tract_password>
   #  end
@@ -94,7 +94,7 @@ module GotransverseTractApi
   # @param {Class} klass
   #
   def self.get_api_url_for klass
-    "#{GotransverseTractApi.configuration.tract_api_url}/#{klass.classname.camelize(:lower).pluralize}"
+    "#{GoTransverseTractApi.configuration.tract_api_url}/#{klass.classname.camelize(:lower).pluralize}"
   end
 
   #
@@ -106,7 +106,7 @@ module GotransverseTractApi
   #
   def self.get_response_from(api_url, api_params, headers={})
 
-    if GotransverseTractApi.configuration.cache_enabled
+    if GoTransverseTractApi.configuration.cache_enabled
       return self.get_cached_response_from(api_url, api_params, headers)
     end
 

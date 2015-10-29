@@ -1,4 +1,4 @@
-# GotransverseTractApi Ruby Gem
+# GoTransverseTractApi Ruby Gem
 
 A ruby gem allowing developers to integrate with GoTransverse's TRACT API.
 
@@ -36,16 +36,21 @@ Or install it yourself as:
 
 From the application utilizing the gem, create a gotransverse-tract-api.rb file to your config/initializers folder, with content:
 
-GotransverseTractApi.configure do |config|
+```
+#!ruby
+GoTransverseTractApi.configure do |config|
   config.user_id = <gotransverse_tract_user_id>
   config.password = <gotransverse_tract_password>
 end
+```
 
 
 ## Usage
 
-GotransverseTractApi::BillingAccount::Invoice.find_by_eid(<eid>)
-
+```
+#!ruby
+GoTransverseTractApi::BillingAccount::Invoice.find_by_eid(<eid>)
+```
 
 ## Version History & Changelog
 

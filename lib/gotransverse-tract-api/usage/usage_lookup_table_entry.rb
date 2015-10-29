@@ -1,4 +1,4 @@
-module GotransverseTractApi
+module GoTransverseTractApi
 
   module Usage
 

@@ -5,7 +5,7 @@ require 'gotransverse-tract-api/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "gotransverse-tract-api"
-  spec.version       = GotransverseTractApi::VERSION
+  spec.version       = GoTransverseTractApi::VERSION
   spec.authors       = ["Julien DeFrance"]
   spec.email         = ["jdefrance@smartzip.com"]
   spec.summary       = "A ruby gem allowing developers to integrate with GoTransverse's TRACT API."
