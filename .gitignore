@@ -1,3 +1,8 @@
+# Ignore Rubymine files
+rails/.idea/
+.idea
+
+# Others
 *.gem
 *.rbc
 .bundle

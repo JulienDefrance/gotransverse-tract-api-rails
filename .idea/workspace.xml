@@ -2,63 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7495dd0a-7777-4001-aaac-aff031e7b74d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/gotransverse-tract-api/product/action.rb" afterPath="$PROJECT_DIR$/lib/gotransverse-tract-api/product/action.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/gotransverse-tract-api/billing_account/adjustment.rb" afterPath="$PROJECT_DIR$/lib/gotransverse-tract-api/billing_account/adjustment.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/gotransverse-tract-api/billing_account/adjustment_reason.rb" afterPath="$PROJECT_DIR$/lib/gotransverse-tract-api/billing_account/adjustment_reason.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/gotransverse-tract-api/order/agreement.rb" afterPath="$PROJECT_DIR$/lib/gotransverse-tract-api/order/agreement.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/gotransverse-tract-api/order/bill_cycle.rb" afterPath="$PROJECT_DIR$/lib/gotransverse-tract-api/order/bill_cycle.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/gotransverse-tract-api/billing_account/billing_account.rb" afterPath="$PROJECT_DIR$/lib/gotransverse-tract-api/billing_account/billing_account.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/gotransverse-tract-api/order/billing_account_category.rb" afterPath="$PROJECT_DIR$/lib/gotransverse-tract-api/order/billing_account_category.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/gotransverse-tract-api/billing_account/custom_field.rb" afterPath="$PROJECT_DIR$/lib/gotransverse-tract-api/billing_account/custom_field.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/gotransverse-tract-api/billing_account/custom_field_value.rb" afterPath="$PROJECT_DIR$/lib/gotransverse-tract-api/billing_account/custom_field_value.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/gotransverse-tract-api/general_ledger/gl_account.rb" afterPath="$PROJECT_DIR$/lib/gotransverse-tract-api/general_ledger/gl_account.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/gotransverse-tract-api/general_ledger/gl_account_category.rb" afterPath="$PROJECT_DIR$/lib/gotransverse-tract-api/general_ledger/gl_account_category.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/gotransverse-tract-api/general_ledger/gl_accounting_entry.rb" afterPath="$PROJECT_DIR$/lib/gotransverse-tract-api/general_ledger/gl_accounting_entry.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/gotransverse-tract-api/general_ledger/gl_aggregate_batch.rb" afterPath="$PROJECT_DIR$/lib/gotransverse-tract-api/general_ledger/gl_aggregate_batch.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/gotransverse-tract-api/general_ledger/gl_aggregate_entry.rb" afterPath="$PROJECT_DIR$/lib/gotransverse-tract-api/general_ledger/gl_aggregate_entry.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gotransverse-tract-api.gemspec" afterPath="$PROJECT_DIR$/gotransverse-tract-api.gemspec" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/gotransverse-tract-api.rb" afterPath="$PROJECT_DIR$/lib/gotransverse-tract-api.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/gotransverse-tract-api/billing_account/invoice.rb" afterPath="$PROJECT_DIR$/lib/gotransverse-tract-api/billing_account/invoice.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/gotransverse-tract-api/billing_account/invoice_item.rb" afterPath="$PROJECT_DIR$/lib/gotransverse-tract-api/billing_account/invoice_item.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/gotransverse-tract-api/billing_account/invoice_item_charge.rb" afterPath="$PROJECT_DIR$/lib/gotransverse-tract-api/billing_account/invoice_item_charge.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/gotransverse-tract-api/product/operation.rb" afterPath="$PROJECT_DIR$/lib/gotransverse-tract-api/product/operation.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/gotransverse-tract-api/order/order_item.rb" afterPath="$PROJECT_DIR$/lib/gotransverse-tract-api/order/order_item.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/gotransverse-tract-api/order/order_item_charge.rb" afterPath="$PROJECT_DIR$/lib/gotransverse-tract-api/order/order_item_charge.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/gotransverse-tract-api/usage/order_item_usage_rule.rb" afterPath="$PROJECT_DIR$/lib/gotransverse-tract-api/usage/order_item_usage_rule.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/gotransverse-tract-api/order/organization.rb" afterPath="$PROJECT_DIR$/lib/gotransverse-tract-api/order/organization.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/gotransverse-tract-api/order/party_category.rb" afterPath="$PROJECT_DIR$/lib/gotransverse-tract-api/order/party_category.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/gotransverse-tract-api/billing_account/payment.rb" afterPath="$PROJECT_DIR$/lib/gotransverse-tract-api/billing_account/payment.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/gotransverse-tract-api/order/person.rb" afterPath="$PROJECT_DIR$/lib/gotransverse-tract-api/order/person.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/gotransverse-tract-api/product/price_list.rb" afterPath="$PROJECT_DIR$/lib/gotransverse-tract-api/product/price_list.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/gotransverse-tract-api/product/price_range.rb" afterPath="$PROJECT_DIR$/lib/gotransverse-tract-api/product/price_range.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/gotransverse-tract-api/product/product.rb" afterPath="$PROJECT_DIR$/lib/gotransverse-tract-api/product/product.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/gotransverse-tract-api/product/product_category.rb" afterPath="$PROJECT_DIR$/lib/gotransverse-tract-api/product/product_category.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/gotransverse-tract-api/product/product_price.rb" afterPath="$PROJECT_DIR$/lib/gotransverse-tract-api/product/product_price.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/gotransverse-tract-api/order/product_relation.rb" afterPath="$PROJECT_DIR$/lib/gotransverse-tract-api/order/product_relation.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/gotransverse-tract-api/usage/product_usage_rule.rb" afterPath="$PROJECT_DIR$/lib/gotransverse-tract-api/usage/product_usage_rule.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/gotransverse-tract-api/usage/rate_table.rb" afterPath="$PROJECT_DIR$/lib/gotransverse-tract-api/usage/rate_table.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/gotransverse-tract-api/billing_account/reason.rb" afterPath="$PROJECT_DIR$/lib/gotransverse-tract-api/billing_account/reason.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/gotransverse-tract-api/billing_account/recurring_payment.rb" afterPath="$PROJECT_DIR$/lib/gotransverse-tract-api/billing_account/recurring_payment.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/gotransverse-tract-api/billing_account/refund.rb" afterPath="$PROJECT_DIR$/lib/gotransverse-tract-api/billing_account/refund.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/gotransverse-tract-api/order/renewal_order.rb" afterPath="$PROJECT_DIR$/lib/gotransverse-tract-api/order/renewal_order.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/gotransverse-tract-api/order/sales_order.rb" afterPath="$PROJECT_DIR$/lib/gotransverse-tract-api/order/sales_order.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/gotransverse-tract-api/billing_account/scheduled_charge.rb" afterPath="$PROJECT_DIR$/lib/gotransverse-tract-api/billing_account/scheduled_charge.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/gotransverse-tract-api/service/service.rb" afterPath="$PROJECT_DIR$/lib/gotransverse-tract-api/service/service.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/gotransverse-tract-api/service/service_device_inventory_item.rb" afterPath="$PROJECT_DIR$/lib/gotransverse-tract-api/service/service_device_inventory_item.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/gotransverse-tract-api/service/service_period.rb" afterPath="$PROJECT_DIR$/lib/gotransverse-tract-api/service/service_period.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/gotransverse-tract-api/service/service_price.rb" afterPath="$PROJECT_DIR$/lib/gotransverse-tract-api/service/service_price.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/gotransverse-tract-api/service/service_price_range.rb" afterPath="$PROJECT_DIR$/lib/gotransverse-tract-api/service/service_price_range.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/gotransverse-tract-api/service/service_resource.rb" afterPath="$PROJECT_DIR$/lib/gotransverse-tract-api/service/service_resource.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/gotransverse-tract-api/service/service_resource_category.rb" afterPath="$PROJECT_DIR$/lib/gotransverse-tract-api/service/service_resource_category.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/gotransverse-tract-api/usage/service_usage_rule.rb" afterPath="$PROJECT_DIR$/lib/gotransverse-tract-api/usage/service_usage_rule.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/gotransverse-tract-api/general/system_setting.rb" afterPath="$PROJECT_DIR$/lib/gotransverse-tract-api/general/system_setting.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/gotransverse-tract-api/usage/usage_event.rb" afterPath="$PROJECT_DIR$/lib/gotransverse-tract-api/usage/usage_event.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/gotransverse-tract-api/usage/usage_lookup_table.rb" afterPath="$PROJECT_DIR$/lib/gotransverse-tract-api/usage/usage_lookup_table.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/gotransverse-tract-api/usage/usage_lookup_table_entry.rb" afterPath="$PROJECT_DIR$/lib/gotransverse-tract-api/usage/usage_lookup_table_entry.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/gotransverse-tract-api/product/usage_rule.rb" afterPath="$PROJECT_DIR$/lib/gotransverse-tract-api/product/usage_rule.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/gotransverse-tract-api/usage/usage_rule.rb" afterPath="$PROJECT_DIR$/lib/gotransverse-tract-api/usage/usage_rule.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/gotransverse-tract-api/version.rb" afterPath="$PROJECT_DIR$/lib/gotransverse-tract-api/version.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="gotransverse_tract_api.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -109,11 +54,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="2" selection-start-line="0" selection-start-column="2" selection-end-line="0" selection-end-column="2" />
+              <caret line="2" column="53" selection-start-line="2" selection-start-column="53" selection-end-line="2" selection-end-column="53" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.06256517">
+              <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -134,16 +89,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="21" column="24" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="usage_event.rb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/gotransverse-tract-api/usage/usage_event.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="4" column="20" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -187,7 +132,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/lib/gotransverse_tract_api/billing_account/payment.rb" />
         <option value="$PROJECT_DIR$/lib/gotransverse_tract_api/billing_account/reason.rb" />
         <option value="$PROJECT_DIR$/lib/gotransverse_tract_api/billing_account/recurring_payment.rb" />
         <option value="$PROJECT_DIR$/lib/gotransverse_tract_api/billing_account/refund.rb" />
@@ -238,6 +182,7 @@
         <option value="$PROJECT_DIR$/Gemfile.lock" />
         <option value="$PROJECT_DIR$/lib/gotransverse_tract_api.rb" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -276,6 +221,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -311,7 +257,6 @@
         </subPane>
       </pane>
       <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -471,19 +416,19 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32938856" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32938856" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -494,19 +439,10 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/lib/gotransverse-tract-api/billing_account/payment.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/gotransverse-tract-api/billing_account/reason.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -514,7 +450,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="26" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -522,7 +457,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -530,7 +464,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="25" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -538,7 +471,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="2" column="16" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -546,7 +478,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="10" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -554,7 +485,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="27" selection-start-line="4" selection-start-column="27" selection-end-line="4" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -562,7 +492,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="27" selection-start-line="4" selection-start-column="27" selection-end-line="4" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -570,7 +499,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="10" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -578,7 +506,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="26" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -586,7 +513,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="10" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -594,7 +520,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="19" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -602,7 +527,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="32" selection-start-line="4" selection-start-column="32" selection-end-line="4" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -610,7 +534,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="19" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -618,7 +541,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="25" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -626,7 +548,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -634,7 +555,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="23" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -642,7 +562,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -650,7 +569,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="25" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -658,7 +576,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -666,7 +583,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="20" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -674,7 +590,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="10" column="3" selection-start-line="0" selection-start-column="0" selection-end-line="10" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -682,7 +597,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="19" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -690,7 +604,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="19" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -698,7 +611,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="20" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -706,7 +618,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -714,7 +625,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="25" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -722,7 +632,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -730,7 +639,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="19" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -738,7 +646,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="10" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -746,7 +653,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="36" selection-start-line="4" selection-start-column="36" selection-end-line="4" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -754,7 +660,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="23" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -762,7 +667,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -770,7 +674,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="27" selection-start-line="4" selection-start-column="27" selection-end-line="4" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -778,7 +681,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="25" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -786,7 +688,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="33" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -794,7 +695,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="10" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -802,7 +702,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -810,7 +709,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="19" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -818,7 +716,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -826,7 +723,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="20" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -897,7 +793,15 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="2" selection-start-line="0" selection-start-column="2" selection-end-line="0" selection-end-column="2" />
+          <caret line="2" column="53" selection-start-line="2" selection-start-column="53" selection-end-line="2" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.06256517">
+          <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
           <folding />
         </state>
       </provider>
