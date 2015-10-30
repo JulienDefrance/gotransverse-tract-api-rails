@@ -95,5 +95,5 @@ Reward our developers and help us keep this project active.
 
 [![Click here to donate][2]][1]
 
-  [1]: https://www.bountysource.com/cart?amount=5&currency=USD&team_id=gotransverse-tract-api-rails
-  [2]: //img.shields.io/badge/donate-$5-brightgreen.svg (Click here to donate)
+  [1]: https://www.bountysource.com/cart?amount=500&currency=USD&team_id=gotransverse-tract-api-rails
+  [2]: http://img.shields.io/badge/donate-$500-brightgreen.svg (Click here to donate)
