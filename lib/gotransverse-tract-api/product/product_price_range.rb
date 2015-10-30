@@ -2,7 +2,7 @@ module GoTransverseTractApi
 
   module Product
 
-    class ProductPrice
+    class ProductPriceRange
 
       #
       # @param {Long} eid
@@ -19,17 +19,10 @@ module GoTransverseTractApi
       end
 
       #
-      # @param {DateTime} from_date
+      # @param {Long} product_price_eid
       #
-      def self.find_from_date from_date
-        GoTransverseTractApi.get_response_for(self.class, {from_date: from_date})
-      end
-
-      #
-      # @param {DateTime} thru_date
-      #
-      def self.find_thru_date thru_date
-        GoTransverseTractApi.get_response_for(self.class, {thru_date: thru_date})
+      def self.find_by_product_price_eid product_price_eid
+        GoTransverseTractApi.get_response_for(self.class, {product_price_eid: product_price_eid})
       end
 
       #
@@ -51,3 +44,4 @@ module GoTransverseTractApi
   end
 
 end
+
