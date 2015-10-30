@@ -96,7 +96,7 @@ module GoTransverseTractApi
   # @param {Class} klass
   #
   def self.get_api_url_for klass
-    "#{GoTransverseTractApi.configuration.tract_api_url}/#{klass.classname.camelize(:lower).pluralize}"
+    "#{GoTransverseTractApi.configuration.tract_api_url}/#{klass.name.camelize(:lower).pluralize}"
   end
 
   #
@@ -155,7 +155,7 @@ module GoTransverseTractApi
   # @param {Hash} api_params (optional)
   #
   def self.get_cached_response_for(klass, api_params={})
-    key = "#{klass.classname}.#{api_params.sort}"
+    key = "#{klass.name}.#{api_params.sort}"
 
     return Rails.cache.fetch(key, expires_in: 10.minutes) do
       self.get_response_from(klass, api_params)
