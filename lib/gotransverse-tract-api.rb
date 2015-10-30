@@ -103,9 +103,9 @@ module GoTransverseTractApi
   # self.get_response_for
   #
   # @param {Class} klass
-  # @param {Hash} api_params
+  # @param {Hash} api_params (optional)
   #
-  def self.get_response_for(klass, api_params)
+  def self.get_response_for(klass, api_params={})
 
     api_url = GoTransverseTractApi.get_api_url_for(klass)
 
@@ -121,9 +121,9 @@ module GoTransverseTractApi
   # self.post_request_for
   #
   # @param {Class} klass
-  # @param {Hash} api_params
+  # @param {Hash} api_params (optional)
   #
-  def self.post_request_for(klass, api_params)
+  def self.post_request_for(klass, api_params={})
     api_url = GoTransverseTractApi.get_api_url_for(klass)
     self.call(api_url, api_params, :post)
   end
@@ -132,9 +132,9 @@ module GoTransverseTractApi
   # self.put_request_for
   #
   # @param {Class} klass
-  # @param {Hash} api_params
+  # @param {Hash} api_params (optional)
   #
-  def self.put_request_for(klass, api_params)
+  def self.put_request_for(klass, api_params={})
     api_url = GoTransverseTractApi.get_api_url_for(klass)
     self.call(api_url, api_params, :put)
   end
@@ -152,9 +152,9 @@ module GoTransverseTractApi
   # self.get_cached_response_for
   #
   # @param {Class} klass
-  # @param {Hash} api_params
+  # @param {Hash} api_params (optional)
   #
-  def self.get_cached_response_for(klass, api_params)
+  def self.get_cached_response_for(klass, api_params={})
     key = "#{klass.classname}.#{api_params.sort}"
 
     return Rails.cache.fetch(key, expires_in: 10.minutes) do
@@ -168,12 +168,14 @@ module GoTransverseTractApi
   # self.call
   #
   # @param {String} api_url
-  # @param {Hash} api_params
+  # @param {Hash} api_params (optional)
   # @param {String} method (optional)
   #
-  def self.call(api_url, api_params, method=:get)
+  def self.call(api_url, api_params={}, method=:get)
 
     headers = self.get_authentication_headers
+
+    # TODO: Recursively camelize all keys in api_params Hash.
 
     http_client = HTTPClient.new
     case method
