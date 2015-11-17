@@ -96,7 +96,8 @@ module GoTransverseTractApi
   # @param {Class} klass
   #
   def self.get_api_url_for klass
-    "#{GoTransverseTractApi.configuration.tract_api_url}/#{klass.name.camelize(:lower).pluralize}"
+    klass = klass.to_s.split("::").last
+    "#{GoTransverseTractApi.configuration.tract_api_url}/#{klass.camelize(:lower).pluralize}"
   end
 
   #
@@ -178,12 +179,6 @@ module GoTransverseTractApi
     # TODO: Camelize all keys in api_params Hash.
 
     api_uri = URI.parse(api_url)
-
-    pp api_url
-    pp api_uri.scheme
-
-    api_uri.scheme = "https"
-    pp api_uri.scheme
 
     http_client = HTTPClient.new
     case method

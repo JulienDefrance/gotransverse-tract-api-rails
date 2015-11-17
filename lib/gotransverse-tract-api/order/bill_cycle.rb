@@ -5,7 +5,7 @@ module GoTransverseTractApi
     class BillCycle
 
       def self.find_all
-        GoTransverseTractApi.get_response_for(self.class)
+        GoTransverseTractApi.get_response_for(self)
       end
 
     end
