@@ -175,16 +175,18 @@ module GoTransverseTractApi
 
     headers = self.get_authentication_headers
 
-    # TODO: Recursively camelize all keys in api_params Hash.
+    # TODO: Camelize all keys in api_params Hash.
+
+    api_uri = URI.parse(api_url)
 
     http_client = HTTPClient.new
     case method
       when :get
-        response = http_client.get(api_url, api_params, headers)
+        response = http_client.get(api_uri, api_params, headers)
       when :post
-        response = http_client.post(api_url, api_params, headers)
+        response = http_client.post(api_uri, api_params, headers)
       when :put
-        response = http_client.put(api_url, api_params, headers)
+        response = http_client.put(api_uri, api_params, headers)
     end
 
     Nokogiri::XML(response.body.to_s)
