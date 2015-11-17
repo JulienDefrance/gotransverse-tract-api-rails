@@ -179,6 +179,12 @@ module GoTransverseTractApi
 
     api_uri = URI.parse(api_url)
 
+    pp api_url
+    pp api_uri.scheme
+
+    api_uri.scheme = "https"
+    pp api_uri.scheme
+
     http_client = HTTPClient.new
     case method
       when :get
