@@ -2,12 +2,11 @@
 
 A ruby gem allowing developers to integrate with GoTransverse's TRACT API.
 
-Current supported version is 1.19 REST API (XML)
-http://devdoc.gotransverse.com.php53-14.ord1-1.websitetestlink.com/Developer-Guides/TRACT-API-1.19/API-1.19-REST-Mount-Points
+Current supported version is 1.28 REST API (XML)
+https://documentation.gotransverse.com/Content/Archive/site/tract.gotransverse.com/Developer-Guides/TRACT-API-1.28/REST-Endpoints.html
 
 For more details, please refer to GoTransverse's TRACT API Documentation available at:
-http://devdoc.gotransverse.com.php53-14.ord1-1.websitetestlink.com/Developer-Guide
-
+https://documentation.gotransverse.com/Content/Archive/site/tract.gotransverse.com/User-%26-Administrator-Guides/Understanding-TRACT.html
 
 ## Disclaimer
 
