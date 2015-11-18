@@ -40,6 +40,7 @@ From the application utilizing the gem, create a gotransverse_tract_api.rb file 
 GoTransverseTractApi.configure do |config|
   config.user_id = <gotransverse_tract_user_id>
   config.password = <gotransverse_tract_password>
+  config.tract_api_host = <gotransverse_tract_api_host>
 end
 ```
 

@@ -83,6 +83,7 @@ module GoTransverseTractApi
   #  GoTransverseTractApi.configure do |config|
   #    config.user_id = <gotransverse_tract_user_id>
   #    config.password = <gotransverse_tract_password>
+  #    config.tract_api_host = <gotransverse_tract_api_host>
   #  end
   #
   def self.configure
