@@ -36,6 +36,22 @@ module GoTransverseTractApi
         GoTransverseTractApi.get_response_for(self, {billing_account_eid: billing_account_eid})
       end
 
+      #
+      # @param {Long} eid
+      # @param {Nokogiri::XML::Document} people
+      #
+      def self.update eid, people
+        GoTransverseTractApi.put_response_for(self, {eid: eid}, people.to_s)
+      end
+
+      #
+      # @param {Long} eid
+      # @param {Nokogiri::XML::Document} address
+      #
+      def self.add_address eid, address
+        GoTransverseTractApi.post_response_for(self, {eid: eid}, address.to_s, "addAddress")
+      end
+
     end
 
   end

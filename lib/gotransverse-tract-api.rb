@@ -123,10 +123,13 @@ module GoTransverseTractApi
   #
   # @param {Class} klass
   # @param {Hash} api_params (optional)
+  # @param {String} request_body
+  # @param {String} command
   #
-  def self.post_request_for(klass, api_params={})
+  def self.post_request_for(klass, api_params={}, request_body, command)
     api_url = GoTransverseTractApi.get_api_url_for(klass)
-    self.call(api_url, api_params, :post)
+    api_url = "#{api_url}/#{command}"
+    self.call(api_url, api_params, :post, request_body)
   end
 
   #
@@ -134,10 +137,11 @@ module GoTransverseTractApi
   #
   # @param {Class} klass
   # @param {Hash} api_params (optional)
+  # @param {String} request_body
   #
-  def self.put_request_for(klass, api_params={})
+  def self.put_request_for(klass, api_params={}, request_body)
     api_url = GoTransverseTractApi.get_api_url_for(klass)
-    self.call(api_url, api_params, :put)
+    self.call(api_url, api_params, :put, request_body)
   end
 
   private
@@ -171,23 +175,22 @@ module GoTransverseTractApi
   # @param {String} api_url
   # @param {Hash} api_params (optional)
   # @param {String} method (optional)
+  # @param {String} request_body (optional, put/post requests only)
   #
-  def self.call(api_url, api_params={}, method=:get)
+  def self.call(api_url, api_params={}, method=:get, request_body="")
 
     headers = self.get_authentication_headers
 
     # TODO: Camelize all keys in api_params Hash.
 
-    api_uri = URI.parse(api_url)
-
     http_client = HTTPClient.new
     case method
       when :get
-        response = http_client.get(api_uri, api_params, headers)
+        response = http_client.get(api_url, api_params, headers)
       when :post
-        response = http_client.post(api_uri, api_params, headers)
+        response = http_client.post(api_url, request_body, api_params, headers)
       when :put
-        response = http_client.put(api_uri, api_params, headers)
+        response = http_client.put(api_url, request_body, api_params, headers)
     end
 
     Nokogiri::XML(response.body.to_s)
