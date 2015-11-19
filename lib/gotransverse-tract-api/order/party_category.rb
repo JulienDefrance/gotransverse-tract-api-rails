@@ -4,6 +4,10 @@ module GoTransverseTractApi
 
     class PartyCategory
 
+      def self.find_all
+        GoTransverseTractApi.get_response_for(self)
+      end
+
       #
       # @param {Long} eid
       #
