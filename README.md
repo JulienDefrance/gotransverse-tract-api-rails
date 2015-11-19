@@ -87,6 +87,12 @@ Please keep version number increments under control :)
 5. Create a new Pull Request
 
 
+## Authors
+
+Julien DeFrance
+Ravikumar Gudipati
+
+
 ## Donations
 
 Love this project? Use it for your business?

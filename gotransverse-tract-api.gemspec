@@ -6,7 +6,7 @@ require 'gotransverse-tract-api/version'
 Gem::Specification.new do |spec|
   spec.name          = "gotransverse-tract-api"
   spec.version       = GoTransverseTractApi::VERSION
-  spec.authors       = ["Julien DeFrance"]
+  spec.authors       = ["Julien DeFrance", "Ravikumar Gudipati"]
   spec.email         = ["jdefrance@smartzip.com"]
   spec.summary       = "A ruby gem allowing developers to integrate with GoTransverse's TRACT API."
   spec.description   = "TRACT is a billing engine edited by GoTransverse that supports various revenue models like one-time purchases, simple subscriptions, and more complex, usage-based models."
@@ -23,4 +23,6 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency 'httpclient'
   spec.add_runtime_dependency 'nokogiri'
+
+  spec.required_ruby_version = ">= 2.2.3"
 end
