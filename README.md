@@ -89,8 +89,8 @@ Please keep version number increments under control :)
 
 ## Authors
 
-Julien DeFrance
-Ravikumar Gudipati
+* Julien DeFrance
+* Ravikumar Gudipati
 
 
 ## Donations
