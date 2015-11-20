@@ -32,6 +32,13 @@ module GoTransverseTractApi
         GoTransverseTractApi.get_response_for(self, {posted_on: posted_on})
       end
 
+      #
+      # @param {Long} batch_num
+      #
+      def self.find_by_batch_num batch_num
+        GoTransverseTractApi.get_response_for(self, {batch_num: batch_num})
+      end
+
     end
 
   end
