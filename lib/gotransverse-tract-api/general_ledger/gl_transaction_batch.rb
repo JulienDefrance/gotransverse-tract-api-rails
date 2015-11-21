@@ -2,7 +2,7 @@ module GoTransverseTractApi
 
   module GeneralLedger
 
-    class GLAggregateBatch
+    class GLTransactionBatch
 
       class << self
 
@@ -21,10 +21,10 @@ module GoTransverseTractApi
         end
 
         #
-        # @param {String} status
+        # @param {DateTime} posted_on
         #
-        def find_by_status status
-          GoTransverseTractApi.get_response_for(self, {status: status})
+        def find_by_posted_on posted_on
+          GoTransverseTractApi.get_response_for(self, {posted_on: posted_on})
         end
 
         #
@@ -35,25 +35,18 @@ module GoTransverseTractApi
         end
 
         #
-        # @param {DateTime} posted_on
+        # @param {String} status
         #
-        def find_by_posted_on posted_on
-          GoTransverseTractApi.get_response_for(self, {posted_on: posted_on})
-        end
-
-        #
-        # @param {DateTime} batch_posted_on
-        #
-        def find_by_batch_posted_on batch_posted_on
-          GoTransverseTractApi.get_response_for(self, {batch_posted_on: batch_posted_on})
+        def find_by_status status
+          GoTransverseTractApi.get_response_for(self, {status: status})
         end
 
         #
         # @param {Long} eid
-        # @param {Nokogiri::XML::Document} gl_aggregate_batch
+        # @param {Nokogiri::XML::Document} gl_transaction_batch
         #
-        def update eid, gl_aggregate_batch
-          GoTransverseTractApi.put_request_for(self, {eid: eid}, gl_aggregate_batch.to_s)
+        def update eid, gl_transaction_batch
+          GoTransverseTractApi.put_request_for(self, {eid: eid}, gl_transaction_batch.to_s)
         end
 
       end
