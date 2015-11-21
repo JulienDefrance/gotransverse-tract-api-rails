@@ -2,7 +2,7 @@ module GoTransverseTractApi
 
   module Order
 
-    class BillCycle
+    class AdjustmentCategory
 
       class << self
 
@@ -25,24 +25,10 @@ module GoTransverseTractApi
         end
 
         #
-        # @param {String} type
-        #
-        def find_by_type type
-          GoTransverseTractApi.get_response_for(self, {type: type})
-        end
-
-        #
         # @param {String} status
         #
         def find_by_status status
           GoTransverseTractApi.get_response_for(self, {status: status})
-        end
-
-        #
-        # @param {String} currency_type
-        #
-        def find_by_currency_type currency_type
-          GoTransverseTractApi.get_response_for(self, {currency_type: currency_type})
         end
 
       end

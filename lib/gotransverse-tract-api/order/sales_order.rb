@@ -6,6 +6,10 @@ module GoTransverseTractApi
 
       class << self
 
+        def find_all
+          GoTransverseTractApi.get_response_for(self)
+        end
+
         #
         # @param {Long} eid
         #
@@ -92,6 +96,14 @@ module GoTransverseTractApi
         #
         def deny eid, sequence, sales_order
           GoTransverseTractApi.post_request_for(self, {eid: eid}, sales_order.to_s, "item/#{sequence}/deny")
+        end
+
+        #
+        # @param {Long} eid
+        # @param {Nokogiri::XML::Document} sales_order
+        #
+        def confirm eid, sales_order
+          GoTransverseTractApi.post_request_for(self, {eid: eid}, sales_order.to_s)
         end
 
         #
