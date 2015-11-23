@@ -2,7 +2,7 @@ module GoTransverseTractApi
 
   module Product
 
-    class ProductCategory < DiscountCategory
+    class BillingAccountSegment < DiscountCategory
 
     end
 

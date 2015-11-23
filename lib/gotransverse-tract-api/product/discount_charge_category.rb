@@ -2,10 +2,11 @@ module GoTransverseTractApi
 
   module Product
 
-    class ProductCategory < DiscountCategory
+    class DiscountChargeCategory < DiscountCategory
 
     end
 
   end
 
 end
+
