@@ -39,6 +39,13 @@ module GoTransverseTractApi
         GoTransverseTractApi.get_response_for(self, {price_list_is_master: price_list_is_master})
       end
 
+      #
+      # @param {String} currency_type
+      #
+      def self.find_by_currency_type currency_type
+        GoTransverseTractApi.get_response_for(self, {currency_type: currency_type})
+      end
+
     end
 
   end
