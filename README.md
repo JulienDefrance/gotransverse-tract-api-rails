@@ -1,6 +1,6 @@
 # GoTransverseTractApi Ruby Gem
 
-A ruby gem allowing developers to integrate with GoTransverse's TRACT API.
+A ruby gem allowing developers to conveniently integrate with GoTransverse's TRACT API.
 
 Current supported version is 1.28 REST API (XML)
 https://documentation.gotransverse.com/Content/Archive/site/tract.gotransverse.com/Developer-Guides/TRACT-API-1.28/REST-Endpoints.html
@@ -99,7 +99,7 @@ Love this project? Use it for your business?
 
 Reward our developers and help us keep this project active.
 
-[![Click here to donate][2]][1] [![Click here to donate][4]][3] [![Click here to donate][6]][5]
+[![Click here to donate][2]][1] [![Click here to donate][4]][3] [![Click here to donate][6]][5] or more! :)
 
   [1]: https://www.bountysource.com/cart?amount=100&currency=USD&team_id=gotransverse-tract-api-rails
   [2]: http://img.shields.io/badge/donate-$100-brightgreen.svg (Click here to donate)
@@ -108,4 +108,3 @@ Reward our developers and help us keep this project active.
   [5]: https://www.bountysource.com/cart?amount=500&currency=USD&team_id=gotransverse-tract-api-rails
   [6]: http://img.shields.io/badge/donate-$500-brightgreen.svg (Click here to donate)
 
-Or more! :)
