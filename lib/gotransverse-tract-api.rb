@@ -151,13 +151,6 @@ module GoTransverseTractApi
   private
 
   #
-  # self.get_authentication_headers
-  #
-  def self.get_authentication_headers
-    {"basic-credentials" => GoTransverseTractApi.configuration.basic_credentials}
-  end
-
-  #
   # self.get_cached_response_for
   #
   # @param {Class} klass
@@ -183,18 +176,18 @@ module GoTransverseTractApi
   #
   def self.call(api_url, api_params={}, method=:get, request_body="")
 
-    headers = self.get_authentication_headers
-
     # TODO: Camelize all keys in api_params Hash.
 
     http_client = HTTPClient.new
+    http_client.set_auth(nil, GoTransverseTractApi.configuration.username, GoTransverseTractApi.configuration.password)
+
     case method
       when :get
-        response = http_client.get(api_url, api_params, headers)
+        response = http_client.get(api_url, api_params)
       when :post
-        response = http_client.post(api_url, request_body, api_params, headers)
+        response = http_client.post(api_url, request_body, api_params)
       when :put
-        response = http_client.put(api_url, request_body, api_params, headers)
+        response = http_client.put(api_url, request_body, api_params)
     end
 
     Nokogiri::XML(response.body.to_s)

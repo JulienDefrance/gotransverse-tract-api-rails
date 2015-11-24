@@ -38,15 +38,11 @@ From the application utilizing the gem, create a gotransverse_tract_api.rb file 
 ```
 #!ruby
 GoTransverseTractApi.configure do |config|
-  config.user_id = <gotransverse_tract_user_id>
+  config.username = <gotransverse_tract_username>
   config.password = <gotransverse_tract_password>
   config.tract_api_host = <gotransverse_tract_api_host>
 end
 ```
-
-Your credentials will automatically be encoded in Base64 following TRACT API's Web Service Login recommendations available at:
-http://devdoc.gotransverse.com.php53-14.ord1-1.websitetestlink.com/Developer-Guides/API-Reference/API-Security-and-Login
-
 
 ## Usage
 

@@ -2,9 +2,8 @@ module GoTransverseTractApi
 
   class Configuration
 
-    attr_accessor :user_id
+    attr_accessor :username
     attr_accessor :password
-    attr_accessor :basic_credentials
 
     attr_accessor :cache_enabled
 
@@ -15,7 +14,6 @@ module GoTransverseTractApi
     #
     def initialize
       @tract_api_host = "https://my.tractbilling.com"
-      set_basic_credentials
     end
 
     #
@@ -23,24 +21,6 @@ module GoTransverseTractApi
     #
     def tract_api_url
       "#{@tract_api_host}/t/s/r/#{GoTransverseTractApi::TARGET_API_VERSION}"
-    end
-
-    private
-
-    #
-    # set_basic_credentials
-    #
-    def set_basic_credentials
-
-      # Perform Base-64 encoding of API login information
-      user_pass = "#{@user_id.to_s}:#{@password.to_s}"
-
-      # Sets basic_credentials attr_accessor
-      @basic_credentials = Base64.encode64(user_pass)
-
-      # Erase in-clear credentials
-      @user_id = @password = nil
-
     end
 
   end
