@@ -42,9 +42,10 @@ require "gotransverse-tract-api/product/operation_attribute"
 require "gotransverse-tract-api/product/price_list"
 require "gotransverse-tract-api/product/product_price_range"
 require "gotransverse-tract-api/product/product"
-require "gotransverse-tract-api/product/product_category"
+# require "gotransverse-tract-api/product/product_category"
 require "gotransverse-tract-api/product/product_price"
 require "gotransverse-tract-api/product/usage_rule"
+# require "gotransverse-tract-api/product/discount_category"
 
 require "gotransverse-tract-api/service/service"
 require "gotransverse-tract-api/service/service_device_inventory_item"
@@ -87,7 +88,7 @@ module GoTransverseTractApi
   #  end
   #
   def self.configure
-    self.configuration ||= Configuration.new
+    self.configuration ||= GoTransverseTractApi::Configuration.new
     yield(configuration)
   end
 
@@ -110,6 +111,8 @@ module GoTransverseTractApi
   def self.get_response_for(klass, api_params={})
 
     api_url = GoTransverseTractApi.get_api_url_for(klass)
+
+    pp "api_url: " + api_url
 
     if GoTransverseTractApi.configuration.cache_enabled
       return self.get_cached_response_from(klass, api_params)
