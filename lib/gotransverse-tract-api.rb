@@ -215,7 +215,7 @@ module GoTransverseTractApi
     hsh = Hash.from_xml(xml_response.to_s)
 
     hsh = hsh[klass.pluralize.camelize(:lower)][klass.camelize(:lower)] rescue Hash.from_xml(xml_response.to_s)[klass.camelize(:lower)]
-    hsh.symbolize_keys
+    return hsh
   end
 
   #
