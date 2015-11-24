@@ -5,6 +5,7 @@ require 'gotransverse-tract-api'
 require 'rspec'
 require 'pry'
 require 'active_support/all'
+require 'auth_helper'
 
 #require 'factory_girl'
 #require 'ffaker'
