@@ -212,8 +212,8 @@ module GoTransverseTractApi
 
     klass = klass.to_s.split("::").last
     hsh = Hash.from_xml(xml_response.to_s)
-
     hsh = hsh[klass.pluralize.camelize(:lower)][klass.camelize(:lower)] rescue Hash.from_xml(xml_response.to_s)[klass.camelize(:lower)]
+
     return hsh
   rescue
     {}
