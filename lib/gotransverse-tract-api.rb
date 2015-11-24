@@ -176,7 +176,8 @@ module GoTransverseTractApi
   #
   def self.call(api_url, api_params={}, method=:get, request_body="")
 
-    # TODO: Camelize all keys in api_params Hash.
+    # Camelize parameters
+    api_params = camelize_keys(api_params)
 
     http_client = HTTPClient.new
     http_client.set_auth(nil, GoTransverseTractApi.configuration.username, GoTransverseTractApi.configuration.password)
@@ -191,6 +192,20 @@ module GoTransverseTractApi
     end
 
     Nokogiri::XML(response.body.to_s)
+  end
+
+  #
+  # self.camelize_keys
+  #
+  # @param {hash} hsh
+  #
+  def self.camelize_keys hsh
+    hsh.keys.each do |k|
+      new_key = k.to_s.camelize(:lower)
+      new_key = new_key.to_sym if k.is_a? Symbol
+      hsh[new_key] = hsh.delete(k)
+    end
+    hsh
   end
 
 end
