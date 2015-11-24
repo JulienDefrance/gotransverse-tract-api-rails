@@ -56,57 +56,57 @@ module GoTransverseTractApi
         end
 
         #
-        # @param {Nokogiri::XML::Document} service_resource
+        # @param {Hash} service_resource
         #
         def request service_resource
-          GoTransverseTractApi.post_request_for(self, {}, service_resource.to_s, "request")
+          GoTransverseTractApi.post_request_for(self, {}, service_resource, "request")
         end
 
         #
         # @param {Long} eid
-        # @param {Nokogiri::XML::Document} service_resource
+        # @param {Hash} service_resource
         #
         def change eid, service_resource
-          GoTransverseTractApi.post_request_for(self, {eid: eid}, service_resource.to_s, "change")
+          GoTransverseTractApi.post_request_for(self, {eid: eid}, service_resource, "change")
         end
 
         #
         # @param {Long} eid
-        # @param {Nokogiri::XML::Document} service_resource
+        # @param {Hash} service_resource
         #
         def deactivate eid, service_resource
-          GoTransverseTractApi.post_request_for(self, {eid: eid}, service_resource.to_s, "deactivate")
+          GoTransverseTractApi.post_request_for(self, {eid: eid}, service_resource, "deactivate")
         end
 
         #
-        # @param {Nokogiri::XML::Document} service_resource
+        # @param {Hash} service_resource
         #
         def create_service_resource service_resource
-          GoTransverseTractApi.post_request_for(self, {}, service_resource.to_s, "")
+          GoTransverseTractApi.post_request_for(self, {}, service_resource, "")
         end
 
         #
         # @param {Long} eid
-        # @param {Nokogiri::XML::Document} service_resource
+        # @param {Hash} service_resource
         #
         def update eid, service_resource
-          GoTransverseTractApi.put_response_for(self, {eid: eid}, service_resource.to_s)
+          GoTransverseTractApi.put_response_for(self, {eid: eid}, service_resource)
         end
 
         #
         # @param {Long} eid
-        # @param {Nokogiri::XML::Document} service_resource
+        # @param {Hash} service_resource
         #
         def self.add_service_resource eid, service_resource
-          GoTransverseTractApi.post_request_for(self, {eid: eid}, service_resource.to_s, "addServiceResource")
+          GoTransverseTractApi.post_request_for(self, {eid: eid}, service_resource, "addServiceResource")
         end
 
         #
         # @param {Long} eid
-        # @param {Nokogiri::XML::Document} service_resource
+        # @param {Hash} service_resource
         #
         def self.remove_service_resource eid, service_resource
-          GoTransverseTractApi.post_request_for(self, {eid: eid}, service_resource.to_s, "removeServiceResource")
+          GoTransverseTractApi.post_request_for(self, {eid: eid}, service_resource, "removeServiceResource")
         end
 
       end

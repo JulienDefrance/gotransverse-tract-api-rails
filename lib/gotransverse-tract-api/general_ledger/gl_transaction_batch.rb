@@ -43,10 +43,10 @@ module GoTransverseTractApi
 
         #
         # @param {Long} eid
-        # @param {Nokogiri::XML::Document} gl_transaction_batch
+        # @param {Hash} gl_transaction_batch
         #
         def update eid, gl_transaction_batch
-          GoTransverseTractApi.put_request_for(self, {eid: eid}, gl_transaction_batch.to_s)
+          GoTransverseTractApi.put_request_for(self, {eid: eid}, gl_transaction_batch)
         end
 
       end

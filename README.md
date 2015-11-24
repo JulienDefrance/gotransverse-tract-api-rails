@@ -51,9 +51,8 @@ end
 GoTransverseTractApi::BillingAccount::Invoice.find_by_eid(<eid>)
 
 products = GoTransverseTractApi::Product::Product.find_all
-some_product = GoTransverseTractApi::Product::Product.find_by_eid(<eid>)
+product = GoTransverseTractApi::Product::Product.find_by_eid(<eid>)
 
-Hash.from_xml(some_product.to_s)
 ```
 
 ## Version History & Changelog

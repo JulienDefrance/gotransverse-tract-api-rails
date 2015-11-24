@@ -31,18 +31,18 @@ module GoTransverseTractApi
 
       #
       # @param {Long} eid
-      # @param {Nokogiri::XML::Document} address
+      # @param {Hash} address
       #
       def self.add_address eid, address
-        GoTransverseTractApi.post_request_for(self, {eid: eid}, address.to_s, "addAddress")
+        GoTransverseTractApi.post_request_for(self, {eid: eid}, address, "addAddress")
       end
 
       #
       # @param {Long} eid
-      # @param {Nokogiri::XML::Document} organization
+      # @param {Hash} organization
       #
       def self.update eid, organization
-        GoTransverseTractApi.put_request_for(self, {eid: eid}, organization.to_s)
+        GoTransverseTractApi.put_request_for(self, {eid: eid}, organization)
       end
 
     end

@@ -136,13 +136,13 @@ module GoTransverseTractApi
   #
   # @param {Class} klass
   # @param {Hash} api_params (optional)
-  # @param {String} request_body
+  # @param {Hash} request_body
   # @param {String} command
   #
   def self.post_request_for(klass, api_params={}, request_body, command)
     api_url = GoTransverseTractApi.get_api_url_for(klass)
     api_url = "#{api_url}/#{command}"
-    self.call(api_url, api_params, :post, request_body)
+    self.call(api_url, api_params, :post, request_body.to_xml)
   end
 
   #
@@ -150,11 +150,11 @@ module GoTransverseTractApi
   #
   # @param {Class} klass
   # @param {Hash} api_params (optional)
-  # @param {String} request_body
+  # @param {Hash} request_body
   #
   def self.put_request_for(klass, api_params={}, request_body)
     api_url = GoTransverseTractApi.get_api_url_for(klass)
-    self.call(api_url, api_params, :put, request_body)
+    self.call(api_url, api_params, :put, request_body.to_xml)
   end
 
   private

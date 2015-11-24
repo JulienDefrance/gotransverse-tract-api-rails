@@ -38,34 +38,34 @@ module GoTransverseTractApi
 
       #
       # @param {Long} eid
-      # @param {Nokogiri::XML::Document} people
+      # @param {Hash} people
       #
       def self.update eid, people
-        GoTransverseTractApi.put_request_for(self, {eid: eid}, people.to_s)
+        GoTransverseTractApi.put_request_for(self, {eid: eid}, people)
       end
 
       #
       # @param {Long} eid
-      # @param {Nokogiri::XML::Document} address
+      # @param {Hash} address
       #
       def self.add_address eid, address
-        GoTransverseTractApi.post_request_for(self, {eid: eid}, address.to_s, "addAddress")
+        GoTransverseTractApi.post_request_for(self, {eid: eid}, address, "addAddress")
       end
 
       #
       # @param {Long} eid
-      # @param {Nokogiri::XML::Document} person
+      # @param {Hash} person
       #
       def self.add_person eid, person
-        GoTransverseTractApi.post_request_for(self, {eid: eid}, person.to_s, "addPerson")
+        GoTransverseTractApi.post_request_for(self, {eid: eid}, person, "addPerson")
       end
 
       #
       # @param {Long} eid
-      # @param {Nokogiri::XML::Document} person
+      # @param {Hash} person
       #
       def self.remove_person eid, person
-        GoTransverseTractApi.post_request_for(self, {eid: eid}, person.to_s, "removePerson")
+        GoTransverseTractApi.post_request_for(self, {eid: eid}, person, "removePerson")
       end
 
     end

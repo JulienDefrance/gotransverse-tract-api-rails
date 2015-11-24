@@ -83,50 +83,50 @@ module GoTransverseTractApi
         #
         # @param {Long} eid
         # @param {Long} sequence
-        # @param {Nokogiri::XML::Document} sales_order
+        # @param {Hash} sales_order
         #
         def approve eid, sequence, sales_order
-          GoTransverseTractApi.post_request_for(self, {eid: eid}, sales_order.to_s, "item/#{sequence}/approve")
+          GoTransverseTractApi.post_request_for(self, {eid: eid}, sales_order, "item/#{sequence}/approve")
         end
 
         #
         # @param {Long} eid
         # @param {Long} sequence
-        # @param {Nokogiri::XML::Document} sales_order
+        # @param {Hash} sales_order
         #
         def deny eid, sequence, sales_order
-          GoTransverseTractApi.post_request_for(self, {eid: eid}, sales_order.to_s, "item/#{sequence}/deny")
+          GoTransverseTractApi.post_request_for(self, {eid: eid}, sales_order, "item/#{sequence}/deny")
         end
 
         #
         # @param {Long} eid
-        # @param {Nokogiri::XML::Document} sales_order
+        # @param {Hash} sales_order
         #
         def confirm eid, sales_order
-          GoTransverseTractApi.post_request_for(self, {eid: eid}, sales_order.to_s)
+          GoTransverseTractApi.post_request_for(self, {eid: eid}, sales_order)
         end
 
         #
         # @param {Long} eid
-        # @param {Nokogiri::XML::Document} sales_order
+        # @param {Hash} sales_order
         #
         def self.add_custom_field_value eid, sales_order
-          GoTransverseTractApi.post_request_for(self, {eid: eid}, sales_order.to_s, "addCustomFieldValue")
+          GoTransverseTractApi.post_request_for(self, {eid: eid}, sales_order, "addCustomFieldValue")
         end
 
         #
         # @param {Long} eid
-        # @param {Nokogiri::XML::Document} sales_order
+        # @param {Hash} sales_order
         #
         def self.remove_custom_field_value eid, sales_order
-          GoTransverseTractApi.post_request_for(self, {eid: eid}, sales_order.to_s, "removeCustomFieldValue")
+          GoTransverseTractApi.post_request_for(self, {eid: eid}, sales_order, "removeCustomFieldValue")
         end
 
         #
-        # @param {Nokogiri::XML::Document} person
+        # @param {Hash} person
         #
         def self.create_sales_order sales_order
-          GoTransverseTractApi.post_request_for(self, {}, sales_order.to_s, "")
+          GoTransverseTractApi.post_request_for(self, {}, sales_order, "")
         end
 
 

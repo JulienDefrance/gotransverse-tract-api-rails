@@ -62,18 +62,18 @@ module GoTransverseTractApi
 
       #
       # @param {Long} eid
-      # @param {Nokogiri::XML::Document} approve
+      # @param {Hash} approve
       #
       def self.approve eid, approve
-        GoTransverseTractApi.post_request_for(self, {eid: eid}, approve.to_s, "approve")
+        GoTransverseTractApi.post_request_for(self, {eid: eid}, approve, "approve")
       end
 
       #
       # @param {Long} eid
-      # @param {Nokogiri::XML::Document} deny
+      # @param {Hash} deny
       #
       def self.deny eid, deny
-        GoTransverseTractApi.post_request_for(self, {eid: eid}, deny.to_s, "deny")
+        GoTransverseTractApi.post_request_for(self, {eid: eid}, deny, "deny")
       end
 
     end
