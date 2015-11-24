@@ -9,15 +9,20 @@ module GoTransverseTractApi
     attr_accessor :cache_enabled
 
     attr_accessor :tract_api_host
-    attr_accessor :tract_api_url
 
     #
     # initialize
     #
     def initialize
-      @tract_api_host ||= "https://my.tractbilling.com"
-      @tract_api_url = "#{@tract_api_host}/t/s/r/#{GoTransverseTractApi::TARGET_API_VERSION}"
+      @tract_api_host = "https://my.tractbilling.com"
       set_basic_credentials
+    end
+
+    #
+    # tract_api_url
+    #
+    def tract_api_url
+      "#{@tract_api_host}/t/s/r/#{GoTransverseTractApi::TARGET_API_VERSION}"
     end
 
     private
