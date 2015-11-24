@@ -5,6 +5,7 @@ gem "nokogiri"
 
 group :development, :test do
   gem "pry-byebug"
+  gem "rspec"
   gem "rspec-rails"
 end
 

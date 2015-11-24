@@ -2,7 +2,6 @@ $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 ENV["RAILS_ENV"] ||= 'test'
 
 require 'gotransverse-tract-api'
-require 'rspec'
 require 'pry'
 require 'active_support/all'
 require 'auth_helper'
