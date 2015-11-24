@@ -6,8 +6,6 @@ require 'rspec'
 require 'pry'
 require 'active_support/all'
 
-require "support/auth_helper.rb"
-
 #require 'factory_girl'
 #require 'ffaker'
 #require 'shoulda'

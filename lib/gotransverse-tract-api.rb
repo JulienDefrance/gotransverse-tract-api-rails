@@ -196,22 +196,16 @@ module GoTransverseTractApi
     # Camelize parameters
     api_params = camelize_keys(api_params)
 
-    username = GoTransverseTractApi.configuration.username
-    password = GoTransverseTractApi.configuration.password
-
     http_client = HTTPClient.new
-    http_client.set_auth(nil, username, password)
-    headers = {
-      "Authorization" => "Basic " + Base64.encode64(username + ':' + password).gsub("\n",''),
-    }
+    http_client.set_auth(nil, GoTransverseTractApi.configuration.username, GoTransverseTractApi.configuration.password)
 
     case method
       when :get
-        response = http_client.get(api_url, api_params, headers)
+        response = http_client.get(api_url, api_params)
       when :post
-        response = http_client.post(api_url, request_body, api_params, headers)
+        response = http_client.post(api_url, request_body, api_params)
       when :put
-        response = http_client.put(api_url, request_body, api_params, headers)
+        response = http_client.put(api_url, request_body, api_params)
     end
 
     xml_response = Nokogiri::XML(response.body.to_s)
