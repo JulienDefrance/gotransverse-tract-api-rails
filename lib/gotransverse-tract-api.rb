@@ -128,7 +128,6 @@ module GoTransverseTractApi
   def self.get_response_for(klass, api_params={})
 
     api_url = GoTransverseTractApi.get_api_url_for(klass)
-
     pp "api_url: " + api_url
 
     if GoTransverseTractApi.configuration.cache_enabled
@@ -216,6 +215,8 @@ module GoTransverseTractApi
 
     hsh = hsh[klass.pluralize.camelize(:lower)][klass.camelize(:lower)] rescue Hash.from_xml(xml_response.to_s)[klass.camelize(:lower)]
     return hsh
+  rescue
+    {}
   end
 
   #

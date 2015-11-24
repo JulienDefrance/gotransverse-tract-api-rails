@@ -13,7 +13,7 @@ https://documentation.gotransverse.com/Content/Archive/site/tract.gotransverse.c
 While we are all gladly contributing to the community...
 
 This gem is unofficial, may contain bugs, and its use is at your own risk.
-None of the project owners, developers, contributors may be held accountable for any defect or disaster resulting of the use of this gem.
+None of the project owners, developers, contributors may be held accountable for any defect or disaster resulting of the direct or indirect use of this gem.
 
 
 ## Installation
@@ -48,10 +48,15 @@ end
 
 ```
 #!ruby
+
 GoTransverseTractApi::BillingAccount::Invoice.find_by_eid(<eid>)
 
 products = GoTransverseTractApi::Product::Product.find_all
+
 product = GoTransverseTractApi::Product::Product.find_by_eid(<eid>)
+product.symbolize_keys!
+
+product_price = GoTransverseTractApi::Product::RecurringProductPrice.find_by_product_eid(product[:eid])
 
 ```
 
@@ -94,18 +99,12 @@ Love this project? Use it for your business?
 
 Reward our developers and help us keep this project active.
 
-[![Click here to donate][2]][1]
+[![Click here to donate][2]][1] [![Click here to donate][4]][3] [![Click here to donate][6]][5]
 
   [1]: https://www.bountysource.com/cart?amount=100&currency=USD&team_id=gotransverse-tract-api-rails
   [2]: http://img.shields.io/badge/donate-$100-brightgreen.svg (Click here to donate)
-
-[![Click here to donate][4]][3]
-
-[3]: https://www.bountysource.com/cart?amount=250&currency=USD&team_id=gotransverse-tract-api-rails
-[4]: http://img.shields.io/badge/donate-$250-brightgreen.svg (Click here to donate)
-
-[![Click here to donate][6]][5]
-
+  [3]: https://www.bountysource.com/cart?amount=250&currency=USD&team_id=gotransverse-tract-api-rails
+  [4]: http://img.shields.io/badge/donate-$250-brightgreen.svg (Click here to donate)
   [5]: https://www.bountysource.com/cart?amount=500&currency=USD&team_id=gotransverse-tract-api-rails
   [6]: http://img.shields.io/badge/donate-$500-brightgreen.svg (Click here to donate)
 
