@@ -21,7 +21,7 @@ module GoTransverseTractApi
       #
       # @param {Long} billing_account_eid
       #
-      def find_by_billing_account_eid billing_account_eid
+      def self.find_by_billing_account_eid billing_account_eid
         GoTransverseTractApi.get_response_for(self, {billing_account_eid: billing_account_eid})
       end
 
@@ -35,21 +35,21 @@ module GoTransverseTractApi
       #
       # @param {String} reference
       #
-      def find_by_reference reference
+      def self.find_by_reference reference
         GoTransverseTractApi.get_response_for(self, {reference: reference})
       end
 
       #
       # @param {String} status
       #
-      def find_by_status status
+      def self.find_by_status status
         GoTransverseTractApi.get_response_for(self, {status: status})
       end
 
       #
       # @param {String} authorization
       #
-      def find_by_authorization authorization
+      def self.find_by_authorization authorization
         GoTransverseTractApi.get_response_for(self, {authorization: authorization})
       end
 
@@ -58,8 +58,39 @@ module GoTransverseTractApi
       # @param {String} cancel_url
       # @param {String} complete_url
       #
-      def self.get_referrer_token_for error_url, cancel_url, complete_url
+      def self.add_referrer_token_for error_url, cancel_url, complete_url
         GoTransverseTractApi.post_request_for(self, {error_url: error_url, cancel_url: cancel_url, complete_url: complete_url}, {}, "referrerToken")
+      end
+
+      #
+      # @param {Long} eid
+      # @param {Hash} payment
+      #
+      def self.apply_refund eid, payment
+        GoTransverseTractApi.post_request_for(self, {eid: eid}, payment, "applyRefund")
+      end
+
+      #
+      # @param {Long} eid
+      # @param {Hash} payment
+      #
+      def self.cancel eid, payment
+        GoTransverseTractApi.post_request_for(self, {eid: eid}, payment, "cancel")
+      end
+
+      #
+      # @param {Long} eid
+      # @param {Hash} payment
+      #
+      def self.reallocate eid, payment
+        GoTransverseTractApi.post_request_for(self, {eid: eid}, payment, "reallocate")
+      end
+
+      #
+      # @param {Hash} payment
+      #
+      def self.create_payment payment
+        GoTransverseTractApi.post_request_for(self, {}, payment, "")
       end
 
     end
