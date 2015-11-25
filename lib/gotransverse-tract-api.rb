@@ -14,6 +14,7 @@ require "gotransverse-tract-api/billing_account/reason"
 require "gotransverse-tract-api/billing_account/recurring_payment"
 require "gotransverse-tract-api/billing_account/refund"
 require "gotransverse-tract-api/billing_account/scheduled_charge"
+require "gotransverse-tract-api/billing_account/standard_invoice_adjustment_application"
 
 require "gotransverse-tract-api/general/system_setting"
 
