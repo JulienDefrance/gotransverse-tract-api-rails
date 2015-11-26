@@ -2,9 +2,13 @@ module GoTransverseTractApi
 
   module Usage
 
-    class UsageRule
+    class UsagePriceCategory
 
       class << self
+
+        def find_by_all 
+          GoTransverseTractApi.get_response_for(self)
+        end
 
         #
         # @param {Long} eid
@@ -14,10 +18,10 @@ module GoTransverseTractApi
         end
 
         #
-        # @param {Long} service_period_eid
+        # @param {String} name
         #
-        def find_by_service_period_eid service_period_eid
-          GoTransverseTractApi.get_response_for(self, {service_period_eid: service_period_eid})
+        def find_by_name name
+          GoTransverseTractApi.get_response_for(self, {name: name})
         end
 
       end
