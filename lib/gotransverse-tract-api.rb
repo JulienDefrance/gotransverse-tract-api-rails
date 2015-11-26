@@ -2,6 +2,7 @@ require "gotransverse-tract-api/version"
 require "gotransverse-tract-api/configuration"
 
 require "gotransverse-tract-api/billing_account/adjustment"
+require "gotransverse-tract-api/billing_account/adjustment_application"
 require "gotransverse-tract-api/billing_account/adjustment_reason"
 require "gotransverse-tract-api/billing_account/billing_account"
 require "gotransverse-tract-api/billing_account/custom_field"
