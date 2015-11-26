@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = GoTransverseTractApi::VERSION
   spec.authors       = ["Julien DeFrance", "Ravikumar Gudipati"]
   spec.email         = ["jdefrance@smartzip.com"]
-  spec.summary       = "A ruby gem allowing developers to integrate with GoTransverse's TRACT API."
-  spec.description   = "TRACT is a billing engine edited by GoTransverse that supports various revenue models like one-time purchases, simple subscriptions, and more complex, usage-based models."
+  spec.summary       = "A ruby gem allowing developers to conveniently integrate with GoTransverse's TRACT API."
+  spec.description   = "A ruby gem allowing developers to conveniently integrate with GoTransverse's TRACT API. TRACT is a billing engine edited by GoTransverse that supports various revenue models like one-time purchases, simple subscriptions, and more complex, usage-based models."
   spec.homepage      = "https://rubygems.org/gems/gotransverse-tract-api"
   spec.license       = "MIT"
 
