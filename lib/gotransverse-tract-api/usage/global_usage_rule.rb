@@ -2,9 +2,13 @@ module GoTransverseTractApi
 
   module Usage
 
-    class ProductUsageRule
+    class GlobalUsageRule
 
       class << self
+
+        def find_by_all 
+          GoTransverseTractApi.get_response_for(self)
+        end
 
         #
         # @param {Long} eid
@@ -14,17 +18,10 @@ module GoTransverseTractApi
         end
 
         #
-        # @param {Long} product_eid
+        # @param {Boolean} is_global
         #
-        def find_by_product_eid product_eid
-          GoTransverseTractApi.get_response_for(self, {product_eid: product_eid})
-        end
-
-        #
-        # @param {Long} product_price_eid
-        #
-        def find_by_product_price_eid product_price_eid
-          GoTransverseTractApi.get_response_for(self, {product_price_eid: product_price_eid})
+        def find_by_is_global is_global
+          GoTransverseTractApi.get_response_for(self, {is_global: is_global})
         end
 
         #
