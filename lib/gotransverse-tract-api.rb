@@ -2,8 +2,10 @@ require "gotransverse-tract-api/version"
 require "gotransverse-tract-api/configuration"
 
 require "gotransverse-tract-api/billing_account/adjustment"
+require "gotransverse-tract-api/billing_account/adjustment_application"
 require "gotransverse-tract-api/billing_account/adjustment_reason"
 require "gotransverse-tract-api/billing_account/billing_account"
+require "gotransverse-tract-api/billing_account/counter"
 require "gotransverse-tract-api/billing_account/custom_field"
 require "gotransverse-tract-api/billing_account/custom_field_value"
 require "gotransverse-tract-api/billing_account/invoice"
@@ -14,6 +16,7 @@ require "gotransverse-tract-api/billing_account/reason"
 require "gotransverse-tract-api/billing_account/recurring_payment"
 require "gotransverse-tract-api/billing_account/refund"
 require "gotransverse-tract-api/billing_account/scheduled_charge"
+require "gotransverse-tract-api/billing_account/standard_invoice_adjustment_application"
 
 require "gotransverse-tract-api/general/system_setting"
 
