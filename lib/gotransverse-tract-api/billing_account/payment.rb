@@ -58,8 +58,14 @@ module GoTransverseTractApi
       # @param {String} cancel_url
       # @param {String} complete_url
       #
-      def self.add_referrer_token_for error_url, cancel_url, complete_url
-        GoTransverseTractApi.post_request_for(self, {error_url: error_url, cancel_url: cancel_url, complete_url: complete_url}, {}, "referrerToken")
+      def self.referrer_token error_url, cancel_url, complete_url
+        body = "<generatePaymentCollectionReferrerToken xmlns='http://www.tractbilling.com/billing/1_28/domain'>
+                 <errorUrl>#{error_url}</errorUrl>
+                 <cancelUrl>#{cancel_url}</cancelUrl>
+                 <completeUrl>#{complete_url}</completeUrl>
+               </generatePaymentCollectionReferrerToken>"
+
+        GoTransverseTractApi.post_request_for(self, body, "referrerToken")
       end
 
       #
