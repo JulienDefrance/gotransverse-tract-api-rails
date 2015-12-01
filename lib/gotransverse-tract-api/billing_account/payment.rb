@@ -63,7 +63,7 @@ module GoTransverseTractApi
                  <errorUrl>#{error_url}</errorUrl>
                  <cancelUrl>#{cancel_url}</cancelUrl>
                  <completeUrl>#{complete_url}</completeUrl>
-               </generatePaymentCollectionReferrerToken>"
+                </generatePaymentCollectionReferrerToken>"
 
         GoTransverseTractApi.post_request_for(self, body, "referrerToken")
       end
