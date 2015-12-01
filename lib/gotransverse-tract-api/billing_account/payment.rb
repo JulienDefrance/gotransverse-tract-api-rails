@@ -65,7 +65,7 @@ module GoTransverseTractApi
                  <completeUrl>#{complete_url}</completeUrl>
                 </generatePaymentCollectionReferrerToken>"
 
-        GoTransverseTractApi.post_request_for(self, body, "referrerToken")
+        GoTransverseTractApi.post_request_for(self, body, "referrerToken")[:referrer][:referrerToken]
       end
 
       #

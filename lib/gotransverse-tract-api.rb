@@ -1,5 +1,7 @@
 require "gotransverse-tract-api/version"
+
 require "gotransverse-tract-api/configuration"
+require "gotransverse-tract-api/hash"
 
 require "gotransverse-tract-api/billing_account/adjustment"
 require "gotransverse-tract-api/billing_account/adjustment_application"
@@ -217,9 +219,10 @@ module GoTransverseTractApi
     xml_response = Nokogiri::XML(response.body.to_s)
 
     klass = klass.to_s.split("::").last
-    hsh = Hash.from_xml(xml_response.to_s)
+    hsh = Hash.from_xml(xml_response.to_s).recursive_symbolize_keys!
+
     if method == :get
-      hsh = hsh[klass.pluralize.camelize(:lower)][klass.camelize(:lower)] rescue Hash.from_xml(xml_response.to_s)[klass.camelize(:lower)]
+      hsh = hsh[klass.pluralize.camelize(:lower).to_sym][klass.camelize(:lower).to_sym] rescue Hash.from_xml(xml_response.to_s)[klass.camelize(:lower).to_sym]
     end
 
     return hsh
