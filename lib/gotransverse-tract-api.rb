@@ -154,7 +154,8 @@ module GoTransverseTractApi
   def self.post_request_for(klass, api_params={}, request_body, command)
     api_url = GoTransverseTractApi.get_api_url_for(klass)
     api_url = "#{api_url}/#{command}"
-    self.call(klass, api_url, api_params, :post, request_body.to_xml)
+    
+    self.call(klass, api_url, api_params, :post, request_body)
   end
 
   #
@@ -208,7 +209,7 @@ module GoTransverseTractApi
       when :get
         response = http_client.get(api_url, api_params)
       when :post
-        response = http_client.post(api_url, request_body, api_params)
+        response = http_client.post(api_url, request_body, {'Content-Type' => 'application/xml'})
       when :put
         response = http_client.put(api_url, request_body, api_params)
     end
@@ -217,13 +218,15 @@ module GoTransverseTractApi
 
     klass = klass.to_s.split("::").last
     hsh = Hash.from_xml(xml_response.to_s)
-    hsh = hsh[klass.pluralize.camelize(:lower)][klass.camelize(:lower)] rescue Hash.from_xml(xml_response.to_s)[klass.camelize(:lower)]
+    if method == :get
+      hsh = hsh[klass.pluralize.camelize(:lower)][klass.camelize(:lower)] rescue Hash.from_xml(xml_response.to_s)[klass.camelize(:lower)]
+    end
 
     return hsh
   rescue
     {}
   end
-
+  
   #
   # self.camelize_keys
   #
