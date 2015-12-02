@@ -69,7 +69,19 @@ module GoTransverseTractApi
         # @param {Hash} usage_event
         #
         def create_usage_event usage_event
-          GoTransverseTractApi.post_request_for(self, {}, usage_event, "")
+          data = {
+            :usageEvent => {
+              :startTime => usage_event[:start_time],
+              :serviceResourceId => usage_event[:service_resource_id],
+              :usageUom => usage_event[:usage_uom],
+              :usageAmount => usage_event[:usage_amount],
+              :number01 => usage_event[:number01]
+            },
+            :serviceResourceType => 'GENERICSRVCRESOURCE'
+          }
+
+          xml_data = GoTransverseTractApi.generateXML(data, 'usageEvent')
+          GoTransverseTractApi.post_request_for(self, xml_data, "")
         end
 
         #
@@ -83,7 +95,16 @@ module GoTransverseTractApi
         # @param {Hash} usage_event
         #
         def void_event usage_event
-          GoTransverseTractApi.post_request_for(self, {}, usage_event, "void_event")
+          
+          data = {
+            :voidUsageEvent => {},
+            :usageEvent => {
+              :eid => usage_event[:eid]
+            }
+          }
+
+          xml_data = GoTransverseTractApi.generateXML(data, 'voidUsageEvent')
+          GoTransverseTractApi.post_request_for(self, usage_event, "void_event")
         end
 
       end

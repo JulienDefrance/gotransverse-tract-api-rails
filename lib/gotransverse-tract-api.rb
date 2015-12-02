@@ -156,7 +156,6 @@ module GoTransverseTractApi
   def self.post_request_for(klass, api_params={}, request_body, command)
     api_url = GoTransverseTractApi.get_api_url_for(klass)
     api_url = "#{api_url}/#{command}"
-    
     self.call(klass, api_url, api_params, :post, request_body)
   end
 
@@ -242,6 +241,32 @@ module GoTransverseTractApi
       hsh[new_key] = hsh.delete(k)
     end
     hsh
+  end
+
+  #
+  # Generate XML for request body
+  #
+  # @param {hash} data
+  # @param (String} root element
+  #
+  def self.generateXML(data, root_elem)
+    tract_api_ver = GoTransverseTractApi::TARGET_API_VERSION
+    data[root_elem.to_sym][:xmlns] = "http://www.tractbilling.com/billing/#{tract_api_ver}/domain"
+
+    builder = Nokogiri::XML::Builder.new do|xml|
+      xml.send(root_elem,Hash[data[root_elem.to_sym]]) do
+        data.each do|k,v|
+          next if (k.to_sym == root_elem.to_sym)
+          if (k.is_a?Hash)
+            xml.send(k, Hash[data[k.to_sym]]) 
+          else
+            xml.send(k.to_sym, v)
+          end
+        end
+      end
+    end
+
+    builder.doc.root.to_xml
   end
 
 end
