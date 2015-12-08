@@ -191,12 +191,10 @@ module GoTransverseTractApi
       xml.send(root_elem,Hash[data[root_elem.to_sym]]) do
         arr = []
         arr << root_elem.to_sym
-        #debugger
         self.process_data(data, arr, xml)
       end
     end
 
-    debugger
     builder.doc.root.to_xml
   end
 
@@ -235,18 +233,15 @@ module GoTransverseTractApi
     http_client = HTTPClient.new
     http_client.set_auth(nil, GoTransverseTractApi.configuration.username, GoTransverseTractApi.configuration.password)
 
-    debugger
     case method
       when :get
         response = http_client.get(api_url, api_params)
       when :post
-        debugger
         response = http_client.post(api_url, request_body, {'Content-Type' => 'application/xml'})
       when :put
         response = http_client.put(api_url, request_body, api_params)
     end
 
-    debugger
     xml_response = Nokogiri::XML(response.body.to_s)
 
     klass = klass.to_s.split("::").last
@@ -276,11 +271,9 @@ module GoTransverseTractApi
   end
 
   def self.process_data(data, arr, xml)
-    #debugger
     data.each do|key,val|
       next if arr.include?(key)
        
-      #debugger
       if (val.is_a?Hash)
         if (val.has_key?(:attributes))
           xml.send(key, Hash[data[key][:attributes]]) do
@@ -298,7 +291,6 @@ module GoTransverseTractApi
         xml.send(key, val)
       end
     end
-
   end
 
 end
