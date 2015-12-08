@@ -155,7 +155,12 @@ module GoTransverseTractApi
   #
   def self.post_request_for(klass, api_params={}, request_body, command)
     api_url = GoTransverseTractApi.get_api_url_for(klass)
-    api_url = "#{api_url}/#{command}"
+    if (api_params.empty?)
+      api_url = "#{api_url}/#{command}"
+    else
+      api_url = "#{api_url}/#{api_params[:eid]}/#{command}"
+    end
+    
     self.call(klass, api_url, api_params, :post, request_body)
   end
 
@@ -169,6 +174,28 @@ module GoTransverseTractApi
   def self.put_request_for(klass, api_params={}, request_body)
     api_url = GoTransverseTractApi.get_api_url_for(klass)
     self.call(klass, api_url, api_params, :put, request_body.to_xml)
+  end
+
+  #
+  # Generate XML for request body
+  #
+  # @param {hash} data
+  # @param (String} root element
+  #
+
+  def self.generateXML(data, root_elem)
+    tract_api_ver = GoTransverseTractApi::TARGET_API_VERSION
+    data[root_elem.to_sym][:xmlns] = "http://www.tractbilling.com/billing/#{tract_api_ver}/domain"
+
+    builder = Nokogiri::XML::Builder.new do|xml|
+      xml.send(root_elem,Hash[data[root_elem.to_sym]]) do
+        arr = []
+        arr << root_elem.to_sym
+        self.process_data(data, arr, xml)
+      end
+    end
+
+    builder.doc.root.to_xml
   end
 
   private
@@ -243,30 +270,27 @@ module GoTransverseTractApi
     hsh
   end
 
-  #
-  # Generate XML for request body
-  #
-  # @param {hash} data
-  # @param (String} root element
-  #
-  def self.generateXML(data, root_elem)
-    tract_api_ver = GoTransverseTractApi::TARGET_API_VERSION
-    data[root_elem.to_sym][:xmlns] = "http://www.tractbilling.com/billing/#{tract_api_ver}/domain"
-
-    builder = Nokogiri::XML::Builder.new do|xml|
-      xml.send(root_elem,Hash[data[root_elem.to_sym]]) do
-        data.each do|k,v|
-          next if (k.to_sym == root_elem.to_sym)
-          if (k.is_a?Hash)
-            xml.send(k, Hash[data[k.to_sym]]) 
-          else
-            xml.send(k.to_sym, v)
+  def self.process_data(data, arr, xml)
+    data.each do|key,val|
+      next if arr.include?(key)
+       
+      if (val.is_a?Hash)
+        if (val.has_key?(:attributes))
+          xml.send(key, Hash[data[key][:attributes]]) do
+            arr << 'attributes'.to_sym
+            self.process_data(data[key],arr,xml)
           end
+        else
+          xml.send(key, Hash[data[key]])
         end
+      elsif (val.is_a?Array)
+        val.each do|item|
+          self.process_data(item,arr,xml)
+        end
+      else
+        xml.send(key, val)
       end
     end
-
-    builder.doc.root.to_xml
   end
 
 end
