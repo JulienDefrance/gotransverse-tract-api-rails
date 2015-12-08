@@ -103,14 +103,73 @@ module GoTransverseTractApi
         # @param {Hash} sales_order
         #
         def confirm eid, sales_order
-          GoTransverseTractApi.post_request_for(self, {eid: eid}, sales_order)
+          payment = sales_order[:payment]
+          sales_order = sales_order[:sales_order]
+
+          order_item_struct = prepare_products_struct(sales_order)
+
+          data = {
+            :confirmOrder => {},
+            :salesOrder => {
+              :attributes => {
+                :referral => sales_order[:referral],
+                :orderDate => sales_order[:order_date],
+                :orderStatus => sales_order[:order_status],
+                :eid => eid
+              },
+              :orderItems => {
+                :attributes => {
+                  :pageNumber => sales_order[:order_items][:page_number],
+                  :pageSize => sales_order[:order_items][:page_size],
+                  :totalElements => sales_order[:order_items][:total_elements],
+                  :elementCount => sales_order[:order_items][:element_count],
+                  :totalPages => sales_order[:order_items][:total_pages]
+                },
+                :orderItem => order_item_struct
+              },
+              :billingAccount => {
+                :automaticRecurringPayment => sales_order[:billing_account][:automatic_recurring_payment],
+                :eid => sales_order[:billing_account][:eid]
+              }
+            },
+            :payment => {
+              :attributes => {
+                :amount => payment[:amount],
+                :description => payment[:description]
+              },
+              :billingAccount => {
+                :automaticRecurringPayment => payment[:billing_account][:automatic_recurring_payment],
+                :eid => payment[:billing_account][:eid]
+              },
+              :creditCardPayment => {
+                :cardType => payment[:credit_card_payment][:card_type],
+                :cardHolderFirstName => payment[:credit_card_payment][:card_holder_first_name],
+                :cardHolderMiddleName => payment[:credit_card_payment][:card_holder_middle_name],
+                :cardHolderLastName => payment[:credit_card_payment][:card_holder_last_name],
+                :cardIdentifierNumber => payment[:credit_card_payment][:card_identifier_number],
+                :cardExpiration => payment[:credit_card_payment][:card_expiration]
+              }
+            }
+          }
+           
+          xml_data = GoTransverseTractApi.generateXML(data, 'confirmOrder')     
+
+          GoTransverseTractApi.post_request_for(self, {eid: eid}, xml_data, 'confirm')
         end
 
         #
         # @param {Long} eid
         # @param {Hash} sales_order
         #
-        def self.add_custom_field_value eid, sales_order
+        def add_custom_field_value(eid, sales_order)
+          data = 
+            {
+              :addCustomFieldValue => {},
+              :Order => { :eid => eid },
+              :customFieldValue => { :value => sales_order[:value] }
+            }
+
+          xml_data = GoTransverseTractApi.generateXML(data,'addCustomFieldValue')
           GoTransverseTractApi.post_request_for(self, {eid: eid}, sales_order, "addCustomFieldValue")
         end
 
@@ -118,17 +177,228 @@ module GoTransverseTractApi
         # @param {Long} eid
         # @param {Hash} sales_order
         #
-        def self.remove_custom_field_value eid, sales_order
+        def remove_custom_field_value eid, sales_order
           GoTransverseTractApi.post_request_for(self, {eid: eid}, sales_order, "removeCustomFieldValue")
         end
 
         #
-        # @param {Hash} person
+        # @param {Hash} sales_order
         #
-        def self.create_sales_order sales_order
-          GoTransverseTractApi.post_request_for(self, {}, sales_order, "")
+        def create_sales_order sales_order
+          data = {
+            :salesOrder => {
+              :note => sales_order[:note],
+              :purchaseOrderNumber => sales_order[:purchase_order_number]
+            },
+            :orderItems => {
+              :attributes => {},
+              :orderItem => get_product_struct(sales_order)
+            },
+            :billingAccount => {
+              :attributes => {
+                :billType => sales_order[:billing_account][:bill_type],
+                :automaticRecurringPayment => sales_order[:billing_account][:automatic_recurring_payment]
+              },
+              :dailyBillCycle => {
+                :attributes => {
+                  :eid => sales_order[:billing_account][:daily_bill_cycle][:eid]
+                }
+              },
+              :organization => {
+                :attributes => {
+                  :name => sales_order[:billing_account][:organization][:name],
+                  :taxIdNumber => sales_order[:billing_account][:organization][:tax_id_number]
+                },
+                :addresses => {
+                  :attributes => {},
+                  :postalAddress => get_address_struct(sales_order),
+                  :telecomAddress => {
+                    :attributes => {
+                      :dialingPrefix => sales_order[:billing_account][:organization][:addresses][:telecom_address][:dialing_prefix],
+                      :countryCode => sales_order[:billing_account][:organization][:addresses][:telecom_address][:country_code],
+                      :areaCode => sales_order[:billing_account][:organization][:addresses][:telecom_address][:area_code],
+                      :number => sales_order[:billing_account][:organization][:addresses][:telecom_address][:number],
+                      :extension => sales_order[:billing_account][:organization][:addresses][:telecom_address][:extension],
+                      :purpose => sales_order[:billing_account][:organization][:addresses][:telecom_address][:purpose]
+                    }
+                  },
+                  :emailAddress => {
+                    :attributes => {
+                      :email => sales_order[:billing_account][:organization][:addresses][:email_address][:email],
+                      :purpose => sales_order[:billing_account][:organization][:addresses][:email_address][:purpose]
+                    }
+                  }
+                }
+              },
+              :billingAccountCategory => {
+                :attributes => {
+                  :eid => sales_order[:billing_account][:billing_account_category][:eid]
+                }
+              }
+            }
+          }
+
+          xml_data = GoTransverseTractApi.generateXML(data, 'salesOrder')     
+          GoTransverseTractApi.post_request_for(self, xml_data, "")
         end
 
+
+
+        private
+
+        #
+        # @param {Hash} sales_order
+        # Return {Hash} products
+        #
+        def get_product_struct(sales_order)
+          products = {}
+          items = []
+
+          order_item = {
+            :attributes => {
+               :quantity => sales_order[:order_items][:order_item][:quantity],
+               :sequence => sales_order[:order_items][:order_item][:sequence],
+               :description => sales_order[:order_items][:order_item][:description]
+            }
+          }
+
+          items = sales_order[:order_items][:order_item][:product]
+          (0..items.size - 1).each do|i|
+            products = {
+              :product => {
+                :attributes => {
+                  :eid => items[i][:eid]
+                }
+              }
+            }
+          end
+
+          order_item.merge products
+        end
+
+        #
+        # @param {Hash} sales_order
+        # Return {Hash} postal_addresses
+        #
+        def get_address_struct(sales_order)
+          postal_addresses = []
+          items = []
+
+          items = sales_order[:billing_account][:organization][:addresses][:postal_address]
+
+          (0..items.size - 1).each do|i|
+            postal_addresses << {
+              :postalAddress => {
+                :attributes => {
+                  :purpose => items[i][:purpose],
+                  :country => items[i][:country],
+                  :city => items[i][:city],
+                  :regionOrState => items[i][:region_or_state],
+                  :postalCode => items[i][:postal_code],
+                  :line1 => items[i][:line1],
+                  :line2 => items[i][:line2]
+                }
+              }
+            }
+          end
+
+          postal_addresses
+        end
+
+
+        #
+        # @param {Hash} sales_order
+        # Return {Hash} products
+        #
+        def prepare_products_struct(sales_order)
+          products = {}
+          items = []
+
+          order_item = {
+            :attributes => {
+               :quantity => sales_order[:order_items][:order_item][:quantity]
+            }
+          }
+
+          items = sales_order[:order_items][:order_item][:product]
+          (0..items.size - 1).each do|i|
+            products = {
+              :product => {
+                :attributes => {
+                  :name => items[i][:name],
+                  :description => items[i][:description],
+                  :shortDescription => items[i][:short_description],
+                  :productTypeCode => items[i][:product_type_code],
+                  :productState => items[i][:product_state],
+                  :requiresAgreement => items[i][:requires_agreement],
+                  :serialized => items[i][:serialized],
+                  :taxable => items[i][:taxable],
+                  :trial => items[i][:trial],
+                  :defaultQuantity => items[i][:default_quantity],
+                  :minServiceResources => items[i][:min_service_resources],
+                  :maxServiceResources => items[i][:max_service_resources],
+                  :trialOverride => items[i][:trial_override],
+                  :eid => items[i][:eid]
+                },
+                :productPrices => {
+                  :attributes => {
+                    :pageNumber => items[i][:product_prices][:page_number],
+                    :pageSize => items[i][:product_prices][:page_size],
+                    :totalElements => items[i][:product_prices][:total_elements],
+                    :elementCount => items[i][:product_prices][:element_count],
+                    :totalPages => items[i][:product_prices][:total_pages]
+                  },
+                  :productPrice => {
+                    :attributes => {
+                      :fromDate => items[i][:product_prices][:product_price][:from_date],
+                      :priceOverride => items[i][:product_prices][:product_price][:price_override],
+                      :type => items[i][:product_prices][:product_price][:type],
+                      :recurringPaymentRequired => items[i][:product_prices][:product_price][:recurring_payment_required],
+                      :eid => items[i][:product_prices][:product_price][:eid]
+                    },
+                    :priceRanges => {
+                      :attributes => {
+                        :pageNumber => items[i][:product_prices][:product_price][:price_ranges][:page_number],
+                        :pageSize => items[i][:product_prices][:product_price][:price_ranges][:page_size],
+                        :totalElements => items[i][:product_prices][:product_price][:price_ranges][:total_elements],
+                        :elementCount => items[i][:product_prices][:product_price][:price_ranges][:element_count],
+                        :totalPages => items[i][:product_prices][:product_price][:price_ranges][:total_pages]
+                      },
+                      :priceRange => {
+                        :quantityBeginRange => items[i][:product_prices][:product_price][:price_ranges][:price_range][:quantity_begin_range],
+                        :price => items[i][:product_prices][:product_price][:price_ranges][:price_range][:price],
+                        :level => items[i][:product_prices][:product_price][:price_ranges][:price_range][:level],
+                        :eid => items[i][:product_prices][:product_price][:price_ranges][:price_range][:eid]
+                      }
+                    }
+                  }
+                },
+                :productCategory => {
+                  :name => items[i][:product_category][:name],
+                  :description => items[i][:product_category][:description],
+                  :status => items[i][:product_category][:status],
+                  :eid => items[i][:product_category][:eid]
+                },
+                :actions => {
+                  :pageNumber => items[i][:actions][:page_number],
+                  :pageSize => items[i][:actions][:page_size],
+                  :totalElements => items[i][:actions][:total_elements],
+                  :elementCount => items[i][:actions][:element_count],
+                  :totalPages => items[i][:actions][:total_pages]
+                },
+                :productUsageRules => {
+                  :pageNumber => items[i][:product_usage_rules][:page_number],
+                  :pageNumber => items[i][:product_usage_rules][:page_number],
+                  :totalElements => items[i][:product_usage_rules][:total_elements],
+                  :elementCount => items[i][:product_usage_rules][:element_count],
+                  :totalPages => items[i][:product_usage_rules][:total_pages]
+                }
+              }
+            }
+          end
+
+          order_item.merge products
+        end
 
       end
 
