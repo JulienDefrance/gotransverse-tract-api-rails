@@ -47,7 +47,6 @@ module GoTransverseTractApi
           }
         }
 
-        debugger
         xml_data = GoTransverseTractApi.generateXML(data, 'addAddressToParty')
         GoTransverseTractApi.post_request_for(self, {eid: eid}, xml_data, "addAddress")
       end
