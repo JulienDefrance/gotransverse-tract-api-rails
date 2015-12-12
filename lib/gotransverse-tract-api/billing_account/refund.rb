@@ -68,7 +68,21 @@ module GoTransverseTractApi
       # @param {Hash} refund
       #
       def self.create_refund refund
-        GoTransverseTractApi.post_request_for(self, {}, refund, "")
+        data = {
+          :refund => {
+            :amount => refund[:amount],
+            :description => refund[:description]
+          },
+          :originalPayment => {
+            :eid => refund[:original_payment][:eid]
+          },
+          :refundReason => {
+            :eid => refund[:refund_reason][:eid]
+          }
+        }
+
+        xml_data = GoTransverseTractApi.generateXML(data, 'refund')
+        GoTransverseTractApi.post_request_for(self, {}, xml_data, "")
       end
 
     end
