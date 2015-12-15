@@ -2,6 +2,7 @@ require "gotransverse-tract-api/version"
 
 require "gotransverse-tract-api/configuration"
 require "gotransverse-tract-api/hash"
+require "gotransverse-tract-api/api_data"
 
 require "gotransverse-tract-api/billing_account/adjustment"
 require "gotransverse-tract-api/billing_account/adjustment_application"
@@ -195,6 +196,7 @@ module GoTransverseTractApi
       end
     end
 
+    debugger
     builder.doc.root.to_xml
   end
 
