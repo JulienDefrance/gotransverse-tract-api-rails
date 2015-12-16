@@ -196,7 +196,6 @@ module GoTransverseTractApi
       end
     end
 
-    debugger
     builder.doc.root.to_xml
   end
 

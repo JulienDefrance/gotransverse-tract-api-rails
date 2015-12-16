@@ -256,7 +256,7 @@ module GoTransverseTractApi
                 :lastName => billing_account[:person][:last_name],
                 :middleName => billing_account[:person][:middle_name]
               },
-              :addresses => get_addresses(billing_account[:person])
+              :addresses => GoTransverseTractApi::ApiData.new.get_addresses(billing_account[:person])
             }
           }
 
@@ -284,7 +284,13 @@ module GoTransverseTractApi
         # @param {Hash} billing_account
         #
         def create_draft_order eid, billing_account
-          GoTransverseTractApi.post_request_for(self, {eid: eid}, billing_account, "createDraftOrder")
+          data = {
+            :createDraftOrder => {},
+            :salesOrder => GoTransverseTractApi::ApiData.new.sales_order_details(billing_account[:sales_order])
+          }
+
+          xml_data = GoTransverseTractApi.generateXML(data, 'createDraftOrder')
+          GoTransverseTractApi.post_request_for(self, {eid: eid}, xml_data, "createDraftOrder")
         end
 
         #
@@ -292,7 +298,13 @@ module GoTransverseTractApi
         # @param {Hash} billing_account
         #
         def void_draft_order eid, billing_account
-          GoTransverseTractApi.post_request_for(self, {eid: eid}, billing_account, "voidDraftOrder")
+          data = {
+            :voidDraftOrder => {},
+            :salesOrder => GoTransverseTractApi::ApiData.new.sales_order_details(billing_account[:sales_order])
+          }
+
+          xml_data = GoTransverseTractApi.generateXML(data, 'voidDraftOrder')
+          GoTransverseTractApi.post_request_for(self, {eid: eid}, xml_data, "voidDraftOrder")
         end
 
         #
@@ -319,7 +331,7 @@ module GoTransverseTractApi
               :attributes => {
                 :name => billing_account[:organization][:name]
               },
-              :addresses => get_addresses(billing_account[:organization])
+              :addresses => GoTransverseTractApi::ApiData.new.get_addresses(billing_account[:organization])
             },
             :billingAccountCategory => {
               :eid => billing_account[:billing_account_category][:eid]
@@ -353,36 +365,6 @@ module GoTransverseTractApi
 
           products
         end
-
-        def get_addresses(entity)
-          addresses = {
-            :attributes => {},
-            :emailAddress => {
-              :purpose => entity[:addresses][:email_address][:purpose],         
-              :email => entity[:addresses][:email_address][:email]         
-            },
-            :postalAddress => {
-              :purpose => entity[:addresses][:postal_address][:purpose],
-              :country => entity[:addresses][:postal_address][:country],
-              :city => entity[:addresses][:postal_address][:city],
-              :regionOrState => entity[:addresses][:postal_address][:region_or_state],
-              :attention => entity[:addresses][:postal_address][:attention],
-              :postalCode => entity[:addresses][:postal_address][:postal_code],
-              :line1 => entity[:addresses][:postal_address][:line1]
-            },
-            :telecomAddress => {
-              :dialingPrefix => entity[:addresses][:telecom_address][:dialing_prefix],
-              :countryCode => entity[:addresses][:telecom_address][:country_code],
-              :areaCode => entity[:addresses][:telecom_address][:area_code],
-              :number => entity[:addresses][:telecom_address][:number],
-              :extension => entity[:addresses][:telecom_address][:extension],
-              :purpose => entity[:addresses][:telecom_address][:purpose]
-            }
-          }
-
-          addresses
-        end
-
       end
 
     end
