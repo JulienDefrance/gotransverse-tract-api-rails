@@ -76,34 +76,7 @@ module GoTransverseTractApi
         # @param {Hash} invoice
         #
         def apply_payment eid, invoice
-          data = {
-            :applyPayment => {},
-            :billingAccount => {
-              :eid => invoice[:billing_account][:eid]
-            },
-            :invoice => {
-              :eid => invoice[:invoice][:eid]
-            },
-            :payment => {
-              :attributes => {
-                :amount => invoice[:payment][:amount],
-                :useRecurringPayment => invoice[:payment][:use_recurring_payment]
-              },
-              :creditCardPayment => {
-                :cardType => invoice[:payment][:credit_card_payment][:card_type],
-                :cardHolderFirstName => invoice[:payment][:credit_card_payment][:card_holder_first_name],
-                :cardHolderLastName => invoice[:payment][:credit_card_payment][:card_holder_last_name],
-                :cardIdentifierNumber => invoice[:payment][:credit_card_payment][:card_identifier_number],
-                :cardVerificationNumber => invoice[:payment][:credit_card_payment][:card_verification_number],
-                :cardExpiration => invoice[:payment][:credit_card_payment][:card_expiration]
-              },
-              :billingAccount => {
-                :eid => invoice[:payment][:billing_account][:eid]
-              }
-            }
-          }
-
-          xml_data = GoTransverseTractApi.generateXML(data, 'applyPayment')
+          xml_data = GoTransverseTractApi::ApiData.new.payment_details(invoice)
           GoTransverseTractApi.post_request_for(self, {eid: eid}, xml_data, "applyPayment")
         end
 
