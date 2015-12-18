@@ -59,7 +59,16 @@ module GoTransverseTractApi
         # @param {Hash} service_resource
         #
         def request service_resource
-          GoTransverseTractApi.post_request_for(self, {}, service_resource, "request")
+          data = {
+            :requestServiceResource => {
+              :identifier => service_resource[:identifier],
+              :status => service_resource[:status],
+              :description => service_resource[:description]
+            },
+            :serviceResourceCategory => {:eid => service_resource[:service_resource_category][:eid]}
+          }
+          xml_data = GoTransverseTractApi.generateXML(data, 'requestServiceResource')
+          GoTransverseTractApi.post_request_for(self, {}, xml_data, "request")
         end
 
         #
@@ -67,7 +76,21 @@ module GoTransverseTractApi
         # @param {Hash} service_resource
         #
         def change eid, service_resource
-          GoTransverseTractApi.post_request_for(self, {eid: eid}, service_resource, "change")
+          data = {
+            :changeServiceResource => {},
+            :serviceResource => {:eid => eid},
+            :changeToServiceResource => {
+              :attributes => {
+                :identifier => service_resource[:change_to_service_resource][:identifier],
+                :status => service_resource[:change_to_service_resource][:status],
+                :description => service_resource[:change_to_service_resource][:description]
+              },
+              :category => {:eid => service_resource[:category][:eid]}
+            }
+          }
+
+          xml_data = GoTransverseTractApi.generateXML(data, 'changeServiceResource')
+          GoTransverseTractApi.post_request_for(self, {eid: eid}, xml_data, "change")
         end
 
         #
@@ -75,14 +98,30 @@ module GoTransverseTractApi
         # @param {Hash} service_resource
         #
         def deactivate eid, service_resource
-          GoTransverseTractApi.post_request_for(self, {eid: eid}, service_resource, "deactivate")
+          data = {
+            :deactivateServiceResource => {},
+            :serviceResource => {:eid => eid}
+          }
+
+          xml_data = GoTransverseTractApi.generateXML(data, 'deactivateServiceResource')
+          GoTransverseTractApi.post_request_for(self, {eid: eid}, xml_data, "deactivate")
         end
 
         #
         # @param {Hash} service_resource
         #
         def create_service_resource service_resource
-          GoTransverseTractApi.post_request_for(self, {}, service_resource, "")
+          data = {
+            :serviceResource => {
+              :identifier => service_resource[:identifier],
+              :status => service_resource[:status],
+              :description => service_resource[:description]
+            },
+            :category => {:eid => service_resource[:category][:eid]}
+          }
+
+          xml_data = GoTransverseTractApi.generateXML(data, 'serviceResource')
+          GoTransverseTractApi.post_request_for(self, {}, xml_data, "")
         end
 
         #
@@ -97,8 +136,20 @@ module GoTransverseTractApi
         # @param {Long} eid
         # @param {Hash} service_resource
         #
-        def self.add_service_resource eid, service_resource
-          GoTransverseTractApi.post_request_for(self, {eid: eid}, service_resource, "addServiceResource")
+        def add_service_resource eid, service_resource
+          data = {
+            :addServiceResourceToService => {},
+            :service => {:eid => eid},
+            :serviceResource => {
+              :attributes => {
+                :identifier => service_resource[:identifier]
+              },
+              :category => {:eid => service_resource[:category][:eid]}
+            }
+          }
+
+          xml_data = GoTransverseTractApi.generateXML(data, 'addServiceResourceToService')
+          GoTransverseTractApi.post_request_for(self, {eid: eid}, xml_data, "addServiceResource")
         end
 
         #
@@ -106,7 +157,14 @@ module GoTransverseTractApi
         # @param {Hash} service_resource
         #
         def self.remove_service_resource eid, service_resource
-          GoTransverseTractApi.post_request_for(self, {eid: eid}, service_resource, "removeServiceResource")
+          data = {
+            :removeServiceResourceFromService => {},
+            :service => {:eid => eid},
+            :serviceResource => {:eid => service_resource[:eid]}
+          }
+
+          xml_data = GoTransverseTractApi.generateXML(data, 'removeServiceResourceFromService')
+          GoTransverseTractApi.post_request_for(self, {eid: eid}, xml_data, "removeServiceResource")
         end
 
       end
