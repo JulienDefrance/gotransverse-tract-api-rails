@@ -118,13 +118,7 @@ module GoTransverseTractApi
                 :eid => eid
               },
               :orderItems => {
-                :attributes => {
-                  :pageNumber => sales_order[:order_items][:page_number],
-                  :pageSize => sales_order[:order_items][:page_size],
-                  :totalElements => sales_order[:order_items][:total_elements],
-                  :elementCount => sales_order[:order_items][:element_count],
-                  :totalPages => sales_order[:order_items][:total_pages]
-                },
+                :attributes => GoTransverseTractApi::ApiData.new.get_page_info(sales_order[:order_items]),
                 :orderItem => order_item_struct
               },
               :billingAccount => {
@@ -165,7 +159,7 @@ module GoTransverseTractApi
           data = 
             {
               :addCustomFieldValue => {},
-              :Order => { :eid => eid },
+              :order => { :eid => eid },
               :customFieldValue => { :value => sales_order[:value] }
             }
 
@@ -178,6 +172,13 @@ module GoTransverseTractApi
         # @param {Hash} sales_order
         #
         def remove_custom_field_value eid, sales_order
+          data = {
+            :removeCustomFieldValue => {},
+            :order => { :eid => eid },
+            :customFieldValue => { :eid => sales_order[:eid] }
+          }
+ 
+          xml_data = GoTransverseTractApi.generateXML(data,'removeCustomFieldValue')
           GoTransverseTractApi.post_request_for(self, {eid: eid}, sales_order, "removeCustomFieldValue")
         end
 
@@ -341,13 +342,7 @@ module GoTransverseTractApi
                   :eid => items[i][:eid]
                 },
                 :productPrices => {
-                  :attributes => {
-                    :pageNumber => items[i][:product_prices][:page_number],
-                    :pageSize => items[i][:product_prices][:page_size],
-                    :totalElements => items[i][:product_prices][:total_elements],
-                    :elementCount => items[i][:product_prices][:element_count],
-                    :totalPages => items[i][:product_prices][:total_pages]
-                  },
+                  :attributes => GoTransverseTractApi::ApiData.new.get_page_info(items[i][:product_prices]),
                   :productPrice => {
                     :attributes => {
                       :fromDate => items[i][:product_prices][:product_price][:from_date],
@@ -357,13 +352,7 @@ module GoTransverseTractApi
                       :eid => items[i][:product_prices][:product_price][:eid]
                     },
                     :priceRanges => {
-                      :attributes => {
-                        :pageNumber => items[i][:product_prices][:product_price][:price_ranges][:page_number],
-                        :pageSize => items[i][:product_prices][:product_price][:price_ranges][:page_size],
-                        :totalElements => items[i][:product_prices][:product_price][:price_ranges][:total_elements],
-                        :elementCount => items[i][:product_prices][:product_price][:price_ranges][:element_count],
-                        :totalPages => items[i][:product_prices][:product_price][:price_ranges][:total_pages]
-                      },
+                      :attributes => GoTransverseTractApi::ApiData.new.get_page_info(items[i][:product_prices][:product_price][:price_ranges]),
                       :priceRange => {
                         :quantityBeginRange => items[i][:product_prices][:product_price][:price_ranges][:price_range][:quantity_begin_range],
                         :price => items[i][:product_prices][:product_price][:price_ranges][:price_range][:price],
@@ -379,20 +368,8 @@ module GoTransverseTractApi
                   :status => items[i][:product_category][:status],
                   :eid => items[i][:product_category][:eid]
                 },
-                :actions => {
-                  :pageNumber => items[i][:actions][:page_number],
-                  :pageSize => items[i][:actions][:page_size],
-                  :totalElements => items[i][:actions][:total_elements],
-                  :elementCount => items[i][:actions][:element_count],
-                  :totalPages => items[i][:actions][:total_pages]
-                },
-                :productUsageRules => {
-                  :pageNumber => items[i][:product_usage_rules][:page_number],
-                  :pageNumber => items[i][:product_usage_rules][:page_number],
-                  :totalElements => items[i][:product_usage_rules][:total_elements],
-                  :elementCount => items[i][:product_usage_rules][:element_count],
-                  :totalPages => items[i][:product_usage_rules][:total_pages]
-                }
+                :actions => GoTransverseTractApi::ApiData.new.get_page_info(items[i][:actions]),
+                :productUsageRules => GoTransverseTractApi::ApiData.new.get_page_info(items[i][:product_usage_rules])
               }
             }
           end

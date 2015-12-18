@@ -77,7 +77,7 @@ module GoTransverseTractApi
               :usageAmount => usage_event[:usage_amount],
               :number01 => usage_event[:number01]
             },
-            :serviceResourceType => 'GENERICSRVCRESOURCE'
+            :serviceResourceType => usage_event[:service_resource_type]
           }
 
           xml_data = GoTransverseTractApi.generateXML(data, 'usageEvent')
@@ -88,7 +88,13 @@ module GoTransverseTractApi
         # @param {Hash} usage_event
         #
         def bulk usage_event
-          GoTransverseTractApi.post_request_for(self, {}, usage_event, "bulk")
+          data = {
+            :bulkUsageEvents => {},
+            :usageEvents => get_usage_events(usage_event)
+          }
+
+          xml_data = GoTransverseTractApi.generateXML(data, 'bulkUsageEvents')
+          GoTransverseTractApi.post_request_for(self, {}, xml_data, "bulk")
         end
 
         #
@@ -105,6 +111,34 @@ module GoTransverseTractApi
 
           xml_data = GoTransverseTractApi.generateXML(data, 'voidUsageEvent')
           GoTransverseTractApi.post_request_for(self, usage_event, "void_event")
+        end
+
+        private
+
+        #
+        # params: [Array] Usage Events
+        #
+        # Returns [Array] of usage events for XML
+        #
+        def get_usage_events(usage_event)
+          events = []
+
+          usage_event.each do|event|
+            events << {
+              :usageEvent => {
+                :attributes => {
+                  :startTime => event[:start_time],
+                  :serviceResourceId => event[:service_resource_id],
+                  :usageUom => event[:usage_uom],
+                  :usageAmount => event[:usage_amount],
+                  :description => event[:description]
+                },
+                :serviceResourceType => event[:service_resource_type]
+              }
+            }
+          end
+
+          events      
         end
 
       end

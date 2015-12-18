@@ -236,10 +236,16 @@ module GoTransverseTractApi
 
       #
       # @param {Long} eid
-      # @param {Hash} deny
+      # @param {Hash} orderitem
       #
-      def self.deny eid, deny
-        GoTransverseTractApi.post_request_for(self, {eid: eid}, deny, "deny")
+      def self.deny eid, orderitem
+        data = {
+          :denyOrderItem => {},
+          :orderItem => {:eid => eid}
+        }
+
+        xml_data = GoTransverseTractApi.generateXML(data, 'denyOrderItem')
+        GoTransverseTractApi.post_request_for(self, {eid: eid}, xml_data, "deny")
       end
 
     end

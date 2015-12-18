@@ -35,6 +35,7 @@ module GoTransverseTractApi
       GoTransverseTractApi.generateXML(data, 'applyPayment')
     end
  
+    # To suspend or deactivate the account
     def shutdown(billing_account, eid, root_elem)
       data = {
         :billingAccount => {:eid => eid},
@@ -46,6 +47,7 @@ module GoTransverseTractApi
       GoTransverseTractApi.generateXML(data, root_elem)
     end
 
+    # Returns {Hash} a list of sales order details
     def sales_order_details(sales_order)
       so_details = {
         :attributes => {
@@ -68,6 +70,7 @@ module GoTransverseTractApi
       so_details
     end
 
+    # Returns [Array]  Products 
     def get_products(sales_order)
       products = []
 
@@ -111,6 +114,7 @@ module GoTransverseTractApi
       products
     end
 
+    # Returns [Array]  Product Prices 
     def get_product_prices(product)
       product_prices = []
 
@@ -139,6 +143,7 @@ module GoTransverseTractApi
       product_prices
     end
 
+    # Returns [Array]  Price Ranges
     def get_price_ranges(product_price)
       price_ranges = []
 
