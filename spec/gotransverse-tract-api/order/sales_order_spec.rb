@@ -5,13 +5,12 @@ module GoTransverseTractApi
   RSpec.describe Order::SalesOrder do
     before(:each) { http_auth }
 
+    let(:response) { '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' }
+
     context ".add_custom_field_value" do
       it "adds custom field value for the sales order" do
-
         eid = '48406'
         data = { :value => 'yes' }
-
-        response = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
 
         allow(subject).to receive(:add_custom_field_value).with(eid, data).and_return(response)
         expect(subject.add_custom_field_value(eid, data)).to eq(response)
@@ -124,11 +123,8 @@ module GoTransverseTractApi
           }
         }
 
-        response = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
-
         allow(subject).to receive(:confirm).with(eid, data).and_return(response)
         expect(subject.confirm(eid, data)).to eq(response)
-
       end
     end
 
@@ -202,8 +198,6 @@ module GoTransverseTractApi
             }
           }
         }
-
-        response = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
 
         allow(subject).to receive(:create_sales_order).with(data).and_return(response)
         expect(subject.create_sales_order(data)).to eq(response)
