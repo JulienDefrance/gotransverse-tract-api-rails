@@ -91,7 +91,6 @@ module GoTransverseTractApi
             },
             :orderItemUsageRules => {
               :pageNumber => order_item[:order_item_usage_rules][:page_number],
-              :pageNumber => order_item[:order_item_usage_rules][:page_number],
               :totalElements => order_item[:order_item_usage_rules][:total_elements],
               :elementCount => order_item[:order_item_usage_rules][:element_count],
               :totalPages => order_item[:order_item_usage_rules][:total_pages]
@@ -196,7 +195,6 @@ module GoTransverseTractApi
               },
               :productUsageRules => {
                 :pageNumber => order_item[:product][:product_usage_rules][:page_number],
-                :pageNumber => order_item[:product][:product_usage_rules][:page_number],
                 :totalElements => order_item[:product][:product_usage_rules][:total_elements],
                 :elementCount => order_item[:product][:product_usage_rules][:element_count],
                 :totalPages => order_item[:product][:product_usage_rules][:total_pages]
@@ -208,20 +206,17 @@ module GoTransverseTractApi
             },
             :serviceResources => {
               :pageNumber => order_item[:service_resources][:page_number],
-              :pageNumber => order_item[:service_resources][:page_number],
               :totalElements => order_item[:service_resources][:total_elements],
               :elementCount => order_item[:service_resources][:element_count],
               :totalPages => order_item[:service_resources][:total_pages]
             },
             :operationAttributes => {
               :pageNumber => order_item[:operation_attributes][:page_number],
-              :pageNumber => order_item[:operation_attributes][:page_number],
               :totalElements => order_item[:operation_attributes][:total_elements],
               :elementCount => order_item[:operation_attributes][:element_count],
               :totalPages => order_item[:operation_attributes][:total_pages]
             },
             :scheduledCharges => {
-              :pageNumber => order_item[:scheduled_charges][:page_number],
               :pageNumber => order_item[:scheduled_charges][:page_number],
               :totalElements => order_item[:scheduled_charges][:total_elements],
               :elementCount => order_item[:scheduled_charges][:element_count],
