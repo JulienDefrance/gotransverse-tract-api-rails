@@ -32,16 +32,16 @@ module GoTransverseTractApi
       it "applies a refund to the payment account" do
         data = {
           :payment => {
-            :eid => '123'
+            eid: '123'
           },
           :refund => {
             :amount => '47.00',
             :description => 'Refund Create',
             :original_payment => {
-              :eid => '456'
+              eid: '456'
             },
             :refund_reason => {
-              :eid => '4'
+              eid: '4'
             }
           }
         }
@@ -56,10 +56,10 @@ module GoTransverseTractApi
         data = {
           :description => 'Test Cancel',
           :payment => {
-            :eid => '123'
+            eid: '123'
           },
           :reason => {
-            :eid => '123'
+            eid: '123'
           }
         }
 
@@ -73,18 +73,18 @@ module GoTransverseTractApi
         data = {
           :description => 'Test Reallocate',
           :payment => {
-            :eid => '123'
+            eid: '123'
           },
           :reason => {
-            :eid => '123'
+            eid: '123'
           },
           :invoices => [{
             :invoice => {
-              :eid => '123'
+              eid: '123'
             }},
             {
             :invoice => {
-              :eid => '456'
+              eid: '456'
             }}]
         }
 
@@ -99,7 +99,7 @@ module GoTransverseTractApi
           :amount => '20.00',
           :description => 'Credit Card Payment',
           :billing_account => {
-            :eid => '123'
+            eid: '123'
           },
           :credit_card_payment => {
             :card_type => 'VISA',

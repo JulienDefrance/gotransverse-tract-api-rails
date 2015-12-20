@@ -69,15 +69,15 @@ module GoTransverseTractApi
       #
       def self.create_refund refund
         data = {
-          :refund => {
-            :amount => refund[:amount],
-            :description => refund[:description]
+          refund: {
+            amount: refund[:amount],
+            description: refund[:description]
           },
-          :originalPayment => {
-            :eid => refund[:original_payment][:eid]
+          originalPayment: {
+            eid: refund[:original_payment][:eid]
           },
-          :refundReason => {
-            :eid => refund[:refund_reason][:eid]
+          refundReason: {
+            eid: refund[:refund_reason][:eid]
           }
         }
 

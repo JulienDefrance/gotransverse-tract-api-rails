@@ -14,10 +14,10 @@ module GoTransverseTractApi
           :amount => '47.00',
           :description => 'Refund Create',
           :original_payment => {
-            :eid => '123'
+            eid: '123'
           },
           :refund_reason => {
-            :eid => '456'
+            eid: '456'
           }
         }
 

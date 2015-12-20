@@ -36,10 +36,10 @@ module GoTransverseTractApi
       it "applies a payment to the invoice" do
         data = {
           :billing_account => {
-            :eid => '123'
+            eid: '123'
           },
           :invoice => {
-            :eid => '456'
+            eid: '456'
           },
           :payment => {
             :amount => '27',
@@ -54,7 +54,7 @@ module GoTransverseTractApi
               :description => 'Test Desc'
             },
             :billing_account => {
-              :eid => '123'
+              eid: '123'
             }
           }
         }
@@ -68,10 +68,10 @@ module GoTransverseTractApi
       it "suspends a billing account" do
         data = {
           :billing_account => {
-            :eid => '123'
+            eid: '123'
           },
           :reason => {
-            :eid => '456'
+            eid: '456'
           }
         }
 
@@ -83,7 +83,7 @@ module GoTransverseTractApi
     context ".resume" do
       it "resumes a billing account" do
         data = {
-          :billing_account => {:eid => eid},
+          :billing_account => {eid: eid},
           :start_date => '2014-11-11T10:00:00',
           :notes => 'Test notes here'
         }
@@ -96,7 +96,7 @@ module GoTransverseTractApi
     context ".add_recurring_payment" do
       it "adds a recurring payment to the billing account" do
         data = {
-          :billing_account => {:eid => eid},
+          :billing_account => {eid: eid},
           :recurring_payment => {
             :credit_card_payment_method => {
               :card_type => 'VISA',
@@ -116,7 +116,7 @@ module GoTransverseTractApi
     context ".change_service" do
       it "changes service on a billing account" do
         data = {
-          :service => {:eid => '136'},
+          :service => {eid: '136'},
           :order => {
             :note => 'Simple note',
             :order_items => {
@@ -124,14 +124,14 @@ module GoTransverseTractApi
                 :quantity => 2,
                 :description => 'change service',
                 :products => [{
-                  :eid => '1234'
+                  eid: '1234'
                 },
                 {
-                  :eid => '4567'
+                  eid: '4567'
                 }]
               }
             },
-            :billing_account => {:eid => eid}
+            :billing_account => {eid: eid}
           }
         }
 
@@ -143,7 +143,7 @@ module GoTransverseTractApi
     context ".add_custom_field_value" do
       it "adds custom field value to the billing account" do
         data = { 
-          :billing_account => { :eid => eid },
+          :billing_account => { eid: eid },
           :custom_field_value => { :value => 'yes' }
         }
 
@@ -155,8 +155,8 @@ module GoTransverseTractApi
     context ".remove_custom_field_value" do
       it "removes custom field value from the billing account" do
         data = { 
-          :billing_account => { :eid => eid },
-          :custom_field_value => { :eid => '486' }
+          :billing_account => { eid: eid },
+          :custom_field_value => { eid: '486' }
         }
 
         allow(subject).to receive(:remove_custom_field_value).with(eid, data).and_return(response)
@@ -167,8 +167,8 @@ module GoTransverseTractApi
     context ".deactivate" do
       it "deactivates a billing account" do
         data = {
-          :billing_account => { :eid => '123' },
-          :reason => { :eid => '456' }
+          :billing_account => { eid: '123' },
+          :reason => { eid: '456' }
         }
 
         allow(subject).to receive(:deactivate).with(eid, data).and_return(response)
@@ -180,13 +180,13 @@ module GoTransverseTractApi
       it "creates a billing account" do
         data = {
           :bill_type => 'EMAIL',
-          :daily_bill_cycle => { :eid => '123' },
+          :daily_bill_cycle => { eid: '123' },
           :organization => {
             :name => 'test services',
             :addresses => addresses
           },
           :billing_account_category => {
-            :eid => '123'
+            eid: '123'
           }
         }
 
@@ -198,7 +198,7 @@ module GoTransverseTractApi
     context ".add_person" do
       it "adds a person to the billing account" do
         data = {
-          :billing_account => { :eid => eid },
+          :billing_account => { eid: eid },
           :person => {
             :first_name => 'Tim',
             :last_name => 'John',
@@ -215,8 +215,8 @@ module GoTransverseTractApi
     context ".remove_billing_account" do
       it "removes a person from the billing account" do
         data = {
-          :billing_account => { :eid => eid },
-          :person => { :eid => '123' }
+          :billing_account => { eid: eid },
+          :person => { eid: '123' }
         }
 
         allow(subject).to receive(:remove_billing_account).with(eid, data).and_return(response)
@@ -254,7 +254,7 @@ module GoTransverseTractApi
                   :min_service_resources => '0',
                   :max_service_resources => '0',
                   :trial_override => 'false',
-                  :eid => '234',
+                  eid: '234',
                   :product_prices => {
                     :page_number => '1',
                     :page_size => '50',
@@ -266,7 +266,7 @@ module GoTransverseTractApi
                       :price_override => 'true',
                       :type => 'OneTime',
                       :recurring_payment_required => 'false',
-                      :eid => '12345',
+                      eid: '12345',
                       :price_ranges => {
                         :page_number => '1',
                         :page_size => '50',
@@ -277,7 +277,7 @@ module GoTransverseTractApi
                           :quantity_begin_range => '0.00',
                           :price => '100.00',
                           :level => '1',
-                          :eid => '781'
+                          eid: '781'
                         }]
                       }
                     },
@@ -286,7 +286,7 @@ module GoTransverseTractApi
                       :price_override => 'true',
                       :type => 'Recurring',
                       :recurring_payment_required => 'false',
-                      :eid => '348',
+                      eid: '348',
                       :price_ranges => {
                         :page_number => '1',
                         :page_size => '50',
@@ -297,7 +297,7 @@ module GoTransverseTractApi
                           :quantity_begin_range => '0.00',
                           :price => '10.00',
                           :level => '1',
-                          :eid => '812'
+                          eid: '812'
                         }]
                       }
                     }]
@@ -306,7 +306,7 @@ module GoTransverseTractApi
                     :name => 'sdfsdfs',
                     :description => 'wrggdgd',
                     :status => 'Active',
-                    :eid => '234'
+                    eid: '234'
                   },
                   :actions => {
                     :page_number => '1',
@@ -334,7 +334,7 @@ module GoTransverseTractApi
               :balance => '-10.00',
               :start_date => '2014-11-11T10:00:00',
               :tax_exempt => 'false',
-              :eid => '3663',
+              eid: '3663',
               :daily_bill_cycle => {
                 :name => 'daily 10 to 3',
                 :start_date => '2014-11-11T10:00:00',
@@ -342,26 +342,26 @@ module GoTransverseTractApi
                 :bill_cycle_type => 'Daily',
                 :auto_bill => 'true',
                 :status => 'ACTIVE',
-                :eid => '223'
+                eid: '223'
               },
               :person => {
                 :first_name => 'John',
                 :last_name => 'Smith',
                 :middle_name => 'S',
-                :eid => '3305',
+                eid: '3305',
                 :addresses => addresses
               },
               :billing_account_category => {
                 :type => 'All',
                 :description => 'dsdgdg dhretsdfdg eggdg',
                 :status => 'ACTIVE',
-                :eid => '45354'
+                eid: '45354'
               },
               :payment_term => {
                 :name => 'Immediate',
                 :term_days => '0',
                 :grace_days => '0',
-                :eid => '353'
+                eid: '353'
               }
             }
           }

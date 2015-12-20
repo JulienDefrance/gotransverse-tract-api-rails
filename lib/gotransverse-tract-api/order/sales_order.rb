@@ -115,7 +115,7 @@ module GoTransverseTractApi
                 :referral => sales_order[:referral],
                 :orderDate => sales_order[:order_date],
                 :orderStatus => sales_order[:order_status],
-                :eid => eid
+                eid: eid
               },
               :orderItems => {
                 :attributes => GoTransverseTractApi::ApiData.new.get_page_info(sales_order[:order_items]),
@@ -123,7 +123,7 @@ module GoTransverseTractApi
               },
               :billingAccount => {
                 :automaticRecurringPayment => sales_order[:billing_account][:automatic_recurring_payment],
-                :eid => sales_order[:billing_account][:eid]
+                eid: sales_order[:billing_account][:eid]
               }
             },
             :payment => {
@@ -133,7 +133,7 @@ module GoTransverseTractApi
               },
               :billingAccount => {
                 :automaticRecurringPayment => payment[:billing_account][:automatic_recurring_payment],
-                :eid => payment[:billing_account][:eid]
+                eid: payment[:billing_account][:eid]
               },
               :creditCardPayment => {
                 :cardType => payment[:credit_card_payment][:card_type],
@@ -159,7 +159,7 @@ module GoTransverseTractApi
           data = 
             {
               :addCustomFieldValue => {},
-              :order => { :eid => eid },
+              :order => { eid: eid },
               :customFieldValue => { :value => sales_order[:value] }
             }
 
@@ -174,8 +174,8 @@ module GoTransverseTractApi
         def remove_custom_field_value eid, sales_order
           data = {
             :removeCustomFieldValue => {},
-            :order => { :eid => eid },
-            :customFieldValue => { :eid => sales_order[:eid] }
+            :order => { eid: eid },
+            :customFieldValue => { eid: sales_order[:eid] }
           }
  
           xml_data = GoTransverseTractApi.generateXML(data,'removeCustomFieldValue')
@@ -202,7 +202,7 @@ module GoTransverseTractApi
               },
               :dailyBillCycle => {
                 :attributes => {
-                  :eid => sales_order[:billing_account][:daily_bill_cycle][:eid]
+                  eid: sales_order[:billing_account][:daily_bill_cycle][:eid]
                 }
               },
               :organization => {
@@ -233,7 +233,7 @@ module GoTransverseTractApi
               },
               :billingAccountCategory => {
                 :attributes => {
-                  :eid => sales_order[:billing_account][:billing_account_category][:eid]
+                  eid: sales_order[:billing_account][:billing_account_category][:eid]
                 }
               }
             }
@@ -268,7 +268,7 @@ module GoTransverseTractApi
             products = {
               :product => {
                 :attributes => {
-                  :eid => items[i][:eid]
+                  eid: items[i][:eid]
                 }
               }
             }
@@ -339,7 +339,7 @@ module GoTransverseTractApi
                   :minServiceResources => items[i][:min_service_resources],
                   :maxServiceResources => items[i][:max_service_resources],
                   :trialOverride => items[i][:trial_override],
-                  :eid => items[i][:eid]
+                  eid: items[i][:eid]
                 },
                 :productPrices => {
                   :attributes => GoTransverseTractApi::ApiData.new.get_page_info(items[i][:product_prices]),
@@ -349,7 +349,7 @@ module GoTransverseTractApi
                       :priceOverride => items[i][:product_prices][:product_price][:price_override],
                       :type => items[i][:product_prices][:product_price][:type],
                       :recurringPaymentRequired => items[i][:product_prices][:product_price][:recurring_payment_required],
-                      :eid => items[i][:product_prices][:product_price][:eid]
+                      eid: items[i][:product_prices][:product_price][:eid]
                     },
                     :priceRanges => {
                       :attributes => GoTransverseTractApi::ApiData.new.get_page_info(items[i][:product_prices][:product_price][:price_ranges]),
@@ -357,7 +357,7 @@ module GoTransverseTractApi
                         :quantityBeginRange => items[i][:product_prices][:product_price][:price_ranges][:price_range][:quantity_begin_range],
                         :price => items[i][:product_prices][:product_price][:price_ranges][:price_range][:price],
                         :level => items[i][:product_prices][:product_price][:price_ranges][:price_range][:level],
-                        :eid => items[i][:product_prices][:product_price][:price_ranges][:price_range][:eid]
+                        eid: items[i][:product_prices][:product_price][:price_ranges][:price_range][:eid]
                       }
                     }
                   }
@@ -366,7 +366,7 @@ module GoTransverseTractApi
                   :name => items[i][:product_category][:name],
                   :description => items[i][:product_category][:description],
                   :status => items[i][:product_category][:status],
-                  :eid => items[i][:product_category][:eid]
+                  eid: items[i][:product_category][:eid]
                 },
                 :actions => GoTransverseTractApi::ApiData.new.get_page_info(items[i][:actions]),
                 :productUsageRules => GoTransverseTractApi::ApiData.new.get_page_info(items[i][:product_usage_rules])

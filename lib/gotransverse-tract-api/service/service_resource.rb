@@ -65,7 +65,7 @@ module GoTransverseTractApi
               :status => service_resource[:status],
               :description => service_resource[:description]
             },
-            :serviceResourceCategory => {:eid => service_resource[:service_resource_category][:eid]}
+            :serviceResourceCategory => {eid: service_resource[:service_resource_category][:eid]}
           }
           xml_data = GoTransverseTractApi.generateXML(data, 'requestServiceResource')
           GoTransverseTractApi.post_request_for(self, {}, xml_data, "request")
@@ -78,14 +78,14 @@ module GoTransverseTractApi
         def change eid, service_resource
           data = {
             :changeServiceResource => {},
-            :serviceResource => {:eid => eid},
+            :serviceResource => {eid: eid},
             :changeToServiceResource => {
               :attributes => {
                 :identifier => service_resource[:change_to_service_resource][:identifier],
                 :status => service_resource[:change_to_service_resource][:status],
                 :description => service_resource[:change_to_service_resource][:description]
               },
-              :category => {:eid => service_resource[:category][:eid]}
+              :category => {eid: service_resource[:category][:eid]}
             }
           }
 
@@ -100,7 +100,7 @@ module GoTransverseTractApi
         def deactivate eid, service_resource
           data = {
             :deactivateServiceResource => {},
-            :serviceResource => {:eid => eid}
+            :serviceResource => {eid: eid}
           }
 
           xml_data = GoTransverseTractApi.generateXML(data, 'deactivateServiceResource')
@@ -117,7 +117,7 @@ module GoTransverseTractApi
               :status => service_resource[:status],
               :description => service_resource[:description]
             },
-            :category => {:eid => service_resource[:category][:eid]}
+            :category => {eid: service_resource[:category][:eid]}
           }
 
           xml_data = GoTransverseTractApi.generateXML(data, 'serviceResource')
@@ -139,12 +139,12 @@ module GoTransverseTractApi
         def add_service_resource eid, service_resource
           data = {
             :addServiceResourceToService => {},
-            :service => {:eid => eid},
+            :service => {eid: eid},
             :serviceResource => {
               :attributes => {
                 :identifier => service_resource[:identifier]
               },
-              :category => {:eid => service_resource[:category][:eid]}
+              :category => {eid: service_resource[:category][:eid]}
             }
           }
 
@@ -159,8 +159,8 @@ module GoTransverseTractApi
         def self.remove_service_resource eid, service_resource
           data = {
             :removeServiceResourceFromService => {},
-            :service => {:eid => eid},
-            :serviceResource => {:eid => service_resource[:eid]}
+            :service => {eid: eid},
+            :serviceResource => {eid: service_resource[:eid]}
           }
 
           xml_data = GoTransverseTractApi.generateXML(data, 'removeServiceResourceFromService')

@@ -78,7 +78,7 @@ module GoTransverseTractApi
         data = {
           :applyRefund => {},
           :payment => {
-            :eid => payment[:payment][:eid]
+            eid: payment[:payment][:eid]
           },
           :refund => {
             :attributes => {
@@ -86,10 +86,10 @@ module GoTransverseTractApi
               :description => payment[:refund][:description]
             },
             :originalPayment => {
-              :eid => payment[:refund][:original_payment][:eid]
+              eid: payment[:refund][:original_payment][:eid]
             },
             :refundReason => {
-              :eid => payment[:refund][:refund_reason][:eid]
+              eid: payment[:refund][:refund_reason][:eid]
             }
           }
         }
@@ -108,10 +108,10 @@ module GoTransverseTractApi
             :description => payment[:description]
           },
           :payment => {
-            :eid => payment[:payment][:eid]
+            eid: payment[:payment][:eid]
           },
           :reason => {
-            :eid => payment[:reason][:eid]
+            eid: payment[:reason][:eid]
           }
         }
 
@@ -129,10 +129,10 @@ module GoTransverseTractApi
             :description => payment[:description]
           },
           :payment => {
-            :eid => payment[:payment][:eid]
+            eid: payment[:payment][:eid]
           },
           :reason => {
-            :eid => payment[:reason][:eid]
+            eid: payment[:reason][:eid]
           },
           :invoices => {
             :attributes => {},
@@ -154,7 +154,7 @@ module GoTransverseTractApi
             :description => payment[:description]
           },
           :billingAccount => {
-            :eid => payment[:billing_account][:eid]
+            eid: payment[:billing_account][:eid]
           },
           :creditCardPayment => {
             :cardType => payment[:credit_card_payment][:card_type],

@@ -12,9 +12,9 @@ module GoTransverseTractApi
       it "renews a service" do
 
         data = {
-          :eid => eid,
+          eid: eid,
           :billing_account => {
-            :eid => '324234'
+            eid: '324234'
           },
           :order => {
             :order_items => {
@@ -22,22 +22,22 @@ module GoTransverseTractApi
                 :quantity => '1',
                 :sequence => '1',
                 :product => {
-                  :eid => '3453'
+                  eid: '3453'
                 },
                 :selected_agreement => {
-                  :eid => '349'
+                  eid: '349'
                 }
               }
             },
             :billing_account => {
-              :eid => '324234'
+              eid: '324234'
             },
             :payments => {
               :payment => {
                 :amount => '10.00',
                 :description => 'Testing',
                 :billing_account => {
-                  :eid => '324234'
+                  eid: '324234'
                 },
                 :credit_card_payment => {
                   :card_type => 'VISA',
@@ -66,10 +66,10 @@ module GoTransverseTractApi
           :status => 'ACTIVE',
           :description => 'Testing',
           :renewal_count => '0',
-          :eid => eid,
+          eid: eid,
           :query_scope => 'SHALLOW',
           :billing_account => {
-            :eid => '324234',
+            eid: '324234',
             :query_scope => 'EID',
           },
           :service_resources => {
@@ -80,7 +80,7 @@ module GoTransverseTractApi
             :total_pages => '0'
           },
           :product => {
-            :eid => '608',
+            eid: '608',
             :query_scope => 'EID'
           },
           :service_periods => {
@@ -123,10 +123,10 @@ module GoTransverseTractApi
             :unlimited => 'true',
             :uses => '12',
             :identifier => 'dfsf',
-            :eid => '23453',
+            eid: '23453',
             :query_scope => 'DDGHJ',
             :category => {
-              :eid => '97',
+              eid: '97',
               :query_scope => 'EID'
             }
           }
@@ -140,12 +140,12 @@ module GoTransverseTractApi
     context ".add_agreement" do
       it "adds an agreement to the service" do
         data = {
-          :service => {:eid => eid},
+          :service => {eid: eid},
           :agreement_service => {
             :end_action => 'RENEW_SERVICE',
             :end_date => '2015-11-11T11:00:00',
             :start_date => '2015-01-11T11:00:00',
-            :agreement => {:eid => '123'}
+            :agreement => {eid: '123'}
           }
         }
 

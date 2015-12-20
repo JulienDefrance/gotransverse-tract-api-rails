@@ -17,7 +17,7 @@ module GoTransverseTractApi
           :status => 'pending',
           :type => 'MANUAL',
           :manual_invoice_application => 'true',
-          :eid => '124343',
+          eid: '124343',
           :billing_account => {
             :account_num => '5635',
             :bill_type => 'EMAIL',
@@ -27,7 +27,7 @@ module GoTransverseTractApi
             :balance => '-10.00',
             :start_date => '2014-11-11T10:00:00',
             :tax_exempt => 'false',
-            :eid => '3663',
+            eid: '3663',
             :daily_bill_cycle => {
               :name => 'daily 10 to 3',
               :start_date => '2014-11-11T10:00:00',
@@ -36,12 +36,12 @@ module GoTransverseTractApi
               :auto_bill => 'true',
               :use_payment_term => 'true',
               :status => 'ACTIVE',
-              :eid => '223'
+              eid: '223'
             },
             :person => {
               :first_name => 'John',
               :last_name => 'Smith',
-              :eid => '3305',
+              eid: '3305',
               :addresses => {
                 :postal_address => {
                   :purpose => 'BILLING',
@@ -50,12 +50,12 @@ module GoTransverseTractApi
                   :region_or_state => 'TX',
                   :postal_code => '78665',
                   :line1 => '123 Main St',
-                  :eid => '3453'
+                  eid: '3453'
                 },
                 :email_address => {
                   :purpose => 'PRIMARY',
                   :email => 'john@smith.com',
-                  :eid => '3453'
+                  eid: '3453'
                 }
               }
             },
@@ -63,7 +63,7 @@ module GoTransverseTractApi
               :type => 'All',
               :description => 'dsdgdg dhretsdfdg eggdg',
               :status => 'ACTIVE',
-              :eid => '45354'
+              eid: '45354'
             },
             :services => {
               :page_number => '1',
@@ -76,7 +76,7 @@ module GoTransverseTractApi
               :name => 'Immediate',
               :term_days => '0',
               :grace_days => '0',
-              :eid => '353'
+              eid: '353'
             }
           },
           :reason => {
@@ -84,14 +84,14 @@ module GoTransverseTractApi
             :description => 'sefwgsvd dhgrgsfree ergreg',
             :status => 'Active',
             :credit_only => 'true',
-            :eid => '99'
+            eid: '99'
           }
         } }
 
     context ".post" do
       it "posts the adjustment" do
         data_for_post = { 
-          :eid => '124343'
+          eid: '124343'
         }
 
         allow(subject).to receive(:post).with(eid, data_for_post).and_return(response)
@@ -120,7 +120,7 @@ module GoTransverseTractApi
             :late_fee_charged => 'false',
             :status => 'open',
             :usage_csv_path => 'https://my.tractbilling.com/t/s/r/1.28/invoices/2914/csv',
-            :eid => '2342'
+            eid: '2342'
           }
         }
 
@@ -136,7 +136,7 @@ module GoTransverseTractApi
           :reversed => 'false',
           :applied_on => '2014-10-10T10:10:10',
           :amount => '1.0',
-          :eid => '197',
+          eid: '197',
           :account_adjustment => {
             :invoiced => 'true',
             :credit => 'true',
@@ -154,7 +154,7 @@ module GoTransverseTractApi
             :late_fee_charged => 'false',
             :status => 'open',
             :usage_csv_path => 'https://my.tractbilling.com/t/s/r/1.28/invoices/2914/csv',
-            :eid => '2342'
+            eid: '2342'
           }
         }
 
@@ -173,10 +173,10 @@ module GoTransverseTractApi
           :credit => 'true',
           :posted => 'false',
           :billing_account => {
-            :eid => '322'
+            eid: '322'
           },
           :reason => {
-            :eid => '6456'
+            eid: '6456'
           }
         }
 

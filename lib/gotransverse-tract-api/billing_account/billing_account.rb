@@ -146,7 +146,7 @@ module GoTransverseTractApi
         def resume eid, billing_account
           data = {
             :resumeBillingAccount => {},
-            :billingAccount => {:eid => eid},
+            :billingAccount => {eid: eid},
             :startDate => billing_account[:start_date],
             :notes => billing_account[:notes]
           }
@@ -162,7 +162,7 @@ module GoTransverseTractApi
         def add_recurring_payment eid, billing_account
           data = {
             :addRecurringPaymentToBillingAccount => {},
-            :billingAccount => {:eid => eid},
+            :billingAccount => {eid: eid},
             :recurringPayment => {
               :attributes => {},
               :creditCardPaymentMethod => {
@@ -187,7 +187,7 @@ module GoTransverseTractApi
           data = {
             :changeService => {},
             :service => {
-              :eid => billing_account[:service][:eid]
+              eid: billing_account[:service][:eid]
             },
             :order => {
               :attributes => {
@@ -203,7 +203,7 @@ module GoTransverseTractApi
                   :products => get_products(billing_account)
                 }
               },
-              :billingAccount => {:eid => eid}
+              :billingAccount => {eid: eid}
             }  
           }
           xml_data = GoTransverseTractApi.generateXML(data, 'changeService')
@@ -217,7 +217,7 @@ module GoTransverseTractApi
         def add_custom_field_value eid, billing_account
           data = {
             :addCustomFieldValue => {},
-            :billingAccount => {:eid => eid},
+            :billingAccount => {eid: eid},
             :customFieldValue => {
               :value => billing_account[:custom_field_value][:value]
             }
@@ -233,9 +233,9 @@ module GoTransverseTractApi
         def remove_custom_field_value eid, billing_account
           data = {
             :removeCustomFieldValue => {},
-            :billingAccount => {:eid => eid},
+            :billingAccount => {eid: eid},
             :customFieldValue => {
-              :eid => billing_account[:custom_field_value][:eid]
+              eid: billing_account[:custom_field_value][:eid]
             }
           }
           xml_data = GoTransverseTractApi.generateXML(data, 'removeCustomFieldValue')
@@ -249,7 +249,7 @@ module GoTransverseTractApi
         def add_person eid, billing_account
           data = {
             :addPersonToBillingAccount => {},
-            :billingAccount => {:eid => eid},
+            :billingAccount => {eid: eid},
             :person => {
               :attributes => {
                 :firstName => billing_account[:person][:first_name],
@@ -271,8 +271,8 @@ module GoTransverseTractApi
         def remove_billing_account eid, billing_account
           data = {
             :removePersonFromBillingAccount => {},
-            :billingAccount => { :eid => eid },
-            :person => { :eid => billing_account[:person][:eid] }
+            :billingAccount => { eid: eid },
+            :person => { eid: billing_account[:person][:eid] }
           }
 
           xml_data = GoTransverseTractApi.generateXML(data, 'removePersonFromBillingAccount')
@@ -325,7 +325,7 @@ module GoTransverseTractApi
               :billType => billing_account[:bill_type]
             },
             :dailyBillCycle => {
-              :eid => billing_account[:daily_bill_cycle][:eid]
+              eid: billing_account[:daily_bill_cycle][:eid]
             },
             :organization => {
               :attributes => {
@@ -334,7 +334,7 @@ module GoTransverseTractApi
               :addresses => GoTransverseTractApi::ApiData.new.get_addresses(billing_account[:organization])
             },
             :billingAccountCategory => {
-              :eid => billing_account[:billing_account_category][:eid]
+              eid: billing_account[:billing_account_category][:eid]
             }
           }
           xml_data = GoTransverseTractApi.generateXML(data, 'billingAccount')
@@ -358,7 +358,7 @@ module GoTransverseTractApi
           (0..qty - 1).each do|i|
             products << {
               :product => {
-                :eid => billing_account[:order][:order_items][:order_item][:products][i][:eid]
+                eid: billing_account[:order][:order_items][:order_item][:products][i][:eid]
               }
             }
           end         

@@ -80,7 +80,7 @@ module GoTransverseTractApi
               :sequence => order_item[:sequence],
               :approvalDate => order_item[:date_approval],
               :description => order_item[:description],
-              :eid => eid
+              eid: eid
             },
             :orderItems => {
               :pageNumber => order_item[:order_items][:page_number],
@@ -104,7 +104,7 @@ module GoTransverseTractApi
                 :paymentOnPurchaseRequired => order_item[:recurring_product_price][:payment_on_purchase_required],
                 :recurringPaymentRequired => order_item[:recurring_product_price][:recurring_payment_required],
                 :recurrencePeriod => order_item[:recurring_product_price][:recurrence_period],
-                :eid => order_item[:recurring_product_price][:eid]
+                eid: order_item[:recurring_product_price][:eid]
               },
               :priceRanges => {
                 :attributes => {
@@ -118,7 +118,7 @@ module GoTransverseTractApi
                   :quantityBeginRange => order_item[:recurring_product_price][:price_ranges][:price_range][:quantity_begin_range],
                   :price => order_item[:recurring_product_price][:price_ranges][:price_range][:price],
                   :level => order_item[:recurring_product_price][:price_ranges][:price_range][:level],
-                  :eid => order_item[:recurring_product_price][:price_ranges][:price_range][:eid]
+                  eid: order_item[:recurring_product_price][:price_ranges][:price_range][:eid]
                 }
               }
             },
@@ -138,7 +138,7 @@ module GoTransverseTractApi
                 :minServiceResources => order_item[:product][:min_service_resources],
                 :maxServiceResources => order_item[:product][:max_service_resources],
                 :trialOverride => order_item[:product][:trial_override],
-                :eid => order_item[:product][:eid]
+                eid: order_item[:product][:eid]
               },
               :productPrices => {
                 :attributes => {
@@ -156,7 +156,7 @@ module GoTransverseTractApi
                     :paymentOnPurchaseRequired => order_item[:product][:product_prices][:product_price][:payment_on_purchase_required],
                     :recurringPaymentRequired => order_item[:product][:product_prices][:product_price][:recurring_payment_required],
                     :recurrencePeriod => order_item[:product][:product_prices][:product_price][:recurrence_period],
-                    :eid => order_item[:product][:product_prices][:product_price][:eid]
+                    eid: order_item[:product][:product_prices][:product_price][:eid]
                   },
                   :priceRanges => {
                     :attributes => {
@@ -170,7 +170,7 @@ module GoTransverseTractApi
                       :quantityBeginRange => order_item[:product][:product_prices][:product_price][:price_ranges][:price_range][:quantity_begin_range],
                       :price => order_item[:product][:product_prices][:product_price][:price_ranges][:price_range][:price],
                       :level => order_item[:product][:product_prices][:product_price][:price_ranges][:price_range][:level],
-                      :eid => order_item[:product][:product_prices][:product_price][:price_ranges][:price_range][:eid]
+                      eid: order_item[:product][:product_prices][:product_price][:price_ranges][:price_range][:eid]
                     }
                   }
                 }
@@ -179,13 +179,13 @@ module GoTransverseTractApi
                 :name => order_item[:product][:product_category][:name],
                 :description => order_item[:product][:product_category][:description],
                 :status => order_item[:product][:product_category][:status],
-                :eid => order_item[:product][:product_category][:eid]
+                eid: order_item[:product][:product_category][:eid]
               },
               :serviceResourceCategory => {
                 :name => order_item[:product][:service_resource_category][:name],
                 :type => order_item[:product][:service_resource_category][:type],
                 :status => order_item[:product][:service_resource_category][:status],
-                :eid => order_item[:product][:service_resource_category][:eid]
+                eid: order_item[:product][:service_resource_category][:eid]
               },
               :actions => {
                 :pageNumber => order_item[:product][:actions][:page_number],
@@ -204,7 +204,7 @@ module GoTransverseTractApi
             },
             :priceList => {
               :name => order_item[:price_list][:name],
-              :eid => order_item[:price_list][:eid]
+              eid: order_item[:price_list][:eid]
             },
             :serviceResources => {
               :pageNumber => order_item[:service_resources][:page_number],
@@ -241,7 +241,7 @@ module GoTransverseTractApi
       def self.deny eid, orderitem
         data = {
           :denyOrderItem => {},
-          :orderItem => {:eid => eid}
+          :orderItem => {eid: eid}
         }
 
         xml_data = GoTransverseTractApi.generateXML(data, 'denyOrderItem')

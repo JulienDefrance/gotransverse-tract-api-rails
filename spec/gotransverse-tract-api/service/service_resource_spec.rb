@@ -18,7 +18,7 @@ module GoTransverseTractApi
       it "creates a service resource" do
         data = {
           :category => {
-            :eid => '324234'
+            eid: '324234'
           }
         }
         allow(subject).to receive(:create_service_resource).with(eid, data).and_return(response)
@@ -30,7 +30,7 @@ module GoTransverseTractApi
       it "requests a service resource" do
         data = {
           :service_resource_category => {
-            :eid => '324234'
+            eid: '324234'
           }
         }
         #described_class.request(root_attrs.merge data)
@@ -44,7 +44,7 @@ module GoTransverseTractApi
       it "changes a service resource" do
         data = { 
           :change_to_service_resource => root_attrs,
-          :category => { :eid => '324234' }
+          :category => { eid: '324234' }
         }
 
         allow(subject).to receive(:change).with(eid, data).and_return(response)

@@ -26,7 +26,7 @@ module GoTransverseTractApi
             :referral => 'Order Item',
             :order_date => '2015-07-09',
             :order_status => '0.00',
-            :eid => '48406',
+            eid: '48406',
             :order_items => {
               :page_number => '1',
               :page_size => '50',
@@ -49,7 +49,7 @@ module GoTransverseTractApi
                   :min_service_resources => '0',
                   :max_service_resources => '0',
                   :trial_override => 'false',
-                  :eid => '234',
+                  eid: '234',
                   :product_prices => {
                     :page_number => '1',
                     :page_size => '50',
@@ -61,7 +61,7 @@ module GoTransverseTractApi
                       :price_override => 'true',
                       :type => 'Recurring',
                       :recurring_payment_required => 'false',
-                      :eid => '12345',
+                      eid: '12345',
                       :price_ranges => {
                         :page_number => '1',
                         :page_size => '50',
@@ -72,7 +72,7 @@ module GoTransverseTractApi
                           :quantity_begin_range => '0.00',
                           :price => '10.00',
                           :level => '1',
-                          :eid => '812'
+                          eid: '812'
                         }
                       }
                     }
@@ -81,7 +81,7 @@ module GoTransverseTractApi
                     :name => 'sdfsdfs',
                     :description => 'wrggdgd',
                     :status => 'Active',
-                    :eid => '234'
+                    eid: '234'
                   },
                   :actions => {
                     :page_number => '1',
@@ -102,7 +102,7 @@ module GoTransverseTractApi
             },
             :billing_account => {
               :automatic_recurring_payment => 'false',
-              :eid => '2535'
+              eid: '2535'
             }
           },
           :payment => {
@@ -110,7 +110,7 @@ module GoTransverseTractApi
             :description => 'sdgegegeg',
             :billing_account => {
               :automatic_recurring_payment => 'false',
-              :eid => '2535'
+              eid: '2535'
             },
             :credit_card_payment => {
               :card_type => 'visa',
@@ -138,7 +138,7 @@ module GoTransverseTractApi
             :order_item => {
               :quantity => '1',
               :product => [{
-                :eid => '232353'
+                eid: '232353'
               }]
             }
           },
@@ -146,7 +146,7 @@ module GoTransverseTractApi
             :bill_type => 'EMAIL',
             :automatic_recurring_payment => 'true',
             :daily_bill_cycle => {
-              :eid => '34535'
+              eid: '34535'
             },
             :organization => {
               :name => 'eregedvdvd',
@@ -194,7 +194,7 @@ module GoTransverseTractApi
               }
             },
             :billing_account_category => {
-              :eid => '749'
+              eid: '749'
             }
           }
         }

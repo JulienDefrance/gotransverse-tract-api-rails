@@ -83,7 +83,7 @@ module GoTransverseTractApi
         def resume eid, service
           data = {
             :resumeService => {},
-            :service => {:eid => eid}
+            :service => {eid: eid}
           }
 
           xml_data = GoTransverseTractApi.generateXML(data, 'resumeService')
@@ -97,7 +97,7 @@ module GoTransverseTractApi
         def suspend eid, service
           data = {
             :suspendService => {},
-            :service => {:eid => eid}
+            :service => {eid: eid}
           }
 
           xml_data = GoTransverseTractApi.generateXML(data, 'suspendService')
@@ -111,13 +111,13 @@ module GoTransverseTractApi
         def add_service_resource eid, service
           data = {
             :addServiceResourceToService => {},
-            :service => {:eid => eid},
+            :service => {eid: eid},
             :serviceResource => {
               :attributes => {
                 :identifier => service[:service_resource][:identifier]
               },
               :category => {
-                :eid => :service[:service_resource][:category][:eid]
+                eid: :service[:service_resource][:category][:eid]
               }
             }
           }
@@ -133,8 +133,8 @@ module GoTransverseTractApi
         def remove_service_resource eid, service
           data = {
             :removeServiceResourceFromService => {},
-            :service => {:eid => eid},
-            :serviceResource => {:eid => service[:service_resource][:eid]}
+            :service => {eid: eid},
+            :serviceResource => {eid: service[:service_resource][:eid]}
           }
 
           xml_data = GoTransverseTractApi.generateXML(data, 'removeServiceResourceFromService')
@@ -148,7 +148,7 @@ module GoTransverseTractApi
         def add_service_usage_rule_to_service eid, service
           data = {
             :addServiceUsageRuleToService => {},
-            :service => {:eid => eid},
+            :service => {eid: eid},
             :matchAllServiceUsageRule => {
               :attributes => {
                 :limit => service[:match_all_service_usage_rule][:limit],
@@ -165,7 +165,7 @@ module GoTransverseTractApi
                 :status => service[:match_all_service_usage_rule][:status]
               },
               :chargeCategory => {
-                :eid => service[:match_all_service_usage_rule][:charge_categroy][:eid] 
+                eid: service[:match_all_service_usage_rule][:charge_categroy][:eid]
               },
               :flatUsageRate => {
                 :uom => service[:match_all_service_usage_rule][:flat_usage_rate][:uom], 
@@ -187,9 +187,9 @@ module GoTransverseTractApi
         def remove_service_usage_rule_from_service eid, service
           data = {
             :removeServiceUsageRuleFromService => {},
-            :service => {:eid => eid},
+            :service => {eid: eid},
             :matchAllServiceUsageRule => {
-              :eid => service[:match_all_service_usage_rule][:eid]
+              eid: service[:match_all_service_usage_rule][:eid]
             }
           }
           xml_data = GoTransverseTractApi.generateXML(data, 'removeServiceUsageRuleFromService')
@@ -203,7 +203,7 @@ module GoTransverseTractApi
         def add_agreement eid, service
           data = {
             :addAgreementToService => {},
-            :service => {:eid => eid},
+            :service => {eid: eid},
             :agreementService=> {
               :attributes => {
                 :endAction => service[:agreement_service][:end_action],
@@ -211,7 +211,7 @@ module GoTransverseTractApi
                 :startDate => service[:agreement_service][:start_date]
               },
               :agreement => {
-                :eid => service[:agreement_service][:agreement][:eid]
+                eid: service[:agreement_service][:agreement][:eid]
               }
             }
           }
@@ -227,7 +227,7 @@ module GoTransverseTractApi
         def add_counter eid, service
           data = {
             :addCounterToService => {},
-            :service => {:eid => eid},
+            :service => {eid: eid},
             :usageRuleCounter => {
               :attributes => {
                 :name => service[:usage_rule_counter][:name],
@@ -252,13 +252,13 @@ module GoTransverseTractApi
         def add_custom_field_value eid, service
           data = {
             :addCustomFieldValueToService => {},
-            :service => {:eid => eid},
+            :service => {eid: eid},
             :customFieldValue => {
               :attributes => {
                 :value => service[:custom_field_value][:value]
               },
               :customField => {
-                :eid => service[:custom_field_value][:custom_field][:eid]
+                eid: service[:custom_field_value][:custom_field][:eid]
               }
             }
           }
@@ -274,9 +274,9 @@ module GoTransverseTractApi
         def remove_custom_field_value eid, service
           data = {
             :removeCustomFieldValueFromService => {},
-            :service => {:eid => eid},
+            :service => {eid: eid},
             :customFieldValue => {
-              :eid => service[:custom_field_value][:eid]
+              eid: service[:custom_field_value][:eid]
             }
           }
 
@@ -300,16 +300,16 @@ module GoTransverseTractApi
                 :status => service[:status],
                 :description => service[:description],
                 :renewalCount => service[:renewal_count],
-                :eid => service[:eid],
+                eid: service[:eid],
                 :queryScope => service[:query_scope]
               },
               :billingAccount => {
-                :eid => service[:billing_account][:eid],
+                eid: service[:billing_account][:eid],
                 :queryScope => service[:billing_account][:query_scope]
               },
               :serviceResources => GoTransverseTractApi::ApiData.new.get_page_info(service[:service_resources]),
               :product => {
-                :eid => service[:product][:eid],
+                eid: service[:product][:eid],
                 :queryScope => service[:product][:query_scope]
               },
               :servicePeriods => api_data.get_page_info(service[:service_periods]),
@@ -324,11 +324,11 @@ module GoTransverseTractApi
                 :unlimited => service[:discount_identifier][:unlimited],
                 :uses => service[:discount_identifier][:uses],
                 :identifier => service[:discount_identifier][:identifier],
-                :eid => service[:discount_identifier][:eid],
+                eid: service[:discount_identifier][:eid],
                 :queryScope => service[:discount_identifier][:query_scope]
               },
               :category => {
-                :eid => service[:discount_identifier][:category][:eid],
+                eid: service[:discount_identifier][:category][:eid],
                 :queryScope => service[:discount_identifier][:category][:query_scope]
               }
             }
@@ -348,7 +348,7 @@ module GoTransverseTractApi
               :attributes => {
                 :newRecurringUnitPrice => service[:new_recurring_unit_price]
               },
-              :service => {:eid => eid}
+              :service => {eid: eid}
             }
           }
 
@@ -367,7 +367,7 @@ module GoTransverseTractApi
                 :newQuantity => service[:new_quantity],
                 :effectiveDate => service[:effective_date]
               },
-              :service => {:eid => eid}
+              :service => {eid: eid}
             }
           }
 
@@ -383,9 +383,9 @@ module GoTransverseTractApi
           data = {
             :renewService => {},
             :service => {
-              :attributes => {:eid => eid},
+              :attributes => {eid: eid},
               :billingAccount => {
-                :eid => service[:billing_account][:eid]
+                eid: service[:billing_account][:eid]
               }
             },
             :order => { 
@@ -398,14 +398,14 @@ module GoTransverseTractApi
                     :sequence => service[:order][:order_items][:order_item][:sequence]
                   },
                   :product => {
-                    :eid => service[:order][:order_items][:order_item][:product][:eid]
+                    eid: service[:order][:order_items][:order_item][:product][:eid]
                   },
                   :selectedAgreement => {
-                    :eid => service[:order][:order_items][:order_item][:selected_agreement][:eid]
+                    eid: service[:order][:order_items][:order_item][:selected_agreement][:eid]
                   }
                 }
               },
-              :billingAccount => { :eid => service[:order][:billing_account][:eid] },
+              :billingAccount => { eid: service[:order][:billing_account][:eid] },
               :payments => { 
                 :attributes => {},
                 :payment => {
@@ -413,7 +413,7 @@ module GoTransverseTractApi
                     :amount => service[:order][:payments][:payment][:amount],
                     :description => service[:order][:payments][:payment][:description]
                   },
-                  :billingAccount => { :eid => service[:order][:payments][:payment][:billing_account][:eid] },
+                  :billingAccount => { eid: service[:order][:payments][:payment][:billing_account][:eid] },
                   :creditCardPayment => {
                     :cardType => service[:order][:payments][:payment][:credit_card_payment][:card_type],
                     :cardHolderFirstName => service[:order][:payments][:payment][:credit_card_payment][:card_holder_first_name],
@@ -438,7 +438,7 @@ module GoTransverseTractApi
         def deactivate eid, service
           data = {
             :deactivateService => {},
-            :service => {:eid => eid}
+            :service => {eid: eid}
           }
 
           xml_data = GoTransverseTractApi.generateXML(data, 'deactivateService')

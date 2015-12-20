@@ -34,7 +34,7 @@ module GoTransverseTractApi
 
     context ".void_event" do
       it "voids a single usage event" do
-        data = { :eid => '3166788' }
+        data = { eid: '3166788' }
 
         allow(subject).to receive(:void_event).with(data).and_return(response)
         expect(subject.void_event(data)).to eq(response)

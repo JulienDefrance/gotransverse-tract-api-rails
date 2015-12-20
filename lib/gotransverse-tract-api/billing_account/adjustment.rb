@@ -57,7 +57,7 @@ module GoTransverseTractApi
             :postAdjustment => {},
             :adjustment => {
               :attributes => {
-                :eid => adjustment[:eid]
+                eid: adjustment[:eid]
               }
             }
           }
@@ -122,7 +122,7 @@ module GoTransverseTractApi
                 :reversed => adjustment[:invoice_adjustment_application][:reversed],
                 :appliedOn => adjustment[:invoice_adjustment_application][:applied_on],
                 :amount => adjustment[:invoice_adjustment_application][:amount],
-                :eid => adjustment[:invoice_adjustment_application][:eid]
+                eid: adjustment[:invoice_adjustment_application][:eid]
               },
               :accountAdjustment => {
                 :attributes => {
@@ -136,7 +136,7 @@ module GoTransverseTractApi
                   :posted_on => adjustment[:invoice_adjustment_application][:account_adjustment][:posted_on],
                   :posted_by => adjustment[:invoice_adjustment_application][:account_adjustment][:posted_by],
                   :manualInvoiceApplication => adjustment[:manual_invoice_application],
-                  :eid => adjustment[:eid]
+                  eid: adjustment[:eid]
                 },
                 :billingAccount => account_adjustment[:billingAccount],
                 :reason => account_adjustment[:reason],
@@ -165,10 +165,10 @@ module GoTransverseTractApi
               :posted => adjustment[:posted]
             },
             :billingAccount => {
-              :eid => adjustment[:billing_account][:eid]
+              eid: adjustment[:billing_account][:eid]
             },
             :reason => {
-              :eid => adjustment[:reason][:eid]
+              eid: adjustment[:reason][:eid]
             }
           }
 
@@ -190,7 +190,7 @@ module GoTransverseTractApi
               :lateFeeCharged => adjustment[:invoice_adjustment_application][:invoice][:late_fee_charged],
               :status => adjustment[:invoice_adjustment_application][:invoice][:status],
               :usageCsvPath => adjustment[:invoice_adjustment_application][:invoice][:usage_csv_path],
-              :eid => adjustment[:invoice_adjustment_application][:invoice][:eid]
+              eid: adjustment[:invoice_adjustment_application][:invoice][:eid]
             },
             :billingAccount => account_adjustment[:billingAccount],
             :billCycle => account_adjustment[:billingAccount][:dailyBillCycle],
@@ -209,7 +209,7 @@ module GoTransverseTractApi
               :status => adjustment[:status],
               :type => adjustment[:type],
               :manualInvoiceApplication => adjustment[:manual_invoice_application],
-              :eid => adjustment[:eid]
+              eid: adjustment[:eid]
             },
             :billingAccount => {
               :attributes => {
@@ -221,7 +221,7 @@ module GoTransverseTractApi
                 :balance => adjustment[:billing_account][:balance],
                 :startDate => adjustment[:billing_account][:start_date],
                 :taxExempt => adjustment[:billing_account][:tax_exempt],
-                :eid => adjustment[:billing_account][:eid]
+                eid: adjustment[:billing_account][:eid]
               },
               :dailyBillCycle => {
                 :name => adjustment[:billing_account][:daily_bill_cycle][:name],
@@ -231,13 +231,13 @@ module GoTransverseTractApi
                 :autoBill => adjustment[:billing_account][:daily_bill_cycle][:auto_bill],
                 :usePaymentTerm => adjustment[:billing_account][:daily_bill_cycle][:use_payment_term],
                 :status => adjustment[:billing_account][:daily_bill_cycle][:status],
-                :eid => adjustment[:billing_account][:daily_bill_cycle][:eid]
+                eid: adjustment[:billing_account][:daily_bill_cycle][:eid]
               },
               :person => {
                 :attributes => {
                   :firstName => adjustment[:billing_account][:person][:first_name],
                   :lastName => adjustment[:billing_account][:person][:last_name],
-                  :eid => adjustment[:billing_account][:person][:eid]
+                  eid: adjustment[:billing_account][:person][:eid]
                 },
                 :addresses => {
                   :attributes => {},
@@ -248,12 +248,12 @@ module GoTransverseTractApi
                     :regionOrState => adjustment[:billing_account][:person][:addresses][:postal_address][:region_or_state],
                     :postalCode => adjustment[:billing_account][:person][:addresses][:postal_address][:postal_code],
                     :line1 => adjustment[:billing_account][:person][:addresses][:postal_address][:line1],
-                    :eid => adjustment[:billing_account][:person][:addresses][:postal_address][:eid]
+                    eid: adjustment[:billing_account][:person][:addresses][:postal_address][:eid]
                   },
                   :emailAddress => {
                     :purpose => adjustment[:billing_account][:person][:addresses][:email_address][:purpose],
                     :email => adjustment[:billing_account][:person][:addresses][:email_address][:email],
-                    :eid => adjustment[:billing_account][:person][:addresses][:email_address][:eid]
+                    eid: adjustment[:billing_account][:person][:addresses][:email_address][:eid]
                   }
                 }
               },
@@ -261,7 +261,7 @@ module GoTransverseTractApi
                 :type => adjustment[:billing_account][:billing_account_category][:type],
                 :description => adjustment[:billing_account][:billing_account_category][:description],
                 :status => adjustment[:billing_account][:billing_account_category][:status],
-                :eid => adjustment[:billing_account][:billing_account_category][:eid]
+                eid: adjustment[:billing_account][:billing_account_category][:eid]
               },
               :services => {
                 :pageNumber => adjustment[:billing_account][:services][:page_number],
@@ -274,7 +274,7 @@ module GoTransverseTractApi
                 :name => adjustment[:billing_account][:payment_term][:name],
                 :termDays => adjustment[:billing_account][:payment_term][:term_days],
                 :graceDays => adjustment[:billing_account][:payment_term][:grace_days],
-                :eid => adjustment[:billing_account][:payment_term][:eid]
+                eid: adjustment[:billing_account][:payment_term][:eid]
               }
             },
             :reason => {
@@ -282,7 +282,7 @@ module GoTransverseTractApi
               :description => adjustment[:reason][:description],
               :status => adjustment[:reason][:status],
               :creditOnly => adjustment[:reason][:credit_only],
-              :eid => adjustment[:reason][:eid]
+              eid: adjustment[:reason][:eid]
             }
           }
         end

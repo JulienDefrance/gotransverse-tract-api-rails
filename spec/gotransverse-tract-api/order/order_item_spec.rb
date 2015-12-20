@@ -20,7 +20,7 @@ module GoTransverseTractApi
           :sequence => '1',
           :date_approval => '2015-09-09',
           :description => 'sjkadfkak',
-          :eid => '48406',
+          eid: '48406',
           :order_items => {
             :page_number => '1',
             :page_size => '50',
@@ -42,7 +42,7 @@ module GoTransverseTractApi
               :payment_on_purchase_required => 'false',
               :recurring_payment_required => 'false',
               :recurrence_period => 'BILLCYCLE',
-              :eid => '12345',
+              eid: '12345',
               :price_ranges => {
                 :page_number => '1',
                 :page_size => '50',
@@ -53,7 +53,7 @@ module GoTransverseTractApi
                   :quantity_begin_range => '0.00',
                   :price => '10.00',
                   :level => '1',
-                  :eid => '812'
+                  eid: '812'
                 }
               }
             },
@@ -72,7 +72,7 @@ module GoTransverseTractApi
               :min_service_resources => '0',
               :max_service_resources => '0',
               :trial_override => 'false',
-              :eid => '234',
+              eid: '234',
               :product_prices => {
                 :page_number => '1',
                 :page_size => '50',
@@ -86,7 +86,7 @@ module GoTransverseTractApi
                   :payment_on_purchase_required => 'false',
                   :recurring_payment_required => 'false',
                   :recurrence_period => 'BILLCYCLE',
-                  :eid => '12345',
+                  eid: '12345',
                   :price_ranges => {
                     :page_number => '1',
                     :page_size => '50',
@@ -97,7 +97,7 @@ module GoTransverseTractApi
                       :quantity_begin_range => '0.00',
                       :price => '10.00',
                       :level => '1',
-                      :eid => '812'
+                      eid: '812'
                     }
                   }
                 }
@@ -106,13 +106,13 @@ module GoTransverseTractApi
                 :name => 'sdfsdfs',
                 :description => 'wrggdgd',
                 :status => 'Active',
-                :eid => '234'
+                eid: '234'
               },
               :service_resource_category => {
                 :name => 'sdgw', 
                 :type => 'A',
                 :status => 'sdfsa',
-                :eid => '345'
+                eid: '345'
               },
               :actions => {
                 :page_number => '1',
@@ -131,7 +131,7 @@ module GoTransverseTractApi
             },
             :price_list => {
               :name => 'sds',
-              :eid => '564'
+              eid: '564'
             },
             :service_resources => {
               :page_number => '1',

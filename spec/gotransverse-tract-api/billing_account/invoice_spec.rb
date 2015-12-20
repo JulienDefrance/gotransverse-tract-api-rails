@@ -12,10 +12,10 @@ module GoTransverseTractApi
       it "applies a payment to the invoice" do
         data = {
           :billing_account => {
-            :eid => '123'
+            eid: '123'
           },
           :invoice => {
-            :eid => '456'
+            eid: '456'
           },
           :payment => {
             :amount => '27',
@@ -29,7 +29,7 @@ module GoTransverseTractApi
               :card_expiration => '12/2016'
             },
             :billing_account => {
-              :eid => '123'
+              eid: '123'
             }
           }
         }
