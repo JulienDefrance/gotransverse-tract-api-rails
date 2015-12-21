@@ -35,15 +35,15 @@ module GoTransverseTractApi
       #
       def self.add_address eid, address
         data = {
-          :addAddressToParty => {},
-          :person => {:eid => eid},
-          :postalAddress => {
-            :purpose => address[:purpose],
-            :country => address[:country],
-            :city => address[:city],
-            :regionOrState => address[:region_or_state],
-            :postalCode => address[:postal_code],
-            :line1 => address[:line1]
+          addAddressToParty: {},
+          person: {eid: eid},
+          postalAddress: {
+            purpose: address[:purpose],
+            country: address[:country],
+            city: address[:city],
+            regionOrState: address[:region_or_state],
+            postalCode: address[:postal_code],
+            line1: address[:line1]
           }
         }
 

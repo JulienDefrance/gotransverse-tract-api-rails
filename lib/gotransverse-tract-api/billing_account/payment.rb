@@ -60,10 +60,10 @@ module GoTransverseTractApi
       #
       def self.referrer_token error_url, cancel_url, complete_url
         data = {
-          :generatePaymentCollectionReferrerToken => {},
-          :errorUrl => error_url,
-          :completeUrl => complete_url,
-          :cancelUrl => cancel_url
+          generatePaymentCollectionReferrerToken: {},
+          errorUrl: error_url,
+          completeUrl: complete_url,
+          cancelUrl: cancel_url
         }
         xml_data = GoTransverseTractApi.generateXML(data, 'generatePaymentCollectionReferrerToken' )
 
@@ -76,20 +76,20 @@ module GoTransverseTractApi
       #
       def self.apply_refund eid, payment
         data = {
-          :applyRefund => {},
-          :payment => {
-            :eid => payment[:payment][:eid]
+          applyRefund: {},
+          payment: {
+            eid: payment[:payment][:eid]
           },
-          :refund => {
-            :attributes => {
-              :amount => payment[:refund][:amount],
-              :description => payment[:refund][:description]
+          refund: {
+            attributes: {
+              amount: payment[:refund][:amount],
+              description: payment[:refund][:description]
             },
-            :originalPayment => {
-              :eid => payment[:refund][:original_payment][:eid]
+            originalPayment: {
+              eid: payment[:refund][:original_payment][:eid]
             },
-            :refundReason => {
-              :eid => payment[:refund][:refund_reason][:eid]
+            refundReason: {
+              eid: payment[:refund][:refund_reason][:eid]
             }
           }
         }
@@ -104,14 +104,14 @@ module GoTransverseTractApi
       #
       def self.cancel eid, payment
         data = {
-          :cancelPayment => {
-            :description => payment[:description]
+          cancelPayment: {
+            description: payment[:description]
           },
-          :payment => {
-            :eid => payment[:payment][:eid]
+          payment: {
+            eid: payment[:payment][:eid]
           },
-          :reason => {
-            :eid => payment[:reason][:eid]
+          reason: {
+            eid: payment[:reason][:eid]
           }
         }
 
@@ -125,18 +125,18 @@ module GoTransverseTractApi
       #
       def self.reallocate eid, payment
         data = {
-          :reallocatePayment => {
-            :description => payment[:description]
+          reallocatePayment: {
+            description: payment[:description]
           },
-          :payment => {
-            :eid => payment[:payment][:eid]
+          payment: {
+            eid: payment[:payment][:eid]
           },
-          :reason => {
-            :eid => payment[:reason][:eid]
+          reason: {
+            eid: payment[:reason][:eid]
           },
-          :invoices => {
-            :attributes => {},
-            :invoice => payment[:invoices]
+          invoices: {
+            attributes: {},
+            invoice: payment[:invoices]
           }
         }
 
@@ -149,30 +149,30 @@ module GoTransverseTractApi
       #
       def self.create_payment payment
         data = {
-          :payment => {
-            :amount => payment[:amount],
-            :description => payment[:description]
+          payment: {
+            amount: payment[:amount],
+            description: payment[:description]
           },
-          :billingAccount => {
-            :eid => payment[:billing_account][:eid]
+          billingAccount: {
+            eid: payment[:billing_account][:eid]
           },
-          :creditCardPayment => {
-            :cardType => payment[:credit_card_payment][:card_type],
-            :cardHolderFirstName => payment[:credit_card_payment][:card_holder_first_name],
-            :cardHolderLastName => payment[:credit_card_payment][:card_holder_last_name],
-            :cardIdentifierNumber => payment[:credit_card_payment][:card_identifier_number],
-            :cardExpiration => payment[:credit_card_payment][:card_expiration]
+          creditCardPayment: {
+            cardType: payment[:credit_card_payment][:card_type],
+            cardHolderFirstName: payment[:credit_card_payment][:card_holder_first_name],
+            cardHolderLastName: payment[:credit_card_payment][:card_holder_last_name],
+            cardIdentifierNumber: payment[:credit_card_payment][:card_identifier_number],
+            cardExpiration: payment[:credit_card_payment][:card_expiration]
           },
-          :phoneNumber => {
-            :countryCode => payment[:phone_number][:country_code],
-            :areaCode => payment[:phone_number][:area_code],
-            :number => payment[:phone_number][:number],
-            :extension => payment[:phone_number][:extension],
-            :purpose => payment[:phone_number][:purpose]
+          phoneNumber: {
+            countryCode: payment[:phone_number][:country_code],
+            areaCode: payment[:phone_number][:area_code],
+            number: payment[:phone_number][:number],
+            extension: payment[:phone_number][:extension],
+            purpose: payment[:phone_number][:purpose]
           },
-          :emailAddress => {
-            :email => payment[:email_address][:email],
-            :purpose => payment[:email_address][:purpose]
+          emailAddress: {
+            email: payment[:email_address][:email],
+            purpose: payment[:email_address][:purpose]
           }
         }
 

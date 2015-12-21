@@ -70,14 +70,14 @@ module GoTransverseTractApi
         #
         def create_usage_event usage_event
           data = {
-            :usageEvent => {
-              :startTime => usage_event[:start_time],
-              :serviceResourceId => usage_event[:service_resource_id],
-              :usageUom => usage_event[:usage_uom],
-              :usageAmount => usage_event[:usage_amount],
-              :number01 => usage_event[:number01]
+            usageEvent: {
+              startTime: usage_event[:start_time],
+              serviceResourceId: usage_event[:service_resource_id],
+              usageUom: usage_event[:usage_uom],
+              usageAmount: usage_event[:usage_amount],
+              number01: usage_event[:number01]
             },
-            :serviceResourceType => usage_event[:service_resource_type]
+            serviceResourceType: usage_event[:service_resource_type]
           }
 
           xml_data = GoTransverseTractApi.generateXML(data, 'usageEvent')
@@ -89,8 +89,8 @@ module GoTransverseTractApi
         #
         def bulk usage_event
           data = {
-            :bulkUsageEvents => {},
-            :usageEvents => get_usage_events(usage_event)
+            bulkUsageEvents: {},
+            usageEvents: get_usage_events(usage_event)
           }
 
           xml_data = GoTransverseTractApi.generateXML(data, 'bulkUsageEvents')
@@ -103,9 +103,9 @@ module GoTransverseTractApi
         def void_event usage_event
           
           data = {
-            :voidUsageEvent => {},
-            :usageEvent => {
-              :eid => usage_event[:eid]
+            voidUsageEvent: {},
+            usageEvent: {
+              eid: usage_event[:eid]
             }
           }
 
@@ -125,15 +125,15 @@ module GoTransverseTractApi
 
           usage_event.each do|event|
             events << {
-              :usageEvent => {
-                :attributes => {
-                  :startTime => event[:start_time],
-                  :serviceResourceId => event[:service_resource_id],
-                  :usageUom => event[:usage_uom],
-                  :usageAmount => event[:usage_amount],
-                  :description => event[:description]
+              usageEvent: {
+                attributes: {
+                  startTime: event[:start_time],
+                  serviceResourceId: event[:service_resource_id],
+                  usageUom: event[:usage_uom],
+                  usageAmount: event[:usage_amount],
+                  description: event[:description]
                 },
-                :serviceResourceType => event[:service_resource_type]
+                serviceResourceType: event[:service_resource_type]
               }
             }
           end
