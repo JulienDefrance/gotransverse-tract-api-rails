@@ -41,6 +41,15 @@ module GoTransverseTractApi
       # @param {Hash} people
       #
       def self.update eid, people
+        data = {
+          person: {
+            eid: eid,
+            name: people[:name],
+            taxIdNumber: people[:tax_id_number]
+          }
+        }
+
+        xml_data = GoTransverseTractApi.generateXML(data, 'person')
         GoTransverseTractApi.put_request_for(self, {eid: eid}, people)
       end
 
@@ -50,15 +59,15 @@ module GoTransverseTractApi
       #
       def self.add_address eid, address
         data = {
-          :addAddressToParty => {},
-          :person => {:eid => eid},
-          :postalAddress => {
-            :purpose => address[:purpose],
-            :country => address[:country],
-            :city => address[:city],
-            :regionOrState => address[:region_or_state],
-            :postalCode => address[:postal_code],
-            :line1 => address[:line1]
+          addAddressToParty: {},
+          person: {eid: eid},
+          postalAddress: {
+            purpose: address[:purpose],
+            country: address[:country],
+            city: address[:city],
+            regionOrState: address[:region_or_state],
+            postalCode: address[:postal_code],
+            line1: address[:line1]
           }
         }
 
