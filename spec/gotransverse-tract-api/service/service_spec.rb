@@ -189,6 +189,15 @@ module GoTransverseTractApi
         expect(subject.remove_service_usage_rule_from_service(eid, data)).to eq(response)
       end
     end
-    
+
+    context ".update" do
+      it "updates a service" do
+        data = { eid: eid, description: 'testing' }
+
+        allow(subject).to receive(:update).with(eid, data).and_return(response)
+        expect(subject.update(eid, data)).to eq(response)
+      end
+    end
+
   end
 end

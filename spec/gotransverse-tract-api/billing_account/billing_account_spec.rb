@@ -376,5 +376,19 @@ module GoTransverseTractApi
       end
     end
 
+    context ".update" do
+      it "updates a billing account" do
+        data = { 
+          eid: eid, 
+          bill_type: 'one time',
+          automatic_recurring_payment: 'true',
+          billing_account_category: { eid: '3453' }
+        }
+
+        allow(subject).to receive(:update).with(eid, data).and_return(response)
+        expect(subject.update(eid, data)).to eq(response)
+      end
+    end
+    
   end
 end

@@ -46,7 +46,12 @@ module GoTransverseTractApi
         # @param {Hash} gl_transaction_batch
         #
         def update eid, gl_transaction_batch
-          GoTransverseTractApi.put_request_for(self, {eid: eid}, gl_transaction_batch)
+          data = {
+            glTransactionBatch: { eid: eid, exported: gl_transaction_batch[:exported] }
+          }
+
+          xml_data = GoTransverseTractApi.generateXML(data, 'glTransactionBatch')
+          GoTransverseTractApi.put_request_for(self, {eid: eid}, xml_data)
         end
 
       end

@@ -61,7 +61,7 @@ module GoTransverseTractApi
           }
 
           xml_data = GoTransverseTractApi.generateXML(data, 'glAggregateBatch')
-          GoTransverseTractApi.put_request_for(self, {eid: eid}, gl_aggregate_batch)
+          GoTransverseTractApi.put_request_for(self, {eid: eid}, xml_data)
         end
 
       end

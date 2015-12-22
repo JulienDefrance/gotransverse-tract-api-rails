@@ -50,7 +50,7 @@ module GoTransverseTractApi
         }
 
         xml_data = GoTransverseTractApi.generateXML(data, 'person')
-        GoTransverseTractApi.put_request_for(self, {eid: eid}, people)
+        GoTransverseTractApi.put_request_for(self, {eid: eid}, xml_data)
       end
 
       #
