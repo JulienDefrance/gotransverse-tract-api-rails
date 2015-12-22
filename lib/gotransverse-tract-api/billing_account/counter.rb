@@ -66,8 +66,43 @@ module GoTransverseTractApi
         # @param {Long} eid
         # @param {Hash} counter
         #
-        def update eid, counter
-          GoTransverseTractApi.put_request_for(self, {eid: eid}, counter)
+        def update_usage_charge eid, counter
+          xml_data = get_data_struct(counter, 'usageChargeCounter')
+          GoTransverseTractApi.put_request_for(self, {eid: eid}, xml_data)
+        end
+
+        #
+        # @param {Long} eid
+        # @param {Hash} counter
+        #
+        def update_usage_event eid, counter
+          xml_data = get_data_struct(counter, 'usageEventCounter')
+          GoTransverseTractApi.put_request_for(self, {eid: eid}, xml_data)
+        end
+
+        #
+        # @param {Long} eid
+        # @param {Hash} counter
+        #
+        def update_usage_rule eid, counter
+          xml_data = get_data_struct(counter, 'usageRuleCounter')
+          GoTransverseTractApi.put_request_for(self, {eid: eid}, xml_data)
+        end
+
+        private
+
+        def get_data_struct(counter, root_elem)
+          root_elem =~ /usage(.*?)Counter/
+          child_attr = $1.downcase
+
+          data = {
+            "#{root_elem}": {
+              eid: counter[:eid],
+              charge: counter["#{child_attr}".to_sym]
+            }
+          }
+
+          GoTransverseTractApi.generateXML(data, root_elem)
         end
 
       end
