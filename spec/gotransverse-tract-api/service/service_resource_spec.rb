@@ -79,5 +79,14 @@ module GoTransverseTractApi
       end
     end
 
+    context ".update" do
+      it "updates a service resource" do
+        data = { eid: eid, identifier: '2342', description: 'testing' }
+
+        allow(subject).to receive(:update).with(eid, data).and_return(response)
+        expect(subject.update(eid, data)).to eq(response)
+      end
+    end
+
   end
 end

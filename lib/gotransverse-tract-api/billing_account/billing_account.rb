@@ -145,10 +145,10 @@ module GoTransverseTractApi
         #
         def resume eid, billing_account
           data = {
-            :resumeBillingAccount => {},
-            :billingAccount => {eid: eid},
-            :startDate => billing_account[:start_date],
-            :notes => billing_account[:notes]
+            resumeBillingAccount: {},
+            billingAccount: {eid: eid},
+            startDate: billing_account[:start_date],
+            notes: billing_account[:notes]
           }
 
           xml_data = GoTransverseTractApi.generateXML(data, 'resumeBillingAccount')
@@ -161,16 +161,16 @@ module GoTransverseTractApi
         #
         def add_recurring_payment eid, billing_account
           data = {
-            :addRecurringPaymentToBillingAccount => {},
-            :billingAccount => {eid: eid},
-            :recurringPayment => {
-              :attributes => {},
-              :creditCardPaymentMethod => {
-                :cardType => billing_account[:recurring_payment][:credit_card_payment_method][:card_type],
-                :cardHolderFirstName => billing_account[:recurring_payment][:credit_card_payment_method][:card_holder_first_name],
-                :cardHolderLastName => billing_account[:recurring_payment][:credit_card_payment_method][:card_holder_last_name],
-                :cardIdentifierNumber => billing_account[:recurring_payment][:credit_card_payment_method][:card_identifier_number],
-                :cardExpiration => billing_account[:recurring_payment][:credit_card_payment_method][:card_expiration]
+            addRecurringPaymentToBillingAccount: {},
+            billingAccount: {eid: eid},
+            recurringPayment: {
+              attributes: {},
+              creditCardPaymentMethod: {
+                cardType: billing_account[:recurring_payment][:credit_card_payment_method][:card_type],
+                cardHolderFirstName: billing_account[:recurring_payment][:credit_card_payment_method][:card_holder_first_name],
+                cardHolderLastName: billing_account[:recurring_payment][:credit_card_payment_method][:card_holder_last_name],
+                cardIdentifierNumber: billing_account[:recurring_payment][:credit_card_payment_method][:card_identifier_number],
+                cardExpiration: billing_account[:recurring_payment][:credit_card_payment_method][:card_expiration]
               }
             }
           }
@@ -185,25 +185,25 @@ module GoTransverseTractApi
         #
         def change_service eid, billing_account
           data = {
-            :changeService => {},
-            :service => {
+            changeService: {},
+            service: {
               eid: billing_account[:service][:eid]
             },
-            :order => {
-              :attributes => {
-                :note => billing_account[:order][:note]
+            order: {
+              attributes: {
+                note: billing_account[:order][:note]
               },
-              :orderItems => {
-                :attributes => {},
-                :orderItem => {
-                  :attributes => {
-                    :quantity => billing_account[:order][:order_items][:order_item][:quantity],
-                    :description => billing_account[:order][:order_items][:order_item][:description]
+              orderItems: {
+                attributes: {},
+                orderItem: {
+                  attributes: {
+                    quantity: billing_account[:order][:order_items][:order_item][:quantity],
+                    description: billing_account[:order][:order_items][:order_item][:description]
                   },
-                  :products => get_products(billing_account)
+                  products: get_products(billing_account)
                 }
               },
-              :billingAccount => {eid: eid}
+              billingAccount: {eid: eid}
             }  
           }
           xml_data = GoTransverseTractApi.generateXML(data, 'changeService')
@@ -216,10 +216,10 @@ module GoTransverseTractApi
         #
         def add_custom_field_value eid, billing_account
           data = {
-            :addCustomFieldValue => {},
-            :billingAccount => {eid: eid},
-            :customFieldValue => {
-              :value => billing_account[:custom_field_value][:value]
+            addCustomFieldValue: {},
+            billingAccount: {eid: eid},
+            customFieldValue: {
+              value: billing_account[:custom_field_value][:value]
             }
           }
           xml_data = GoTransverseTractApi.generateXML(data, 'addCustomFieldValue')
@@ -232,9 +232,9 @@ module GoTransverseTractApi
         #
         def remove_custom_field_value eid, billing_account
           data = {
-            :removeCustomFieldValue => {},
-            :billingAccount => {eid: eid},
-            :customFieldValue => {
+            removeCustomFieldValue: {},
+            billingAccount: {eid: eid},
+            customFieldValue: {
               eid: billing_account[:custom_field_value][:eid]
             }
           }
@@ -248,15 +248,15 @@ module GoTransverseTractApi
         #
         def add_person eid, billing_account
           data = {
-            :addPersonToBillingAccount => {},
-            :billingAccount => {eid: eid},
-            :person => {
-              :attributes => {
-                :firstName => billing_account[:person][:first_name],
-                :lastName => billing_account[:person][:last_name],
-                :middleName => billing_account[:person][:middle_name]
+            addPersonToBillingAccount: {},
+            billingAccount: {eid: eid},
+            person: {
+              attributes: {
+                firstName: billing_account[:person][:first_name],
+                lastName: billing_account[:person][:last_name],
+                middleName: billing_account[:person][:middle_name]
               },
-              :addresses => GoTransverseTractApi::ApiData.new.get_addresses(billing_account[:person])
+              addresses: GoTransverseTractApi::ApiData.new.get_addresses(billing_account[:person])
             }
           }
 
@@ -270,9 +270,9 @@ module GoTransverseTractApi
         #
         def remove_billing_account eid, billing_account
           data = {
-            :removePersonFromBillingAccount => {},
-            :billingAccount => { eid: eid },
-            :person => { eid: billing_account[:person][:eid] }
+            removePersonFromBillingAccount: {},
+            billingAccount: { eid: eid },
+            person: { eid: billing_account[:person][:eid] }
           }
 
           xml_data = GoTransverseTractApi.generateXML(data, 'removePersonFromBillingAccount')
@@ -285,8 +285,8 @@ module GoTransverseTractApi
         #
         def create_draft_order eid, billing_account
           data = {
-            :createDraftOrder => {},
-            :salesOrder => GoTransverseTractApi::ApiData.new.sales_order_details(billing_account[:sales_order])
+            createDraftOrder: {},
+            salesOrder: GoTransverseTractApi::ApiData.new.sales_order_details(billing_account[:sales_order])
           }
 
           xml_data = GoTransverseTractApi.generateXML(data, 'createDraftOrder')
@@ -299,8 +299,8 @@ module GoTransverseTractApi
         #
         def void_draft_order eid, billing_account
           data = {
-            :voidDraftOrder => {},
-            :salesOrder => GoTransverseTractApi::ApiData.new.sales_order_details(billing_account[:sales_order])
+            voidDraftOrder: {},
+            salesOrder: GoTransverseTractApi::ApiData.new.sales_order_details(billing_account[:sales_order])
           }
 
           xml_data = GoTransverseTractApi.generateXML(data, 'voidDraftOrder')
@@ -321,19 +321,19 @@ module GoTransverseTractApi
         #
         def create_billing_account billing_account
           data = {
-            :billingAccount => {
-              :billType => billing_account[:bill_type]
+            billingAccount: {
+              billType: billing_account[:bill_type]
             },
-            :dailyBillCycle => {
+            dailyBillCycle: {
               eid: billing_account[:daily_bill_cycle][:eid]
             },
-            :organization => {
-              :attributes => {
-                :name => billing_account[:organization][:name]
+            organization: {
+              attributes: {
+                name: billing_account[:organization][:name]
               },
-              :addresses => GoTransverseTractApi::ApiData.new.get_addresses(billing_account[:organization])
+              addresses: GoTransverseTractApi::ApiData.new.get_addresses(billing_account[:organization])
             },
-            :billingAccountCategory => {
+            billingAccountCategory: {
               eid: billing_account[:billing_account_category][:eid]
             }
           }
@@ -346,7 +346,19 @@ module GoTransverseTractApi
         # @param {Hash} billing_account
         #
         def update eid, billing_account
-          GoTransverseTractApi.put_request_for(self, {eid: eid}, billing_account)
+          data = {
+            billingAccount: {
+              eid: eid,
+              billType: billing_account[:bill_type],
+              automaticRecurringPayment: billing_account[:automatic_recurring_payment]
+            },
+            billingAccountCategory: {
+              eid: billing_account[:billing_account_category][:eid]
+            }
+          }
+
+          xml_data = GoTransverseTractApi.generateXML(data, 'billingAccount')
+          GoTransverseTractApi.put_request_for(self, {eid: eid}, xml_data)
         end
 
         private
@@ -357,7 +369,7 @@ module GoTransverseTractApi
 
           (0..qty - 1).each do|i|
             products << {
-              :product => {
+              product: {
                 eid: billing_account[:order][:order_items][:order_item][:products][i][:eid]
               }
             }

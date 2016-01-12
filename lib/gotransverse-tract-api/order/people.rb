@@ -41,7 +41,16 @@ module GoTransverseTractApi
       # @param {Hash} people
       #
       def self.update eid, people
-        GoTransverseTractApi.put_request_for(self, {eid: eid}, people)
+        data = {
+          person: {
+            eid: eid,
+            name: people[:name],
+            taxIdNumber: people[:tax_id_number]
+          }
+        }
+
+        xml_data = GoTransverseTractApi.generateXML(data, 'person')
+        GoTransverseTractApi.put_request_for(self, {eid: eid}, xml_data)
       end
 
       #
