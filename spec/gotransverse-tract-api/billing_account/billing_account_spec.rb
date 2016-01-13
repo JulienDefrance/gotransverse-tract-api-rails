@@ -9,8 +9,8 @@ module GoTransverseTractApi
     let(:eid) { '48406' }
     let(:addresses) { {
       :email_address => {
-        :purpose => 'primary',
-        :email => 'test@test.com'
+        :purpose => 'PRIMARY',
+        :email => 'test@gotransverse.com'
       },
       :postal_address => {
         :purpose => 'BILLING',
@@ -95,6 +95,8 @@ module GoTransverseTractApi
 
     context ".add_recurring_payment" do
       it "adds a recurring payment to the billing account" do
+        eid = '29'
+
         data = {
           :billing_account => {eid: eid},
           :recurring_payment => {
@@ -102,7 +104,7 @@ module GoTransverseTractApi
               :card_type => 'VISA',
               :card_holder_first_name => 'Mary',
               :card_holder_last_name => 'Smith',
-              :card_identifier_number => '4111111111111111111',
+              :card_identifier_number => '4111111111111111',
               :card_expiration => '12/2016'
             }
           }
@@ -180,13 +182,13 @@ module GoTransverseTractApi
       it "creates a billing account" do
         data = {
           :bill_type => 'EMAIL',
-          :daily_bill_cycle => { eid: '123' },
+          :daily_bill_cycle => { eid: '29' },
           :organization => {
-            :name => 'test services',
+            :name => 'LMH Services',
             :addresses => addresses
           },
           :billing_account_category => {
-            eid: '123'
+            eid: '6'
           }
         }
 
