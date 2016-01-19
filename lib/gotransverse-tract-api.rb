@@ -250,7 +250,7 @@ module GoTransverseTractApi
     hsh = Hash.from_xml(xml_response.to_s).recursive_symbolize_keys!
 
     if method == :get
-      hsh = hsh[klass.pluralize.camelize(:lower).to_sym][klass.camelize(:lower).to_sym] rescue Hash.from_xml(xml_response.to_s)[klass.camelize(:lower).to_sym]
+      hsh = hsh[klass.pluralize.camelize(:lower).to_sym] rescue Hash.from_xml(xml_response.to_s)[klass.camelize(:lower).to_sym]
     end
 
     return hsh
