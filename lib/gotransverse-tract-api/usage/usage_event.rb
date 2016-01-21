@@ -70,13 +70,7 @@ module GoTransverseTractApi
         #
         def create_usage_event usage_event
           data = {
-            usageEvent: {
-              startTime: usage_event[:start_time],
-              serviceResourceId: usage_event[:service_resource_id],
-              usageUom: usage_event[:usage_uom],
-              usageAmount: usage_event[:usage_amount],
-              number01: usage_event[:number01]
-            },
+            usageEvent: get_usage_event(usage_event),
             serviceResourceType: usage_event[:service_resource_type]
           }
 
@@ -126,19 +120,39 @@ module GoTransverseTractApi
           usage_event.each do|event|
             events << {
               usageEvent: {
-                attributes: {
-                  startTime: event[:start_time],
-                  serviceResourceId: event[:service_resource_id],
-                  usageUom: event[:usage_uom],
-                  usageAmount: event[:usage_amount],
-                  description: event[:description]
-                },
+                attributes: get_usage_event(event),
                 serviceResourceType: event[:service_resource_type]
               }
             }
           end
 
           events      
+        end
+
+        #
+        # params: Usage Event
+        #
+        # Returns A single usage event for XML
+        #
+        def get_usage_event(event)
+          udfs = {}
+
+          (1..5).each do|i|
+            udfs["text0#{i}".to_sym] = event["text0#{i}".to_sym]
+            udfs["number0#{i}".to_sym] = event["number0#{i}".to_sym]
+            udfs["date0#{i}".to_sym] = event["date0#{i}".to_sym]
+          end
+
+          ({ 
+            description: event[:description],
+            startTime: event[:start_time],
+            endTime: event[:end_time],
+            serviceResourceId: event[:service_resource_id],
+            usageUom: event[:usage_uom],
+            usageAmount: event[:usage_amount],
+            referenceId: event[:reference_id],
+            sequenceId: event[:sequence_id]
+          }.merge udfs).delete_if{|k,v| v.nil?}
         end
 
       end

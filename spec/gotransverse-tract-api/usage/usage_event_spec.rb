@@ -9,7 +9,7 @@ module GoTransverseTractApi
     let(:event) {
       {
         :start_time => '20151125T10:10:10',
-        :service_resource_id => 'Remax',
+        :service_resource_id => 'LAP',
         :usage_uom => 'EVENT',
         :usage_amount => '1200.00',
         :description => 'Testing',
@@ -19,7 +19,7 @@ module GoTransverseTractApi
 
     context ".create_usage_event" do
       it "creates a usage event" do
-        elem = { :number01 => '90' }
+        elem = { number01: '90', text01: 'LAP' }
 
         data = event.delete_if do|k,v|
           k.to_s == 'description'

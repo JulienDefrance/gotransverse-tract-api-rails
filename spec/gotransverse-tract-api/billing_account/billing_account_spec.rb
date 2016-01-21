@@ -9,8 +9,8 @@ module GoTransverseTractApi
     let(:eid) { '48406' }
     let(:addresses) { {
       :email_address => {
-        :purpose => 'primary',
-        :email => 'test@test.com'
+        :purpose => 'PRIMARY',
+        :email => 'test@gotransverse.com'
       },
       :postal_address => {
         :purpose => 'BILLING',
@@ -95,6 +95,8 @@ module GoTransverseTractApi
 
     context ".add_recurring_payment" do
       it "adds a recurring payment to the billing account" do
+        eid = '29'
+
         data = {
           :billing_account => {eid: eid},
           :recurring_payment => {
@@ -102,7 +104,7 @@ module GoTransverseTractApi
               :card_type => 'VISA',
               :card_holder_first_name => 'Mary',
               :card_holder_last_name => 'Smith',
-              :card_identifier_number => '4111111111111111111',
+              :card_identifier_number => '4111111111111111',
               :card_expiration => '12/2016'
             }
           }
@@ -180,13 +182,13 @@ module GoTransverseTractApi
       it "creates a billing account" do
         data = {
           :bill_type => 'EMAIL',
-          :daily_bill_cycle => { eid: '123' },
+          :daily_bill_cycle => { eid: '29' },
           :organization => {
-            :name => 'test services',
+            :name => 'LMH Services',
             :addresses => addresses
           },
           :billing_account_category => {
-            eid: '123'
+            eid: '6'
           }
         }
 
@@ -229,8 +231,8 @@ module GoTransverseTractApi
 
         data = {
           :sales_order => {
-            :referral => 'Order Item',
-            :order_date => '2015-07-09',
+            :referral => 'Unit Test Referral',
+            :order_date => '2015-07-09T17:22:13',
             :order_status => 'DRAFT',
             :order_items => {
               :page_number => '1',
@@ -241,20 +243,20 @@ module GoTransverseTractApi
               :order_item => {
                 :quantity => '1',
                 :products => [{
-                  :name => 'sdfsdfsvs',
+                  :name => 'Simple Subscription',
                   :description => 'dsfsgegebdbb',
                   :short_description => 'asfgerdbdb',
-                  :product_type_code => 'udygciww',
-                  :product_state => 'afwfwss',
-                  :requires_agreement => 'true',
-                  :serialized => 'false',
+                  :product_type_code => 'SUBSCRIPTION',
+                  :product_state => 'PRODUCT_AVAILABLE',
+                  :requires_agreement => 'false',
+                  :serialized => 'true',
                   :taxable => 'false',
-                  :trial => 'asda',
-                  :default_quantity => '10',
+                  :trial => 'false',
+                  :default_quantity => '1',
                   :min_service_resources => '0',
                   :max_service_resources => '0',
                   :trial_override => 'false',
-                  eid: '234',
+                  :eid => '51',
                   :product_prices => {
                     :page_number => '1',
                     :page_size => '50',
@@ -266,7 +268,7 @@ module GoTransverseTractApi
                       :price_override => 'true',
                       :type => 'OneTime',
                       :recurring_payment_required => 'false',
-                      eid: '12345',
+                      :eid => '82',
                       :price_ranges => {
                         :page_number => '1',
                         :page_size => '50',
@@ -277,7 +279,7 @@ module GoTransverseTractApi
                           :quantity_begin_range => '0.00',
                           :price => '100.00',
                           :level => '1',
-                          eid: '781'
+                          :eid => '103'
                         }]
                       }
                     },
@@ -286,7 +288,7 @@ module GoTransverseTractApi
                       :price_override => 'true',
                       :type => 'Recurring',
                       :recurring_payment_required => 'false',
-                      eid: '348',
+                      :eid => '82',
                       :price_ranges => {
                         :page_number => '1',
                         :page_size => '50',
@@ -297,16 +299,16 @@ module GoTransverseTractApi
                           :quantity_begin_range => '0.00',
                           :price => '10.00',
                           :level => '1',
-                          eid: '812'
+                          :eid => '103'
                         }]
                       }
                     }]
                   },
                   :product_category => {
-                    :name => 'sdfsdfs',
-                    :description => 'wrggdgd',
-                    :status => 'Active',
-                    eid: '234'
+                    :name => 'Default',
+                    :description => 'Default Product Category',
+                    :status => 'ACTIVE',
+                    :eid => '8'
                   },
                   :actions => {
                     :page_number => '1',
@@ -326,15 +328,15 @@ module GoTransverseTractApi
               }
             },
             :billing_account => {
-              :account_num => '5635',
+              :account_num => '8',
               :bill_type => 'EMAIL',
               :automatic_recurring_payment => 'false',
-              :status => 'Active',
+              :status => 'ACTIVE',
               :pending_charges_total => '0.00',
               :balance => '-10.00',
               :start_date => '2014-11-11T10:00:00',
               :tax_exempt => 'false',
-              eid: '3663',
+              :eid => '29',
               :daily_bill_cycle => {
                 :name => 'daily 10 to 3',
                 :start_date => '2014-11-11T10:00:00',
@@ -342,26 +344,26 @@ module GoTransverseTractApi
                 :bill_cycle_type => 'Daily',
                 :auto_bill => 'true',
                 :status => 'ACTIVE',
-                eid: '223'
+                :eid => '25'
               },
               :person => {
                 :first_name => 'John',
                 :last_name => 'Smith',
                 :middle_name => 'S',
-                eid: '3305',
+                :eid => '133',
                 :addresses => addresses
               },
               :billing_account_category => {
-                :type => 'All',
-                :description => 'dsdgdg dhretsdfdg eggdg',
-                :status => 'ACTIVE',
-                eid: '45354'
+                :type => 'All Accounts',
+                :description => 'Default billing account category',
+                :status => 'BA_CATEGORY_ACTIVE',
+                :eid => '6'
               },
               :payment_term => {
                 :name => 'Immediate',
                 :term_days => '0',
                 :grace_days => '0',
-                eid: '353'
+                :eid => '8'
               }
             }
           }

@@ -186,7 +186,7 @@ module GoTransverseTractApi
 
   def self.generateXML(data, root_elem)
     tract_api_ver = GoTransverseTractApi::TARGET_API_VERSION
-    data[root_elem.to_sym][:xmlns] = "http://www.tractbilling.com/billing/#{tract_api_ver}/domain"
+    data[root_elem.to_sym][:xmlns] = "http://www.tractbilling.com/billing/" + tract_api_ver.tr('.','_') + "/domain"
 
     builder = Nokogiri::XML::Builder.new do|xml|
       xml.send(root_elem,Hash[data[root_elem.to_sym]]) do
@@ -196,7 +196,8 @@ module GoTransverseTractApi
       end
     end
 
-    builder.doc.root.to_xml
+    xml_str = builder.doc.root.to_xml
+    xml_str.tr!('"', "'")
   end
 
   private
@@ -249,7 +250,7 @@ module GoTransverseTractApi
     hsh = Hash.from_xml(xml_response.to_s).recursive_symbolize_keys!
 
     if method == :get
-      hsh = hsh[klass.pluralize.camelize(:lower).to_sym][klass.camelize(:lower).to_sym] rescue Hash.from_xml(xml_response.to_s)[klass.camelize(:lower).to_sym]
+      hsh = hsh[klass.pluralize.camelize(:lower).to_sym] rescue Hash.from_xml(xml_response.to_s)[klass.camelize(:lower).to_sym]
     end
 
     return hsh
