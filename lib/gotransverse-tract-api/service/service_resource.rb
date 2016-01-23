@@ -9,7 +9,7 @@ module GoTransverseTractApi
         #
         # @param {Long} eid
         #
-        def self.find_by_eid eid
+        def find_by_eid eid
           GoTransverseTractApi.get_response_for(self, {eid: eid})
         end
 
@@ -37,7 +37,7 @@ module GoTransverseTractApi
         #
         # @param {Long} identifier
         #
-        def self.find_by_identifier identifier
+        def find_by_identifier identifier
           GoTransverseTractApi.get_response_for(self, {identifier: identifier})
         end
 
@@ -165,7 +165,7 @@ module GoTransverseTractApi
         # @param {Long} eid
         # @param {Hash} service_resource
         #
-        def self.remove_service_resource eid, service_resource
+        def remove_service_resource eid, service_resource
           data = {
             removeServiceResourceFromService: {},
             service: {eid: eid},
@@ -176,6 +176,32 @@ module GoTransverseTractApi
           GoTransverseTractApi.post_request_for(self, {eid: eid}, xml_data, "removeServiceResource")
         end
 
+        #
+        # @param {Hash} service_resource
+        #
+        def get_service_resource service_resources
+          svc_resource = service_resources[:service_resource]
+          service_resource = {
+            attributes: {}, 
+            serviceResource: {
+              attributes: {
+                eid: svc_resource[:eid],
+                identifier: svc_resource[:identifier],
+                description: svc_resource[:description],
+                autoSelect: svc_resource[:autoSelect],
+                status: svc_resource[:status]
+              }.delete_if{|k,v| v.nil?},
+              category: {
+                eid: svc_resource[:category].try(:[],:eid),
+                name: svc_resource[:category].try(:[],:name),
+                type: svc_resource[:category].try(:[],:type),
+                status: svc_resource[:category].try(:[],:status)
+              }.delete_if{|k,v| v.nil?}
+            }
+          }
+
+          service_resource
+        end
       end
 
     end

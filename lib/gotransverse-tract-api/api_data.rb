@@ -56,13 +56,8 @@ module GoTransverseTractApi
           orderStatus: sales_order[:order_status]
         },
         orderItems: {
-          attributes: get_page_info(sales_order[:order_items]),
-          order_item: {
-            attributes: {
-              quantity: sales_order[:order_items][:order_item][:quantity]
-            },
-            products: get_products(sales_order)
-          }
+          attributes: {},
+          orderItem: Order::OrderItem.get_order_item(sales_order[:order_items][:order_item])
         },
         billingAccount: get_billing_account(sales_order[:billing_account])
       }
@@ -176,6 +171,14 @@ module GoTransverseTractApi
     end
 
     def get_billing_account(billing_account)
+      {
+        attributes: {
+          eid: billing_account[:eid]
+        }
+      }
+    end
+
+    def get_full_billing_account(billing_account)
       ba_details = {
         attributes: {
           accountNum: billing_account[:account_num],
@@ -187,7 +190,7 @@ module GoTransverseTractApi
           startDate: billing_account[:start_date],
           taxExempt: billing_account[:tax_exempt],
           eid: billing_account[:eid]
-        },
+        }.delete_if{|k,v| v.nil?},
         dailyBillCycle: {
           name: billing_account[:daily_bill_cycle][:name],
           startDate: billing_account[:daily_bill_cycle][:start_date],
@@ -197,7 +200,7 @@ module GoTransverseTractApi
           usePaymentTerm: billing_account[:daily_bill_cycle][:use_payment_term],
           status: billing_account[:daily_bill_cycle][:status],
           eid: billing_account[:daily_bill_cycle][:eid]
-        },
+        }.delete_if{|k,v| v.nil?},
         person: {
           attributes: {
             firstName: billing_account[:person][:first_name],
@@ -205,22 +208,22 @@ module GoTransverseTractApi
             eid: billing_account[:person][:eid]
           },
           addresses: get_addresses(billing_account[:person])
-        },
+        }.delete_if{|k,v| v.nil?},
         billingAccountCategory: {
           type: billing_account[:billing_account_category][:type],
           description: billing_account[:billing_account_category][:description],
           status: billing_account[:billing_account_category][:status],
           eid: billing_account[:billing_account_category][:eid]
-        },
+        }.delete_if{|k,v| v.nil?},
         paymentTerm: {
           name: billing_account[:payment_term][:name],
           termDays: billing_account[:payment_term][:term_days],
           graceDays: billing_account[:payment_term][:grace_days],
           eid: billing_account[:payment_term][:eid]
-        }
+        }.delete_if{|k,v| v.nil?}
       }
 
-      ba_details
+      ba_details.delete_if{|k,v| v.nil?}
     end
 
     def get_addresses(entity)

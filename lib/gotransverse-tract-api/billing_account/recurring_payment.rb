@@ -21,7 +21,7 @@ module GoTransverseTractApi
         # @param {Long} account_num
         #
         def find_by_account_num account_num
-          GoTransverseTractApi.get_response_for(self, {account_num: account_num})
+          GoTransverseTractApi.get_response_for(self, {account_num: account_num, query_scope: 'DEEP'})
         end
 
         #

@@ -6,7 +6,7 @@ module GoTransverseTractApi
     before(:each) { http_auth }
 
     let(:response)  { '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' }
-    let(:eid) { '48406' }
+    let(:eid) { '136' }
     let(:addresses) { {
       :email_address => {
         :purpose => 'PRIMARY',
@@ -228,150 +228,61 @@ module GoTransverseTractApi
 
     context ".create_draft_order" do
       it "creates a draft sales order for the billing account" do
-
         data = {
-          :sales_order => {
-            :referral => 'Unit Test Referral',
-            :order_date => '2015-07-09T17:22:13',
-            :order_status => 'DRAFT',
-            :order_items => {
-              :page_number => '1',
-              :page_size => '50',
-              :total_elements => '0',
-              :element_count => '0',
-              :total_pages => '0',
-              :order_item => {
-                :quantity => '1',
-                :products => [{
-                  :name => 'Simple Subscription',
-                  :description => 'dsfsgegebdbb',
-                  :short_description => 'asfgerdbdb',
-                  :product_type_code => 'SUBSCRIPTION',
-                  :product_state => 'PRODUCT_AVAILABLE',
-                  :requires_agreement => 'false',
-                  :serialized => 'true',
-                  :taxable => 'false',
-                  :trial => 'false',
-                  :default_quantity => '1',
-                  :min_service_resources => '0',
-                  :max_service_resources => '0',
-                  :trial_override => 'false',
-                  :eid => '51',
-                  :product_prices => {
-                    :page_number => '1',
-                    :page_size => '50',
-                    :total_elements => '2',
-                    :element_count => '2',
-                    :total_pages => '1',
-                    :productprices => [{
-                      :from_date => '2013-02-10T01:00:00',
-                      :price_override => 'true',
-                      :type => 'OneTime',
-                      :recurring_payment_required => 'false',
-                      :eid => '82',
-                      :price_ranges => {
-                        :page_number => '1',
-                        :page_size => '50',
-                        :total_elements => '1',
-                        :element_count => '1',
-                        :total_pages => '1',
-                        :priceranges => [{
-                          :quantity_begin_range => '0.00',
-                          :price => '100.00',
-                          :level => '1',
-                          :eid => '103'
-                        }]
+          sales_order: {
+            referral: 'Unit Test Referral',
+            order_date: '2015-07-09T17:22:13',
+            order_status: 'DRAFT',
+            order_items: {
+              order_item: {
+                recurring_unit_price: '100.00',
+                quantity:  '1',
+                sequence:  '1',
+                description: 'dsfsgegebdbb',
+                product: { eid: '67' },
+                selected_agreement: { eid: '15' },
+                recurring_product_price: { eid: '102' },
+                order_item_usage_rules: {
+                  match_all_order_item_usage_rule: {
+                    name: 'allowance',
+                    status: 'ACTIVE',
+                    allowance_type: 'One Time',
+                    limit: '500',
+                    usage_uom: 'COUNT',
+                    charge_category: '34',
+                    match_all_product_usage_rule: { eid: '22' },
+                    usage_rate: {
+                      flat_usage_rate: {
+                        rate: '2.00',
+                        uom: 'COUNT'
                       }
-                    },
-                    {
-                      :from_date => '2013-12-10T01:00:00',
-                      :price_override => 'true',
-                      :type => 'Recurring',
-                      :recurring_payment_required => 'false',
-                      :eid => '82',
-                      :price_ranges => {
-                        :page_number => '1',
-                        :page_size => '50',
-                        :total_elements => '1',
-                        :element_count => '1',
-                        :total_pages => '1',
-                        :priceranges => [{
-                          :quantity_begin_range => '0.00',
-                          :price => '10.00',
-                          :level => '1',
-                          :eid => '103'
-                        }]
-                      }
-                    }]
-                  },
-                  :product_category => {
-                    :name => 'Default',
-                    :description => 'Default Product Category',
-                    :status => 'ACTIVE',
-                    :eid => '8'
-                  },
-                  :actions => {
-                    :page_number => '1',
-                    :page_size => '50',
-                    :total_elements => '1',
-                    :element_count => '1',
-                    :total_pages => '1'
-                  },
-                  :product_usage_rules => {
-                    :page_number => '1',
-                    :page_size => '50',
-                    :total_elements => '1',
-                    :element_count => '1',
-                    :total_pages => '1'
+                    }
                   }
-                }]
+                },
+                agreement_configuration: {
+                  end_date: '01012016',
+                  end_action: 'RENEW_AGREEMENT',
+                  preserve_service_price: '1',
+                  next_preserve_service_price: '0'
+                },
+                service_resources: {
+                  service_resource: {
+                    identifier: 'rg36',
+                    category: { eid: '9' }
+                  }
+                },
+                discount_configurations: {
+                  discount_configuration: {
+                    discount_identifier: { eid: '35' }
+                  }
+                }
               }
             },
-            :billing_account => {
-              :account_num => '8',
-              :bill_type => 'EMAIL',
-              :automatic_recurring_payment => 'false',
-              :status => 'ACTIVE',
-              :pending_charges_total => '0.00',
-              :balance => '-10.00',
-              :start_date => '2014-11-11T10:00:00',
-              :tax_exempt => 'false',
-              :eid => '29',
-              :daily_bill_cycle => {
-                :name => 'daily 10 to 3',
-                :start_date => '2014-11-11T10:00:00',
-                :end_date => '2014-11-12T10:00:00',
-                :bill_cycle_type => 'Daily',
-                :auto_bill => 'true',
-                :status => 'ACTIVE',
-                :eid => '25'
-              },
-              :person => {
-                :first_name => 'John',
-                :last_name => 'Smith',
-                :middle_name => 'S',
-                :eid => '133',
-                :addresses => addresses
-              },
-              :billing_account_category => {
-                :type => 'All Accounts',
-                :description => 'Default billing account category',
-                :status => 'BA_CATEGORY_ACTIVE',
-                :eid => '6'
-              },
-              :payment_term => {
-                :name => 'Immediate',
-                :term_days => '0',
-                :grace_days => '0',
-                :eid => '8'
-              }
-            }
+            billing_account: { eid: eid }
           }
         }
-
-        data[:sales_order][:billing_account][:person][:addresses][:email_address][:eid] = '123'
-        data[:sales_order][:billing_account][:person][:addresses][:postal_address][:eid] = '345'
-        data[:sales_order][:billing_account][:person][:addresses][:telecom_address][:eid] = '678'
+    
+        #res = described_class.create_draft_order(eid, data)
 
         allow(subject).to receive(:create_draft_order).with(eid, data).and_return(response)
         expect(subject.create_draft_order(eid, data)).to eq(response)

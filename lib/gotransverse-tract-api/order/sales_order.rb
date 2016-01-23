@@ -102,52 +102,16 @@ module GoTransverseTractApi
         # @param {Long} eid
         # @param {Hash} sales_order
         #
-        def confirm eid, sales_order
-          payment = sales_order[:payment]
-          sales_order = sales_order[:sales_order]
-
-          order_item_struct = prepare_products_struct(sales_order)
-
+        def confirm eid 
           data = {
             confirmOrder: {},
             salesOrder: {
-              attributes: {
-                referral: sales_order[:referral],
-                orderDate: sales_order[:order_date],
-                orderStatus: sales_order[:order_status],
-                eid: eid
-              },
-              orderItems: {
-                attributes: GoTransverseTractApi::ApiData.new.get_page_info(sales_order[:order_items]),
-                orderItem: order_item_struct
-              },
-              billingAccount: {
-                automaticRecurringPayment: sales_order[:billing_account][:automatic_recurring_payment],
-                eid: sales_order[:billing_account][:eid]
-              }
-            },
-            payment: {
-              attributes: {
-                amount: payment[:amount],
-                description: payment[:description]
-              },
-              billingAccount: {
-                automaticRecurringPayment: payment[:billing_account][:automatic_recurring_payment],
-                eid: payment[:billing_account][:eid]
-              },
-              creditCardPayment: {
-                cardType: payment[:credit_card_payment][:card_type],
-                cardHolderFirstName: payment[:credit_card_payment][:card_holder_first_name],
-                cardHolderMiddleName: payment[:credit_card_payment][:card_holder_middle_name],
-                cardHolderLastName: payment[:credit_card_payment][:card_holder_last_name],
-                cardIdentifierNumber: payment[:credit_card_payment][:card_identifier_number],
-                cardExpiration: payment[:credit_card_payment][:card_expiration]
-              }
+              attributes: { eid: eid },
+              orderItems: {},
             }
           }
            
           xml_data = GoTransverseTractApi.generateXML(data, 'confirmOrder')     
-
           GoTransverseTractApi.post_request_for(self, {eid: eid}, xml_data, 'confirm')
         end
 

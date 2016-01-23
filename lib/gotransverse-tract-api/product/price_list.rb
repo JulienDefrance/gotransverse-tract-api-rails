@@ -22,6 +22,15 @@ module GoTransverseTractApi
         GoTransverseTractApi.get_response_for(self, {name: name})
       end
 
+      #
+      # @param {Hash} price_list
+      #
+      def self.get_price_list price_list
+        {
+          name: price_list[:name],
+          eid: price_list[:eid]
+        }
+      end
     end
 
   end
