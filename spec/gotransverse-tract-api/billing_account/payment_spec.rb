@@ -31,16 +31,16 @@ module GoTransverseTractApi
     context ".apply_refund" do
       it "applies a refund to the payment account" do
         data = {
-          :payment => {
+          payment: {
             eid: '123'
           },
-          :refund => {
-            :amount => '47.00',
-            :description => 'Refund Create',
-            :original_payment => {
+          refund: {
+            amount: '47.00',
+            description: 'Refund Create',
+            original_payment: {
               eid: '456'
             },
-            :refund_reason => {
+            refund_reason: {
               eid: '4'
             }
           }
@@ -96,28 +96,29 @@ module GoTransverseTractApi
     context ".create_payment" do
       it "creates a payment" do
         data = {
-          :amount => '20.00',
-          :description => 'Credit Card Payment',
-          :billing_account => {
-            eid: '123'
+          use_recurring_payment: 'true',
+          amount: '20.00',
+          description: 'Credit Card Payment',
+          billing_account: {
+            eid: '146'
           },
-          :credit_card_payment => {
-            :card_type => 'VISA',
-            :card_holder_first_name => 'Mary',
-            :card_holder_last_name => 'Smith',
-            :card_identifier_number => '4111111111111111111',
-            :card_expiration => '12/2016'
+          credit_card_payment: {
+            card_type: 'VISA',
+            card_holder_first_name: 'Mary',
+            card_holder_last_name: 'Smith',
+            card_identifier_number: '4111111111111111111',
+            card_expiration: '12/2016'
           },
-          :phone_number => {
-            :country_code => '1',
-            :area_code => '512',
-            :number => '00000',
-            :extension => '123',
-            :purpose => 'PAYMENT'
+          phone_number: {
+            country_code: '1',
+            area_code: '512',
+            number: '00000',
+            extension: '123',
+            purpose: 'PAYMENT'
           },
-          :email_address => {
-            :email => 'test@test.com',
-            :purpose => 'PAYMENT'
+          email_address: {
+            email: 'test@test.com',
+            purpose: 'PAYMENT'
           }
         }
 

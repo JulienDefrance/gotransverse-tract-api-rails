@@ -150,31 +150,32 @@ module GoTransverseTractApi
       def self.create_payment payment
         data = {
           payment: {
+            useRecurringPayment: payment[:use_recurring_payment],
             amount: payment[:amount],
             description: payment[:description]
           },
           billingAccount: {
-            eid: payment[:billing_account][:eid]
+            eid: payment[:billing_account].try(:[],:eid)
           },
           creditCardPayment: {
-            cardType: payment[:credit_card_payment][:card_type],
-            cardHolderFirstName: payment[:credit_card_payment][:card_holder_first_name],
-            cardHolderLastName: payment[:credit_card_payment][:card_holder_last_name],
-            cardIdentifierNumber: payment[:credit_card_payment][:card_identifier_number],
-            cardExpiration: payment[:credit_card_payment][:card_expiration]
-          },
+            cardType: payment[:credit_card_payment].try(:[],:card_type),
+            cardHolderFirstName: payment[:credit_card_payment].try(:[],:card_holder_first_name),
+            cardHolderLastName: payment[:credit_card_payment].try(:[],:card_holder_last_name),
+            cardIdentifierNumber: payment[:credit_card_payment].try(:[],:card_identifier_number),
+            cardExpiration: payment[:credit_card_payment].try(:[],:card_expiration)
+          }.delete_if{|k,v| v.nil?},
           phoneNumber: {
-            countryCode: payment[:phone_number][:country_code],
-            areaCode: payment[:phone_number][:area_code],
-            number: payment[:phone_number][:number],
-            extension: payment[:phone_number][:extension],
-            purpose: payment[:phone_number][:purpose]
-          },
+            countryCode: payment[:phone_number].try(:[],:country_code),
+            areaCode: payment[:phone_number].try(:[],:area_code),
+            number: payment[:phone_number].try(:[],:number),
+            extension: payment[:phone_number].try(:[],:extension),
+            purpose: payment[:phone_number].try(:[],:purpose)
+          }.delete_if{|k,v| v.nil?},
           emailAddress: {
-            email: payment[:email_address][:email],
-            purpose: payment[:email_address][:purpose]
-          }
-        }
+            email: payment[:email_address].try(:[],:email),
+            purpose: payment[:email_address].try(:[],:purpose)
+          }.delete_if{|k,v| v.nil?}
+        }.delete_if{|k,v| v.empty?}
 
         xml_data = GoTransverseTractApi.generateXML(data, 'payment')
         GoTransverseTractApi.post_request_for(self, {}, xml_data, "")
