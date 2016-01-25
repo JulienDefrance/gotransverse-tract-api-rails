@@ -48,6 +48,16 @@ require "gotransverse-tract-api/order/people"
 require "gotransverse-tract-api/order/product_relation"
 require "gotransverse-tract-api/order/renewal_order"
 require "gotransverse-tract-api/order/sales_order"
+require "gotransverse-tract-api/order/agreement_configuration"
+require "gotransverse-tract-api/order/discount_configuration"
+require "gotransverse-tract-api/order/inventory_item"
+require "gotransverse-tract-api/order/order_item_usage_rule"
+require "gotransverse-tract-api/order/price_range"
+require "gotransverse-tract-api/order/product_usage_rule"
+require "gotransverse-tract-api/order/recurring_product_price"
+require "gotransverse-tract-api/order/scheduled_charge"
+require "gotransverse-tract-api/order/usage_rate"
+require "gotransverse-tract-api/product/service_resource_category"
 
 require "gotransverse-tract-api/product/action"
 require "gotransverse-tract-api/product/discount_category"
@@ -239,7 +249,7 @@ module GoTransverseTractApi
       when :get
         response = http_client.get(api_url, api_params)
       when :post
-        response = http_client.post(api_url, request_body, {'Content-Type' => 'application/xml'})
+        response = http_client.post(api_url, request_body, {'Content-Type' => 'application/xml', 'Accept' => 'application/xml'})
       when :put
         response = http_client.put(api_url, request_body, api_params)
     end

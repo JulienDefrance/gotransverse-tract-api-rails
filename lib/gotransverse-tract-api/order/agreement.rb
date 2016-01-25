@@ -65,6 +65,14 @@ module GoTransverseTractApi
           GoTransverseTractApi.get_response_for(self, {thru_date: thru_date})
         end
 
+        #
+        # @param {Hash} agreement
+        #
+        def get_selected_agreement agreement
+          {
+            eid: agreement[:eid]
+          }
+        end
       end
     end
 

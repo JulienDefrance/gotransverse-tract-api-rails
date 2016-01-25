@@ -14,6 +14,13 @@ module GoTransverseTractApi
       }
     }
 
+    context ".find_by_eid" do
+      it "returns a service resource for a given eid" do
+        data = described_class.find_by_eid(82)
+        expect(data).to_not be_nil
+      end
+    end
+
     context ".create_service_resource" do
       it "creates a service resource" do
         data = {

@@ -25,7 +25,7 @@ module GoTransverseTractApi
       #
       # @param {String} status
       #
-      def find_by_status status
+      def self.find_by_status status
         GoTransverseTractApi.get_response_for(self, {status: status})
       end
 

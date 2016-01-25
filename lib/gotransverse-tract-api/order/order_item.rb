@@ -190,6 +190,49 @@ module GoTransverseTractApi
         GoTransverseTractApi.post_request_for(self, {eid: eid}, xml_data, "deny")
       end
 
+      #
+      # @param {Hash} order_item
+      #
+
+      def self.get_order_item(order_item)
+        if order_item.has_key?(:price_list)
+          price_list = Product::PriceList.get_price_list(order_item[:price_list])
+        end
+
+        if order_item.has_key?(:inventory_item)
+          inventory_item = InventoryItem.get_inventory_item(order_item[:inventory_item])
+        end
+
+        if order_item.has_key?(:scheduled_charges)
+          scheduled_charges = ScheduledCharge.get_scheduled_charges(order_item[:scheduled_charges])
+        end
+
+        orderItem = {
+          attributes: {
+            awaitingApproval: order_item[:awaiting_approval],
+            requestedEffectiveDate: order_item[:requested_effective_date],
+            unitPrice: order_item[:unit_price],
+            recurringUnitPrice: order_item[:recurring_unit_price],
+            quantity: order_item[:quantity],
+            sequence: order_item[:sequence],
+            description: order_item[:description],
+            eid: order_item[:eid]
+          }.delete_if{|k,v| v.nil?},
+          orderItemUsageRules: OrderItemUsageRule.get_order_item_usage_rule(order_item[:order_item_usage_rules]),
+          recurringProductPrice: RecurringProductPrice.get_recurring_product_price(order_item[:recurring_product_price]),
+          product: Product::Product.get_product_info(order_item[:product]),
+          priceList: price_list,
+          selectedAgreement: Agreement.get_selected_agreement(order_item[:selected_agreement]),
+          serviceResources: Service::ServiceResource.get_service_resource(order_item[:service_resources]),
+          inventoryItem: inventory_item, 
+          agreementConfiguration: AgreementConfiguration.get_agreement_conf(order_item[:agreement_configuration]),
+          scheduledCharges: scheduled_charges, 
+          discountConfigurations: DiscountConfiguration.get_discount_configurations(order_item[:discount_configurations])
+        }
+
+        orderItem.delete_if{|k,v| v.nil?}
+      end
+
     end
 
   end

@@ -115,6 +115,52 @@ module GoTransverseTractApi
           GoTransverseTractApi.get_response_for(self, {product_tag_eid: product_tag_eid})
         end
 
+        #
+        # @param {Hash} product
+        #
+        def get_product_info product
+          if product.has_key?(:product_prices)
+            product_prices = Order::RecurringProductPrice.get_recurring_product_price(product[:product_prices])
+          end
+
+          if product.has_key?(:product_category)
+            product_category = ProductCategory.get_product_category(product[:product_category])
+          end
+
+          if product.has_key?(:service_resource_category)
+            svc_resource_category = ServiceResourceCategory.get_service_resource_category(product[:service_resource_category])
+          end
+
+          if product.has_key?(:product_usage_rules)
+            product_usage_rules = Order::ProductUsageRule.get_product_usage_rule(product[:product_usage_rules])
+          end
+
+          product_info = {
+            attributes: {
+              name: product[:name],
+              description: product[:description],
+              shortDescription: product[:short_description],
+              productTypeCode: product[:product_type_code],
+              productState: product[:product_state],
+              requiresAgreement: product[:requires_agreement],
+              serialized: product[:serialized],
+              taxable: product[:taxable],
+              trial: product[:trial],
+              defaultQuantity: product[:default_quantity],
+              internalName: product[:internal_name],
+              minServiceResources: product[:min_service_resources],
+              maxServiceResources: product[:max_service_resources],
+              trialOverride: product[:trial_override],
+              eid: product[:eid]
+            }.delete_if{|k,v| v.nil?},
+            productPrices: product_prices,
+            productCategory: product_category,
+            serviceResourceCategory: svc_resource_category, 
+            productUsageRules: product_usage_rules
+          }
+
+          product_info.delete_if{|k,v| v.nil?}
+        end
       end
       
     end
