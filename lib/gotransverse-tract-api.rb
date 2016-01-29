@@ -188,6 +188,18 @@ module GoTransverseTractApi
   end
 
   #
+  # self.delete_request_for
+  #
+  # @param {Class} klass
+  # @param {Hash} api_params (optional)
+  # @param {Hash} request_body
+  #
+  def self.delete_request_for(klass, api_params={}, request_body)
+    api_url = GoTransverseTractApi.get_api_url_for(klass)
+    self.call(klass, api_url, api_params, :delete, request_body)
+  end
+
+  #
   # Generate XML for request body
   #
   # @param {hash} data
@@ -252,6 +264,8 @@ module GoTransverseTractApi
         response = http_client.post(api_url, request_body, {'Content-Type' => 'application/xml', 'Accept' => 'application/xml'})
       when :put
         response = http_client.put(api_url, request_body, api_params)
+      when :delete
+        response = http_client.delete(api_url, request_body, api_params)
     end
 
     xml_response = Nokogiri::XML(response.body.to_s)

@@ -5,8 +5,15 @@ module GoTransverseTractApi
   RSpec.describe Order::SalesOrder do
     before(:each) { http_auth }
 
-    let(:eid) { '48406'}
-    let(:response) { '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' }
+    let(:eid) { '296'}
+    let(:response) { {a: 'b', c: 'd'} }
+
+    context ".find_by_eid" do
+      it "returns a sales order for the given eid" do
+        data = described_class.find_by_eid(eid)
+        expect(data).to_not be_nil 
+      end
+    end
 
     context ".add_custom_field_value" do
       it "adds custom field value for the sales order" do
@@ -19,10 +26,8 @@ module GoTransverseTractApi
 
     context ".confirm" do
       it "confirms the sales order" do
-        described_class.confirm(eid)
-
-        #allow(subject).to receive(:confirm).with(eid).and_return(response)
-        #expect(subject.confirm(eid)).to eq(response)
+        allow(subject).to receive(:confirm).with(eid).and_return(response)
+        expect(subject.confirm(eid)).to eq(response)
       end
     end
 
@@ -99,6 +104,13 @@ module GoTransverseTractApi
 
         allow(subject).to receive(:create_sales_order).with(data).and_return(response)
         expect(subject.create_sales_order(data)).to eq(response)
+      end
+    end
+
+    context ".delete_draft_order" do
+      it "deletes an existing draft sales order for a given id" do
+        allow(subject).to receive(:delete_draft_order).with(eid).and_return(response)
+        expect(subject.delete_draft_order(eid)).to eq(response)
       end
     end
 

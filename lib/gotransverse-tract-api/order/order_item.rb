@@ -207,6 +207,10 @@ module GoTransverseTractApi
           scheduled_charges = ScheduledCharge.get_scheduled_charges(order_item[:scheduled_charges])
         end
 
+        if order_item.has_key?(:discount_configurations)
+          discount_configurations = DiscountConfiguration.get_discount_configurations(order_item[:discount_configurations])
+        end
+
         orderItem = {
           attributes: {
             awaitingApproval: order_item[:awaiting_approval],
@@ -227,7 +231,7 @@ module GoTransverseTractApi
           inventoryItem: inventory_item, 
           agreementConfiguration: AgreementConfiguration.get_agreement_conf(order_item[:agreement_configuration]),
           scheduledCharges: scheduled_charges, 
-          discountConfigurations: DiscountConfiguration.get_discount_configurations(order_item[:discount_configurations])
+          discountConfigurations: discount_configurations
         }
 
         orderItem.delete_if{|k,v| v.nil?}

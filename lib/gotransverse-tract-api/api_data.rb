@@ -232,8 +232,7 @@ module GoTransverseTractApi
         emailAddress: {
           purpose: entity[:addresses][:email_address][:purpose],
           email: entity[:addresses][:email_address][:email],
-          eid: entity[:addresses][:email_address][:eid] || ''
-        },
+        }.delete_if{|k,v| v.nil?},
         postalAddress: {
           purpose: entity[:addresses][:postal_address][:purpose],
           country: entity[:addresses][:postal_address][:country],
@@ -242,20 +241,26 @@ module GoTransverseTractApi
           attention: entity[:addresses][:postal_address][:attention],
           postalCode: entity[:addresses][:postal_address][:postal_code],
           line1: entity[:addresses][:postal_address][:line1],
-          eid: entity[:addresses][:postal_address][:eid] || ''
-        },
-        telecomAddress: {
-          dialingPrefix: entity[:addresses][:telecom_address][:dialing_prefix],
-          countryCode: entity[:addresses][:telecom_address][:country_code],
-          areaCode: entity[:addresses][:telecom_address][:area_code],
-          number: entity[:addresses][:telecom_address][:number],
-          extension: entity[:addresses][:telecom_address][:extension],
-          purpose: entity[:addresses][:telecom_address][:purpose],
-          eid: entity[:addresses][:telecom_address][:eid] || ''
-        }
+        }.delete_if{|k,v| v.nil?}
       }
 
-      addresses.each{|k,v| v.delete_if{|tags,data| data == ''}}
+      if entity[:addresses].has_key?(:telecom_address)
+        tele_address = {
+          telecomAddress: {
+            dialingPrefix: entity[:addresses].try(:[],:telecom_address).try(:[],:dialing_prefix),
+            countryCode: entity[:addresses].try(:[],:telecom_address).try(:[],:country_code),
+            areaCode: entity[:addresses].try(:[],:telecom_address).try(:[],:area_code),
+            number: entity[:addresses].try(:[],:telecom_address).try(:[],:number),
+            extension: entity[:addresses].try(:[],:telecom_address).try(:[],:extension),
+            purpose: entity[:addresses].try(:[],:telecom_address).try(:[],:purpose),
+            eid: entity[:addresses].try(:[],:telecom_address).try(:[],:eid) 
+          }.delete_if{|k,v| v.nil?}
+        }
+
+        addresses.merge! tele_address
+      end
+
+      addresses
     end
 
   end
