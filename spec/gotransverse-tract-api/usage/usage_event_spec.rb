@@ -5,27 +5,33 @@ module GoTransverseTractApi
   RSpec.describe Usage::UsageEvent do
     before(:each) { http_auth }
 
-    let(:response) { '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' }
+    let(:response) { {a: 'b', c: 'd'} }
     let(:event) {
       {
-        :start_time => '20151125T10:10:10',
-        :service_resource_id => 'LAP',
-        :usage_uom => 'EVENT',
+        :start_time => '2015-11-25T10:10:10',
+        :service_resource_id => 'quote6',
+        :usage_uom => 'COUNT',
         :usage_amount => '1200.00',
         :description => 'Testing',
-        :service_resource_type => 'GENERICSVC'
+        :service_resource_type => 'GENERICSRVCRESOURCE'
       }
     }
 
+    context ".simulate" do
+      it "simulates a usage event" do
+        elem = { number01: '100', text01: 'PC_FC' }
+
+        data = event.merge!(elem)
+
+        allow(subject).to receive(:simulate).with(data).and_return(response)
+        expect(subject.simulate(data)).to eq(response)
+      end
+    end
+
     context ".create_usage_event" do
       it "creates a usage event" do
-        elem = { number01: '90', text01: 'LAP' }
-
-        data = event.delete_if do|k,v|
-          k.to_s == 'description'
-        end
-
-        #described_class.create_usage_event(data.merge!(elem))
+        elem = { number01: '90', text01: 'PC_FC' }
+        data = event.merge!(elem)
 
         allow(subject).to receive(:create_usage_event).with(data).and_return(response)
         expect(subject.create_usage_event(data)).to eq(response)

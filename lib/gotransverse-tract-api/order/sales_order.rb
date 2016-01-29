@@ -128,7 +128,7 @@ module GoTransverseTractApi
             }
 
           xml_data = GoTransverseTractApi.generateXML(data,'addCustomFieldValue')
-          GoTransverseTractApi.post_request_for(self, {eid: eid}, sales_order, "addCustomFieldValue")
+          GoTransverseTractApi.post_request_for(self, {eid: eid}, xml_data, "addCustomFieldValue")
         end
 
         #
@@ -143,7 +143,7 @@ module GoTransverseTractApi
           }
  
           xml_data = GoTransverseTractApi.generateXML(data,'removeCustomFieldValue')
-          GoTransverseTractApi.post_request_for(self, {eid: eid}, sales_order, "removeCustomFieldValue")
+          GoTransverseTractApi.post_request_for(self, {eid: eid}, xml_data, "removeCustomFieldValue")
         end
 
         #
@@ -207,7 +207,21 @@ module GoTransverseTractApi
           GoTransverseTractApi.post_request_for(self, xml_data, "")
         end
 
+        #
+        # @param {Long} eid
+        #
+        def delete_draft_order order_eid
+          data = {
+            voidDraftOrder: {},
+            salesOrder: { 
+              attributes: { eid: order_eid },
+              orderItems: {}
+            }
+          }
 
+          xml_data = GoTransverseTractApi.generateXML(data, 'voidDraftOrder')     
+          GoTransverseTractApi.delete_request_for(self, {eid: order_eid}, xml_data)
+        end
 
         private
 

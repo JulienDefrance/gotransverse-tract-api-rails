@@ -10,8 +10,8 @@ module GoTransverseTractApi
 
     context ".find_by_eid" do
       it "returns a payment for the given eid" do
-        #data = described_class.find_by_eid(1)
-        #expect(data['eid']).to eq('1')
+        data = described_class.find_by_eid(1)
+        expect(data.count).to be >= 0
       end
     end
 
@@ -97,28 +97,10 @@ module GoTransverseTractApi
       it "creates a payment" do
         data = {
           use_recurring_payment: 'true',
-          amount: '20.00',
+          amount: '100.00',
           description: 'Credit Card Payment',
           billing_account: {
-            eid: '146'
-          },
-          credit_card_payment: {
-            card_type: 'VISA',
-            card_holder_first_name: 'Mary',
-            card_holder_last_name: 'Smith',
-            card_identifier_number: '4111111111111111111',
-            card_expiration: '12/2016'
-          },
-          phone_number: {
-            country_code: '1',
-            area_code: '512',
-            number: '00000',
-            extension: '123',
-            purpose: 'PAYMENT'
-          },
-          email_address: {
-            email: 'test@test.com',
-            purpose: 'PAYMENT'
+            eid: '165'
           }
         }
 

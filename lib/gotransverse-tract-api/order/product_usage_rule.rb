@@ -5,9 +5,18 @@ module GoTransverseTractApi
     class ProductUsageRule
 
       class << self
+
+        #
+        # @param {Long} product_price_eid
+        # @param {String} query_scope
+        #
+        def find_by_product_price_eid product_price_eid, query_scope=nil
+          GoTransverseTractApi.get_response_for(self, {productPriceEid: product_price_eid, queryScope: query_scope})
+        end
+
         def get_product_usage_rules(product_usage_rules)
           product_usage_rule = {
-            attributes: api_data.get_page_info(product_usage_rule),
+            attributes: {},
             matchAllProductUsageRule: {
               attributes: {
                 eid: product_usage_rule[:eid],
@@ -24,7 +33,7 @@ module GoTransverseTractApi
                 ruleType: product_usage_rule[:rule_type],
                 status: product_usage_rule[:status],
                 chargeCategory: product_usage_rule[:charge_category]
-              },
+              }.delete_if{|k,v| v.nil?},
               usageRate: UsageRate.get_usage_rate(product_usage_rule[:usage_rate])
             }
           }

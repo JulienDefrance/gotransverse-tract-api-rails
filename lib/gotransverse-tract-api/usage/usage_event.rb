@@ -68,10 +68,28 @@ module GoTransverseTractApi
         #
         # @param {Hash} usage_event
         #
+        def simulate usage_event
+          data = {
+            simulateUsageEvent: {},
+            usageEvent: {
+              attributes: get_usage_event(usage_event),
+              serviceResourceType: usage_event[:service_resource_type]
+            }
+          }
+
+          xml_data = GoTransverseTractApi.generateXML(data, 'simulateUsageEvent')
+          GoTransverseTractApi.post_request_for(self, xml_data, "simulate")
+        end
+
+        #
+        # @param {Hash} usage_event
+        #
         def create_usage_event usage_event
           data = {
-            usageEvent: get_usage_event(usage_event),
-            serviceResourceType: usage_event[:service_resource_type]
+            usageEvent: {
+              attributes: get_usage_event(usage_event),
+              serviceResourceType: usage_event[:service_resource_type]
+            }
           }
 
           xml_data = GoTransverseTractApi.generateXML(data, 'usageEvent')

@@ -5,8 +5,8 @@ module GoTransverseTractApi
   RSpec.describe BillingAccount::BillingAccount do
     before(:each) { http_auth }
 
-    let(:response)  { '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' }
-    let(:eid) { '136' }
+    let(:response)  { {a: 'b', c: 'd'} }
+    let(:eid) { '165' }
     let(:addresses) { {
       :email_address => {
         :purpose => 'PRIMARY',
@@ -31,6 +31,12 @@ module GoTransverseTractApi
       }
     } }
 
+    context ".find_by_eid" do
+      it "returns a billing account details for a given eid" do
+        data = described_class.find_by_eid('165')
+        expect(data).to_not be_nil
+      end
+    end
 
     context ".apply_payment" do
       it "applies a payment to the invoice" do
@@ -95,16 +101,16 @@ module GoTransverseTractApi
 
     context ".add_recurring_payment" do
       it "adds a recurring payment to the billing account" do
-        eid = '29'
+        eid = '165'
 
         data = {
           :billing_account => {eid: eid},
           :recurring_payment => {
             :credit_card_payment_method => {
-              :card_type => 'VISA',
+              :card_type => 'MASTERCARD',
               :card_holder_first_name => 'Mary',
               :card_holder_last_name => 'Smith',
-              :card_identifier_number => '4111111111111111',
+              :card_identifier_number => '5454545454545454',
               :card_expiration => '12/2016'
             }
           }
@@ -181,14 +187,18 @@ module GoTransverseTractApi
     context ".create_billing_account" do
       it "creates a billing account" do
         data = {
-          :bill_type => 'EMAIL',
-          :daily_bill_cycle => { eid: '29' },
-          :organization => {
-            :name => 'LMH Services',
-            :addresses => addresses
+          bill_type:  'NONE',
+          daily_bill_cycle: { eid: '38' },
+          organization: {
+            name: 'LMH Services',
+            addresses: addresses.delete_if{|k,v| k == :telecom_address}
           },
-          :billing_account_category => {
+          billing_account_category: {
             eid: '6'
+          },
+          payment_term: {
+            name: 'Immediate',
+            eid: '8'
           }
         }
 
@@ -227,11 +237,11 @@ module GoTransverseTractApi
     end
 
     context ".create_draft_order" do
-      it "creates a draft sales order for the billing account" do
-        data = {
+      let(:data) {
+        {
           sales_order: {
             referral: 'Unit Test Referral',
-            order_date: '2015-07-09T17:22:13',
+            order_date: '2016-01-28T17:22:13',
             order_status: 'DRAFT',
             order_items: {
               order_item: {
@@ -239,18 +249,18 @@ module GoTransverseTractApi
                 quantity:  '1',
                 sequence:  '1',
                 description: 'dsfsgegebdbb',
-                product: { eid: '67' },
+                product: { eid: '79' },
                 selected_agreement: { eid: '15' },
-                recurring_product_price: { eid: '102' },
+                recurring_product_price: { eid: '174' },
                 order_item_usage_rules: {
                   match_all_order_item_usage_rule: {
                     name: 'allowance',
                     status: 'ACTIVE',
                     allowance_type: 'One Time',
-                    limit: '500',
+                    limit: '100',
                     usage_uom: 'COUNT',
-                    charge_category: '34',
-                    match_all_product_usage_rule: { eid: '22' },
+                    charge_category: '39',
+                    match_all_product_usage_rule: { eid: '74' },
                     usage_rate: {
                       flat_usage_rate: {
                         rate: '2.00',
@@ -267,13 +277,8 @@ module GoTransverseTractApi
                 },
                 service_resources: {
                   service_resource: {
-                    identifier: 'rg36',
+                    identifier: 'PCFC2000098765',
                     category: { eid: '9' }
-                  }
-                },
-                discount_configurations: {
-                  discount_configuration: {
-                    discount_identifier: { eid: '35' }
                   }
                 }
               }
@@ -281,9 +286,22 @@ module GoTransverseTractApi
             billing_account: { eid: eid }
           }
         }
-    
-        #res = described_class.create_draft_order(eid, data)
+      }
+      it "creates a draft sales order without a promo code for the billing account" do
+        allow(subject).to receive(:create_draft_order).with(eid, data).and_return(response)
+        expect(subject.create_draft_order(eid, data)).to eq(response)
+      end
 
+      it "creates a draft sales order with promo code for the billing account" do
+        promo_code = {
+          discount_configurations: {
+            discount_configuration: {
+              discount_identifier: { eid: '35' }
+            }
+          }
+        }
+
+        data[:sales_order][:order_items][:order_item].merge! promo_code
         allow(subject).to receive(:create_draft_order).with(eid, data).and_return(response)
         expect(subject.create_draft_order(eid, data)).to eq(response)
       end

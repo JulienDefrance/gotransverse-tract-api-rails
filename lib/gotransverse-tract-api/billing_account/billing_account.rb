@@ -335,6 +335,10 @@ module GoTransverseTractApi
             },
             billingAccountCategory: {
               eid: billing_account[:billing_account_category][:eid]
+            },
+            paymentTerm: {
+              name: billing_account[:payment_term][:name],
+              eid: billing_account[:payment_term][:eid]
             }
           }
           xml_data = GoTransverseTractApi.generateXML(data, 'billingAccount')
