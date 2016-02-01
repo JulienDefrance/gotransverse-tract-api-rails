@@ -5,8 +5,8 @@ module GoTransverseTractApi
   RSpec.describe BillingAccount::Invoice do
     before(:each) { http_auth }
 
-    let(:response)  { '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' }
     let(:eid) { '48406' }
+    let(:response)  { {a: 'b', c: 'd'} }
 
     context ".apply_payment" do
       it "applies a payment to the invoice" do

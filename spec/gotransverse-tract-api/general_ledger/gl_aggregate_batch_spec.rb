@@ -6,7 +6,7 @@ module GoTransverseTractApi
     before(:each) { http_auth }
 
     let(:eid) { '4096' }
-    let(:response) { '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' }
+    let(:response)  { {a: 'b', c: 'd'} }
 
     context ".update" do
       it "updates an aggregate batch" do

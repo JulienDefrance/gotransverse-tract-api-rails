@@ -6,51 +6,58 @@ module GoTransverseTractApi
 
       #
       # @param {Long} eid
+      # @param {String} query_scope (default: 'SHALLOW')
       #
-      def self.find_by_eid eid
-        GoTransverseTractApi.get_response_for(self, {eid: eid})
+      def self.find_by_eid eid, query_scope=nil
+        GoTransverseTractApi.get_response_for(self, {eid: eid, queryScope: query_scope})
       end
 
       #
       # @param {String} account_num
+      # @param {String} query_scope (default: 'SHALLOW')
       #
-      def self.find_by_account_num account_num
-        GoTransverseTractApi.get_response_for(self, {account_num: account_num})
+      def self.find_by_account_num account_num, query_scope=nil
+        GoTransverseTractApi.get_response_for(self, {account_num: account_num, queryScope: query_scope})
       end
 
       #
       # @param {Long} billing_account_eid
+      # @param {String} query_scope (default: 'SHALLOW')
       #
-      def self.find_by_billing_account_eid billing_account_eid
-        GoTransverseTractApi.get_response_for(self, {billing_account_eid: billing_account_eid})
+      def self.find_by_billing_account_eid billing_account_eid, query_scope=nil
+        GoTransverseTractApi.get_response_for(self, {billing_account_eid: billing_account_eid, queryScope: query_scope})
       end
 
       #
       # @param {DateTime} occured_on
+      # @param {String} query_scope (default: 'SHALLOW')
       #
-      def self.find_by_occured_on occured_on
-        GoTransverseTractApi.get_response_for(self, {occured_on: occured_on})
+      def self.find_by_occured_on occured_on, query_scope=nil
+        GoTransverseTractApi.get_response_for(self, {occured_on: occured_on, queryScope: query_scope})
       end
 
       #
       # @param {String} reference
+      # @param {String} query_scope (default: 'SHALLOW')
       #
-      def self.find_by_reference reference
-        GoTransverseTractApi.get_response_for(self, {reference: reference})
+      def self.find_by_reference reference, query_scope=nil
+        GoTransverseTractApi.get_response_for(self, {reference: reference, queryScope: query_scope})
       end
 
       #
       # @param {String} status
+      # @param {String} query_scope (default: 'SHALLOW')
       #
-      def self.find_by_status status
-        GoTransverseTractApi.get_response_for(self, {status: status})
+      def self.find_by_status status, query_scope=nil
+        GoTransverseTractApi.get_response_for(self, {status: status, queryScope: query_scope})
       end
 
       #
       # @param {String} authorization
+      # @param {String} query_scope (default: 'SHALLOW')
       #
-      def self.find_by_authorization authorization
-        GoTransverseTractApi.get_response_for(self, {authorization: authorization})
+      def self.find_by_authorization authorization, query_scope=nil
+        GoTransverseTractApi.get_response_for(self, {authorization: authorization, queryScope: query_scope})
       end
 
       #

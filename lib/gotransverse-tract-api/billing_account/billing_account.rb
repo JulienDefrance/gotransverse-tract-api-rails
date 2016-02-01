@@ -11,114 +11,130 @@ module GoTransverseTractApi
 
         #
         # @param {Long} eid
+        # @param {String} query_scope (default: 'SHALLOW')
         #
-        def find_by_eid eid
-          GoTransverseTractApi.get_response_for(self, {eid: eid})
+        def find_by_eid eid, query_scope=nil
+          GoTransverseTractApi.get_response_for(self, {eid: eid, queryScope: query_scope})
         end
 
         #
         # @param {Long} account_num
+        # @param {String} query_scope (default: 'SHALLOW')
         #
-        def find_by_account_num account_num
-          GoTransverseTractApi.get_response_for(self, {account_num: account_num})
+        def find_by_account_num account_num, query_scope=nil
+          GoTransverseTractApi.get_response_for(self, {account_num: account_num, queryScope: query_scope})
         end
 
         #
         # @param {Long} external_account_num
+        # @param {String} query_scope (default: 'SHALLOW')
         #
-        def find_by_external_account_num external_account_num
-          GoTransverseTractApi.get_response_for(self, {external_account_num: external_account_num})
+        def find_by_external_account_num external_account_num, query_scope=nil
+          GoTransverseTractApi.get_response_for(self, {external_account_num: external_account_num, queryScope: query_scope})
         end
 
         #
         # @param {Long} party_eid
+        # @param {String} query_scope (default: 'SHALLOW')
         #
-        def find_by_party_eid party_eid
-          GoTransverseTractApi.get_response_for(self, {party_eid: party_eid})
+        def find_by_party_eid party_eid, query_scope=nil
+          GoTransverseTractApi.get_response_for(self, {party_eid: party_eid, queryScope: query_scope})
         end
 
         #
         # @param {String} status
+        # @param {String} query_scope (default: 'SHALLOW')
         #
-        def find_by_status status
-          GoTransverseTractApi.get_response_for(self, {status: status})
+        def find_by_status status, query_scope=nil
+          GoTransverseTractApi.get_response_for(self, {status: status, queryScope: query_scope})
         end
 
         #
         # @param {String} email_address
+        # @param {String} query_scope (default: 'SHALLOW')
         #
-        def find_by_email_address email_address
-          GoTransverseTractApi.get_response_for(self, {email_address: email_address})
+        def find_by_email_address email_address, query_scope=nil
+          GoTransverseTractApi.get_response_for(self, {email_address: email_address, queryScope: query_scope})
         end
 
         #
         # @param {Long} billing_account_category_eid
+        # @param {String} query_scope (default: 'SHALLOW')
         #
-        def find_by_billing_account_category_eid billing_account_category_eid
-          GoTransverseTractApi.get_response_for(self, {billing_account_category_eid: billing_account_category_eid})
+        def find_by_billing_account_category_eid billing_account_category_eid, query_scope=nil
+          GoTransverseTractApi.get_response_for(self, {billing_account_category_eid: billing_account_category_eid, queryScope: query_scope})
         end
 
         #
         # @param {Long} purchase_order_number
+        # @param {String} query_scope (default: 'SHALLOW')
         #
-        def find_by_purchase_order_number purchase_order_number
-          GoTransverseTractApi.get_response_for(self, {purchase_order_number: purchase_order_number})
+        def find_by_purchase_order_number purchase_order_number, query_scope=nil
+          GoTransverseTractApi.get_response_for(self, {purchase_order_number: purchase_order_number, queryScope: query_scope})
         end
 
         #
         # @param {Long} order_num
+        # @param {String} query_scope (default: 'SHALLOW')
         #
-        def find_by_order_num order_num
-          GoTransverseTractApi.get_response_for(self, {order_num: order_num})
+        def find_by_order_num order_num, query_scope=nil
+          GoTransverseTractApi.get_response_for(self, {order_num: order_num, queryScope: query_scope})
         end
 
         #
         # @param {Long} custom_field_value_eid
+        # @param {String} query_scope (default: 'SHALLOW')
         #
-        def find_by_custom_field_value_eid custom_field_value_eid
-          GoTransverseTractApi.get_response_for(self, {custom_field_value_eid: custom_field_value_eid})
+        def find_by_custom_field_value_eid custom_field_value_eid, query_scope=nil
+          GoTransverseTractApi.get_response_for(self, {custom_field_value_eid: custom_field_value_eid, queryScope: query_scope})
         end
 
         #
         # @param {String} bill_type
+        # @param {String} query_scope (default: 'SHALLOW')
         #
-        def find_by_bill_type bill_type
-          GoTransverseTractApi.get_response_for(self, {bill_type: bill_type})
+        def find_by_bill_type bill_type, query_scope=nil
+          GoTransverseTractApi.get_response_for(self, {bill_type: bill_type, queryScope: query_scope})
         end
 
         #
         # @param {String} referral
+        # @param {String} query_scope (default: 'SHALLOW')
         #
-        def find_by_referral referral
-          GoTransverseTractApi.get_response_for(self, {referral: referral})
+        def find_by_referral referral, query_scope=nil
+          GoTransverseTractApi.get_response_for(self, {referral: referral, queryScope: query_scope})
         end
 
         #
         # @param {Long} billing_account_segment_eid
+        # @param {String} query_scope (default: 'SHALLOW')
         #
-        def find_by_billing_account_segment_eid billing_account_segment_eid
-          GoTransverseTractApi.get_response_for(self, {billing_account_segment_eid: billing_account_segment_eid})
+        def find_by_billing_account_segment_eid billing_account_segment_eid, query_scope=nil
+          GoTransverseTractApi.get_response_for(self, {billing_account_segment_eid: billing_account_segment_eid, queryScope: query_scope})
         end
 
         #
         # @param {String} currency_type
+        # @param {String} query_scope (default: 'SHALLOW')
         #
-        def find_by_currency_type currency_type
-          GoTransverseTractApi.get_response_for(self, {currency_type: currency_type})
+        def find_by_currency_type currency_type, query_scope=nil
+          GoTransverseTractApi.get_response_for(self, {currency_type: currency_type, queryScope: query_scope})
         end
 
         #
         # @param {Long} product_eid
+        # @param {String} query_scope (default: 'SHALLOW')
         #
-        def find_by_product_eid product_eid
-          GoTransverseTractApi.get_response_for(self, {product_eid: product_eid})
+        def find_by_product_eid product_eid, query_scope=nil
+          GoTransverseTractApi.get_response_for(self, {product_eid: product_eid, queryScope: query_scope})
         end
 
         #
         # @param {Long} service_eid
+        # @param {String} query_scope (default: 'SHALLOW')
         #
-        def find_by_service_eid service_eid
-          GoTransverseTractApi.get_response_for(self, {service_eid: service_eid})
+        def find_by_service_eid service_eid, query_scope=nil
+          GoTransverseTractApi.get_response_for(self, {service_eid: service_eid, queryScope: query_scope})
         end
 
         #
