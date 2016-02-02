@@ -36,86 +36,98 @@ module GoTransverseTractApi
 
         #
         # @param {String} external_product_number
+        # @param {String} query_scope (default: 'SHALLOW')
         #
-        def find_by_external_product_number external_product_number
-          GoTransverseTractApi.get_response_for(self, {external_product_number: external_product_number})
+        def find_by_external_product_number external_product_number, query_scope=nil
+          GoTransverseTractApi.get_response_for(self, {external_product_number: external_product_number, queryScope: query_scope})
         end
 
         #
         # @param {String} sku
+        # @param {String} query_scope (default: 'SHALLOW')
         #
-        def find_by_sku sku
-          GoTransverseTractApi.get_response_for(self, {sku: sku})
+        def find_by_sku sku, query_scope=nil
+          GoTransverseTractApi.get_response_for(self, {sku: sku, queryScope: query_scope})
         end
 
         #
         # @param {String} product_type_code
+        # @param {String} query_scope (default: 'SHALLOW')
         #
-        def find_by_product_type_code product_type_code
-          GoTransverseTractApi.get_response_for(self, {product_type_code: product_type_code})
+        def find_by_product_type_code product_type_code, query_scope=nil
+          GoTransverseTractApi.get_response_for(self, {product_type_code: product_type_code, queryScope: query_scope})
         end
 
         #
         # @param {String} product_state
+        # @param {String} query_scope (default: 'SHALLOW')
         #
-        def find_by_product_state product_state
-          GoTransverseTractApi.get_response_for(self, {product_state: product_state})
+        def find_by_product_state product_state, query_scope=nil
+          GoTransverseTractApi.get_response_for(self, {product_state: product_state, queryScope: query_scope})
         end
 
         #
         # @param {Long} service_resource_category_eid
+        # @param {String} query_scope (default: 'SHALLOW')
         #
-        def find_by_service_resource_category_eid service_resource_category_eid
-          GoTransverseTractApi.get_response_for(self, {service_resource_category_eid: service_resource_category_eid})
+        def find_by_service_resource_category_eid service_resource_category_eid, query_scope=nil
+          GoTransverseTractApi.get_response_for(self, {service_resource_category_eid: service_resource_category_eid, queryScope: query_scope})
         end
 
         #
         # @param {String} service_resource_category_name
+        # @param {String} query_scope (default: 'SHALLOW')
         #
-        def find_by_service_resource_category_name service_resource_category_name
-          GoTransverseTractApi.get_response_for(self, {service_resource_category_name: service_resource_category_name})
+        def find_by_service_resource_category_name service_resource_category_name, query_scope=nil
+          GoTransverseTractApi.get_response_for(self, {service_resource_category_name: service_resource_category_name, queryScope: query_scope})
         end
 
         #
         # @param {Long} product_category_eid
+        # @param {String} query_scope (default: 'SHALLOW')
         #
-        def find_by_product_category_eid product_category_eid
-          GoTransverseTractApi.get_response_for(self, {product_category_eid: product_category_eid})
+        def find_by_product_category_eid product_category_eid, query_scope=nil
+          GoTransverseTractApi.get_response_for(self, {product_category_eid: product_category_eid, queryScope: query_scope})
         end
 
         #
         # @param {String} product_category_name
+        # @param {String} query_scope (default: 'SHALLOW')
         #
-        def find_by_product_category_name product_category_name
-          GoTransverseTractApi.get_response_for(self, {product_category_name: product_category_name})
+        def find_by_product_category_name product_category_name, query_scope=nil
+          GoTransverseTractApi.get_response_for(self, {product_category_name: product_category_name, queryScope: query_scope})
         end
 
         #
         # @param {Long} price_list_eid
+        # @param {String} query_scope (default: 'SHALLOW')
         #
-        def find_by_price_list_eid price_list_eid
-          GoTransverseTractApi.get_response_for(self, {price_list_eid: price_list_eid})
+        def find_by_price_list_eid price_list_eid, query_scope=nil
+          GoTransverseTractApi.get_response_for(self, {price_list_eid: price_list_eid, queryScope: query_scope})
         end
 
         #
         # @param {Boolean} price_list_is_master
+        # @param {String} query_scope (default: 'SHALLOW')
         #
-        def find_by_price_list_is_master price_list_is_master
-          GoTransverseTractApi.get_response_for(self, {price_list_is_master: price_list_is_master})
+        def find_by_price_list_is_master price_list_is_master, query_scope=nil
+          GoTransverseTractApi.get_response_for(self, {price_list_is_master: price_list_is_master, queryScope: query_scope})
         end
 
         #
         # @param {String} currency_type
+        # @param {String} query_scope (default: 'SHALLOW')
         #
-        def find_by_currency_type currency_type
-          GoTransverseTractApi.get_response_for(self, {currency_type: currency_type})
+        def find_by_currency_type currency_type, query_scope=nil
+          GoTransverseTractApi.get_response_for(self, {currency_type: currency_type, queryScope: query_scope})
         end
 
         #
         # @param {Long} product_tag_eid
+        # @param {String} query_scope (default: 'SHALLOW')
         #
-        def find_by_product_tag_eid product_tag_eid
-          GoTransverseTractApi.get_response_for(self, {product_tag_eid: product_tag_eid})
+        def find_by_product_tag_eid product_tag_eid, query_scope=nil
+          GoTransverseTractApi.get_response_for(self, {product_tag_eid: product_tag_eid, queryScope: query_scope})
         end
 
         #
