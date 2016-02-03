@@ -4,7 +4,7 @@ module GoTransverseTractApi
   RSpec.describe Service::ServiceResource do
     before(:each) { http_auth }
 
-    let(:response)  { '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' }
+    let(:response) { {a: 'b', c: 'd'} }
     let(:eid) { '48406' }
     let(:root_attrs) { 
       {

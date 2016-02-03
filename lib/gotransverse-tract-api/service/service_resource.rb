@@ -8,51 +8,58 @@ module GoTransverseTractApi
 
         #
         # @param {Long} eid
+        # @param {String} query_scope (default: 'SHALLOW')
         #
-        def find_by_eid eid
-          GoTransverseTractApi.get_response_for(self, {eid: eid})
+        def find_by_eid eid, query_scope=nil
+          GoTransverseTractApi.get_response_for(self, {eid: eid, queryScope: query_scope})
         end
 
         #
         # @param {Long} service_eid
+        # @param {String} query_scope (default: 'SHALLOW')
         #
-        def find_by_service_eid service_eid
-          GoTransverseTractApi.get_response_for(self, {service_eid: service_eid})
+        def find_by_service_eid service_eid, query_scope=nil
+          GoTransverseTractApi.get_response_for(self, {service_eid: service_eid, queryScope: query_scope})
         end
 
         #
         # @param {Long} order_item_eid
+        # @param {String} query_scope (default: 'SHALLOW')
         #
-        def find_by_order_item_eid order_item_eid
-          GoTransverseTractApi.get_response_for(self, {order_item_eid: order_item_eid})
+        def find_by_order_item_eid order_item_eid, query_scope=nil
+          GoTransverseTractApi.get_response_for(self, {order_item_eid: order_item_eid, queryScope: query_scope})
         end
 
         #
         # @param {Long} service_resource_category_eid
+        # @param {String} query_scope (default: 'SHALLOW')
         #
-        def find_by_service_resource_category_eid service_resource_category_eid
-          GoTransverseTractApi.get_response_for(self, {service_resource_category_eid: service_resource_category_eid})
+        def find_by_service_resource_category_eid service_resource_category_eid, query_scope=nil
+          GoTransverseTractApi.get_response_for(self, {service_resource_category_eid: service_resource_category_eid, queryScope: query_scope})
         end
 
         #
         # @param {Long} identifier
+        # @param {String} query_scope (default: 'SHALLOW')
         #
-        def find_by_identifier identifier
-          GoTransverseTractApi.get_response_for(self, {identifier: identifier})
+        def find_by_identifier identifier, query_scope=nil
+          GoTransverseTractApi.get_response_for(self, {identifier: identifier, queryScope: query_scope})
         end
 
         #
         # @param {String} status
+        # @param {String} query_scope (default: 'SHALLOW')
         #
-        def find_by_status status
-          GoTransverseTractApi.get_response_for(self, {status: status})
+        def find_by_status status, query_scope=nil
+          GoTransverseTractApi.get_response_for(self, {status: status, queryScope: query_scope})
         end
 
         #
         # @param {String} description
+        # @param {String} query_scope (default: 'SHALLOW')
         #
-        def find_by_description description
-          GoTransverseTractApi.get_response_for(self, {description: description})
+        def find_by_description description, query_scope=nil
+          GoTransverseTractApi.get_response_for(self, {description: description, queryScope: query_scope})
         end
 
         #

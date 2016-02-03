@@ -8,37 +8,42 @@ module GoTransverseTractApi
 
         #
         # @param {Long} eid
+        # @param {String} query_scope (default: 'SHALLOW')
         #
-        def self.find_by_eid eid
-          GoTransverseTractApi.get_response_for(self, {eid: eid})
+        def self.find_by_eid eid, query_scope=nil
+          GoTransverseTractApi.get_response_for(self, {eid: eid, queryScope: query_scope})
         end
 
         #
         # @param {Long} service_eid
+        # @param {String} query_scope (default: 'SHALLOW')
         #
-        def find_by_service_eid service_eid
-          GoTransverseTractApi.get_response_for(self, {service_eid: service_eid})
+        def find_by_service_eid service_eid, query_scope=nil
+          GoTransverseTractApi.get_response_for(self, {service_eid: service_eid, queryScope: query_scope})
         end
 
         #
         # @param {Date} start_date
+        # @param {String} query_scope (default: 'SHALLOW')
         #
-        def find_by_start_date start_date
-          GoTransverseTractApi.get_response_for(self, {start_date: start_date})
+        def find_by_start_date start_date, query_scope=nil
+          GoTransverseTractApi.get_response_for(self, {start_date: start_date, queryScope: query_scope})
         end
 
         #
         # @param {Date} end_date
+        # @param {String} query_scope (default: 'SHALLOW')
         #
-        def find_by_end_date end_date
-          GoTransverseTractApi.get_response_for(self, {end_date: end_date})
+        def find_by_end_date end_date, query_scope=nil
+          GoTransverseTractApi.get_response_for(self, {end_date: end_date, queryScope: query_scope})
         end
 
         #
         # @param {Long} recurrence_period
+        # @param {String} query_scope (default: 'SHALLOW')
         #
-        def find_by_recurrence_period recurrence_period
-          GoTransverseTractApi.get_response_for(self, {recurrence_period: recurrence_period})
+        def find_by_recurrence_period recurrence_period, query_scope=nil
+          GoTransverseTractApi.get_response_for(self, {recurrence_period: recurrence_period, queryScope: query_scope})
         end
 
       end

@@ -10,30 +10,34 @@ module GoTransverseTractApi
 
       #
       # @param {Long} eid
+      # @param {String} query_scope (default: 'SHALLOW')
       #
-      def self.find_by_eid eid
-        GoTransverseTractApi.get_response_for(self, {eid: eid})
+      def self.find_by_eid eid, query_scope=nil
+        GoTransverseTractApi.get_response_for(self, {eid: eid, queryScope: query_scope})
       end
 
       #
       # @param {String} first_name
+      # @param {String} query_scope (default: 'SHALLOW')
       #
-      def self.find_by_first_name first_name
-        GoTransverseTractApi.get_response_for(self, {first_name: first_name})
+      def self.find_by_first_name first_name, query_scope=nil
+        GoTransverseTractApi.get_response_for(self, {first_name: first_name, queryScope: query_scope})
       end
 
       #
       # @param {String} last_name
+      # @param {String} query_scope (default: 'SHALLOW')
       #
-      def self.find_by_last_name last_name
-        GoTransverseTractApi.get_response_for(self, {last_name: last_name})
+      def self.find_by_last_name last_name, query_scope=nil
+        GoTransverseTractApi.get_response_for(self, {last_name: last_name, queryScope: query_scope})
       end
 
       #
       # @param {Long} billing_account_eid
+      # @param {String} query_scope (default: 'SHALLOW')
       #
-      def self.find_by_billing_account_eid billing_account_eid
-        GoTransverseTractApi.get_response_for(self, {billing_account_eid: billing_account_eid})
+      def self.find_by_billing_account_eid billing_account_eid, query_scope=nil
+        GoTransverseTractApi.get_response_for(self, {billing_account_eid: billing_account_eid, queryScope: query_scope})
       end
 
       #

@@ -5,6 +5,8 @@ module GoTransverseTractApi
   RSpec.describe Order::OrderItem do
     before(:each) { http_auth }
 
+    let(:response)  { {a: 'b', c: 'd'} }
+
     context ".approve" do
       it "approves an order item" do
         eid = '48406'
@@ -155,10 +157,6 @@ module GoTransverseTractApi
               :total_pages => '1'
             }
           }
-
-        response = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
-
-        #described_class.approve(eid, data)
 
         allow(subject).to receive(:approve).with(eid, data).and_return(response)
         expect(subject.approve(eid, data)).to eq(response)

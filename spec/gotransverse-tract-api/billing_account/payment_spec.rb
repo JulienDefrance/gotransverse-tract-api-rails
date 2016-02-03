@@ -6,7 +6,7 @@ module GoTransverseTractApi
     before(:each) { http_auth }
 
     let(:eid) { '4086' }
-    let(:response)  { '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' }
+    let(:response)  { {a: 'b', c: 'd'} }
 
     context ".find_by_eid" do
       it "returns a payment for the given eid" do

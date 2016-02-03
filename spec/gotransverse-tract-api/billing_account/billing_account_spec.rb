@@ -243,6 +243,12 @@ module GoTransverseTractApi
             referral: 'Unit Test Referral',
             order_date: '2016-01-28T17:22:13',
             order_status: 'DRAFT',
+            custom_field_values: {
+              custom_field_value: {
+                value: 'SOI',
+                custom_field: {eid: '26'}
+              }
+            },
             order_items: {
               order_item: {
                 recurring_unit_price: '100.00',
@@ -252,6 +258,12 @@ module GoTransverseTractApi
                 product: { eid: '79' },
                 selected_agreement: { eid: '15' },
                 recurring_product_price: { eid: '174' },
+                custom_field_values: {
+                  custom_field_value: {
+                    value: 'JLS',
+                    custom_field: {eid: '25'}
+                  }
+                },
                 order_item_usage_rules: {
                   match_all_order_item_usage_rule: {
                     name: 'allowance',
@@ -288,6 +300,8 @@ module GoTransverseTractApi
         }
       }
       it "creates a draft sales order without a promo code for the billing account" do
+        described_class.create_draft_order(eid, data)
+
         allow(subject).to receive(:create_draft_order).with(eid, data).and_return(response)
         expect(subject.create_draft_order(eid, data)).to eq(response)
       end

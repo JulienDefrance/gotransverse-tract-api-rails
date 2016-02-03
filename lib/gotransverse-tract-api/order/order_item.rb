@@ -6,58 +6,66 @@ module GoTransverseTractApi
 
       #
       # @param {Long} eid
+      # @param {String} query_scope (default: 'SHALLOW')
       #
-      def self.find_by_eid eid
-        GoTransverseTractApi.get_response_for(self, {eid: eid})
+      def self.find_by_eid eid, query_scope=nil
+        GoTransverseTractApi.get_response_for(self, {eid: eid, queryScope: query_scope})
       end
 
       #
       # @param {Long} order_eid
+      # @param {String} query_scope (default: 'SHALLOW')
       #
-      def self.find_by_order_eid order_eid
-        GoTransverseTractApi.get_response_for(self, {order_eid: order_eid})
+      def self.find_by_order_eid order_eid, query_scope=nil
+        GoTransverseTractApi.get_response_for(self, {order_eid: order_eid, queryScope: query_scope})
       end
 
       #
       # @param {String} order_num
+      # @param {String} query_scope (default: 'SHALLOW')
       #
-      def self.find_by_order_num order_num
-        GoTransverseTractApi.get_response_for(self, {order_num: order_num})
+      def self.find_by_order_num order_num, query_scope=nil
+        GoTransverseTractApi.get_response_for(self, {order_num: order_num, queryScope: query_scope})
       end
 
       #
       # @param {Long} product_eid
+      # @param {String} query_scope (default: 'SHALLOW')
       #
-      def self.find_by_product_eid product_eid
-        GoTransverseTractApi.get_response_for(self, {product_eid: product_eid})
+      def self.find_by_product_eid product_eid, query_scope=nil
+        GoTransverseTractApi.get_response_for(self, {product_eid: product_eid, queryScope: query_scope})
       end
 
       #
       # @param {Long} parent_order_item_eid
+      # @param {String} query_scope (default: 'SHALLOW')
       #
-      def self.find_by_parent_order_item_eid parent_order_item_eid
-        GoTransverseTractApi.get_response_for(self, {parent_order_item_eid: parent_order_item_eid})
+      def self.find_by_parent_order_item_eid parent_order_item_eid, query_scope=nil
+        GoTransverseTractApi.get_response_for(self, {parent_order_item_eid: parent_order_item_eid, queryScope: query_scope})
       end
 
       #
       # @param {String} service_identifier
+      # @param {String} query_scope (default: 'SHALLOW')
       #
-      def self.find_by_service_identifier service_identifier
-        GoTransverseTractApi.get_response_for(self, {service_identifier: service_identifier})
+      def self.find_by_service_identifier service_identifier, query_scope=nil
+        GoTransverseTractApi.get_response_for(self, {service_identifier: service_identifier, queryScope: query_scope})
       end
 
       #
       # @param {Long} service_eid
+      # @param {String} query_scope (default: 'SHALLOW')
       #
-      def self.find_by_service_eid service_eid
-        GoTransverseTractApi.get_response_for(self, {service_eid: service_eid})
+      def self.find_by_service_eid service_eid, query_scope=nil
+        GoTransverseTractApi.get_response_for(self, {service_eid: service_eid, queryScope: query_scope})
       end
 
       #
       # @param {String} discount_identifier
+      # @param {String} query_scope (default: 'SHALLOW')
       #
       def self.find_by_discount_identifier discount_identifier
-        GoTransverseTractApi.get_response_for(self, {discount_identifier: discount_identifier})
+        GoTransverseTractApi.get_response_for(self, {discount_identifier: discount_identifier, queryScope: query_scope})
       end
 
       #
@@ -204,11 +212,15 @@ module GoTransverseTractApi
         end
 
         if order_item.has_key?(:scheduled_charges)
-          scheduled_charges = ScheduledCharge.get_scheduled_charges(order_item[:scheduled_charges])
+          scheduled_charges = BillingAccount::ScheduledCharge.get_scheduled_charges(order_item[:scheduled_charges])
         end
 
         if order_item.has_key?(:discount_configurations)
           discount_configurations = DiscountConfiguration.get_discount_configurations(order_item[:discount_configurations])
+        end
+
+        if order_item.has_key?(:custom_field_values)
+          custom_field_values = BillingAccount::CustomFieldValue.get_custom_field_values(order_item[:custom_field_values])
         end
 
         orderItem = {
@@ -222,8 +234,9 @@ module GoTransverseTractApi
             description: order_item[:description],
             eid: order_item[:eid]
           }.delete_if{|k,v| v.nil?},
-          orderItemUsageRules: OrderItemUsageRule.get_order_item_usage_rule(order_item[:order_item_usage_rules]),
-          recurringProductPrice: RecurringProductPrice.get_recurring_product_price(order_item[:recurring_product_price]),
+          orderItemUsageRules: Usage::OrderItemUsageRule.get_order_item_usage_rule(order_item[:order_item_usage_rules]),
+          recurringProductPrice: Product::RecurringProductPrice.get_recurring_product_price(order_item[:recurring_product_price]),
+          customFieldValues: custom_field_values,
           product: Product::Product.get_product_info(order_item[:product]),
           priceList: price_list,
           selectedAgreement: Agreement.get_selected_agreement(order_item[:selected_agreement]),

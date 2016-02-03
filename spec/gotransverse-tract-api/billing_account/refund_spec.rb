@@ -5,7 +5,7 @@ module GoTransverseTractApi
   RSpec.describe BillingAccount::Refund do
     before(:each) { http_auth }
 
-    let(:response)  { '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' }
+    let(:response)  { {a: 'b', c: 'd'} }
     let(:eid) { '48406' }
 
     context ".create_refund" do
