@@ -147,7 +147,7 @@ module GoTransverseTractApi
           end
 
           if product.has_key?(:product_usage_rules)
-            product_usage_rules = Order::ProductUsageRule.get_product_usage_rule(product[:product_usage_rules])
+            product_usage_rules = Usage::ProductUsageRule.get_product_usage_rule(product[:product_usage_rules])
           end
 
           product_info = {

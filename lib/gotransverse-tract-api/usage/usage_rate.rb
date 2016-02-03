@@ -1,6 +1,6 @@
 module GoTransverseTractApi
 
-  module Order
+  module Usage
 
     class UsageRate
 
@@ -28,4 +28,3 @@ module GoTransverseTractApi
   end
 
 end
-

@@ -213,6 +213,7 @@ module GoTransverseTractApi
             }
           }
 
+          debugger
           xml_data = GoTransverseTractApi.generateXML(data, 'salesOrder')     
           GoTransverseTractApi.post_request_for(self, xml_data, "")
         end

@@ -34,6 +34,19 @@ module GoTransverseTractApi
           GoTransverseTractApi.get_response_for(self, {type: type, queryScope: query_scope})
         end
 
+        #
+        # @param {Hash} service_resource_category
+        #
+        def get_service_resource_category(service_resource_category)
+          svc_resource_category = {
+            name: service_resource_category[:name],
+            type: service_resource_category[:type],
+            status: service_resource_category[:status],
+            eid: service_resource_category[:eid]
+          }
+
+          svc_resource_category
+        end
       end
 
     end

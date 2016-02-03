@@ -212,11 +212,15 @@ module GoTransverseTractApi
         end
 
         if order_item.has_key?(:scheduled_charges)
-          scheduled_charges = ScheduledCharge.get_scheduled_charges(order_item[:scheduled_charges])
+          scheduled_charges = BillingAccount::ScheduledCharge.get_scheduled_charges(order_item[:scheduled_charges])
         end
 
         if order_item.has_key?(:discount_configurations)
           discount_configurations = DiscountConfiguration.get_discount_configurations(order_item[:discount_configurations])
+        end
+
+        if order_item.has_key?(:custom_field_values)
+          custom_field_values = BillingAccount::CustomFieldValue.get_custom_field_values(order_item[:custom_field_values])
         end
 
         orderItem = {
@@ -230,8 +234,9 @@ module GoTransverseTractApi
             description: order_item[:description],
             eid: order_item[:eid]
           }.delete_if{|k,v| v.nil?},
-          orderItemUsageRules: OrderItemUsageRule.get_order_item_usage_rule(order_item[:order_item_usage_rules]),
-          recurringProductPrice: RecurringProductPrice.get_recurring_product_price(order_item[:recurring_product_price]),
+          orderItemUsageRules: Usage::OrderItemUsageRule.get_order_item_usage_rule(order_item[:order_item_usage_rules]),
+          recurringProductPrice: Product::RecurringProductPrice.get_recurring_product_price(order_item[:recurring_product_price]),
+          customFieldValues: custom_field_values,
           product: Product::Product.get_product_info(order_item[:product]),
           priceList: price_list,
           selectedAgreement: Agreement.get_selected_agreement(order_item[:selected_agreement]),

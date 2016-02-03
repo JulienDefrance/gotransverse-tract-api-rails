@@ -98,6 +98,20 @@ module GoTransverseTractApi
           GoTransverseTractApi.get_response_for(self, {value: value, queryScope: query_scope})
         end
 
+        #
+        # @param {Hash} obj (Order or Service or Billing Account)
+        #
+        def get_custom_field_values(obj={})
+          custom_field_values = {
+            attributes: {},
+            customFieldValue: {
+              attributes: {value: obj[:custom_field_value][:value]},
+              customField: {eid: obj[:custom_field_value][:custom_field][:eid]}
+            }
+          }
+
+          custom_field_values
+        end
       end
 
     end

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 module GoTransverseTractApi
 
-  RSpec.describe Order::OrderItemUsageRule do
+  RSpec.describe Usage::OrderItemUsageRule do
     before(:each) { http_auth }
 
     context ".find_by_eid" do

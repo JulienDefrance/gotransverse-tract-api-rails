@@ -8,9 +8,10 @@ module GoTransverseTractApi
 
         #
         # @param {Long} eid
+        # @param {String} query_scope (default: 'SHALLOW')
         #
-        def find_by_eid eid
-          GoTransverseTractApi.get_response_for(self, {eid: eid})
+        def find_by_eid eid, query_scope=nil
+          GoTransverseTractApi.get_response_for(self, {eid: eid, queryScope: query_scope})
         end
 
         #
@@ -31,30 +32,34 @@ module GoTransverseTractApi
 
         #
         # @param {Long} service_period_eid
+        # @param {String} query_scope (default: 'SHALLOW')
         #
-        def find_by_service_period_eid service_period_eid
-          GoTransverseTractApi.get_response_for(self, {service_period_eid: service_period_eid})
+        def find_by_service_period_eid service_period_eid, query_scope=nil
+          GoTransverseTractApi.get_response_for(self, {service_period_eid: service_period_eid, queryScope: query_scope})
         end
 
         #
         # @param {Long} service_resource_identifier
+        # @param {String} query_scope (default: 'SHALLOW')
         #
-        def find_by_service_resource_identifier service_resource_identifier
-          GoTransverseTractApi.get_response_for(self, {service_resource_identifier: service_resource_identifier})
+        def find_by_service_resource_identifier service_resource_identifier, query_scope=nil
+          GoTransverseTractApi.get_response_for(self, {service_resource_identifier: service_resource_identifier, queryScope: query_scope})
         end
 
         #
         # @param {DateTime} start_time
+        # @param {String} query_scope (default: 'SHALLOW')
         #
-        def find_by_start_time start_time
-          GoTransverseTractApi.get_response_for(self, {start_time: start_time})
+        def find_by_start_time start_time, query_scope=nil
+          GoTransverseTractApi.get_response_for(self, {start_time: start_time, queryScope: query_scope})
         end
 
         #
         # @param {DateTime} end_time
+        # @param {String} query_scope (default: 'SHALLOW')
         #
-        def find_by_end_time end_time
-          GoTransverseTractApi.get_response_for(self, {end_time: end_time})
+        def find_by_end_time end_time, query_scope=nil
+          GoTransverseTractApi.get_response_for(self, {end_time: end_time, queryScope: query_scope})
         end
 
         #

@@ -297,12 +297,12 @@ module GoTransverseTractApi
 
         #
         # @param {Long} eid
-        # @param {Hash} billing_account
+        # @param {Hash} order_details
         #
-        def create_draft_order eid, billing_account
+        def create_draft_order eid, order_details
           data = {
             createDraftOrder: {},
-            salesOrder: GoTransverseTractApi::ApiData.new.sales_order_details(billing_account[:sales_order])
+            salesOrder: GoTransverseTractApi::ApiData.new.sales_order_details(order_details[:sales_order])
           }
 
           xml_data = GoTransverseTractApi.generateXML(data, 'createDraftOrder')
@@ -311,12 +311,12 @@ module GoTransverseTractApi
 
         #
         # @param {Long} eid
-        # @param {Hash} billing_account
+        # @param {Hash} order_details
         #
-        def void_draft_order eid, billing_account
+        def void_draft_order eid, order_details
           data = {
             voidDraftOrder: {},
-            salesOrder: GoTransverseTractApi::ApiData.new.sales_order_details(billing_account[:sales_order])
+            salesOrder: GoTransverseTractApi::ApiData.new.sales_order_details(order_details[:sales_order])
           }
 
           xml_data = GoTransverseTractApi.generateXML(data, 'voidDraftOrder')
