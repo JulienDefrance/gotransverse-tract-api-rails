@@ -8,12 +8,12 @@ module GoTransverseTractApi
     let(:response) { {a: 'b', c: 'd'} }
     let(:event) {
       {
-        :start_time => '2015-11-25T10:10:10',
-        :service_resource_id => 'quote6',
-        :usage_uom => 'COUNT',
-        :usage_amount => '1200.00',
-        :description => 'Testing',
-        :service_resource_type => 'GENERICSRVCRESOURCE'
+        start_time: '2015-11-25T10:10:10',
+        service_resource_id: 'quote6',
+        usage_uom: 'COUNT',
+        usage_amount: '1200.00',
+        description: 'Testing',
+        service_resource_type: 'GENERICSRVCRESOURCE'
       }
     }
 

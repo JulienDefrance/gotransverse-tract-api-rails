@@ -54,11 +54,11 @@ module GoTransverseTractApi
     context ".cancel" do
       it "cancels a payment" do
         data = {
-          :description => 'Test Cancel',
-          :payment => {
+          description: 'Test Cancel',
+          payment:  {
             eid: '123'
           },
-          :reason => {
+          reason: {
             eid: '123'
           }
         }
@@ -71,19 +71,19 @@ module GoTransverseTractApi
     context ".reallocate" do
       it "reallocates a payment" do
         data = {
-          :description => 'Test Reallocate',
-          :payment => {
+          description: 'Test Reallocate',
+          payment: {
             eid: '123'
           },
-          :reason => {
+          reason: {
             eid: '123'
           },
-          :invoices => [{
-            :invoice => {
+          invoices: [{
+            invoice: {
               eid: '123'
             }},
             {
-            :invoice => {
+            invoice: {
               eid: '456'
             }}]
         }

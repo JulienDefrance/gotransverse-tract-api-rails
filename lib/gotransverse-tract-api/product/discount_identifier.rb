@@ -6,6 +6,10 @@ module GoTransverseTractApi
 
       class << self
 
+        def find_all 
+          GoTransverseTractApi.get_response_for(self)
+        end
+
         #
         # @param {Long} eid
         # @param {String} query_scope (default: 'SHALLOW')

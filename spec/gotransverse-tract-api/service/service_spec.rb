@@ -13,39 +13,39 @@ module GoTransverseTractApi
 
         data = {
           eid: eid,
-          :billing_account => {
+          billing_account: {
             eid: '324234'
           },
-          :order => {
-            :order_items => {
-              :order_item => {
-                :quantity => '1',
-                :sequence => '1',
-                :product => {
+          order: {
+            order_items: {
+              order_item: {
+                quantity: '1',
+                sequence: '1',
+                product: {
                   eid: '3453'
                 },
-                :selected_agreement => {
+                selected_agreement: {
                   eid: '349'
                 }
               }
             },
-            :billing_account => {
+            billing_account: {
               eid: '324234'
             },
-            :payments => {
-              :payment => {
-                :amount => '10.00',
-                :description => 'Testing',
-                :billing_account => {
+            payments: {
+              payment: {
+                amount: '10.00',
+                description: 'Testing',
+                billing_account: {
                   eid: '324234'
                 },
-                :credit_card_payment => {
-                  :card_type => 'VISA',
-                  :card_holder_first_name => 'Mary',
-                  :card_holder_middle_name => 'M',
-                  :card_holder_last_name => 'Smith',
-                  :card_identifier_number => '4111111111111111111',
-                  :card_expiration => '12/2016'
+                credit_card_payment: {
+                  card_type: 'VISA',
+                  card_holder_first_name: 'Mary',
+                  card_holder_middle_name: 'M',
+                  card_holder_last_name: 'Smith',
+                  card_identifier_number: '4111111111111111111',
+                  card_expiration: '12/2016'
                 }
               },
             }
@@ -61,73 +61,73 @@ module GoTransverseTractApi
       it "adds a discount identifier" do
 
         data = {
-          :amount => '10.00',
-          :start_date => '2015-01-01T10:10:10',
-          :status => 'ACTIVE',
-          :description => 'Testing',
-          :renewal_count => '0',
+          amount: '10.00',
+          start_date: '2015-01-01T101010',
+          status: 'ACTIVE',
+          description: 'Testing',
+          renewal_count: '0',
           eid: eid,
-          :query_scope => 'SHALLOW',
-          :billing_account => {
+          query_scope: 'SHALLOW',
+          billing_account: {
             eid: '324234',
-            :query_scope => 'EID',
+            query_scope: 'EID',
           },
-          :service_resources => {
-            :page_number => '1',
-            :page_size => '50',
-            :total_elements => '3',
-            :element_count => '0',
-            :total_pages => '0'
+          service_resources: {
+            page_number: '1',
+            page_size: '50',
+            total_elements: '3',
+            element_count: '0',
+            total_pages: '0'
           },
-          :product => {
+          product: {
             eid: '608',
-            :query_scope => 'EID'
+            query_scope: 'EID'
           },
-          :service_periods => {
-            :page_number => '1',
-            :page_size => '50',
-            :total_elements => '3',
-            :element_count => '0',
-            :total_pages => '1'
+          service_periods: {
+            page_number: '1',
+            page_size: '50',
+            total_elements: '3',
+            element_count: '0',
+            total_pages: '1'
           },
-          :service_prices => {
-            :page_number => '1',
-            :page_size => '50',
-            :total_elements => '1',
-            :element_count => '0',
-            :total_pages => '1'
+          service_prices: {
+            page_number: '1',
+            page_size: '50',
+            total_elements: '1',
+            element_count: '0',
+            total_pages: '1'
           },
-          :service_usage_rules => {
-            :page_number => '1',
-            :page_size => '50',
-            :total_elements => '0',
-            :element_count => '0',
-            :total_pages => '0'
+          service_usage_rules: {
+            page_number: '1',
+            page_size: '50',
+            total_elements: '0',
+            element_count: '0',
+            total_pages: '0'
           },
-          :counters => {
-            :page_number => '1',
-            :page_size => '50',
-            :total_elements => '1',
-            :element_count => '0',
-            :total_pages => '1'
+          counters: {
+            page_number: '1',
+            page_size: '50',
+            total_elements: '1',
+            element_count: '0',
+            total_pages: '1'
           },
-          :custom_field_values => {
-            :page_number => '1',
-            :page_size => '50',
-            :total_elements => '1',
-            :element_count => '0',
-            :total_pages => '1'
+          custom_field_values: {
+            page_number: '1',
+            page_size: '50',
+            total_elements: '1',
+            element_count: '0',
+            total_pages: '1'
           },
-          :discount_identifier => {
-            :status => 'ACTIVE',
-            :unlimited => 'true',
-            :uses => '12',
-            :identifier => 'dfsf',
+          discount_identifier: {
+            status: 'ACTIVE',
+            unlimited: 'true',
+            uses: '12',
+            identifier: 'dfsf',
             eid: '23453',
-            :query_scope => 'DDGHJ',
-            :category => {
+            query_scope: 'DDGHJ',
+            category: {
               eid: '97',
-              :query_scope => 'EID'
+              query_scope: 'EID'
             }
           }
         } 
@@ -140,12 +140,12 @@ module GoTransverseTractApi
     context ".add_agreement" do
       it "adds an agreement to the service" do
         data = {
-          :service => {eid: eid},
-          :agreement_service => {
-            :end_action => 'RENEW_SERVICE',
-            :end_date => '2015-11-11T11:00:00',
-            :start_date => '2015-01-11T11:00:00',
-            :agreement => {eid: '123'}
+          service: {eid: eid},
+          agreement_service: {
+            end_action: 'RENEW_SERVICE',
+            end_date: '2015-11-11T110000',
+            start_date: '2015-01-11T110000',
+            agreement: {eid: '123'}
           }
         }
 
