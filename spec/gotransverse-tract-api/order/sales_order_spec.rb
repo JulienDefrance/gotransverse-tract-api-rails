@@ -17,7 +17,7 @@ module GoTransverseTractApi
 
     context ".add_custom_field_value" do
       it "adds custom field value for the sales order" do
-        data = { :value => 'yes' }
+        data = { value: 'yes' }
 
         allow(subject).to receive(:add_custom_field_value).with(eid, data).and_return(response)
         expect(subject.add_custom_field_value(eid, data)).to eq(response)
@@ -35,68 +35,68 @@ module GoTransverseTractApi
       it "creates a sales order" do
 
         data = {
-          :note => 'Order Item',
-          :purchase_order_number => '2015-07-09',
-          :order_items => {
-            :order_item => {
-              :quantity => '1',
-              :product => [{
+          note: 'Order Item',
+          purchase_order_number: '2015-07-09',
+          order_items: {
+            order_item: {
+              quantity: '1',
+              product: [{
                 eid: '232353'
               }]
             }
           },
-          :billing_account => {
-            :bill_type => 'EMAIL',
-            :automatic_recurring_payment => 'true',
-            :daily_bill_cycle => {
+          billing_account: {
+            bill_type: 'EMAIL',
+            automatic_recurring_payment: 'true',
+            daily_bill_cycle: {
               eid: '34535'
             },
-            :organization => {
-              :name => 'eregedvdvd',
-              :tax_id_number => '56-4575675',
-              :addresses => {
-                :postal_address => [{
-                  :purpose => 'SERVICE',
-                  :country => 'USA',
-                  :city => 'Fremont',
-                  :region_or_state => 'CA',
-                  :postal_code => '94538',
-                  :line1 => 'sdgwg wfegfdg',
-                  :line2 => 'wefergdvdg ergegdf'
+            organization: {
+              name: 'eregedvdvd',
+              tax_id_number: '56-4575675',
+              addresses: {
+                postal_address: [{
+                  purpose: 'SERVICE',
+                  country: 'USA',
+                  city: 'Fremont',
+                  region_or_state: 'CA',
+                  postal_code: '94538',
+                  line1: 'sdgwg wfegfdg',
+                  line2: 'wefergdvdg ergegdf'
                 },
                 {
-                  :purpose => 'BILLING',
-                  :country => 'USA',
-                  :city => 'Fremont',
-                  :region_or_state => 'CA',
-                  :postal_code => '94538',
-                  :line1 => 'sdgwg wfegfdg',
-                  :line2 => 'wefergdvdg ergegdf'
+                  purpose: 'BILLING',
+                  country: 'USA',
+                  city: 'Fremont',
+                  region_or_state: 'CA',
+                  postal_code: '94538',
+                  line1: 'sdgwg wfegfdg',
+                  line2: 'wefergdvdg ergegdf'
                 },
                 {
-                  :purpose => 'SHIPPING',
-                  :country => 'USA',
-                  :city => 'Fremont',
-                  :region_or_state => 'CA',
-                  :postal_code => '94538',
-                  :line1 => 'sdgwg wfegfdg',
-                  :line2 => 'wefergdvdg ergegdf'
+                  purpose: 'SHIPPING',
+                  country: 'USA',
+                  city: 'Fremont',
+                  region_or_state: 'CA',
+                  postal_code: '94538',
+                  line1: 'sdgwg wfegfdg',
+                  line2: 'wefergdvdg ergegdf'
                 }],
-                :telecom_address => {
-                  :dialing_prefix => '9',
-                  :country_code => '1',
-                  :area_code => '510',
-                  :number => '234325',
-                  :extension => '24',
-                  :purpose => 'OFFICE'
+                telecom_address: {
+                  dialing_prefix: '9',
+                  country_code: '1',
+                  area_code: '510',
+                  number: '234325',
+                  extension: '24',
+                  purpose: 'OFFICE'
                 },
-                :email_address => {
-                  :email => 'sjdhfs@sdfgs.com',
-                  :purpose => 'PRIMARY'
+                email_address: {
+                  email: 'sjdhfs@sdfgs.com',
+                  purpose: 'PRIMARY'
                 }
               }
             },
-            :billing_account_category => {
+            billing_account_category: {
               eid: '749'
             }
           }

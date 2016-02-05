@@ -8,9 +8,9 @@ module GoTransverseTractApi
     let(:eid) { '48406' }
     let(:root_attrs) { 
       {
-        :identifier => 'New id',
-        :status => 'AVAILABLE',
-        :description => 'Test'
+        identifier: 'New id',
+        status: 'AVAILABLE',
+        description: 'Test'
       }
     }
 
@@ -24,7 +24,7 @@ module GoTransverseTractApi
     context ".create_service_resource" do
       it "creates a service resource" do
         data = {
-          :category => {
+          category: {
             eid: '324234'
           }
         }
@@ -36,7 +36,7 @@ module GoTransverseTractApi
     context ".request" do
       it "requests a service resource" do
         data = {
-          :service_resource_category => {
+          service_resource_category: {
             eid: '324234'
           }
         }
@@ -50,8 +50,8 @@ module GoTransverseTractApi
     context ".change" do
       it "changes a service resource" do
         data = { 
-          :change_to_service_resource => root_attrs,
-          :category => { eid: '324234' }
+          change_to_service_resource: root_attrs,
+          category: { eid: '324234' }
         }
 
         allow(subject).to receive(:change).with(eid, data).and_return(response)

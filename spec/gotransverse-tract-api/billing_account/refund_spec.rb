@@ -11,12 +11,12 @@ module GoTransverseTractApi
     context ".create_refund" do
       it "creates a refund to the account" do
         data = {
-          :amount => '47.00',
-          :description => 'Refund Create',
-          :original_payment => {
+          amount: '47.00',
+          description: 'Refund Create',
+          original_payment: {
             eid: '123'
           },
-          :refund_reason => {
+          refund_reason: {
             eid: '456'
           }
         }

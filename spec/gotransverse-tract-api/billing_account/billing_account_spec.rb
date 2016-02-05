@@ -8,26 +8,26 @@ module GoTransverseTractApi
     let(:response)  { {a: 'b', c: 'd'} }
     let(:eid) { '165' }
     let(:addresses) { {
-      :email_address => {
-        :purpose => 'PRIMARY',
-        :email => 'test@gotransverse.com'
+      email_address: {
+        purpose: 'PRIMARY',
+        email: 'test@gotransverse.com'
       },
-      :postal_address => {
-        :purpose => 'BILLING',
-        :country => 'USA',
-        :city => 'Pleasanton',
-        :region_or_state => 'CA',
-        :attention => 'John Simth',
-        :postal_code => '94588',
-        :line1 => '3423 something st.'
+      postal_address: {
+        purpose: 'BILLING',
+        country: 'USA',
+        city: 'Pleasanton',
+        region_or_state: 'CA',
+        attention: 'John Simth',
+        postal_code: '94588',
+        line1: '3423 something st.'
       },
-      :telecom_address => {
-        :purpose => 'OFFICE',
-        :dialing_prefix => '9',
-        :country_code => '1',
-        :area_code => '925',
-        :number => '2341212',
-        :extension => '21'
+      telecom_address: {
+        purpose: 'OFFICE',
+        dialing_prefix: '9',
+        country_code: '1',
+        area_code: '925',
+        number: '2341212',
+        extension: '21'
       }
     } }
 
@@ -41,25 +41,25 @@ module GoTransverseTractApi
     context ".apply_payment" do
       it "applies a payment to the invoice" do
         data = {
-          :billing_account => {
+          billing_account: {
             eid: '123'
           },
-          :invoice => {
+          invoice: {
             eid: '456'
           },
-          :payment => {
-            :amount => '27',
-            :use_recurring_payment => 'false',
-            :credit_card_payment => {
-              :card_type => 'VISA',
-              :card_holder_first_name => 'Mary',
-              :card_holder_last_name => 'Smith',
-              :card_identifier_number => '4111111111111111111',
-              :card_verification_number => '123',
-              :card_expiration => '12/2016',
-              :description => 'Test Desc'
+          payment: {
+            amount: '27',
+            use_recurring_payment: 'false',
+            credit_card_payment: {
+              card_type: 'VISA',
+              card_holder_first_name: 'Mary',
+              card_holder_last_name: 'Smith',
+              card_identifier_number: '4111111111111111111',
+              card_verification_number: '123',
+              card_expiration: '12/2016',
+              description: 'Test Desc'
             },
-            :billing_account => {
+            billing_account: {
               eid: '123'
             }
           }
@@ -73,10 +73,10 @@ module GoTransverseTractApi
     context ".suspend" do
       it "suspends a billing account" do
         data = {
-          :billing_account => {
+          billing_account: {
             eid: '123'
           },
-          :reason => {
+          reason: {
             eid: '456'
           }
         }
@@ -89,9 +89,9 @@ module GoTransverseTractApi
     context ".resume" do
       it "resumes a billing account" do
         data = {
-          :billing_account => {eid: eid},
-          :start_date => '2014-11-11T10:00:00',
-          :notes => 'Test notes here'
+          billing_account: {eid: eid},
+          start_date: '2014-11-11T100000',
+          notes: 'Test notes here'
         }
 
         allow(subject).to receive(:resume).with(eid, data).and_return(response)
@@ -104,14 +104,14 @@ module GoTransverseTractApi
         eid = '165'
 
         data = {
-          :billing_account => {eid: eid},
-          :recurring_payment => {
-            :credit_card_payment_method => {
-              :card_type => 'MASTERCARD',
-              :card_holder_first_name => 'Mary',
-              :card_holder_last_name => 'Smith',
-              :card_identifier_number => '5454545454545454',
-              :card_expiration => '12/2016'
+          billing_account: {eid: eid},
+          recurring_payment: {
+            credit_card_payment_method: {
+              card_type: 'MASTERCARD',
+              card_holder_first_name: 'Mary',
+              card_holder_last_name: 'Smith',
+              card_identifier_number: '5454545454545454',
+              card_expiration: '12/2016'
             }
           }
         }
@@ -124,14 +124,14 @@ module GoTransverseTractApi
     context ".change_service" do
       it "changes service on a billing account" do
         data = {
-          :service => {eid: '136'},
-          :order => {
-            :note => 'Simple note',
-            :order_items => {
-              :order_item => {
-                :quantity => 2,
-                :description => 'change service',
-                :products => [{
+          service: {eid: '136'},
+          order: {
+            note: 'Simple note',
+            order_items: {
+              order_item: {
+                quantity: 2,
+                description: 'change service',
+                products: [{
                   eid: '1234'
                 },
                 {
@@ -139,7 +139,7 @@ module GoTransverseTractApi
                 }]
               }
             },
-            :billing_account => {eid: eid}
+            billing_account: {eid: eid}
           }
         }
 
@@ -151,8 +151,8 @@ module GoTransverseTractApi
     context ".add_custom_field_value" do
       it "adds custom field value to the billing account" do
         data = { 
-          :billing_account => { eid: eid },
-          :custom_field_value => { :value => 'yes' }
+          billing_account: { eid: eid },
+          custom_field_value: { value: 'yes' }
         }
 
         allow(subject).to receive(:add_custom_field_value).with(eid, data).and_return(response)
@@ -163,8 +163,8 @@ module GoTransverseTractApi
     context ".remove_custom_field_value" do
       it "removes custom field value from the billing account" do
         data = { 
-          :billing_account => { eid: eid },
-          :custom_field_value => { eid: '486' }
+          billing_account: { eid: eid },
+          custom_field_value: { eid: '486' }
         }
 
         allow(subject).to receive(:remove_custom_field_value).with(eid, data).and_return(response)
@@ -175,8 +175,8 @@ module GoTransverseTractApi
     context ".deactivate" do
       it "deactivates a billing account" do
         data = {
-          :billing_account => { eid: '123' },
-          :reason => { eid: '456' }
+          billing_account: { eid: '123' },
+          reason: { eid: '456' }
         }
 
         allow(subject).to receive(:deactivate).with(eid, data).and_return(response)
@@ -188,7 +188,7 @@ module GoTransverseTractApi
       it "creates a billing account" do
         data = {
           bill_type:  'NONE',
-          daily_bill_cycle: { eid: '38' },
+          daily_bill_cycle: { eid:'38' },
           organization: {
             name: 'LMH Services',
             addresses: addresses.delete_if{|k,v| k == :telecom_address}
@@ -210,12 +210,12 @@ module GoTransverseTractApi
     context ".add_person" do
       it "adds a person to the billing account" do
         data = {
-          :billing_account => { eid: eid },
-          :person => {
-            :first_name => 'Tim',
-            :last_name => 'John',
-            :middle_name => 'R',
-            :addresses => addresses
+          billing_account: { eid: eid },
+          person: {
+            first_name: 'Tim',
+            last_name: 'John',
+            middle_name: 'R',
+            addresses: addresses
           }
         }
 
@@ -227,8 +227,8 @@ module GoTransverseTractApi
     context ".remove_billing_account" do
       it "removes a person from the billing account" do
         data = {
-          :billing_account => { eid: eid },
-          :person => { eid: '123' }
+          billing_account: { eid: eid },
+          person: { eid: '123' }
         }
 
         allow(subject).to receive(:remove_billing_account).with(eid, data).and_return(response)
@@ -241,7 +241,7 @@ module GoTransverseTractApi
         {
           sales_order: {
             referral: 'Unit Test Referral',
-            order_date: '2016-01-28T17:22:13',
+            order_date: '2016-01-28T172213',
             order_status: 'DRAFT',
             custom_field_values: {
               custom_field_value: {
@@ -310,7 +310,7 @@ module GoTransverseTractApi
         promo_code = {
           discount_configurations: {
             discount_configuration: {
-              discount_identifier: { eid: '35' }
+              discount_identifier: { eid:'35' }
             }
           }
         }
@@ -327,7 +327,7 @@ module GoTransverseTractApi
           eid: eid, 
           bill_type: 'one time',
           automatic_recurring_payment: 'true',
-          billing_account_category: { eid: '3453' }
+          billing_account_category: { eid:'3453' }
         }
 
         allow(subject).to receive(:update).with(eid, data).and_return(response)
