@@ -181,12 +181,8 @@ module GoTransverseTractApi
             billingAccount: {eid: eid},
             recurringPayment: {
               attributes: {},
-              creditCardPaymentMethod: {
-                cardType: billing_account[:recurring_payment][:credit_card_payment_method][:card_type],
-                cardHolderFirstName: billing_account[:recurring_payment][:credit_card_payment_method][:card_holder_first_name],
-                cardHolderLastName: billing_account[:recurring_payment][:credit_card_payment_method][:card_holder_last_name],
-                cardIdentifierNumber: billing_account[:recurring_payment][:credit_card_payment_method][:card_identifier_number],
-                cardExpiration: billing_account[:recurring_payment][:credit_card_payment_method][:card_expiration]
+              referencedCreditCardPaymentMethod: {
+                referenceKey: billing_account[:recurring_payment][:referenced_credit_card_payment_method][:reference_key]
               }
             }
           }

@@ -106,12 +106,8 @@ module GoTransverseTractApi
         data = {
           billing_account: {eid: eid},
           recurring_payment: {
-            credit_card_payment_method: {
-              card_type: 'MASTERCARD',
-              card_holder_first_name: 'Mary',
-              card_holder_last_name: 'Smith',
-              card_identifier_number: '5454545454545454',
-              card_expiration: '12/2016'
+            referenced_credit_card_payment_method: {
+              reference_key: 'sd2342sgdf28t7r82df'
             }
           }
         }
