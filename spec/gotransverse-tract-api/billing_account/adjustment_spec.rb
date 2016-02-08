@@ -113,13 +113,13 @@ module GoTransverseTractApi
           invoice: {
             invoice_num: '23',
             amount: '10.00',
-            pdf_path: 'https//my.tractbilling.com/t/s/r/1.28/invoices/2914/pdf',
+            pdf_path: "https//my.tractbilling.com/t/s/r/#{GoTransverseTractApi::TARGET_API_VERSION}/invoices/2914/pdf",
             occurred_on: '2014-10-10T000000',
             due_date: '2014-10-10T000000',
             amount_to_pay: '4.00',
             late_fee_charged: 'false',
             status: 'open',
-            usage_csv_path: 'https//my.tractbilling.com/t/s/r/1.28/invoices/2914/csv',
+            usage_csv_path: "https//my.tractbilling.com/t/s/r/#{GoTransverseTractApi::TARGET_API_VERSION}/invoices/2914/csv",
             eid: '2342'
           }
         }
@@ -147,13 +147,13 @@ module GoTransverseTractApi
           invoice: {
             invoice_num: '23',
             amount: '10.00',
-            pdf_path: 'https//my.tractbilling.com/t/s/r/1.28/invoices/2914/pdf',
+            pdf_path: "https//my.tractbilling.com/t/s/r/#{GoTransverseTractApi::TARGET_API_VERSION}/invoices/2914/pdf",
             occurred_on: '2014-10-10T000000',
             due_date: '2014-10-10T000000',
             amount_to_pay: '4.00',
             late_fee_charged: 'false',
             status: 'open',
-            usage_csv_path: 'https//my.tractbilling.com/t/s/r/1.28/invoices/2914/csv',
+            usage_csv_path: "https//my.tractbilling.com/t/s/r/#{GoTransverseTractApi::TARGET_API_VERSION}/invoices/2914/csv",
             eid: '2342'
           }
         }
