@@ -273,8 +273,9 @@ module GoTransverseTractApi
     end
 
     return hsh
-  rescue
-    {}
+  rescue Timeout::Error, Errno::ECONNRESET, EOFError, 
+         Net::HTTPBadResponse, Net::HTTPHeaderSyntaxError, Net::ProtocolError => e
+    {message: e}
   end
   
   #
