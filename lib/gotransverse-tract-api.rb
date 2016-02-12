@@ -252,6 +252,13 @@ module GoTransverseTractApi
     http_client = HTTPClient.new
     http_client.set_auth(nil, GoTransverseTractApi.configuration.username, GoTransverseTractApi.configuration.password)
 
+    if GoTransverseTractApi.configuration.debug_mode
+      pp "[GoTransverseTractApi] api_url: #{api_url.to_s}"
+      pp "[GoTransverseTractApi] api_params: #{api_params.to_s}"
+      pp "[GoTransverseTractApi] method: #{method.to_s}"
+      pp "[GoTransverseTractApi] request_body: #{request_body.to_s}"
+    end
+
     case method
       when :get
         response = http_client.get(api_url, api_params)
@@ -273,9 +280,15 @@ module GoTransverseTractApi
     end
 
     return hsh
-  rescue Timeout::Error, Errno::ECONNRESET, EOFError, 
-         Net::HTTPBadResponse, Net::HTTPHeaderSyntaxError, Net::ProtocolError => e
+
+  rescue Timeout::Error, Errno::ECONNRESET, EOFError, Net::HTTPBadResponse, Net::HTTPHeaderSyntaxError, Net::ProtocolError => e
+    pp e if GoTransverseTractApi.configuration.debug_mode
     {message: e}
+
+  rescue => e
+    pp e if GoTransverseTractApi.configuration.debug_mode
+    {message: e}
+
   end
   
   #

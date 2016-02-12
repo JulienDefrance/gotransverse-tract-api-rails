@@ -6,6 +6,7 @@ module GoTransverseTractApi
     attr_accessor :password
 
     attr_accessor :cache_enabled
+    attr_accessor :debug_mode
 
     attr_accessor :tract_api_host
 
