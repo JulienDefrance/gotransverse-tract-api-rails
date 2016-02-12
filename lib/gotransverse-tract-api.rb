@@ -253,6 +253,8 @@ module GoTransverseTractApi
     http_client.set_auth(nil, GoTransverseTractApi.configuration.username, GoTransverseTractApi.configuration.password)
 
     if GoTransverseTractApi.configuration.debug_mode
+      pp "[GoTransverseTractApi] DEBUG MODE: ON"
+      pp "[GoTransverseTractApi] request time: #{DateTime.now}"
       pp "[GoTransverseTractApi] api_url: #{api_url.to_s}"
       pp "[GoTransverseTractApi] api_params: #{api_params.to_s}"
       pp "[GoTransverseTractApi] method: #{method.to_s}"
@@ -278,6 +280,8 @@ module GoTransverseTractApi
     if method == :get
       hsh = hsh[klass.pluralize.camelize(:lower).to_sym] rescue Hash.from_xml(xml_response.to_s)[klass.camelize(:lower).to_sym]
     end
+
+    pp hsh if GoTransverseTractApi.configuration.debug_mode
 
     return hsh
 
