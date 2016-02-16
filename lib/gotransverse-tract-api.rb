@@ -141,7 +141,6 @@ module GoTransverseTractApi
   def self.get_response_for(klass, api_params={})
 
     api_url = GoTransverseTractApi.get_api_url_for(klass)
-    pp "api_url: " + api_url
 
     if GoTransverseTractApi.configuration.cache_enabled
       return self.get_cached_response_from(klass, api_params)
@@ -269,13 +268,16 @@ module GoTransverseTractApi
       when :put
         response = http_client.put(api_url, request_body, api_params)
       when :delete
-        response = http_client.delete(api_url, request_body, api_params)
+        api_url = api_url + "/#{api_params[:eid]}"
+        response = http_client.delete(api_url, request_body, {'Content-Type' => 'application/xml', 'Accept' => 'application/xml'})
     end
+
+    return nil unless response.body.to_s.present?
 
     xml_response = Nokogiri::XML(response.body.to_s)
 
     klass = klass.to_s.split("::").last
-    hsh = Hash.from_xml(xml_response.to_s).recursive_symbolize_keys! if (response.body.to_s.present?)
+    hsh = Hash.from_xml(xml_response.to_s).recursive_symbolize_keys! 
 
     if method == :get
       hsh = hsh[klass.pluralize.camelize(:lower).to_sym] rescue Hash.from_xml(xml_response.to_s)[klass.camelize(:lower).to_sym]
