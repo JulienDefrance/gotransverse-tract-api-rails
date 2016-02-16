@@ -273,7 +273,7 @@ module GoTransverseTractApi
     xml_response = Nokogiri::XML(response.body.to_s)
 
     klass = klass.to_s.split("::").last
-    hsh = Hash.from_xml(xml_response.to_s).recursive_symbolize_keys!
+    hsh = Hash.from_xml(xml_response.to_s).recursive_symbolize_keys! if (response.body.to_s.present?)
 
     if method == :get
       hsh = hsh[klass.pluralize.camelize(:lower).to_sym] rescue Hash.from_xml(xml_response.to_s)[klass.camelize(:lower).to_sym]
