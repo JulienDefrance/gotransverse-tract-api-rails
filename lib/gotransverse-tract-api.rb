@@ -191,6 +191,7 @@ module GoTransverseTractApi
   def self.delete_request_for(klass, api_params={}, request_body)
     api_url = GoTransverseTractApi.get_api_url_for(klass)
     api_url = api_url + "/#{api_params[:eid]}"
+
     self.call(klass, api_url, api_params, :delete, request_body)
   end
 
