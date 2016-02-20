@@ -9,12 +9,14 @@ module GoTransverseTractApi
     attr_accessor :debug_mode
 
     attr_accessor :tract_api_host
+    attr_accessor :tract_secured_payment_host
 
     #
     # initialize
     #
     def initialize
       @tract_api_host = "https://my.tractbilling.com"
+      @tract_secured_payment_host ||= @tract_api_host
     end
 
     #
