@@ -178,7 +178,8 @@ module GoTransverseTractApi
   #
   def self.put_request_for(klass, api_params={}, request_body)
     api_url = GoTransverseTractApi.get_api_url_for(klass)
-    self.call(klass, api_url, api_params, :put, request_body.to_xml)
+    api_url = api_url + "/#{api_params[:eid]}"
+    self.call(klass, api_url, api_params, :put, request_body)
   end
 
   #
@@ -268,7 +269,7 @@ module GoTransverseTractApi
       when :post
         response = http_client.post(api_url, request_body, {'Content-Type' => 'application/xml', 'Accept' => 'application/xml'})
       when :put
-        response = http_client.put(api_url, request_body, api_params)
+        response = http_client.put(api_url, request_body, {'Content-Type' => 'application/xml', 'Accept' => 'application/xml'})
       when :delete
         response = http_client.delete(api_url, request_body, {'Content-Type' => 'application/xml', 'Accept' => 'application/xml'})
     end

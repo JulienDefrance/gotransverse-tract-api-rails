@@ -296,8 +296,6 @@ module GoTransverseTractApi
         }
       }
       it "creates a draft sales order without a promo code for the billing account" do
-        described_class.create_draft_order(eid, data)
-
         allow(subject).to receive(:create_draft_order).with(eid, data).and_return(response)
         expect(subject.create_draft_order(eid, data)).to eq(response)
       end
@@ -328,6 +326,20 @@ module GoTransverseTractApi
 
         allow(subject).to receive(:update).with(eid, data).and_return(response)
         expect(subject.update(eid, data)).to eq(response)
+      end
+    end
+    
+    context ".update_address" do
+      it "updates a billing account address" do
+        data = { 
+          eid: eid, 
+          bill_type: 'NONE',
+          automatic_recurring_payment: 'true',
+          addresses: addresses.delete_if{|k,v| k == :email_address}
+        }
+
+        allow(subject).to receive(:update_address).with(eid, data).and_return(response)
+        expect(subject.update_address(eid, data)).to eq(response)
       end
     end
     
