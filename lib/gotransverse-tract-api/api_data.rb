@@ -229,21 +229,35 @@ module GoTransverseTractApi
 
     def get_addresses(entity)
       addresses = {
-        attributes: {},
-        emailAddress: {
-          purpose: entity[:addresses][:email_address][:purpose],
-          email: entity[:addresses][:email_address][:email],
-        }.delete_if{|k,v| v.nil?},
-        postalAddress: {
-          purpose: entity[:addresses][:postal_address][:purpose],
-          country: entity[:addresses][:postal_address][:country],
-          city: entity[:addresses][:postal_address][:city],
-          regionOrState: entity[:addresses][:postal_address][:region_or_state],
-          attention: entity[:addresses][:postal_address][:attention],
-          postalCode: entity[:addresses][:postal_address][:postal_code],
-          line1: entity[:addresses][:postal_address][:line1],
-        }.delete_if{|k,v| v.nil?}
+        attributes: {}
       }
+
+      if entity[:addresses].has_key?(:email_address)
+        email_address = {
+          emailAddress: {
+            purpose: entity[:addresses][:email_address][:purpose],
+            email: entity[:addresses][:email_address][:email],
+          }.delete_if{|k,v| v.nil?}
+        }.delete_if{|k,v| v.nil?}
+
+        addresses.merge! email_address if email_address.present?
+      end
+        
+      if entity[:addresses].has_key?(:postal_address)
+        postal_address = {
+          postalAddress: {
+            purpose: entity[:addresses][:postal_address][:purpose],
+            country: entity[:addresses][:postal_address][:country],
+            city: entity[:addresses][:postal_address][:city],
+            regionOrState: entity[:addresses][:postal_address][:region_or_state],
+            attention: entity[:addresses][:postal_address][:attention],
+            postalCode: entity[:addresses][:postal_address][:postal_code],
+            line1: entity[:addresses][:postal_address][:line1],
+          }.delete_if{|k,v| v.nil?}
+        }.delete_if{|k,v| v.nil?}
+
+        addresses.merge! postal_address if postal_address.present?
+      end
 
       if entity[:addresses].has_key?(:telecom_address)
         tele_address = {
@@ -256,9 +270,9 @@ module GoTransverseTractApi
             purpose: entity[:addresses].try(:[],:telecom_address).try(:[],:purpose),
             eid: entity[:addresses].try(:[],:telecom_address).try(:[],:eid) 
           }.delete_if{|k,v| v.nil?}
-        }
+        }.delete_if{|k,v| v.nil?}
 
-        addresses.merge! tele_address
+        addresses.merge! tele_address if tele_address.present?
       end
 
       addresses

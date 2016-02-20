@@ -377,6 +377,23 @@ module GoTransverseTractApi
           GoTransverseTractApi.put_request_for(self, {eid: eid}, xml_data)
         end
 
+        # @param {Long} eid
+        # @param {Hash} billing_account
+        #
+        def update_address eid, billing_account
+          data = {
+            billingAccount: {
+              eid: eid,
+              billType: billing_account[:bill_type],
+              automaticRecurringPayment: billing_account[:automatic_recurring_payment]
+            },
+            addresses: GoTransverseTractApi::ApiData.new.get_addresses(billing_account)
+          }
+
+          xml_data = GoTransverseTractApi.generateXML(data, 'billingAccount')
+          GoTransverseTractApi.put_request_for(self, {eid: eid}, xml_data)
+        end
+
         private
 
         def get_products(billing_account)
