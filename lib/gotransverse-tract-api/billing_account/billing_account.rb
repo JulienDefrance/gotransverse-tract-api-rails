@@ -387,7 +387,7 @@ module GoTransverseTractApi
               billType: billing_account[:bill_type],
               automaticRecurringPayment: billing_account[:automatic_recurring_payment]
             },
-            addresses: GoTransverseTractApi::ApiData.new.get_addresses(billing_account)
+            addresses: GoTransverseTractApi::ApiData.new.get_addresses(billing_account[:organization])
           }
 
           xml_data = GoTransverseTractApi.generateXML(data, 'billingAccount')
