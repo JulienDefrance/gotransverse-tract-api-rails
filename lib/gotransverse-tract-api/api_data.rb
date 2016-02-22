@@ -276,6 +276,9 @@ module GoTransverseTractApi
       end
 
       addresses
+
+    rescue
+      {}
     end
 
   end
