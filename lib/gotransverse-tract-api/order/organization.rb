@@ -39,17 +39,24 @@ module GoTransverseTractApi
       def self.add_address eid, address
         data = {
           addAddressToParty: {},
-          person: {eid: eid},
-          postalAddress: {
-            purpose: address[:purpose],
-            country: address[:country],
-            city: address[:city],
-            regionOrState: address[:region_or_state],
-            postalCode: address[:postal_code],
-            line1: address[:line1]
-          }
         }
 
+        if (address.has_key?(:person))
+          data.merge!({ person: {eid: eid} })
+        else
+          data.merge!({ organization: {eid: eid} })
+        end
+
+        if (address.has_key?(:postal_address))
+          data.merge!({ postalAddress: address[:postal_address] })
+        end
+        if (address.has_key?(:email_address))
+          data.merge!({ emailAddress: address[:email_address] })
+        end
+        if (address.has_key?(:telecom_address))
+          data.merge!({ telecomAddress: address[:telecom_address] })
+        end
+       
         xml_data = GoTransverseTractApi.generateXML(data, 'addAddressToParty')
         GoTransverseTractApi.post_request_for(self, {eid: eid}, xml_data, "addAddress")
       end

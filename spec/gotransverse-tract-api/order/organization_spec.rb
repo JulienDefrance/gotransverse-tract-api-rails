@@ -12,12 +12,23 @@ module GoTransverseTractApi
         eid = '48406'
 
         data = {
-          city: 'fsfsfs',
-          country: 'USA',
-          line1: 'wefsvgg ggdgdgd',
-          postal_code: '232433',
-          purpose: 'Billing',
-          region_or_state: 'CA'
+          person: {eid: eid},
+          postal_address: {
+            city: 'fsfsfs',
+            country: 'USA',
+            line1: 'wefsvgg ggdgdgd',
+            postal_code: '232433',
+            purpose: 'Billing',
+            region_or_state: 'CA'
+          },
+          email_address: {
+            email: 'test@test.com'
+          },
+          telecom_address: {
+            country_code: '001',
+            area_code: '925',
+            number: '123-3214'
+          }
         }
 
         allow(subject).to receive(:add_address).with(eid, data).and_return(response)
