@@ -6,40 +6,56 @@ module GoTransverseTractApi
 
       class << self
 
-        def find_all
-          GoTransverseTractApi.get_response_for(self)
+        #
+        # @param {Hash} options
+        #
+        def find_all options=nil
+          params ||= GoTransverseTractApi::ApiData.new.get_query_params({}, options)
+          GoTransverseTractApi.get_response_for(self, params)
         end
 
         #
         # @param {Long} eid
-        # @param {String} query_scope (default: 'SHALLOW')
+        # @param {Hash} options
         #
-        def find_by_eid eid, query_scope=nil
-          GoTransverseTractApi.get_response_for(self, {eid: eid, queryScope: query_scope})
-        end
+        def find_by_eid eid, options=nil
+          return nil unless eid.present?
 
-        #
-        # @param {Long} billing_account_category_eid
-        # @param {String} query_scope (default: 'SHALLOW')
-        #
-        def find_by_billing_account_category_eid billing_account_category_eid, query_scope=nil
-          GoTransverseTractApi.get_response_for(self, {billing_account_category_eid: billing_account_category_eid, queryScope: query_scope})
-        end
-
-        #
-        # @param {Long} billing_account_eid
-        # @param {String} query_scope (default: 'SHALLOW')
-        #
-        def find_by_billing_account_eid billing_account_eid, query_scope=nil
-          GoTransverseTractApi.get_response_for(self, {billing_account_eid: billing_account_eid, queryScope: query_scope})
+          params ||= GoTransverseTractApi::ApiData.new.get_query_params({eid: eid}, options)
+          GoTransverseTractApi.get_response_for(self, params)
         end
 
         #
         # @param {String} name
-        # @param {String} query_scope (default: 'SHALLOW')
+        # @param {Hash} options
         #
-        def find_by_name name, query_scope=nil
-          GoTransverseTractApi.get_response_for(self, {name: name, queryScope: query_scope})
+        def find_by_name name, options=nil
+          return nil unless name.present?
+
+          params ||= GoTransverseTractApi::ApiData.new.get_query_params({name: name}, options)
+          GoTransverseTractApi.get_response_for(self, params)
+        end
+
+        #
+        # @param {Long} billing_account_category_eid
+        # @param {Hash} options
+        #
+        def find_by_billing_account_category_eid billing_account_category_eid, options=nil
+          return nil unless billing_account_category_eid.present?
+
+          params ||= GoTransverseTractApi::ApiData.new.get_query_params({billing_account_category_eid: billing_account_category_eid}, options)
+          GoTransverseTractApi.get_response_for(self, params)
+        end
+
+        #
+        # @param {Long} billing_account_eid
+        # @param {Hash} options
+        #
+        def find_by_billing_account_eid billing_account_eid, options=nil
+          return nil unless billing_account_eid.present?
+
+          params ||= GoTransverseTractApi::ApiData.new.get_query_params({billing_account_eid: billing_account_eid}, options)
+          GoTransverseTractApi.get_response_for(self, params)
         end
 
       end
