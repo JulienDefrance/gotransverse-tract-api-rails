@@ -8,42 +8,57 @@ module GoTransverseTractApi
         
         #
         # @param {String} type
-        # @param {String} query_scope (default: 'SHALLOW')
+        # @param {Hash} options
         #
-        def find_by_type type, query_scope=nil
-          GoTransverseTractApi.get_response_for(self, {type: type, queryScope: query_scope})
+        def find_by_type type, options=nil
+          return nil unless type.present?
+
+          params ||= GoTransverseTractApi::ApiData.new.get_query_params({type: type}, options)
+          GoTransverseTractApi.get_response_for(self, params)
         end
 
         #
         # @param {Long} discount_category_eid
-        # @param {String} query_scope (default: 'SHALLOW')
+        # @param {Hash} options
         #
-        def find_by_discount_category_eid discount_category_eid, query_scope=nil
-          GoTransverseTractApi.get_response_for(self, {discount_category_eid: discount_category_eid, queryScope: query_scope})
+        def find_by_discount_category_eid discount_category_eid, options=nil
+          return nil unless discount_category_eid.present?
+
+          params ||= GoTransverseTractApi::ApiData.new.get_query_params({discount_category_eid: discount_category_eid}, options)
+          GoTransverseTractApi.get_response_for(self, params)
         end
        
         #
         # @param {Boolean} one_time
-        # @param {String} query_scope (default: 'SHALLOW')
+        # @param {Hash} options
         #
-        def find_by_one_time one_time, query_scope=nil
-          GoTransverseTractApi.get_response_for(self, {one_time: one_time, queryScope: query_scope})
+        def find_by_one_time one_time, options=nil
+          return nil unless one_time.present?
+
+          params ||= GoTransverseTractApi::ApiData.new.get_query_params({one_time: one_time}, options)
+          GoTransverseTractApi.get_response_for(self, params)
         end
 
         #
         # @param {Boolean} recurring
-        # @param {String} query_scope (default: 'SHALLOW')
+        # @param {Hash} options
         #
-        def find_by_recurring recurring, query_scope=nil
-          GoTransverseTractApi.get_response_for(self, {recurring: recurring, queryScope: query_scope})
+        def find_by_recurring recurring, options=nil
+          return nil unless recurring.present?
+
+          params ||= GoTransverseTractApi::ApiData.new.get_query_params({recurring: recurring}, options)
+          GoTransverseTractApi.get_response_for(self, params)
         end
 
         #
         # @param {String} currency_type
-        # @param {String} query_scope (default: 'SHALLOW')
+        # @param {Hash} options
         #
-        def find_by_currency_type currency_type, query_scope=nil
-          GoTransverseTractApi.get_response_for(self, {currency_type: currency_type, queryScope: query_scope})
+        def find_by_currency_type currency_type, options=nil
+          return nil unless currency_type.present?
+
+          params ||= GoTransverseTractApi::ApiData.new.get_query_params({currency_type: currency_type}, options)
+          GoTransverseTractApi.get_response_for(self, params)
         end
 
       end

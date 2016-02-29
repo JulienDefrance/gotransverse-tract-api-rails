@@ -6,18 +6,24 @@ module GoTransverseTractApi
 
       #
       # @param {Long} eid
-      # @param {String} query_scope (default: 'SHALLOW')
+      # @param {Hash} options
       #
-      def self.find_by_eid eid, query_scope=nil
-        GoTransverseTractApi.get_response_for(self, {eid: eid, queryScope: query_scope})
+      def self.find_by_eid eid, options=nil
+        return nil unless eid.present?
+
+        params ||= GoTransverseTractApi::ApiData.new.get_query_params({eid: eid}, options)
+        GoTransverseTractApi.get_response_for(self, params)
       end
 
       #
       # @param {Long} product_order_item_eid
-      # @param {String} query_scope (default: 'SHALLOW')
+      # @param {Hash} options
       #
-      def self.find_by_product_order_item_eid product_order_item_eid, query_scope=nil
-        GoTransverseTractApi.get_response_for(self, {product_order_item_eid: product_order_item_eid, queryScope: query_scope})
+      def self.find_by_product_order_item_eid product_order_item_eid, options=nil
+        return nil unless product_order_item_eid.present?
+
+        params ||= GoTransverseTractApi::ApiData.new.get_query_params({product_order_item_eid: product_order_item_eid}, options)
+        GoTransverseTractApi.get_response_for(self, params)
       end
 
     end

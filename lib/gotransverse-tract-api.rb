@@ -72,7 +72,6 @@ require "gotransverse-tract-api/product/product_price"
 require "gotransverse-tract-api/product/one_time_product_price"
 require "gotransverse-tract-api/product/product_tag"
 require "gotransverse-tract-api/product/recurring_product_price"
-require "gotransverse-tract-api/product/usage_rule"
 
 require "gotransverse-tract-api/service/service"
 require "gotransverse-tract-api/service/service_device_inventory_item"
