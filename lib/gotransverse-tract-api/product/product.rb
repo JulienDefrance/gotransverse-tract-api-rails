@@ -29,7 +29,7 @@ module GoTransverseTractApi
         # @param {String} name
         # @param {Hash} options
         #
-        def find_by_name name, option=nil
+        def find_by_name name, options=nil
           return nil unless name.present?
 
           params ||= GoTransverseTractApi::ApiData.new.get_query_params({name: name}, options)

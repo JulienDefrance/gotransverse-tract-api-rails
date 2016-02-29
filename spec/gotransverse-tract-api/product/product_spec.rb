@@ -21,7 +21,7 @@ module GoTransverseTractApi
 
     context ".find_by_name" do
       it "returns a product for the given name" do
-        data = described_class.find_by_name('Postcards 1st Class', 'DEEP')
+        data = described_class.find_by_name('Postcards 1st Class', {query_scope: 'DEEP'})
         expect(data).to_not be_nil 
       end
     end
