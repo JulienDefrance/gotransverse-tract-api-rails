@@ -6,40 +6,56 @@ module GoTransverseTractApi
 
       class << self
 
-        def find_all
-          GoTransverseTractApi.get_response_for(self)
+        #
+        # @param {Hash} options
+        #
+        def find_all options=nil
+          params ||= GoTransverseTractApi::ApiData.new.get_query_params({}, options)
+          GoTransverseTractApi.get_response_for(self, params)
         end
 
         #
         # @param {Long} eid
-        # @param {String} query_scope (default: 'SHALLOW')
+        # @param {Hash} options
         #
-        def find_by_eid eid, query_scope=nil 
-          GoTransverseTractApi.get_response_for(self, {eid: eid, queryScope: query_scope})
+        def find_by_eid eid, options=nil
+          return nil unless eid.present?
+
+          params ||= GoTransverseTractApi::ApiData.new.get_query_params({eid: eid}, options)
+          GoTransverseTractApi.get_response_for(self, params)
         end
 
         #
         # @param {Long} service_price_eid
-        # @param {String} query_scope (default: 'SHALLOW')
+        # @param {Hash} options
         #
-        def find_by_service_price_eid service_price_eid, query_scope=nil 
-          GoTransverseTractApi.get_response_for(self, {service_price_eid: service_price_eid, queryScope: query_scope})
+        def find_by_service_price_eid service_price_eid, options=nil 
+          return nil unless service_price_eid.present?
+
+          params ||= GoTransverseTractApi::ApiData.new.get_query_params({service_price_eid: service_price_eid}, options)
+          GoTransverseTractApi.get_response_for(self, params)
         end
 
         #
         # @param {Boolean} invoiced
-        # @param {String} query_scope (default: 'SHALLOW')
+        # @param {Hash} options
         #
-        def find_by_invoiced invoiced, query_scope=nil 
-          GoTransverseTractApi.get_response_for(self, {invoiced: invoiced, queryScope: query_scope})
+        def find_by_invoiced invoiced, options=nil 
+          return nil unless invoiced.present?
+
+          params ||= GoTransverseTractApi::ApiData.new.get_query_params({invoiced: invoiced}, options)
+          GoTransverseTractApi.get_response_for(self, params)
         end
 
         #
         # @param {Long} order_item_eid
-        # @param {String} query_scope (default: 'SHALLOW')
+        # @param {Hash} options
         #
-        def find_by_order_item_eid order_item_eid, query_scope=nil 
-          GoTransverseTractApi.get_response_for(self, {order_item_eid: order_item_eid, queryScope: query_scope})
+        def find_by_order_item_eid order_item_eid, options=nil 
+          return nil unless order_item_eid.present?
+
+          params ||= GoTransverseTractApi::ApiData.new.get_query_params({order_item_eid: order_item_eid}, options)
+          GoTransverseTractApi.get_response_for(self, params)
         end
 
         #
