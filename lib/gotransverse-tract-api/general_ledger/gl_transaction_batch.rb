@@ -8,42 +8,57 @@ module GoTransverseTractApi
 
         #
         # @param {Long} eid
-        # @param {String} query_scope (default: 'SHALLOW')
+        # @param {Hash} options
         #
-        def find_by_eid eid, query_scope=nil
-          GoTransverseTractApi.get_response_for(self, {eid: eid, queryScope: query_scope})
+        def find_by_eid eid, options=nil
+          return nil unless eid.present?
+
+          params ||= GoTransverseTractApi::ApiData.new.get_query_params({eid: eid}, options)
+          GoTransverseTractApi.get_response_for(self, params)
         end
 
         #
         # @param {Long} batch_num
-        # @param {String} query_scope (default: 'SHALLOW')
+        # @param {Hash} options
         #
-        def find_by_batch_num batch_num, query_scope=nil
-          GoTransverseTractApi.get_response_for(self, {batch_num: batch_num, queryScope: query_scope})
+        def find_by_batch_num batch_num, options=nil
+          return nil unless batch_num.present?
+
+          params ||= GoTransverseTractApi::ApiData.new.get_query_params({batch_num: batch_num}, options)
+          GoTransverseTractApi.get_response_for(self, params)
         end
 
         #
         # @param {DateTime} posted_on
-        # @param {String} query_scope (default: 'SHALLOW')
+        # @param {Hash} options
         #
-        def find_by_posted_on posted_on, query_scope=nil
-          GoTransverseTractApi.get_response_for(self, {posted_on: posted_on, queryScope: query_scope})
-        end
+        def find_by_posted_on posted_on, options=nil
+          return nil unless posted_on.present?
 
-        #
-        # @param {Boolean} exported
-        # @param {String} query_scope (default: 'SHALLOW')
-        #
-        def find_by_exported exported, query_scope=nil
-          GoTransverseTractApi.get_response_for(self, {exported: exported, queryScope: query_scope})
+          params ||= GoTransverseTractApi::ApiData.new.get_query_params({posted_on: posted_on}, options)
+          GoTransverseTractApi.get_response_for(self, params)
         end
 
         #
         # @param {String} status
-        # @param {String} query_scope (default: 'SHALLOW')
+        # @param {Hash} options
         #
-        def find_by_status status, query_scope=nil
-          GoTransverseTractApi.get_response_for(self, {status: status, queryScope: query_scope})
+        def find_by_status status, options=nil
+          return nil unless status.present?
+
+          params ||= GoTransverseTractApi::ApiData.new.get_query_params({status: status}, options)
+          GoTransverseTractApi.get_response_for(self, params)
+        end
+
+        #
+        # @param {Boolean} exported
+        # @param {Hash} options
+        #
+        def find_by_exported exported, options=nil
+          return nil unless exported.present?
+
+          params ||= GoTransverseTractApi::ApiData.new.get_query_params({exported: exported}, options)
+          GoTransverseTractApi.get_response_for(self, params)
         end
 
         #

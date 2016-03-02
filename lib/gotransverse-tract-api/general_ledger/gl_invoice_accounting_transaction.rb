@@ -2,7 +2,7 @@ module GoTransverseTractApi
 
   module GeneralLedger
 
-    class GLInvoiceAccountingTransaction < GLAdjustmentAccountingTransaction
+    class GLInvoiceAccountingTransaction < GLAccountingTransaction
       # same methods of parent class
 
     end

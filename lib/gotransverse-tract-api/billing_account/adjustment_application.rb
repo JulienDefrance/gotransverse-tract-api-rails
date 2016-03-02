@@ -8,18 +8,24 @@ module GoTransverseTractApi
 
         #
         # @param {Long} eid
-        # @param {String} query_scope (default: 'SHALLOW')
+        # @param {Hash} options
         #
-        def find_by_eid eid, query_scope=nil
-          GoTransverseTractApi.get_response_for(self, {eid: eid, queryScope: query_scope})
+        def find_by_eid eid, options=nil
+          return nil unless eid.present?
+
+          params ||= GoTransverseTractApi::ApiData.new.get_query_params({eid: eid}, options)
+          GoTransverseTractApi.get_response_for(self, params)
         end
 
         #
         # @param {Long} adjustment_eid
-        # @param {String} query_scope (default: 'SHALLOW')
+        # @param {Hash} options
         #
-        def find_by_adjustment_eid adjustment_eid, query_scope=nil
-          GoTransverseTractApi.get_response_for(self, {adjustment_eid: adjustment_eid, queryScope: query_scope})
+        def find_by_adjustment_eid adjustment_eid, options=nil
+          return nil unless adjustment_eid.present?
+
+          params ||= GoTransverseTractApi::ApiData.new.get_query_params({adjustment_eid: adjustment_eid}, options)
+          GoTransverseTractApi.get_response_for(self, params)
         end
 
       end

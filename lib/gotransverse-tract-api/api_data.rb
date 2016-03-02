@@ -227,6 +227,12 @@ module GoTransverseTractApi
       ba_details.delete_if{|k,v| v.nil?}
     end
 
+    def get_query_params(params, options={})
+      params.merge!(options) if(options.present?)
+
+      params
+    end
+
     def get_addresses(entity)
       addresses = {
         attributes: {}

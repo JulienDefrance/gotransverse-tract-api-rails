@@ -8,66 +8,90 @@ module GoTransverseTractApi
 
         #
         # @param {Long} eid
-        # @param {String} query_scope (default: 'SHALLOW')
+        # @param {Hash} options
         #
-        def find_by_eid eid, query_scope=nil
-          GoTransverseTractApi.get_response_for(self, {eid: eid, queryScope: query_scope})
+        def find_by_eid eid, options=nil
+          return nil unless eid.present?
+
+          params ||= GoTransverseTractApi::ApiData.new.get_query_params({eid: eid}, options)
+          GoTransverseTractApi.get_response_for(self, params)
         end
 
         #
         # @param {Long} billing_account_eid
-        # @param {Boolean} closed
+        # @param {Hash} options
         #
-        def find_by_billing_account_eid billing_account_eid, closed
-          GoTransverseTractApi.get_response_for(self, {billing_account_eid: billing_account_eid, closed: closed})
+        def find_by_billing_account_eid billing_account_eid, options=nil
+          return nil unless billing_account_eid.present?
+
+          params ||= GoTransverseTractApi::ApiData.new.get_query_params({billing_account_eid: billing_account_eid}, options)
+          GoTransverseTractApi.get_response_for(self, params)
         end
 
         #
         # @param {Long} account_num
-        # @param {Boolean} closed
+        # @param {Hash} options
         #
-        def find_by_account_num account_num, closed
-          GoTransverseTractApi.get_response_for(self, {account_num: account_num, closed: closed})
+        def find_by_account_num account_num, options=nil
+          return nil unless account_num.present?
+
+          params ||= GoTransverseTractApi::ApiData.new.get_query_params({account_num: account_num}, options)
+          GoTransverseTractApi.get_response_for(self, params)
         end
 
         #
         # @param {Long} service_period_eid
-        # @param {String} query_scope (default: 'SHALLOW')
+        # @param {Hash} options
         #
-        def find_by_service_period_eid service_period_eid, query_scope=nil
-          GoTransverseTractApi.get_response_for(self, {service_period_eid: service_period_eid, queryScope: query_scope})
+        def find_by_service_period_eid service_period_eid, options=nil
+          return nil unless service_period_eid.present?
+
+          params ||= GoTransverseTractApi::ApiData.new.get_query_params({service_period_eid: service_period_eid}, options)
+          GoTransverseTractApi.get_response_for(self, params)
         end
 
         #
         # @param {Long} service_resource_identifier
-        # @param {String} query_scope (default: 'SHALLOW')
+        # @param {Hash} options
         #
-        def find_by_service_resource_identifier service_resource_identifier, query_scope=nil
-          GoTransverseTractApi.get_response_for(self, {service_resource_identifier: service_resource_identifier, queryScope: query_scope})
+        def find_by_service_resource_identifier service_resource_identifier, options=nil
+          return nil unless service_resource_identifier.present?
+
+          params ||= GoTransverseTractApi::ApiData.new.get_query_params({service_resource_identifier: service_resource_identifier}, options)
+          GoTransverseTractApi.get_response_for(self, params)
         end
 
         #
         # @param {DateTime} start_time
-        # @param {String} query_scope (default: 'SHALLOW')
+        # @param {Hash} options
         #
-        def find_by_start_time start_time, query_scope=nil
-          GoTransverseTractApi.get_response_for(self, {start_time: start_time, queryScope: query_scope})
+        def find_by_start_time start_time, options=nil
+          return nil unless start_time.present?
+
+          params ||= GoTransverseTractApi::ApiData.new.get_query_params({start_time: start_time}, options)
+          GoTransverseTractApi.get_response_for(self, params)
         end
 
         #
         # @param {DateTime} end_time
-        # @param {String} query_scope (default: 'SHALLOW')
+        # @param {Hash} options
         #
-        def find_by_end_time end_time, query_scope=nil
-          GoTransverseTractApi.get_response_for(self, {end_time: end_time, queryScope: query_scope})
+        def find_by_end_time end_time, options=nil
+          return nil unless end_time.present?
+
+          params ||= GoTransverseTractApi::ApiData.new.get_query_params({end_time: end_time}, options)
+          GoTransverseTractApi.get_response_for(self, params)
         end
 
         #
         # @param {Long} reference_id
-        # @param {Long} sequence_id (optional)
+        # @param {Hash} options
         #
-        def find_by_reference_id reference_id, sequence_id=nil
-          GoTransverseTractApi.get_response_for(self, {reference_id: reference_id, sequence_id: sequence_id})
+        def find_by_reference_id reference_id, options=nil
+          return nil unless reference_id.present?
+
+          params ||= GoTransverseTractApi::ApiData.new.get_query_params({reference_id: reference_id}, options)
+          GoTransverseTractApi.get_response_for(self, params)
         end
 
         #

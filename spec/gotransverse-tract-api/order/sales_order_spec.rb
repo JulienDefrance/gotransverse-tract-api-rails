@@ -8,9 +8,53 @@ module GoTransverseTractApi
     let(:eid) { '296'}
     let(:response) { {a: 'b', c: 'd'} }
 
+    # As per TRACT documentation the API call exists
+    # but never works
+    describe ".find_all" do
+      context "when no options present" do
+        it "returns all sales orders" do
+          data = described_class.find_all
+          expect(data).to be_nil 
+        end
+      end
+
+      context "when options present" do
+        it "returns all sales orders based on options" do
+          options = { pageSize: 10, pageNumber: 2 }
+     
+          data = described_class.find_all options
+          expect(data).to be_nil 
+        end
+      end
+    end
+
     context ".find_by_eid" do
       it "returns a sales order for the given eid" do
         data = described_class.find_by_eid(eid)
+        expect(data).to_not be_nil 
+      end
+    end
+
+    describe ".find_by_account_num" do
+      it "returns nil if no account number is given" do
+        account_num = nil
+        options = {}
+
+        data = described_class.find_by_account_num(account_num, options)
+        expect(data).to be_nil 
+      end
+
+      it "returns a sales order for the given account number" do
+        account_num = 180
+        options = { pageSize: 100, pageNumber: 1, queryScope: 'DEEP' }
+
+        data = described_class.find_by_account_num(account_num, options)
+        expect(data).to_not be_nil 
+      end
+      it "returns a sales order for the given account number and no options" do
+        account_num = 180
+
+        data = described_class.find_by_account_num(account_num)
         expect(data).to_not be_nil 
       end
     end

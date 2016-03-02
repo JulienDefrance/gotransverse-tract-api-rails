@@ -8,10 +8,13 @@ module GoTransverseTractApi
         
         #
         # @param {Boolean} charge_during_renewal
-        # @param {String} query_scope (default: 'SHALLOW')
+        # @param {Hash} options
         #
-        def find_by_charge_during_renewal charge_during_renewal, query_scope=nil
-          GoTransverseTractApi.get_response_for(self, {charge_during_renewal: charge_during_renewal, queryScope: query_scope})
+        def find_by_charge_during_renewal charge_during_renewal, options=nil
+          return nil unless charge_during_renewal.present?
+
+          params ||= GoTransverseTractApi::ApiData.new.get_query_params({charge_during_renewal: charge_during_renewal}, options)
+          GoTransverseTractApi.get_response_for(self, params)
         end
       end
 

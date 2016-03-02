@@ -8,66 +8,90 @@ module GoTransverseTractApi
 
         #
         # @param {Long} eid
-        # @param {String} query_scope (default: 'SHALLOW')
+        # @param {Hash} options
         #
-        def find_by_eid eid, query_scope=nil
-          GoTransverseTractApi.get_response_for(self, {eid: eid, queryScope: query_scope})
+        def find_by_eid eid, options=nil
+          return nil unless eid.present?
+
+          params ||= GoTransverseTractApi::ApiData.new.get_query_params({eid: eid}, options)
+          GoTransverseTractApi.get_response_for(self, params)
         end
 
         #
         # @param {Long} service_eid
-        # @param {String} query_scope (default: 'SHALLOW')
+        # @param {Hash} options
         #
-        def find_by_service_eid service_eid, query_scope=nil
-          GoTransverseTractApi.get_response_for(self, {service_eid: service_eid, queryScope: query_scope})
+        def find_by_service_eid service_eid, options=nil
+          return nil unless service_eid.present?
+
+          params ||= GoTransverseTractApi::ApiData.new.get_query_params({service_eid: service_eid}, options)
+          GoTransverseTractApi.get_response_for(self, params)
         end
 
         #
         # @param {String} name
-        # @param {String} query_scope (default: 'SHALLOW')
+        # @param {Hash} options
         #
-        def find_by_name name, query_scope=nil
-          GoTransverseTractApi.get_response_for(self, {name: name, queryScope: query_scope})
+        def find_by_name name, options=nil
+          return nil unless name.present?
+
+          params ||= GoTransverseTractApi::ApiData.new.get_query_params({name: name}, options)
+          GoTransverseTractApi.get_response_for(self, params)
         end
 
         #
         # @param {String} status
-        # @param {String} query_scope (default: 'SHALLOW')
+        # @param {Hash} options
         #
-        def find_by_status status, query_scope=nil
-          GoTransverseTractApi.get_response_for(self, {status: status, queryScope: query_scope})
+        def find_by_status status, options=nil
+          return nil unless status.present?
+
+          params ||= GoTransverseTractApi::ApiData.new.get_query_params({status: status}, options)
+          GoTransverseTractApi.get_response_for(self, params)
         end
 
         #
         # @param {String} type
-        # @param {String} query_scope (default: 'SHALLOW')
+        # @param {Hash} options
         #
-        def find_by_type type, query_scope=nil
-          GoTransverseTractApi.get_response_for(self, {type: type, queryScope: query_scope})
+        def find_by_type type, options=nil
+          return nil unless type.present?
+
+          params ||= GoTransverseTractApi::ApiData.new.get_query_params({type: type}, options)
+          GoTransverseTractApi.get_response_for(self, params)
         end
 
         #
         # @param {String} entity_relation_type
-        # @param {String} query_scope (default: 'SHALLOW')
+        # @param {Hash} options
         #
-        def find_by_entity_relation_type entity_relation_type, query_scope=nil
-          GoTransverseTractApi.get_response_for(self, {entity_relation_type: entity_relation_type, queryScope: query_scope})
+        def find_by_entity_relation_type entity_relation_type, options=nil
+          return nil unless entity_relation_type.present?
+
+          params ||= GoTransverseTractApi::ApiData.new.get_query_params({entity_relation_type: entity_relation_type}, options)
+          GoTransverseTractApi.get_response_for(self, params)
         end
 
         #
-        # @param {DateTime} from_date
-        # @param {String} query_scope (default: 'SHALLOW')
+        # @param {Date} from_date
+        # @param {Hash} options
         #
-        def find_by_from_date from_date, query_scope=nil
-          GoTransverseTractApi.get_response_for(self, {from_date: from_date, queryScope: query_scope})
+        def find_by_from_date from_date, options=nil
+          return nil unless from_date.present?
+
+          params ||= GoTransverseTractApi::ApiData.new.get_query_params({from_date: from_date}, options)
+          GoTransverseTractApi.get_response_for(self, params)
         end
 
         #
-        # @param {DateTime} thru_date
-        # @param {String} query_scope (default: 'SHALLOW')
+        # @param {Date} thru_date
+        # @param {Hash} options
         #
-        def find_by_thru_date thru_date, query_scope=nil
-          GoTransverseTractApi.get_response_for(self, {thru_date: thru_date, queryScope: query_scope})
+        def find_by_thru_date thru_date, options=nil
+          return nil unless thru_date.present?
+
+          params ||= GoTransverseTractApi::ApiData.new.get_query_params({thru_date: thru_date}, options)
+          GoTransverseTractApi.get_response_for(self, params)
         end
 
         #
