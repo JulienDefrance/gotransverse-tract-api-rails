@@ -10,7 +10,7 @@ module GoTransverseTractApi
         # @param {Long} eid
         # @param {Hash} options
         #
-        def find_by_eid eid, options=nil
+        def find_by_eid eid, options={}
           return nil unless eid.present?
 
           params ||= GoTransverseTractApi::ApiData.new.get_query_params({eid: eid}, options)
@@ -21,7 +21,7 @@ module GoTransverseTractApi
         # @param {Long} billing_account_segment_eid
         # @param {Hash} options
         #
-        def find_by_billing_account_segment_eid billing_account_segment_eid, options=nil
+        def find_by_billing_account_segment_eid billing_account_segment_eid, options={}
           return nil unless billing_account_segment_eid.present?
 
           params ||= GoTransverseTractApi::ApiData.new.get_query_params({billing_account_segment_eid: billing_account_segment_eid}, options)
@@ -32,7 +32,7 @@ module GoTransverseTractApi
         # @param {String} billing_account_segment_name
         # @param {Hash} options
         #
-        def find_by_billing_account_segment_name billing_account_segment_name, options=nil
+        def find_by_billing_account_segment_name billing_account_segment_name, options={}
           return nil unless billing_account_segment_name.present?
 
           params ||= GoTransverseTractApi::ApiData.new.get_query_params({billing_account_segment_name: billing_account_segment_name}, options)
@@ -43,7 +43,7 @@ module GoTransverseTractApi
         # @param {String} type
         # @param {Hash} options
         #
-        def find_by_type type, options=nil
+        def find_by_type type, options={}
           return nil unless type.present?
 
           params ||= GoTransverseTractApi::ApiData.new.get_query_params({type: type}, options)
@@ -54,7 +54,7 @@ module GoTransverseTractApi
         # @param {Boolean} required
         # @param {Hash} options
         #
-        def find_by_required required, options=nil
+        def find_by_required required, options={}
           return nil unless required.present?
 
           params ||= GoTransverseTractApi::ApiData.new.get_query_params({required: required}, options)

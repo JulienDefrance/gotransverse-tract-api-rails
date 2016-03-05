@@ -10,7 +10,7 @@ module GoTransverseTractApi
         # @param {Long} recurrence_period
         # @param {Hash} options
         #
-        def find_by_recurrence_period recurrence_period, options=nil
+        def find_by_recurrence_period recurrence_period, options={}
           return nil unless recurrence_period.present?
 
           params ||= GoTransverseTractApi::ApiData.new.get_query_params({recurrence_period: recurrence_period}, options)
@@ -21,7 +21,7 @@ module GoTransverseTractApi
         # @param {Long} recurrence_amount
         # @param {Hash} options
         #
-        def find_by_recurrence_amount recurrence_amount, options=nil
+        def find_by_recurrence_amount recurrence_amount, options={}
           return nil unless recurrence_amount.present?
 
           params ||= GoTransverseTractApi::ApiData.new.get_query_params({recurrence_amount: recurrence_amount}, options)
@@ -32,7 +32,7 @@ module GoTransverseTractApi
         # @param {Boolean} recurring_payment_required
         # @param {Hash} options
         #
-        def find_by_recurring_payment_required recurring_payment_required, options=nil
+        def find_by_recurring_payment_required recurring_payment_required, options={}
           return nil unless recurring_payment_required.present?
 
           params ||= GoTransverseTractApi::ApiData.new.get_query_params({recurring_payment_required: recurring_payment_required}, options)
@@ -43,7 +43,7 @@ module GoTransverseTractApi
         # @param {Boolean} bill_in_advance
         # @param {Hash} options
         #
-        def find_by_bill_in_advance bill_in_advance, options=nil
+        def find_by_bill_in_advance bill_in_advance, options={}
           return nil unless bill_in_advance.present?
 
           params ||= GoTransverseTractApi::ApiData.new.get_query_params({bill_in_advance: bill_in_advance}, options)
@@ -54,7 +54,7 @@ module GoTransverseTractApi
         # @param {Boolean} prorated_on_cancel
         # @param {Hash} options
         #
-        def find_by_prorated_on_cancel prorated_on_cancel, options=nil
+        def find_by_prorated_on_cancel prorated_on_cancel, options={}
           return nil unless prorated_on_cancel.present?
 
           params ||= GoTransverseTractApi::ApiData.new.get_query_params({prorated_on_cancel: prorated_on_cancel}, options)
@@ -65,7 +65,7 @@ module GoTransverseTractApi
         # @param {Boolean} prorated_on_order
         # @param {Hash} options
         #
-        def find_by_prorated_on_order prorated_on_order, options=nil
+        def find_by_prorated_on_order prorated_on_order, options={}
           return nil unless prorated_on_order.present?
 
           params ||= GoTransverseTractApi::ApiData.new.get_query_params({prorated_on_order: prorated_on_order}, options)
@@ -76,7 +76,7 @@ module GoTransverseTractApi
         # @param {Boolean} prorated_on_order_no_charge
         # @param {Hash} options
         #
-        def find_by_prorated_on_order_no_charge prorated_on_order_no_charge, options=nil
+        def find_by_prorated_on_order_no_charge prorated_on_order_no_charge, options={}
           return nil unless prorated_on_order_no_charge.present?
 
           params ||= GoTransverseTractApi::ApiData.new.get_query_params({prorated_on_order_no_charge: prorated_on_order_no_charge}, options)

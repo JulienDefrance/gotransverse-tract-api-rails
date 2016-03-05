@@ -10,7 +10,7 @@ module GoTransverseTractApi
         # @param {Long} eid
         # @param {Hash} options
         #
-        def find_by_eid eid, options=nil
+        def find_by_eid eid, options={}
           return nil unless eid.present?
 
           params ||= GoTransverseTractApi::ApiData.new.get_query_params({eid: eid}, options)
@@ -21,7 +21,7 @@ module GoTransverseTractApi
         # @param {Long} adjustment_eid
         # @param {Hash} options
         #
-        def find_by_adjustment_eid adjustment_eid, options=nil
+        def find_by_adjustment_eid adjustment_eid, options={}
           return nil unless adjustment_eid.present?
 
           params ||= GoTransverseTractApi::ApiData.new.get_query_params({adjustment_eid: adjustment_eid}, options)

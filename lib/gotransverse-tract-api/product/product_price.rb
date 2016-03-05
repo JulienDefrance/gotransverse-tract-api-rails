@@ -8,7 +8,7 @@ module GoTransverseTractApi
       # @param {Long} eid
       # @param {Hash} options
       #
-      def self.find_by_eid eid, options=nil
+      def self.find_by_eid eid, options={}
         return nil unless eid.present?
 
         params ||= GoTransverseTractApi::ApiData.new.get_query_params({eid: eid}, options)
@@ -19,7 +19,7 @@ module GoTransverseTractApi
       # @param {Long} product_eid
       # @param {Hash} options
       #
-      def self.find_by_product_eid product_eid, options=nil
+      def self.find_by_product_eid product_eid, options={}
         return nil unless product_eid.present?
 
         params ||= GoTransverseTractApi::ApiData.new.get_query_params({product_eid: product_eid}, options)
@@ -30,7 +30,7 @@ module GoTransverseTractApi
       # @param {DateTime} from_date
       # @param {Hash} options
       #
-      def self.find_from_date from_date, options=nil
+      def self.find_from_date from_date, options={}
         return nil unless from_date.present?
 
         params ||= GoTransverseTractApi::ApiData.new.get_query_params({from_date: from_date}, options)
@@ -41,7 +41,7 @@ module GoTransverseTractApi
       # @param {DateTime} thru_date
       # @param {Hash} options
       #
-      def self.find_thru_date thru_date, options=nil
+      def self.find_thru_date thru_date, options={}
         return nil unless thru_date.present?
 
         params ||= GoTransverseTractApi::ApiData.new.get_query_params({thru_date: thru_date}, options)
@@ -52,7 +52,7 @@ module GoTransverseTractApi
       # @param {Long} price_list_eid
       # @param {Hash} options
       #
-      def self.find_by_price_list_eid price_list_eid, options=nil
+      def self.find_by_price_list_eid price_list_eid, options={}
         return nil unless price_list_eid.present?
 
         params ||= GoTransverseTractApi::ApiData.new.get_query_params({price_list_eid: price_list_eid}, options)
@@ -63,7 +63,7 @@ module GoTransverseTractApi
       # @param {Boolean} price_list_is_master
       # @param {Hash} options
       #
-      def self.find_by_price_list_is_master price_list_is_master, options=nil
+      def self.find_by_price_list_is_master price_list_is_master, options={}
         return nil unless price_list_is_master.present?
 
         params ||= GoTransverseTractApi::ApiData.new.get_query_params({price_list_is_master: price_list_is_master}, options)
@@ -74,7 +74,7 @@ module GoTransverseTractApi
       # @param {String} currency_type
       # @param {Hash} options
       #
-      def self.find_by_currency_type currency_type, options=nil
+      def self.find_by_currency_type currency_type, options={}
         return nil unless currency_type.present?
 
         params ||= GoTransverseTractApi::ApiData.new.get_query_params({currency_type: currency_type}, options)

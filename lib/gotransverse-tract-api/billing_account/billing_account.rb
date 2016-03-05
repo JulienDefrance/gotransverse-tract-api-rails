@@ -9,7 +9,7 @@ module GoTransverseTractApi
         #
         # @param {Hash} options
         #
-        def find_all options=nil
+        def find_all options={}
           params ||= GoTransverseTractApi::ApiData.new.get_query_params({}, options)
           GoTransverseTractApi.get_response_for(self, params)
         end
@@ -18,7 +18,7 @@ module GoTransverseTractApi
         # @param {Long} eid
         # @param {Hash} options
         #
-        def find_by_eid eid, options=nil
+        def find_by_eid eid, options={}
           return nil unless eid.present?
 
           params ||= GoTransverseTractApi::ApiData.new.get_query_params({eid: eid}, options)
@@ -29,7 +29,7 @@ module GoTransverseTractApi
         # @param {Long} account_num
         # @param {Hash} options
         #
-        def find_by_account_num account_num, options=nil
+        def find_by_account_num account_num, options={}
           return nil unless account_num.present?
 
           params ||= GoTransverseTractApi::ApiData.new.get_query_params({account_num: account_num}, options)
@@ -40,7 +40,7 @@ module GoTransverseTractApi
         # @param {Long} external_account_num
         # @param {Hash} options
         #
-        def find_by_external_account_num external_account_num, options=nil
+        def find_by_external_account_num external_account_num, options={}
           return nil unless external_account_num.present?
 
           params ||= GoTransverseTractApi::ApiData.new.get_query_params({external_account_num: external_account_num}, options)
@@ -51,7 +51,7 @@ module GoTransverseTractApi
         # @param {Long} party_eid
         # @param {Hash} options
         #
-        def find_by_party_eid party_eid, options=nil
+        def find_by_party_eid party_eid, options={}
           return nil unless party_eid.present?
 
           params ||= GoTransverseTractApi::ApiData.new.get_query_params({party_eid: party_eid}, options)
@@ -62,7 +62,7 @@ module GoTransverseTractApi
         # @param {String} status
         # @param {Hash} options
         #
-        def find_by_status status, options=nil
+        def find_by_status status, options={}
           return nil unless status.present?
 
           params ||= GoTransverseTractApi::ApiData.new.get_query_params({status: status}, options)
@@ -73,7 +73,7 @@ module GoTransverseTractApi
         # @param {String} email_address
         # @param {Hash} options
         #
-        def find_by_email_address email_address, options=nil
+        def find_by_email_address email_address, options={}
           return nil unless email_address.present?
 
           params ||= GoTransverseTractApi::ApiData.new.get_query_params({email_address: email_address}, options)
@@ -84,7 +84,7 @@ module GoTransverseTractApi
         # @param {Long} billing_account_category_eid
         # @param {Hash} options
         #
-        def find_by_billing_account_category_eid billing_account_category_eid, options=nil
+        def find_by_billing_account_category_eid billing_account_category_eid, options={}
           return nil unless billing_account_category_eid.present?
 
           params ||= GoTransverseTractApi::ApiData.new.get_query_params({billing_account_category_eid: billing_account_category_eid}, options)
@@ -95,7 +95,7 @@ module GoTransverseTractApi
         # @param {Long} purchase_order_number
         # @param {Hash} options
         #
-        def find_by_purchase_order_num purchase_order_number, options=nil
+        def find_by_purchase_order_num purchase_order_number, options={}
           return nil unless purchase_order_number.present?
 
           params ||= GoTransverseTractApi::ApiData.new.get_query_params({purchase_order_number: purchase_order_number}, options)
@@ -106,7 +106,7 @@ module GoTransverseTractApi
         # @param {Long} order_num
         # @param {Hash} options
         #
-        def find_by_order_num order_num, options=nil
+        def find_by_order_num order_num, options={}
           return nil unless order_num.present?
 
           params ||= GoTransverseTractApi::ApiData.new.get_query_params({order_num: order_num}, options)
@@ -117,7 +117,7 @@ module GoTransverseTractApi
         # @param {Long} custom_field_value_eid
         # @param {Hash} options
         #
-        def find_by_custom_field_value_eid custom_field_value_eid, options=nil
+        def find_by_custom_field_value_eid custom_field_value_eid, options={}
           return nil unless custom_field_value_eid.present?
 
           params ||= GoTransverseTractApi::ApiData.new.get_query_params({custom_field_value_eid: custom_field_value_eid}, options)
@@ -128,7 +128,7 @@ module GoTransverseTractApi
         # @param {String} bill_type
         # @param {Hash} options
         #
-        def find_by_bill_type bill_type, options=nil
+        def find_by_bill_type bill_type, options={}
           return nil unless bill_type.present?
 
           params ||= GoTransverseTractApi::ApiData.new.get_query_params({bill_type: bill_type}, options)
@@ -139,7 +139,7 @@ module GoTransverseTractApi
         # @param {String} referral
         # @param {Hash} options
         #
-        def find_by_referral referral, options=nil
+        def find_by_referral referral, options={}
           return nil unless referral.present?
 
           params ||= GoTransverseTractApi::ApiData.new.get_query_params({referral: referral}, options)
@@ -150,7 +150,7 @@ module GoTransverseTractApi
         # @param {Long} billing_account_segment_eid
         # @param {Hash} options
         #
-        def find_by_billing_account_segment_eid billing_account_segment_eid, options=nil
+        def find_by_billing_account_segment_eid billing_account_segment_eid, options={}
           return nil unless billing_account_segment_eid.present?
 
           params ||= GoTransverseTractApi::ApiData.new.get_query_params({billing_account_segment_eid: billing_account_segment_eid}, options)
@@ -161,7 +161,7 @@ module GoTransverseTractApi
         # @param {String} currency_type
         # @param {Hash} options
         #
-        def find_by_currency_type currency_type, options=nil
+        def find_by_currency_type currency_type, options={}
           return nil unless currency_type.present?
 
           params ||= GoTransverseTractApi::ApiData.new.get_query_params({currency_type: currency_type}, options)
@@ -172,7 +172,7 @@ module GoTransverseTractApi
         # @param {Long} product_eid
         # @param {Hash} options
         #
-        def find_by_product_eid product_eid, options=nil
+        def find_by_product_eid product_eid, options={}
           return nil unless product_eid.present?
 
           params ||= GoTransverseTractApi::ApiData.new.get_query_params({product_eid: product_eid}, options)
@@ -183,7 +183,7 @@ module GoTransverseTractApi
         # @param {Long} service_eid
         # @param {Hash} options
         #
-        def find_by_service_eid service_eid, options=nil
+        def find_by_service_eid service_eid, options={}
           return nil unless service_eid.present?
 
           params ||= GoTransverseTractApi::ApiData.new.get_query_params({service_eid: service_eid}, options)
