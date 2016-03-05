@@ -245,7 +245,9 @@ module GoTransverseTractApi
     end
 
     def get_query_params(params, options={})
-      params.merge!(options) if(options.present?)
+      if(options.present? && options.is_a?(Hash))
+        params.merge!(options) 
+      end
 
       params
     end
