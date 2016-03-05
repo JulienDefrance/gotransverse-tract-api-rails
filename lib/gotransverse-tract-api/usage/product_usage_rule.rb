@@ -10,7 +10,7 @@ module GoTransverseTractApi
         # @param {Long} eid
         # @param {Hash} options
         #
-        def find_by_eid eid, options=nil
+        def find_by_eid eid, options={}
           return nil unless eid.present?
 
           params ||= GoTransverseTractApi::ApiData.new.get_query_params({eid: eid}, options)
@@ -21,7 +21,7 @@ module GoTransverseTractApi
         # @param {Long} product_eid
         # @param {Hash} options
         #
-        def find_by_product_eid product_eid, options=nil
+        def find_by_product_eid product_eid, options={}
           return nil unless product_eid.present?
 
           params ||= GoTransverseTractApi::ApiData.new.get_query_params({product_eid: product_eid}, options)
@@ -32,7 +32,7 @@ module GoTransverseTractApi
         # @param {Long} product_price_eid
         # @param {Hash} options
         #
-        def find_by_product_price_eid product_price_eid, options=nil
+        def find_by_product_price_eid product_price_eid, options={}
           return nil unless product_price_eid.present?
 
           params ||= GoTransverseTractApi::ApiData.new.get_query_params({product_price_eid: product_price_eid}, options)
@@ -43,7 +43,7 @@ module GoTransverseTractApi
         # @param {String} status
         # @param {Hash} options
         #
-        def find_by_status status, options=nil
+        def find_by_status status, options={}
           return nil unless status.present?
 
           params ||= GoTransverseTractApi::ApiData.new.get_query_params({status: status}, options)

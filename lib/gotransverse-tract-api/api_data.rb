@@ -58,12 +58,29 @@ module GoTransverseTractApi
         customFieldValues: BillingAccount::CustomFieldValue.get_custom_field_values(sales_order[:custom_field_values]), 
         orderItems: {
           attributes: {},
-          orderItem: Order::OrderItem.get_order_item(sales_order[:order_items][:order_item])
+          orderItem: get_order_items(sales_order[:order_items][:order_item])
         },
         billingAccount: get_billing_account(sales_order[:billing_account])
       }
 
       so_details
+    end
+
+    #
+    # @param {Array} order_items
+    #
+    # Returns an Array of order item structure
+    #
+    def get_order_items(order_items)
+      order_item_struct = []
+
+      order_items.each do|item|
+        order_item_struct << {
+          orderItem: Order::OrderItem.get_order_item(item)
+        }
+      end
+      
+      order_item_struct
     end
 
     # Returns [Array]  Products 
@@ -228,7 +245,9 @@ module GoTransverseTractApi
     end
 
     def get_query_params(params, options={})
-      params.merge!(options) if(options.present?)
+      if(options.present? && options.is_a?(Hash))
+        params.merge!(options) 
+      end
 
       params
     end

@@ -10,7 +10,7 @@ module GoTransverseTractApi
         # @param {Boolean} charge_during_renewal
         # @param {Hash} options
         #
-        def find_by_charge_during_renewal charge_during_renewal, options=nil
+        def find_by_charge_during_renewal charge_during_renewal, options={}
           return nil unless charge_during_renewal.present?
 
           params ||= GoTransverseTractApi::ApiData.new.get_query_params({charge_during_renewal: charge_during_renewal}, options)

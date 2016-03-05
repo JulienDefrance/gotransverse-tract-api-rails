@@ -10,7 +10,7 @@ module GoTransverseTractApi
         # @param {Long} eid
         # @param {Hash} options
         #
-        def find_by_eid eid, options=nil
+        def find_by_eid eid, options={}
           return nil unless eid.present?
 
           params ||= GoTransverseTractApi::ApiData.new.get_query_params({eid: eid}, options)
@@ -21,7 +21,7 @@ module GoTransverseTractApi
         # @param {Long} batch_num
         # @param {Hash} options
         #
-        def find_by_batch_num batch_num, options=nil
+        def find_by_batch_num batch_num, options={}
           return nil unless batch_num.present?
 
           params ||= GoTransverseTractApi::ApiData.new.get_query_params({batch_num: batch_num}, options)
@@ -32,7 +32,7 @@ module GoTransverseTractApi
         # @param {DateTime} posted_on
         # @param {Hash} options
         #
-        def find_by_posted_on posted_on, options=nil
+        def find_by_posted_on posted_on, options={}
           return nil unless posted_on.present?
 
           params ||= GoTransverseTractApi::ApiData.new.get_query_params({posted_on: posted_on}, options)
@@ -43,7 +43,7 @@ module GoTransverseTractApi
         # @param {Long} gl_account_eid
         # @param {Hash} options
         #
-        def find_by_gl_account_eid gl_account_eid, options=nil
+        def find_by_gl_account_eid gl_account_eid, options={}
           return nil unless gl_account_eid.present?
 
           params ||= GoTransverseTractApi::ApiData.new.get_query_params({gl_account_eid: gl_account_eid}, options)
@@ -54,7 +54,7 @@ module GoTransverseTractApi
         # @param {Long} gl_aggregate_batch_eid
         # @param {Hash} options
         #
-        def find_by_gl_aggregate_batch_eid gl_aggregate_batch_eid, options=nil
+        def find_by_gl_aggregate_batch_eid gl_aggregate_batch_eid, options={}
           return nil unless gl_aggregate_batch_eid.present?
 
           params ||= GoTransverseTractApi::ApiData.new.get_query_params({gl_aggregate_batch_eid: gl_aggregate_batch_eid}, options)

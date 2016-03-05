@@ -8,7 +8,33 @@ module GoTransverseTractApi
     let(:eid) { '48406' }
     let(:response)  { {a: 'b', c: 'd'} }
 
-    context ".apply_payment" do
+    describe ".find_by_account_num" do
+      it "returns an invoice details for a given account number" do
+        account_num = 100
+
+        actual_response = described_class.find_by_account_num(account_num)
+        expect(actual_response).to_not be_nil
+      end
+
+      it "returns an invoice details for a given account number and options" do
+        account_num = 100
+        options = {pageSize: 10, pageNumber: 2}
+
+        actual_response = described_class.find_by_account_num(account_num, options)
+        expect(actual_response).to_not be_nil
+      end
+    end
+
+    describe ".find_by_where_invoice" do
+      it "returns an invoice details for the given dates" do
+        where_invoice = "(occurredOn gte '2016-01-15' and occurredOn lte '2016-03-10')"
+
+        actual_response = described_class.find_by_where_invoice(where_invoice)
+        expect(actual_response).to_not be_nil
+      end
+    end
+
+    describe ".apply_payment" do
       it "applies a payment to the invoice" do
         data = {
           billing_account: {

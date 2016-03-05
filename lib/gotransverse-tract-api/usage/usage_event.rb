@@ -10,7 +10,7 @@ module GoTransverseTractApi
         # @param {Long} eid
         # @param {Hash} options
         #
-        def find_by_eid eid, options=nil
+        def find_by_eid eid, options={}
           return nil unless eid.present?
 
           params ||= GoTransverseTractApi::ApiData.new.get_query_params({eid: eid}, options)
@@ -21,7 +21,7 @@ module GoTransverseTractApi
         # @param {Long} billing_account_eid
         # @param {Hash} options
         #
-        def find_by_billing_account_eid billing_account_eid, options=nil
+        def find_by_billing_account_eid billing_account_eid, options={}
           return nil unless billing_account_eid.present?
 
           params ||= GoTransverseTractApi::ApiData.new.get_query_params({billing_account_eid: billing_account_eid}, options)
@@ -32,7 +32,7 @@ module GoTransverseTractApi
         # @param {Long} account_num
         # @param {Hash} options
         #
-        def find_by_account_num account_num, options=nil
+        def find_by_account_num account_num, options={}
           return nil unless account_num.present?
 
           params ||= GoTransverseTractApi::ApiData.new.get_query_params({account_num: account_num}, options)
@@ -43,7 +43,7 @@ module GoTransverseTractApi
         # @param {Long} service_period_eid
         # @param {Hash} options
         #
-        def find_by_service_period_eid service_period_eid, options=nil
+        def find_by_service_period_eid service_period_eid, options={}
           return nil unless service_period_eid.present?
 
           params ||= GoTransverseTractApi::ApiData.new.get_query_params({service_period_eid: service_period_eid}, options)
@@ -54,7 +54,7 @@ module GoTransverseTractApi
         # @param {Long} service_resource_identifier
         # @param {Hash} options
         #
-        def find_by_service_resource_identifier service_resource_identifier, options=nil
+        def find_by_service_resource_identifier service_resource_identifier, options={}
           return nil unless service_resource_identifier.present?
 
           params ||= GoTransverseTractApi::ApiData.new.get_query_params({service_resource_identifier: service_resource_identifier}, options)
@@ -65,7 +65,7 @@ module GoTransverseTractApi
         # @param {DateTime} start_time
         # @param {Hash} options
         #
-        def find_by_start_time start_time, options=nil
+        def find_by_start_time start_time, options={}
           return nil unless start_time.present?
 
           params ||= GoTransverseTractApi::ApiData.new.get_query_params({start_time: start_time}, options)
@@ -76,7 +76,7 @@ module GoTransverseTractApi
         # @param {DateTime} end_time
         # @param {Hash} options
         #
-        def find_by_end_time end_time, options=nil
+        def find_by_end_time end_time, options={}
           return nil unless end_time.present?
 
           params ||= GoTransverseTractApi::ApiData.new.get_query_params({end_time: end_time}, options)
@@ -87,7 +87,7 @@ module GoTransverseTractApi
         # @param {Long} reference_id
         # @param {Hash} options
         #
-        def find_by_reference_id reference_id, options=nil
+        def find_by_reference_id reference_id, options={}
           return nil unless reference_id.present?
 
           params ||= GoTransverseTractApi::ApiData.new.get_query_params({reference_id: reference_id}, options)

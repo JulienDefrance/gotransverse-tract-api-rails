@@ -232,7 +232,7 @@ module GoTransverseTractApi
       end
     end
 
-    context ".create_draft_order" do
+    describe ".create_draft_order" do
       let(:data) {
         {
           sales_order: {
@@ -246,7 +246,7 @@ module GoTransverseTractApi
               }
             },
             order_items: {
-              order_item: {
+              order_item: [{
                 recurring_unit_price: '100.00',
                 quantity:  '1',
                 sequence:  '1',
@@ -285,11 +285,55 @@ module GoTransverseTractApi
                 },
                 service_resources: {
                   service_resource: {
-                    identifier: 'PCFC2000098765',
+                    identifier: 'PCFC2000053761',
                     category: { eid: '9' }
                   }
                 }
-              }
+              },
+              {
+                recurring_unit_price: '100.00',
+                quantity:  '1',
+                sequence:  '1',
+                description: 'dsfsgegebdbb',
+                product: { eid: '79' },
+                selected_agreement: { eid: '15' },
+                recurring_product_price: { eid: '174' },
+                custom_field_values: {
+                  custom_field_value: {
+                    value: 'JLS',
+                    custom_field: {eid: '25'}
+                  }
+                },
+                order_item_usage_rules: {
+                  match_all_order_item_usage_rule: {
+                    name: 'allowance',
+                    status: 'ACTIVE',
+                    allowance_type: 'One Time',
+                    limit: '100',
+                    usage_uom: 'COUNT',
+                    charge_category: '39',
+                    match_all_product_usage_rule: { eid: '74' },
+                    usage_rate: {
+                      flat_usage_rate: {
+                        rate: '2.00',
+                        uom: 'COUNT'
+                      }
+                    }
+                  }
+                },
+                agreement_configuration: {
+                  end_date: '01012016',
+                  end_action: 'RENEW_AGREEMENT',
+                  preserve_service_price: '1',
+                  next_preserve_service_price: '0'
+                },
+                service_resources: {
+                  service_resource: {
+                    identifier: 'PCFC2004078764',
+                    category: { eid: '9' }
+                  }
+                }
+              }]
             },
             billing_account: { eid: eid }
           }
@@ -309,7 +353,8 @@ module GoTransverseTractApi
           }
         }
 
-        data[:sales_order][:order_items][:order_item].merge! promo_code
+        [0,1].each { |i| data[:sales_order][:order_items][:order_item][i].merge! promo_code }
+
         allow(subject).to receive(:create_draft_order).with(eid, data).and_return(response)
         expect(subject.create_draft_order(eid, data)).to eq(response)
       end
@@ -345,3 +390,4 @@ module GoTransverseTractApi
     
   end
 end
+
