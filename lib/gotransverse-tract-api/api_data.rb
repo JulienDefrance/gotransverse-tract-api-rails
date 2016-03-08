@@ -74,6 +74,10 @@ module GoTransverseTractApi
     def get_order_items(order_items)
       order_item_struct = []
 
+      if order_items.is_a?(Hash)
+        return Order::OrderItem.get_order_item(order_items)
+      end
+
       order_items.each do|item|
         order_item_struct << {
           orderItem: Order::OrderItem.get_order_item(item)
