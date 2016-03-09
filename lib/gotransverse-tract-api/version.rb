@@ -1,6 +1,6 @@
 module GoTransverseTractApi
 
-  VERSION = "0.8.1"
+  VERSION = "0.9.0"
   TARGET_API_VERSION = "1.29"
 
 end
