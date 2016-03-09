@@ -2,7 +2,7 @@ module GoTransverseTractApi
 
   module BillingAccount
 
-    class CustomFieldValue
+    class CustomFieldValue < Common::OrderBase
 
       class << self
 
@@ -22,39 +22,6 @@ module GoTransverseTractApi
           return nil unless eid.present?
 
           params ||= GoTransverseTractApi::ApiData.new.get_query_params({eid: eid}, options)
-          GoTransverseTractApi.get_response_for(self, params)
-        end
-
-        #
-        # @param {Long} account_num
-        # @param {Hash} options
-        #
-        def find_by_account_num account_num, options={}
-          return nil unless account_num.present?
-
-          params ||= GoTransverseTractApi::ApiData.new.get_query_params({account_num: account_num}, options)
-          GoTransverseTractApi.get_response_for(self, params)
-        end
-
-        #
-        # @param {Long} external_account_num
-        # @param {Hash} options
-        #
-        def find_by_external_account_num external_account_num, options={}
-          return nil unless external_account_num.present?
-
-          params ||= GoTransverseTractApi::ApiData.new.get_query_params({external_account_num: external_account_num}, options)
-          GoTransverseTractApi.get_response_for(self, params)
-        end
-
-        #
-        # @param {Long} billing_account_eid
-        # @param {Hash} options
-        #
-        def find_by_billing_account_eid billing_account_eid, options={}
-          return nil unless billing_account_eid.present?
-
-          params ||= GoTransverseTractApi::ApiData.new.get_query_params({billing_account_eid: billing_account_eid}, options)
           GoTransverseTractApi.get_response_for(self, params)
         end
 
@@ -99,17 +66,6 @@ module GoTransverseTractApi
           return nil unless order_item_eid.present?
 
           params ||= GoTransverseTractApi::ApiData.new.get_query_params({order_item_eid: order_item_eid}, options)
-          GoTransverseTractApi.get_response_for(self, params)
-        end
-
-        #
-        # @param {Long} order_num
-        # @param {Hash} options
-        #
-        def find_by_order_num order_num, options={}
-          return nil unless order_num.present?
-
-          params ||= GoTransverseTractApi::ApiData.new.get_query_params({order_num: order_num}, options)
           GoTransverseTractApi.get_response_for(self, params)
         end
 

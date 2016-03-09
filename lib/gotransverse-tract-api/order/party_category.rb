@@ -2,37 +2,7 @@ module GoTransverseTractApi
 
   module Order
 
-    class PartyCategory
-
-      #
-      # @param {Hash} options
-      #
-      def self.find_all options={}
-        params ||= GoTransverseTractApi::ApiData.new.get_query_params({}, options)
-        GoTransverseTractApi.get_response_for(self, params)
-      end
-
-      #
-      # @param {Long} eid
-      # @param {Hash} options
-      #
-      def self.find_by_eid eid, options={}
-        return nil unless eid.present?
-
-        params ||= GoTransverseTractApi::ApiData.new.get_query_params({eid: eid}, options)
-        GoTransverseTractApi.get_response_for(self, params)
-      end
-
-      #
-      # @param {String} name
-      # @param {Hash} options
-      #
-      def self.find_by_name name, options={}
-        return nil unless name.present?
-
-        params ||= GoTransverseTractApi::ApiData.new.get_query_params({name: name}, options)
-        GoTransverseTractApi.get_response_for(self, params)
-      end
+    class PartyCategory < Common::Base
 
       #
       # @param {String} description
@@ -42,17 +12,6 @@ module GoTransverseTractApi
         return nil unless description.present?
 
         params ||= GoTransverseTractApi::ApiData.new.get_query_params({description: description}, options)
-        GoTransverseTractApi.get_response_for(self, params)
-      end
-
-      #
-      # @param {String} status
-      # @param {Hash} options
-      #
-      def self.find_by_status status, options={}
-        return nil unless status.present?
-
-        params ||= GoTransverseTractApi::ApiData.new.get_query_params({status: status}, options)
         GoTransverseTractApi.get_response_for(self, params)
       end
 
