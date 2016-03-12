@@ -247,6 +247,19 @@ module GoTransverseTractApi
           custom_field_values = BillingAccount::CustomFieldValue.get_custom_field_values(order_item[:custom_field_values])
         end
 
+        if order_item.has_key?(:order_item_usage_rules)
+          order_item_usage_rules = Usage::OrderItemUsageRule.get_order_item_usage_rule(order_item[:order_item_usage_rules])
+        end
+        
+        if order_item.has_key?(:service_resources)
+          service_resources = Service::ServiceResource.get_service_resource(order_item[:service_resources])
+        end
+
+        if order_item.has_key?(:agreement_configuration)
+          agreement_configuration = AgreementConfiguration.get_agreement_conf(order_item[:agreement_configuration])
+        end
+        
+
         orderItem = {
           attributes: {
             awaitingApproval: order_item[:awaiting_approval],
@@ -258,15 +271,15 @@ module GoTransverseTractApi
             description: order_item[:description],
             eid: order_item[:eid]
           }.delete_if{|k,v| v.nil?},
-          orderItemUsageRules: Usage::OrderItemUsageRule.get_order_item_usage_rule(order_item[:order_item_usage_rules]),
+          orderItemUsageRules: order_item_usage_rules,
           recurringProductPrice: Product::RecurringProductPrice.get_recurring_product_price(order_item[:recurring_product_price]),
           customFieldValues: custom_field_values,
           product: Product::Product.get_product_info(order_item[:product]),
           priceList: price_list,
           selectedAgreement: Agreement.get_selected_agreement(order_item[:selected_agreement]),
-          serviceResources: Service::ServiceResource.get_service_resource(order_item[:service_resources]),
+          serviceResources: service_resources,
           inventoryItem: inventory_item, 
-          agreementConfiguration: AgreementConfiguration.get_agreement_conf(order_item[:agreement_configuration]),
+          agreementConfiguration: agreement_configuration,
           scheduledCharges: scheduled_charges, 
           discountConfigurations: discount_configurations
         }

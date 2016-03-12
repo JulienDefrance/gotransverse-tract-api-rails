@@ -7,7 +7,7 @@ module GoTransverseTractApi
 
     let(:response)  { {a: 'b', c: 'd'} }
 
-    context ".approve" do
+    describe ".approve" do
       it "approves an order item" do
         eid = '48406'
 
@@ -160,6 +160,16 @@ module GoTransverseTractApi
 
         allow(subject).to receive(:approve).with(eid, data).and_return(response)
         expect(subject.approve(eid, data)).to eq(response)
+      end
+    end
+
+    describe ".get_order_item" do
+      it "returns an order item structure" do
+        order_item = {a: 'b', c: 'd'}
+        order_item_struct = { a: {attributes: 'b'}, c: 'd' }
+
+        allow(subject).to receive(:get_order_item).with(order_item).and_return(order_item_struct)
+        expect(subject.get_order_item(order_item)).to eq(order_item_struct)
       end
     end
 
