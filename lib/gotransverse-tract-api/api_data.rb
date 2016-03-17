@@ -212,7 +212,7 @@ module GoTransverseTractApi
           startDate: billing_account[:start_date],
           taxExempt: billing_account[:tax_exempt],
           eid: billing_account[:eid]
-        }.delete_if{|k,v| v.nil?},
+        },
         dailyBillCycle: {
           name: billing_account[:daily_bill_cycle][:name],
           startDate: billing_account[:daily_bill_cycle][:start_date],
@@ -222,7 +222,7 @@ module GoTransverseTractApi
           usePaymentTerm: billing_account[:daily_bill_cycle][:use_payment_term],
           status: billing_account[:daily_bill_cycle][:status],
           eid: billing_account[:daily_bill_cycle][:eid]
-        }.delete_if{|k,v| v.nil?},
+        },
         person: {
           attributes: {
             firstName: billing_account[:person][:first_name],
@@ -230,22 +230,22 @@ module GoTransverseTractApi
             eid: billing_account[:person][:eid]
           },
           addresses: get_addresses(billing_account[:person])
-        }.delete_if{|k,v| v.nil?},
+        },
         billingAccountCategory: {
           type: billing_account[:billing_account_category][:type],
           description: billing_account[:billing_account_category][:description],
           status: billing_account[:billing_account_category][:status],
           eid: billing_account[:billing_account_category][:eid]
-        }.delete_if{|k,v| v.nil?},
+        },
         paymentTerm: {
           name: billing_account[:payment_term][:name],
           termDays: billing_account[:payment_term][:term_days],
           graceDays: billing_account[:payment_term][:grace_days],
           eid: billing_account[:payment_term][:eid]
-        }.delete_if{|k,v| v.nil?}
+        }
       }
 
-      ba_details.delete_if{|k,v| v.nil?}
+      compact ba_details
     end
 
     def get_query_params(params, options={})
@@ -262,52 +262,91 @@ module GoTransverseTractApi
       }
 
       if entity[:addresses].has_key?(:email_address)
-        email_address = {
-          emailAddress: {
-            purpose: entity[:addresses][:email_address][:purpose],
-            email: entity[:addresses][:email_address][:email],
-          }.delete_if{|k,v| v.nil?}
-        }.delete_if{|k,v| v.nil?}
-
+        email_address = get_email_address(entity[:addresses][:email_address])
         addresses.merge! email_address if email_address.present?
       end
-        
-      if entity[:addresses].has_key?(:postal_address)
-        postal_address = {
-          postalAddress: {
-            purpose: entity[:addresses][:postal_address][:purpose],
-            country: entity[:addresses][:postal_address][:country],
-            city: entity[:addresses][:postal_address][:city],
-            regionOrState: entity[:addresses][:postal_address][:region_or_state],
-            attention: entity[:addresses][:postal_address][:attention],
-            postalCode: entity[:addresses][:postal_address][:postal_code],
-            line1: entity[:addresses][:postal_address][:line1],
-          }.delete_if{|k,v| v.nil?}
-        }.delete_if{|k,v| v.nil?}
 
+      if entity[:addresses].has_key?(:postal_address)
+        postal_address = get_postal_address(entity[:addresses][:postal_address])
         addresses.merge! postal_address if postal_address.present?
       end
 
       if entity[:addresses].has_key?(:telecom_address)
-        tele_address = {
-          telecomAddress: {
-            dialingPrefix: entity[:addresses].try(:[],:telecom_address).try(:[],:dialing_prefix),
-            countryCode: entity[:addresses].try(:[],:telecom_address).try(:[],:country_code),
-            areaCode: entity[:addresses].try(:[],:telecom_address).try(:[],:area_code),
-            number: entity[:addresses].try(:[],:telecom_address).try(:[],:number),
-            extension: entity[:addresses].try(:[],:telecom_address).try(:[],:extension),
-            purpose: entity[:addresses].try(:[],:telecom_address).try(:[],:purpose),
-            eid: entity[:addresses].try(:[],:telecom_address).try(:[],:eid) 
-          }.delete_if{|k,v| v.nil?}
-        }.delete_if{|k,v| v.nil?}
-
+        tele_address = get_telecom_address(entity[:addresses][:telecom_address])
         addresses.merge! tele_address if tele_address.present?
       end
 
-      addresses
+      compact addresses
 
     rescue
       {}
+    end
+
+    # Returns {Hash} Postal Address
+    def get_postal_address(entity)
+      postal_address = {
+        postalAddress: {
+          purpose: entity[:purpose],
+          country: entity[:country],
+          city: entity[:city],
+          regionOrState: entity[:region_or_state],
+          attention: entity[:attention],
+          postalCode: entity[:postal_code],
+          line1: entity[:line1]
+        }
+      }
+
+      compact postal_address
+    end
+
+    # Returns {Hash} Email Address
+    def get_email_address(entity)
+      email_address = {
+        emailAddress: {
+          purpose: entity[:purpose],
+          email: entity[:email]
+        }
+      }
+
+      compact email_address
+    end
+
+    # Returns {Hash} Telecom Address
+    def get_telecom_address(entity)
+      tele_address = {
+        telecomAddress: {
+          dialingPrefix: entity.try(:[],:dialing_prefix),
+          countryCode: entity.try(:[],:country_code),
+          areaCode: entity.try(:[],:area_code),
+          number: entity.try(:[],:number),
+          extension: entity.try(:[],:extension),
+          purpose: entity.try(:[],:purpose),
+          eid: entity.try(:[],:eid) 
+        }
+      }
+
+      compact tele_address
+    end
+
+    # Remove all nil elements from hash
+    def compact(h={})
+      h.each do|k,v|
+        if v.nil?
+          h.delete(k)
+        elsif (v.is_a?(Hash) && v.empty?)
+          next
+        end
+
+        compact v if v.is_a?Hash
+      end
+
+      # Remove all empty hashes except first key if it is empty
+      # since that is required for XML root element attributes
+      h.delete_if do|k,v|
+        v.is_a?(Hash) && v.empty? && k != h.keys[0]
+      end
+
+      h
     end
 
   end

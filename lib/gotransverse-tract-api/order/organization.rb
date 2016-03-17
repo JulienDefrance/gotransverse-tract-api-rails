@@ -61,25 +61,18 @@ module GoTransverseTractApi
         end
 
         if (address.has_key?(:postal_address))
-          postal_address = {
-              postalAddress: {
-                  purpose: address[:postal_address][:purpose],
-                  country: address[:postal_address][:country],
-                  city: address[:postal_address][:city],
-                  regionOrState: address[:postal_address][:region_or_state],
-                  attention: address[:postal_address][:attention],
-                  postalCode: address[:postal_address][:postal_code],
-                  line1: address[:postal_address][:line1],
-              }.delete_if{|k,v| v.nil?}
-          }.delete_if{|k,v| v.nil?}
+          postal_address = GoTransverseTractApi::ApiData.new.get_postal_address(address[:postal_address])
+          data.merge!(postal_address)
+        end
 
-          data.merge!({ postalAddress: postal_address[:postalAddress] })
-        end
         if (address.has_key?(:email_address))
-          data.merge!({ emailAddress: address[:email_address] })
+          email_address = GoTransverseTractApi::ApiData.new.get_email_address(address[:email_address])
+          data.merge!(email_address)
         end
+
         if (address.has_key?(:telecom_address))
-          data.merge!({ telecomAddress: address[:telecom_address] })
+          telecom_address = GoTransverseTractApi::ApiData.new.get_telecom_address(address[:telecom_address])
+          data.merge!(telecom_address)
         end
 
         xml_data = GoTransverseTractApi.generateXML(data, 'addAddressToParty')
