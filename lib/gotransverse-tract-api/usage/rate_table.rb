@@ -7,6 +7,14 @@ module GoTransverseTractApi
       class << self
 
         #
+        # @param {Hash} options
+        #
+        def find_all options={}
+          params ||= GoTransverseTractApi::ApiData.new.get_query_params({}, options)
+          GoTransverseTractApi.get_response_for(self, params)
+        end
+
+        #
         # @param {Long} eid
         # @param {Hash} options
         #
