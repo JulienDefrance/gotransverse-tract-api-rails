@@ -387,7 +387,8 @@ module GoTransverseTractApi
         def create_billing_account billing_account
           data = {
             billingAccount: {
-              billType: billing_account[:bill_type]
+              billType: billing_account[:bill_type],
+              startDate: billing_account[:start_date]
             },
             dailyBillCycle: {
               eid: billing_account[:daily_bill_cycle][:eid]
