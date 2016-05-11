@@ -40,7 +40,7 @@ module GoTransverseTractApi
         # @param {Long} order_item_eid
         # @param {Hash} options
         #
-        def find_by_order_item_order_item_eid order_item_order_item_eid, options={}
+        def find_by_order_item_eid order_item_eid, options={}
           return nil unless order_item_eid.present?
 
           params ||= GoTransverseTractApi::ApiData.new.get_query_params({order_item_eid: order_item_eid}, options)
