@@ -247,13 +247,15 @@ module GoTransverseTractApi
             },
             order_items: {
               order_item: [{
-                recurring_unit_price: '100.00',
+                recurring_unit_price: '0.00',
+                one_time_product_price: '100.00',
                 quantity:  '1',
                 sequence:  '1',
                 description: 'dsfsgegebdbb',
                 product: { eid: '79' },
                 selected_agreement: { eid: '15' },
                 recurring_product_price: { eid: '174' },
+                onetime_product_price: { eid: '278' },
                 custom_field_values: {
                   custom_field_value: {
                     value: 'JLS',
@@ -285,7 +287,7 @@ module GoTransverseTractApi
                 },
                 service_resources: {
                   service_resource: {
-                    identifier: 'PCFC2000053761',
+                    identifier: 'PCFC6000053765',
                     category: { eid: '9' }
                   }
                 }
@@ -329,7 +331,7 @@ module GoTransverseTractApi
                 },
                 service_resources: {
                   service_resource: {
-                    identifier: 'PCFC2004078764',
+                    identifier: 'PCFC4004078766',
                     category: { eid: '9' }
                   }
                 }
