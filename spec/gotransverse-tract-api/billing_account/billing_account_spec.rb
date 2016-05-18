@@ -248,14 +248,13 @@ module GoTransverseTractApi
             order_items: {
               order_item: [{
                 recurring_unit_price: '0.00',
-                one_time_product_price: '100.00',
                 quantity:  '1',
                 sequence:  '1',
                 description: 'dsfsgegebdbb',
                 product: { eid: '79' },
                 selected_agreement: { eid: '15' },
                 recurring_product_price: { eid: '174' },
-                onetime_product_price: { eid: '278' },
+                onetime_product_price: [100, { eid: '278' }],
                 custom_field_values: {
                   custom_field_value: {
                     value: 'JLS',
