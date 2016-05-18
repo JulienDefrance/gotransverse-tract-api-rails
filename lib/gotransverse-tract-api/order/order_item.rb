@@ -263,7 +263,7 @@ module GoTransverseTractApi
           # We can add later this one as a separate class for getting all other attributes
           onetime_product_price = { 
             attributes: {
-              eid: order_item[:onetime_product_price][:eid]
+              eid: order_item[:onetime_product_price][1][:eid]
             }
           }
         end
@@ -275,7 +275,7 @@ module GoTransverseTractApi
             requestedEffectiveDate: order_item[:requested_effective_date],
             unitPrice: order_item[:unit_price],
             recurringUnitPrice: order_item[:recurring_unit_price],
-            onetimeProductPrice: order_item[:one_time_product_price],
+            onetimeProductPrice: order_item[:onetime_product_price].try(:[],0),
             quantity: order_item[:quantity],
             sequence: order_item[:sequence],
             description: order_item[:description],
