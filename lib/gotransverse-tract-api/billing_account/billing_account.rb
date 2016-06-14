@@ -385,13 +385,42 @@ module GoTransverseTractApi
         # @param {Hash} billing_account
         #
         def create_billing_account billing_account
-          data = {
+          bill_cycle = {}
+          recurring_payments = {}
+
+          bill_type = {
             billingAccount: {
               billType: billing_account[:bill_type]
-            },
-            dailyBillCycle: {
-              eid: billing_account[:daily_bill_cycle][:eid]
-            },
+            }
+          }
+
+          if(billing_account.has_key?(:daily_bill_cycle))
+            bill_cycle = {
+              dailyBillCycle: {
+                eid: billing_account[:daily_bill_cycle][:eid]
+              }
+            }
+          elsif(billing_account.has_key?(:monthly_bill_cycle))
+            bill_cycle = {
+              monthlyBillCycle: {
+                eid: billing_account[:monthly_bill_cycle][:eid]
+              }
+            }
+          elsif(billing_account.has_key?(:quarterly_bill_cycle))
+            bill_cycle = {
+              quarterlyBillCycle: {
+                eid: billing_account[:quarterly_bill_cycle][:eid]
+              }
+            }
+          elsif(billing_account.has_key?(:yearly_bill_cycle))
+            bill_cycle = {
+              yearlyBillCycle: {
+                eid: billing_account[:yearly_bill_cycle][:eid]
+              }
+            }
+          end
+           
+          data = {
             organization: {
               attributes: {
                 name: billing_account[:organization][:name]
@@ -406,6 +435,23 @@ module GoTransverseTractApi
               eid: billing_account[:payment_term][:eid]
             }
           }
+          
+          if(billing_account.has_key?(:recurring_payments))
+            recurring_payments = {
+              recurringPayments: {
+                attributes: {},
+                recurringPayment: {
+                  attributes: {},
+                  referencedCreditCardPaymentMethod: {
+                    referenceKey: billing_account[:recurring_payments][:recurring_payment][:referenced_credit_card_payment_method][:reference_key]
+                  }
+                }
+              }
+            }
+          end
+
+          data = GoTransverseTractApi::ApiData.new.compact(bill_type.merge bill_cycle.merge data.merge recurring_payments)
+
           xml_data = GoTransverseTractApi.generateXML(data, 'billingAccount')
           GoTransverseTractApi.post_request_for(self, {}, xml_data, "")
         end

@@ -180,26 +180,58 @@ module GoTransverseTractApi
       end
     end
 
-    context ".create_billing_account" do
-      it "creates a billing account" do
-        data = {
-          bill_type:  'NONE',
-          daily_bill_cycle: { eid:'38' },
-          organization: {
-            name: 'LMH Services',
-            addresses: addresses.delete_if{|k,v| k == :telecom_address}
-          },
-          billing_account_category: {
-            eid: '6'
-          },
-          payment_term: {
-            name: 'Immediate',
-            eid: '8'
+    describe ".create_billing_account" do
+      context "for daily bill cycle" do
+        it "creates a billing account" do
+          data = {
+            bill_type:  'NONE',
+            daily_bill_cycle: { eid:'38' },
+            organization: {
+              name: 'LMH Services',
+              addresses: addresses.delete_if{|k,v| k == :telecom_address}
+            },
+            billing_account_category: {
+              eid: '6'
+            },
+            payment_term: {
+              name: 'Immediate',
+              eid: '8'
+            }
           }
-        }
 
-        allow(subject).to receive(:create_billing_account).with(data).and_return(response)
-        expect(subject.create_billing_account(data)).to eq(response)
+          allow(subject).to receive(:create_billing_account).with(data).and_return(response)
+          expect(subject.create_billing_account(data)).to eq(response)
+        end
+      end
+
+      context "for monthly bill cycle" do
+        it "creates a billing account" do
+          data = {
+            bill_type:  'EMAIL',
+            monthly_bill_cycle: { eid:'38' },
+            organization: {
+              name: 'LMH Services',
+              addresses: addresses.delete_if{|k,v| k == :telecom_address}
+            },
+            billing_account_category: {
+              eid: '6'
+            },
+            payment_term: {
+              name: 'Immediate',
+              eid: '8'
+            },
+            recurring_payments: {
+              recurring_payment: {
+                referenced_credit_card_payment_method: {
+                  reference_key: '2342gjg224g24h1khk1rweyf93'
+                }
+              }
+            } 
+          }
+
+          allow(subject).to receive(:create_billing_account).with(data).and_return(response)
+          expect(subject.create_billing_account(data)).to eq(response)
+        end
       end
     end
 
@@ -340,24 +372,70 @@ module GoTransverseTractApi
           }
         }
       }
-      it "creates a draft sales order without a promo code for the billing account" do
-        allow(subject).to receive(:create_draft_order).with(eid, data).and_return(response)
-        expect(subject.create_draft_order(eid, data)).to eq(response)
-      end
 
-      it "creates a draft sales order with promo code for the billing account" do
-        promo_code = {
-          discount_configurations: {
-            discount_configuration: {
-              discount_identifier: { eid:'35' }
-            }
+      let(:soi_data) { {
+        sales_order: {
+            referral: '',
+            order_date: '2016-01-28T172213',
+            order_status: 'DRAFT',
+            custom_field_values: {
+              custom_field_value: {
+                value: 'ST',
+                custom_field: {eid: '26'}
+              }
+            },
+            order_items: {
+              order_item: {
+                recurring_unit_price: '0.00',
+                quantity:  '1',
+                sequence:  '1',
+                description: 'Data Subscription',
+                product: { eid: '111' },
+                recurring_product_price: { eid: '294' },
+                order_items: {
+                  order_item: {
+                    recurring_unit_price: '0.10',
+                    quantity:  '1500',
+                    sequence:  '2',
+                    description: 'LAP',
+                    product: { eid: '110' },
+                    recurring_product_price: { eid: '301' }
+                  }
+                }
+              }
+            },
+            billing_account: { eid: eid }
           }
         }
+      }
 
-        [0,1].each { |i| data[:sales_order][:order_items][:order_item][i].merge! promo_code }
+      context "when SOI upsell products" do
+        it "creates a draft sales order without a promo code for the billing account" do
+          allow(subject).to receive(:create_draft_order).with(eid, soi_data).and_return(response)
+          expect(subject.create_draft_order(eid, soi_data)).to eq(response)
+        end
+      end
 
-        allow(subject).to receive(:create_draft_order).with(eid, data).and_return(response)
-        expect(subject.create_draft_order(eid, data)).to eq(response)
+      context "when no SOI upsell products" do
+        it "creates a draft sales order without a promo code for the billing account" do
+          allow(subject).to receive(:create_draft_order).with(eid, data).and_return(response)
+          expect(subject.create_draft_order(eid, data)).to eq(response)
+        end
+
+        it "creates a draft sales order with promo code for the billing account" do
+          promo_code = {
+            discount_configurations: {
+              discount_configuration: {
+                discount_identifier: { eid:'35' }
+              }
+            }
+          }
+
+          [0,1].each { |i| data[:sales_order][:order_items][:order_item][i].merge! promo_code }
+
+          allow(subject).to receive(:create_draft_order).with(eid, data).and_return(response)
+          expect(subject.create_draft_order(eid, data)).to eq(response)
+        end
       end
     end
 
