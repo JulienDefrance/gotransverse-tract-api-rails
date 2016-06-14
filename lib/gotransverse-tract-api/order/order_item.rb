@@ -227,6 +227,8 @@ module GoTransverseTractApi
       #
 
       def self.get_order_item(order_item)
+
+        # The following order item keys are optional in TRACT system
         if order_item.has_key?(:price_list)
           price_list = Product::PriceList.get_price_list(order_item[:price_list])
         end
@@ -259,6 +261,10 @@ module GoTransverseTractApi
           agreement_configuration = AgreementConfiguration.get_agreement_conf(order_item[:agreement_configuration])
         end
         
+        if order_item.has_key?(:selected_agreement)
+          selected_agreement = Agreement.get_selected_agreement(order_item[:selected_agreement])
+        end
+
         if order_item.has_key?(:onetime_product_price)
           # We can add later this one as a separate class for getting all other attributes
           onetime_product_price = { 
@@ -268,6 +274,13 @@ module GoTransverseTractApi
           }
         end
         
+        # The parent orderItems may have child orderItems
+        if order_item.has_key?(:order_items)
+          order_items = {
+            attributes: {},
+            orderItem: GoTransverseTractApi::ApiData.new.get_order_items(order_item[:order_items][:order_item])
+          }
+        end
 
         orderItem = {
           attributes: {
@@ -286,8 +299,9 @@ module GoTransverseTractApi
           onetimeProductPrice: onetime_product_price,
           customFieldValues: custom_field_values,
           product: Product::Product.get_product_info(order_item[:product]),
+          orderItems: order_items,
           priceList: price_list,
-          selectedAgreement: Agreement.get_selected_agreement(order_item[:selected_agreement]),
+          selectedAgreement: selected_agreement,
           serviceResources: service_resources,
           inventoryItem: inventory_item, 
           agreementConfiguration: agreement_configuration,
