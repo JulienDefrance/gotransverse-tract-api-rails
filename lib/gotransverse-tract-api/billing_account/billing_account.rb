@@ -466,11 +466,14 @@ module GoTransverseTractApi
               eid: eid,
               billType: billing_account[:bill_type],
               automaticRecurringPayment: billing_account[:automatic_recurring_payment]
-            },
-            billingAccountCategory: {
-              eid: billing_account[:billing_account_category][:eid]
             }
           }
+
+          if billing_account[:billing_account_category].present?
+            data[:billingAccountCategory] = {
+                eid: billing_account[:billing_account_category][:eid]
+            }
+          end
 
           data[:billingAccount][:paymentTerm] = billing_account[:payment_term] if billing_account[:payment_term].present?
 
