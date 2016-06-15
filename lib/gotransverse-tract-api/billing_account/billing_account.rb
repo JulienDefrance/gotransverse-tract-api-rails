@@ -472,6 +472,8 @@ module GoTransverseTractApi
             }
           }
 
+          data[:billingAccount][:paymentTerm] = billing_account[:payment_term] if billing_account[:payment_term].present?
+
           xml_data = GoTransverseTractApi.generateXML(data, 'billingAccount')
           GoTransverseTractApi.put_request_for(self, {eid: eid}, xml_data)
         end
