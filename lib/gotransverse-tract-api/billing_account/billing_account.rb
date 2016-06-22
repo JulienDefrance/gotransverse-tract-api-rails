@@ -394,25 +394,25 @@ module GoTransverseTractApi
             }
           }
 
-          if(billing_account.has_key?(:daily_bill_cycle))
+          if billing_account.has_key?(:daily_bill_cycle)
             bill_cycle = {
               dailyBillCycle: {
                 eid: billing_account[:daily_bill_cycle][:eid]
               }
             }
-          elsif(billing_account.has_key?(:monthly_bill_cycle))
+          elsif billing_account.has_key?(:monthly_bill_cycle)
             bill_cycle = {
               monthlyBillCycle: {
                 eid: billing_account[:monthly_bill_cycle][:eid]
               }
             }
-          elsif(billing_account.has_key?(:quarterly_bill_cycle))
+          elsif billing_account.has_key?(:quarterly_bill_cycle)
             bill_cycle = {
               quarterlyBillCycle: {
                 eid: billing_account[:quarterly_bill_cycle][:eid]
               }
             }
-          elsif(billing_account.has_key?(:yearly_bill_cycle))
+          elsif billing_account.has_key?(:yearly_bill_cycle)
             bill_cycle = {
               yearlyBillCycle: {
                 eid: billing_account[:yearly_bill_cycle][:eid]
@@ -436,7 +436,7 @@ module GoTransverseTractApi
             }
           }
           
-          if(billing_account.has_key?(:recurring_payments))
+          if billing_account.has_key?(:recurring_payments)
             recurring_payments = {
               recurringPayments: {
                 attributes: {},
@@ -456,7 +456,6 @@ module GoTransverseTractApi
           GoTransverseTractApi.post_request_for(self, {}, xml_data, "")
         end
 
-        
         # @param {Long} eid
         # @param {Hash} billing_account
         #

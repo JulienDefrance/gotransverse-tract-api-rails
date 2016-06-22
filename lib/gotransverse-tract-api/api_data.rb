@@ -29,9 +29,10 @@ module GoTransverseTractApi
         }
       }
 
-      if(billing_account)
+      if billing_account
         data[:payment][:creditCardPayment][:description] = invoice[:payment][:credit_card_payment][:description]
       end
+
       GoTransverseTractApi.generateXML(data, 'applyPayment')
     end
  
@@ -249,7 +250,7 @@ module GoTransverseTractApi
     end
 
     def get_query_params(params, options={})
-      if(options.present? && options.is_a?(Hash))
+      if options.present? && options.is_a?(Hash)
         params.merge!(options) 
       end
 
