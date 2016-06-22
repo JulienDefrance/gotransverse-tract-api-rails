@@ -477,7 +477,8 @@ module GoTransverseTractApi
         def deactivate eid, service
           data = {
             deactivateService: {},
-            service: {eid: eid}
+            service: { eid: eid },
+            reason: { service[:reason_eid] }
           }
 
           xml_data = GoTransverseTractApi.generateXML(data, 'deactivateService')
