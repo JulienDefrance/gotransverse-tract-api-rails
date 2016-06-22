@@ -478,7 +478,7 @@ module GoTransverseTractApi
           data = {
             deactivateService: {},
             service: { eid: eid },
-            reason: { service[:reason_eid] }
+            reason: { eid: service[:reason_eid] }
           }
 
           xml_data = GoTransverseTractApi.generateXML(data, 'deactivateService')
