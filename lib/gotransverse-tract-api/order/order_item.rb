@@ -273,6 +273,14 @@ module GoTransverseTractApi
             }
           }
         end
+
+        if order_item.has_key?(:parent_service_eid)
+          parent_service = {
+              attributes: {
+                  eid: order_item[:parent_service_eid]
+              }
+          }
+        end
         
         # The parent orderItems may have child orderItems
         if order_item.has_key?(:order_items)
@@ -291,10 +299,10 @@ module GoTransverseTractApi
             onetimeProductPrice: order_item[:onetime_product_price].try(:[],0),
             quantity: order_item[:quantity],
             sequence: order_item[:sequence],
-            parentServiceEid: order_item[:parent_service_eid],
             description: order_item[:description],
             eid: order_item[:eid]
           }.delete_if{|k,v| v.nil?},
+          parentService: parent_service,
           orderItemUsageRules: order_item_usage_rules,
           recurringProductPrice: Product::RecurringProductPrice.get_recurring_product_price(order_item[:recurring_product_price]),
           onetimeProductPrice: onetime_product_price,
