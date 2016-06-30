@@ -475,7 +475,7 @@ module GoTransverseTractApi
           end
 
           if billing_account[:payment_term].present?
-            data[:billingAccount][:paymentTerm] = {
+            data[:paymentTerm] = {
                 name: billing_account[:payment_term][:name],
                 eid: billing_account[:payment_term][:eid]
             }
