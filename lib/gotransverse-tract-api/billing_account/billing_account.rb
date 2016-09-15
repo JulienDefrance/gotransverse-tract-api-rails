@@ -390,7 +390,8 @@ module GoTransverseTractApi
 
           bill_type = {
             billingAccount: {
-              billType: billing_account[:bill_type]
+              billType: billing_account[:bill_type],
+              automaticRecurringPayment: billing_account[:automatic_recurring_payment]
             }
           }
 
@@ -452,7 +453,9 @@ module GoTransverseTractApi
 
           data = GoTransverseTractApi::ApiData.new.compact(bill_type.merge bill_cycle.merge data.merge recurring_payments)
 
+          binding.pry
           xml_data = GoTransverseTractApi.generateXML(data, 'billingAccount')
+          binding.pry
           GoTransverseTractApi.post_request_for(self, {}, xml_data, "")
         end
 
