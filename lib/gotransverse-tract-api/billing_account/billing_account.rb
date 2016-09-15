@@ -390,7 +390,8 @@ module GoTransverseTractApi
 
           bill_type = {
             billingAccount: {
-              billType: billing_account[:bill_type]
+              billType: billing_account[:bill_type],
+              automaticRecurringPayment: billing_account[:automatic_recurring_payment]
             }
           }
 
