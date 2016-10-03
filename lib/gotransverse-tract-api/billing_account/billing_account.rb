@@ -387,6 +387,7 @@ module GoTransverseTractApi
         def create_billing_account billing_account
           bill_cycle = {}
           recurring_payments = {}
+          custom_field_values = {}
 
           bill_type = {
             billingAccount: {
@@ -435,7 +436,7 @@ module GoTransverseTractApi
               eid: billing_account[:payment_term][:eid]
             }
           }
-          
+
           if billing_account.has_key?(:recurring_payments)
             recurring_payments = {
               recurringPayments: {
@@ -450,7 +451,11 @@ module GoTransverseTractApi
             }
           end
 
-          data = GoTransverseTractApi::ApiData.new.compact(bill_type.merge bill_cycle.merge data.merge recurring_payments)
+          if billing_account.has_key?(:custom_field_values)
+            custom_field_values = CustomFieldValue.get_custom_field_values(billing_account[:custom_field_values])
+          end
+
+          data = GoTransverseTractApi::ApiData.new.compact(bill_type.merge bill_cycle.merge data.merge recurring_payments.merge custom_field_values)
 
           xml_data = GoTransverseTractApi.generateXML(data, 'billingAccount')
           GoTransverseTractApi.post_request_for(self, {}, xml_data, "")
