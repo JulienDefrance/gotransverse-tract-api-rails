@@ -453,7 +453,9 @@ module GoTransverseTractApi
           end
 
           if billing_account.has_key?(:custom_field_values)
-            custom_field_values = CustomFieldValue.get_custom_field_values(billing_account[:custom_field_values])
+            custom_field_values = {
+                customFieldValues: CustomFieldValue.get_custom_field_values(billing_account[:custom_field_values])
+            }
           end
 
           data = GoTransverseTractApi::ApiData.new.compact(bill_type.merge bill_cycle.merge data.merge recurring_payments.merge custom_field_values)
