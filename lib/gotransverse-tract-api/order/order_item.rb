@@ -265,6 +265,10 @@ module GoTransverseTractApi
           selected_agreement = Agreement.get_selected_agreement(order_item[:selected_agreement])
         end
 
+        if order_item.has_key?(:operation_attributes)
+          operation_attributes = Product::OperationAttribute.get_operation_attributes(order_item[:operation_attributes])
+        end
+
         if order_item.has_key?(:onetime_product_price)
           # We can add later this one as a separate class for getting all other attributes
           onetime_product_price = { 
@@ -301,7 +305,7 @@ module GoTransverseTractApi
             sequence: order_item[:sequence],
             description: order_item[:description],
             eid: order_item[:eid]
-          }.delete_if{|k,v| v.nil?},
+          }.delete_if{ |k,v| v.nil? },
           parentService: parent_service,
           orderItemUsageRules: order_item_usage_rules,
           recurringProductPrice: Product::RecurringProductPrice.get_recurring_product_price(order_item[:recurring_product_price]),
@@ -315,7 +319,8 @@ module GoTransverseTractApi
           inventoryItem: inventory_item, 
           agreementConfiguration: agreement_configuration,
           scheduledCharges: scheduled_charges, 
-          discountConfigurations: discount_configurations
+          discountConfigurations: discount_configurations,
+          operationAttributes: operation_attributes
         }
 
         orderItem.delete_if{|k,v| v.nil?}
