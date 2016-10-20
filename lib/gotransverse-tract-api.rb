@@ -208,8 +208,8 @@ module GoTransverseTractApi
     tract_api_ver = GoTransverseTractApi::TARGET_API_VERSION
     data[root_elem.to_sym][:xmlns] = "http://www.tractbilling.com/billing/" + tract_api_ver.tr('.','_') + "/domain"
 
-    builder = Nokogiri::XML::Builder.new do|xml|
-      xml.send(root_elem,Hash[data[root_elem.to_sym]]) do
+    builder = Nokogiri::XML::Builder.new do |xml|
+      xml.send(root_elem, Hash[data[root_elem.to_sym]]) do
         arr = []
         arr << root_elem.to_sym
         self.process_data(data, arr, xml)
@@ -305,7 +305,7 @@ module GoTransverseTractApi
   #
   # @param {hash} hsh
   #
-  def self.camelize_keys hsh
+  def self.camelize_keys(hsh)
     hsh.keys.each do |k|
       new_key = k.to_s.camelize(:lower)
       new_key = new_key.to_sym if k.is_a? Symbol
@@ -315,11 +315,11 @@ module GoTransverseTractApi
   end
 
   def self.process_data(data, arr, xml)
-    data.each do|key,val|
+    data.each do |key,val|
       next if arr.include?(key)
        
-      if (val.is_a?Hash)
-        if (val.has_key?(:attributes))
+      if val.is_a?(Hash)
+        if val.has_key?(:attributes)
           xml.send(key, Hash[data[key][:attributes]]) do
             arr << 'attributes'.to_sym
             self.process_data(data[key],arr,xml)
@@ -327,10 +327,12 @@ module GoTransverseTractApi
         else
           xml.send(key, Hash[data[key]])
         end
-      elsif (val.is_a?Array)
+
+      elsif val.is_a?(Array)
         val.each do|item|
           self.process_data(item,arr,xml)
         end
+
       else
         xml.send(key, val)
       end
