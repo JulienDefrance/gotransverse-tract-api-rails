@@ -160,6 +160,8 @@ module GoTransverseTractApi
   # @param {String} command
   #
   def self.post_request_for(klass, api_params={}, request_body, command)
+    # binding.pry
+
     api_url = GoTransverseTractApi.get_api_url_for(klass)
     if (api_params.empty?)
       api_url = "#{api_url}/#{command}"

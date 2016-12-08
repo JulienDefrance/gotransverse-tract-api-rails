@@ -95,15 +95,36 @@ module GoTransverseTractApi
         # @param {Hash} obj (Order or Service or Billing Account)
         #
         def get_custom_field_values(obj={})
-          custom_field_values = {
-            attributes: {},
-            customFieldValue: {
-              attributes: {value: obj[:custom_field_value][:value]},
-              customField: {eid: obj[:custom_field_value][:custom_field][:eid]}
-            }
-          }
+          return obj if obj.empty?
 
-          custom_field_values
+          custom_fields_struct = { attributes: {}, customFieldValue: [] }
+
+          if obj[:custom_field_value].is_a?(Hash)
+            return { attributes: {}, customFieldValue: get_custom_field_value(obj[:custom_field_value]) }
+          end
+
+          obj[:custom_field_value].each do|item|
+            custom_fields_struct[:customFieldValue] << {
+                customFieldValue: get_custom_field_value(item)
+            }
+          end
+
+          custom_fields_struct
+        end
+
+        #
+        # @param {Hash} field (custom_field_value)
+        #
+        def get_custom_field_value(field)
+            custom_field_value = {
+                # attributes: {},
+                # customFieldValue: {
+                    attributes: {value: field[:value]},
+                    customField: {eid: field[:custom_field][:eid]}
+                # }
+            }
+
+            custom_field_value
         end
       end
 
