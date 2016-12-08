@@ -117,11 +117,8 @@ module GoTransverseTractApi
         #
         def get_custom_field_value(field)
             custom_field_value = {
-                # attributes: {},
-                # customFieldValue: {
-                    attributes: {value: field[:value]},
-                    customField: {eid: field[:custom_field][:eid]}
-                # }
+                attributes: {value: field[:value]},
+                customField: {eid: field[:custom_field][:eid]}
             }
 
             custom_field_value
