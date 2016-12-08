@@ -56,7 +56,7 @@ module GoTransverseTractApi
           orderDate: sales_order[:order_date],
           orderStatus: sales_order[:order_status]
         },
-        customFieldValues: BillingAccount::CustomFieldValue.get_custom_field_values(sales_order[:custom_field_values]), 
+        customFieldValues: BillingAccount::CustomFieldValue.get_custom_field_values(sales_order[:custom_field_values]),
         orderItems: {
           attributes: {},
           orderItem: get_order_items(sales_order[:order_items][:order_item])

@@ -119,13 +119,15 @@ module GoTransverseTractApi
         # @param {Long} eid
         # @param {Hash} sales_order
         #
-        def add_custom_field_value(eid, sales_order)
+        def add_custom_field_value(eid, sales_order, custom_field_eid=nil)
           data = 
             {
               addCustomFieldValue: {},
               order: { eid: eid },
               customFieldValue: { value: sales_order[:value] }
             }
+
+          data[:customField] = { eid: custom_field_eid } if custom_field_eid
 
           xml_data = GoTransverseTractApi.generateXML(data,'addCustomFieldValue')
           GoTransverseTractApi.post_request_for(self, {eid: eid}, xml_data, "addCustomFieldValue")
