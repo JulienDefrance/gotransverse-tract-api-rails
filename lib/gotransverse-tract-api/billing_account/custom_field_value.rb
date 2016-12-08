@@ -97,11 +97,11 @@ module GoTransverseTractApi
         def get_custom_field_values(obj={})
           return obj if obj.empty?
 
-          custom_fields_struct = { attributes: {}, customFieldValue: [] }
-
           if obj[:custom_field_value].is_a?(Hash)
             return { attributes: {}, customFieldValue: get_custom_field_value(obj[:custom_field_value]) }
           end
+
+          custom_fields_struct = { attributes: {}, customFieldValue: [] }
 
           obj[:custom_field_value].each do|item|
             custom_fields_struct[:customFieldValue] << {

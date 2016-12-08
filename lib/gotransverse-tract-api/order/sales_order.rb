@@ -120,7 +120,7 @@ module GoTransverseTractApi
         # @param {Hash} sales_order
         #
         def add_custom_field_value(eid, sales_order, custom_field_eid=nil)
-          data =
+          data = 
             {
               addCustomFieldValue: {},
               order: { eid: eid },
