@@ -396,6 +396,8 @@ module GoTransverseTractApi
             }
           }
 
+          bill_type[:billingAccount][:externalAccountNum] = billing_account[:external_account_number] if billing_account.has_key?(:external_account_number)
+
           if billing_account.has_key?(:daily_bill_cycle)
             bill_cycle = {
               dailyBillCycle: {
