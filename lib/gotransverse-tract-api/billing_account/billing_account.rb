@@ -478,6 +478,8 @@ module GoTransverseTractApi
             }
           }
 
+          data[:billingAccount][:externalAccountNum] = billing_account[:external_account_number] if billing_account.has_key?(:external_account_number)
+
           if billing_account[:billing_account_category].present?
             data[:billingAccountCategory] = {
                 eid: billing_account[:billing_account_category][:eid]
