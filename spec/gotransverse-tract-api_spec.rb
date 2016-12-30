@@ -74,7 +74,7 @@ RSpec.describe GoTransverseTractApi do
 
     context ".generateXML" do
       it "generates XML for the given hash object" do
-        response = "<root xmlns='http://www.tractbilling.com/billing/1_29/domain'>\n  <element1 x='y' y='z'/>\n  <element2 a='b'>\n    <children c='d' e='f'/>\n  </element2>\n</root>"
+        response = "<root xmlns='http://www.tractbilling.com/billing/1_31/domain'>\n  <element1 x='y' y='z'/>\n  <element2 a='b'>\n    <children c='d' e='f'/>\n  </element2>\n</root>"
 
         h = {
           root: {},
