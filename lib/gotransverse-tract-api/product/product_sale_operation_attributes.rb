@@ -17,15 +17,15 @@ module GoTransverseTractApi
 
       #
       # @param {Long} eid
-      # @param {Hash} product_sale_operation_attributes
+      # @param {Hash} product_sale_operation_attribute
       #
-      def self.update(eid, product_sale_operation_attributes)
+      def self.update(eid, product_sale_operation_attribute)
         data = {
             productSaleOperationAttribute: {
-                autoApproveDate: product_sale_operation_attributes[:product_sale_operation_attribute][:auto_approve_date],
+                autoApproveDate: product_sale_operation_attribute[:product_sale_operation_attribute][:auto_approve_date],
                 eid: eid
             },
-            approvalOperation: {attributes: {eid: product_sale_operation_attributes[:approval_operation][:eid]}}
+            approvalOperation: {attributes: {eid: product_sale_operation_attribute[:approval_operation][:eid]}}
         }
 
         xml_data = GoTransverseTractApi.generateXML(data, 'productSaleOperationAttribute')
