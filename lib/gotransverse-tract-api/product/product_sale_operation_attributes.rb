@@ -16,6 +16,17 @@ module GoTransverseTractApi
       end
 
       #
+      # @param {Long} product_order_item_eid
+      # @param {Hash} options
+      #
+      def self.find_by_product_order_item_eid(product_order_item_eid, options={})
+        return nil unless product_order_item_eid.present?
+
+        params ||= GoTransverseTractApi::ApiData.new.get_query_params({product_order_item_eid: product_order_item_eid}, options)
+        GoTransverseTractApi.get_response_for(self, params)
+      end
+
+      #
       # @param {Long} eid
       # @param {Hash} product_sale_operation_attribute
       #
