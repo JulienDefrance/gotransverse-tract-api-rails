@@ -61,6 +61,17 @@ module GoTransverseTractApi
         end
 
         #
+        # @param {Long} original_order_eid
+        # @param {Hash} options
+        #
+        def find_by_original_order_eid original_order_eid, options={}
+          return nil unless original_order_eid.present?
+
+          params ||= GoTransverseTractApi::ApiData.new.get_query_params({original_order_eid: original_order_eid}, options)
+          GoTransverseTractApi.get_response_for(self, params)
+        end
+
+        #
         # @param {Long} agreement_eid
         # @param {Hash} options
         #
